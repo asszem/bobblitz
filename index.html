@@ -163,19 +163,25 @@
     /* â”€â”€ Word display â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
     #word-area {
-      margin-top: 4px;
-      min-height: 14px;
+      margin-top: 10px;
+      width: min(340px, 96vw);
+      min-height: 82px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
+      justify-content: center;
+      gap: 4px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(34, 34, 58, 0.35);
+      border: 1px solid rgba(255,255,255,0.06);
     }
 
     #word-display {
       font-size: clamp(1.7rem, 6.5vw, 2.4rem);
       font-weight: 900;
       letter-spacing: 7px;
-      min-height: 0;
+      min-height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -193,7 +199,7 @@
       font-size: 0.74rem;
       color: #444460;
       letter-spacing: 1px;
-      height: 14px;
+      height: 16px;
       transition: color 0.15s;
     }
 
@@ -204,7 +210,7 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      margin-top: 4px;
+      margin-top: 8px;
     }
 
     #action-buttons {
@@ -417,6 +423,7 @@
 <header>
   <div class="header-top">
     <h1>BöbBlitz</h1>
+    <button id="lang-btn" class="lang-btn">🇭🇺 Magyar</button>
   </div>
   <p class="tagline" id="tagline">EgyĂ©ni szĂłvadĂˇsz</p>
 </header>
@@ -438,7 +445,6 @@
 </div>
 
 <div id="controls">
-  <button id="lang-btn" class="lang-btn">🇭🇺 Magyar</button>
   <div id="action-buttons">
     <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
     <button class="btn btn-ghost" id="new-btn">Új játék</button>
@@ -479,19 +485,40 @@ function formatTemplate(template, values) {
   return template.replace(/\{(\w+)\}/g, (_, key) => `${values[key] ?? ''}`);
 }
 
-function makeWordData(dictRaw, minWordLength, maxWordLength) {
-  const wordset = new Set(
-    dictRaw
+function createTrieNode() {
+  return { end: false, next: Object.create(null) };
+}
+
+function buildTrie(words) {
+  const root = createTrieNode();
+  for (const word of words) {
+    let node = root;
+    for (const ch of word) {
+      if (!node.next[ch]) node.next[ch] = createTrieNode();
+      node = node.next[ch];
+    }
+    node.end = true;
+  }
+  return root;
+}
+
+function trieStep(root, text) {
+  let node = root;
+  for (const ch of text) {
+    node = node.next[ch];
+    if (!node) return null;
+  }
+  return node;
+}
+
+function parseWords(raw, minWordLength, maxWordLength) {
+  return [...new Set(
+    raw
       .trim()
       .split(/\s+/)
       .map(w => w.toUpperCase())
       .filter(w => w.length >= minWordLength && w.length <= maxWordLength)
-  );
-  const prefixes = new Set();
-  for (const w of wordset) {
-    for (let i = 1; i <= w.length; i++) prefixes.add(w.slice(0, i));
-  }
-  return { wordset, prefixes };
+  )];
 }
 
 async function loadLanguageData(code) {
@@ -503,15 +530,26 @@ async function loadLanguageData(code) {
   const data = await res.json();
   const minWordLength = Number(data.minWordLength || 2);
   const maxWordLength = Number(data.maxWordLength || 8);
-  const built = makeWordData(data.dictionaryRaw || '', minWordLength, maxWordLength);
+  let dictRaw = '';
+  if (data.dictionaryFile) {
+    const dictRes = await fetch(data.dictionaryFile, { cache: 'no-cache' });
+    if (!dictRes.ok) throw new Error(`Failed to load ${data.dictionaryFile}: ${dictRes.status}`);
+    dictRaw = await dictRes.text();
+  } else if (data.dictionaryRaw) {
+    // Backward compatibility: older JSONs may still inline dictionary text.
+    dictRaw = data.dictionaryRaw;
+  } else {
+    throw new Error(`No dictionary source for language: ${code}`);
+  }
+  const words = parseWords(dictRaw, minWordLength, maxWordLength);
   const normalized = {
     ...data,
     minWordLength,
     maxWordLength,
     pool: data.pool || '',
     labels: data.labels || {},
-    wordset: built.wordset,
-    prefixes: built.prefixes,
+    trie: buildTrie(words),
+    wordCount: words.length,
   };
   langCache.set(code, normalized);
   return normalized;
@@ -529,9 +567,12 @@ function getTallyText(n) {
 }
 
 const t           = () => langData.labels;
-const getWordset  = () => langData.wordset;
-const getPrefixes = () => langData.prefixes;
 const getPool     = () => langData.pool;
+const hasWord     = word => {
+  const node = trieStep(langData.trie, word);
+  return !!(node && node.end);
+};
+const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
 // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let grid       = [];
   let sel        = [];
@@ -853,7 +894,7 @@ const getPool     = () => langData.pool;
     const word = sel.map(i => grid[i]).join('');
 
     // Invalid (too short, unknown, already found): silent reset
-    if (word.length < langData.minWordLength || !getWordset().has(word) || found.has(word)) {
+    if (word.length < langData.minWordLength || !hasWord(word) || found.has(word)) {
       resetSel();
       return;
     }
@@ -1104,12 +1145,10 @@ const getPool     = () => langData.pool;
   function getAllWords() {
     const all = new Set();
     const vis = new Array(16).fill(false);
-    const ws  = getWordset();
-    const ps  = getPrefixes();
 
     function dfs(last, word) {
-      if (!ps.has(word)) return;
-      if (word.length >= langData.minWordLength && ws.has(word)) all.add(word);
+      if (!hasPrefix(word)) return;
+      if (word.length >= langData.minWordLength && hasWord(word)) all.add(word);
       if (word.length >= langData.maxWordLength) return;
       for (let n = 0; n < 16; n++) {
         if (!vis[n] && isAdj(last, n)) {
@@ -1142,4 +1181,6 @@ const getPool     = () => langData.pool;
 </script>
 </body>
 </html>
+
+
 
