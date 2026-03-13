@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -28,6 +28,33 @@
       text-align: center;
       margin-bottom: 18px;
     }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .lang-btn {
+      padding: 4px 12px;
+      border: 1.5px solid #2a2a44;
+      border-radius: 50px;
+      background: transparent;
+      color: #666688;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: color 0.15s, border-color 0.15s, transform 0.1s;
+      outline: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .lang-btn:hover  { color: #9999bb; border-color: #3a3a5a; }
+    .lang-btn:active { transform: scale(0.94); }
 
     h1 {
       font-size: clamp(2rem, 7vw, 2.8rem);
@@ -192,7 +219,8 @@
       outline: none;
     }
 
-    .btn:active { transform: scale(0.94); }
+    .btn:active  { transform: scale(0.94); }
+    .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
 
     .btn-ghost {
       background: transparent;
@@ -246,10 +274,38 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      cursor: default;
       animation: chipIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .chip:hover, .chip.chip-active {
+      border-color: rgba(245,158,11,0.5);
+      color: #fff;
     }
 
     .chip .pts { color: #e94560; font-size: 0.72rem; font-weight: 700; }
+
+    .chip-revealed {
+      opacity: 0.45;
+      font-style: italic;
+    }
+    .chip-revealed:hover, .chip-revealed.chip-active { opacity: 0.8; }
+
+    .cell.highlight-found {
+      background: linear-gradient(145deg, #f59e0b, #d97706);
+      border-color: rgba(255,220,100,0.4);
+      color: white;
+      transform: scale(1.08);
+      box-shadow: 0 6px 22px rgba(245,158,11,0.6);
+      z-index: 3;
+      transition: none;
+    }
+
+    .cell.first-highlight {
+      background: linear-gradient(145deg, #fbbf24, #f59e0b);
+      box-shadow: 0 6px 28px rgba(251,191,36,0.8);
+    }
 
     /* ── Animations ────────────────────────────────────── */
 
@@ -286,14 +342,17 @@
 <body>
 
 <header>
-  <h1>BöbBlitz</h1>
-  <p class="tagline">Solo word hunt</p>
+  <div class="header-top">
+    <h1>BöbBlitz</h1>
+    <button id="lang-btn" class="lang-btn">🇭🇺 Magyar</button>
+  </div>
+  <p class="tagline" id="tagline">Egyéni szóvadász</p>
 </header>
 
 <div id="score-row">
-  <div class="stat">Score<strong id="score">0</strong></div>
-  <div class="stat">Words<strong id="word-count">0 / ?</strong></div>
-  <div class="stat">Best<strong id="best">—</strong></div>
+  <div class="stat"><span id="lbl-score">Pont</span><strong id="score">0</strong></div>
+  <div class="stat"><span id="lbl-words">Szavak</span><strong id="word-count">0 / ?</strong></div>
+  <div class="stat"><span id="lbl-best">Legjobb</span><strong id="best">—</strong></div>
 </div>
 
 <div id="grid-wrap">
@@ -307,21 +366,21 @@
 </div>
 
 <div id="controls">
-  <button class="btn btn-ghost" id="clear-btn">Clear</button>
-  <button class="btn btn-ghost" id="new-btn">New Game</button>
+  <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
+  <button class="btn btn-ghost" id="new-btn">Új játék</button>
 </div>
 
 <div id="found-section">
   <div id="found-header">
-    <h3>Found Words</h3>
+    <h3 id="found-words-lbl">Talált szavak</h3>
     <span id="word-tally">—</span>
   </div>
   <div id="words-list"></div>
 </div>
 
 <script>
-  // ── Letter pool (weighted) ───────────────────────────────────────────
-  const POOL =
+  // ── Letter pools (weighted) ─────────────────────────────────────────
+  const POOL_EN =
     'AAAAAAAAAB' +  // A×9 B×1
     'BCCDDDDEEE' +  // B×2 C×3 D×4 E×3
     'EEEEEEEEFF' +  // E×10 total F×2
@@ -332,7 +391,31 @@
     'RRRRRSSSSTT' + // R×6 total S×4 T×2
     'TTTTUUUUVV' +  // T×6 total U×4 V×2
     'WWXYYZ';       // W×2 X×1 Y×2 Z×1
-  const LETTERS = POOL;
+
+  const POOL_HU =
+    'EEEEEEEEEE' +  // E×10
+    'AAAAAAAA' +    // A×8
+    'ÁÁÁÁÁ' +       // Á×5
+    'TTTTTTT' +     // T×7
+    'NNNNNNN' +     // N×7
+    'LLLLLL' +      // L×6
+    'SSSSSS' +      // S×6
+    'KKKKKK' +      // K×6
+    'IIIII' +       // I×5
+    'OOOO' +        // O×4
+    'RRRR' +        // R×4
+    'MMMM' +        // M×4
+    'ÉÉÉ' +         // É×3
+    'GGG' +         // G×3
+    'BBB' +         // B×3
+    'ZZZ' +         // Z×3
+    'HHH' +         // H×3
+    'DDJJVV' +      // D×2 J×2 V×2
+    'ÓÓÖÖ' +        // Ó×2 Ö×2
+    'FFÍÍ' +        // F×2 Í×2
+    'PPUU' +        // P×2 U×2
+    'ŐŰŰÜÚ' +       // Ő×1 Ű×2 Ü×1 Ú×1
+    'CY';           // C×1 Y×1
 
   // ── Word dictionary ──────────────────────────────────────────────────
   const RAW = `
@@ -437,11 +520,82 @@ VENTURE VERSION VILLAGE WELFARE WHETHER WHISPER WRITING YOUNGER
 ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER DECISION DESCRIBE DISCOVER DOMINANT EVALUATE FRIENDLY GRATEFUL IDENTIFY INFINITE INTEREST LIFETIME MATERIAL MOVEMENT NEGATIVE OFFICIAL OVERCOME PREVIOUS PROBABLE PROPERTY QUESTION RECENTLY RELIGION REMEMBER RESPONSE SECURITY SEPARATE SPECIFIC STANDING STRAIGHT STRUGGLE SUDDENLY TOGETHER TOMORROW TRAINING ULTIMATE VALUABLE WHATEVER WHENEVER WILDLIFE
   `;
 
-  const WORDSET  = new Set(RAW.trim().split(/\s+/).filter(w => w.length >= 3 && w.length <= 8));
-  const PREFIXES = new Set();
-  for (const w of WORDSET) {
-    for (let i = 1; i <= w.length; i++) PREFIXES.add(w.slice(0, i));
+  const WORDSET_EN  = new Set(RAW.trim().split(/\s+/).filter(w => w.length >= 3 && w.length <= 8));
+  const PREFIXES_EN = new Set();
+  for (const w of WORDSET_EN) {
+    for (let i = 1; i <= w.length; i++) PREFIXES_EN.add(w.slice(0, i));
   }
+
+  // ── Hungarian word dictionary ────────────────────────────────────────
+  const RAW_HU = `
+EGY KÉT HÁT HÁZ HAL HAT HÉT HÍR NAP NÉP NEM MÁR MÁS MÉG MÉZ MÁJ
+KAR KÁR KÉK KÉR KIS KÖR KOR KÚT GÁZ GÉP TÁJ TÁR TÉR TÉL TÍZ TUD
+LÁB LÁT LÉP LÉG SÁR SÍP SEM SEB SOR FÉL FEL FOG FUT FÉK FAL FAR
+FÁJ FÁK FÁZ FIÚ BÁR BÉR BŐR BOR BOT BAJ BAL BŐS BŰN DAL DÉL DÍJ
+DÁM DŰL ÁGY ÁLL ÁRU VÁR VÉR VÍZ VAD VAN VÁG VÁJ VÉG ÍGY ÜGY ÖCS
+CÉL CÍM PAD PÁR PÉK ZÁR ÓRA RÉS RÚD RÉV KÉS NÉZ NŐS KAP MÉR MÉN
+MER GAZ GÁT GÓL HÁG HÁM HEG HÍD HÍM HŐS HÚG IDE ODA IGE ILY ÁLD
+ÁRT ÁSZ RÁD RÁK RÁG RÁZ RAB HÓD SÓS ŐSZ ÉGŐ JÓL LEG ALÁ ELÉ SAR
+TŰZ FŰZ HŰL ÉG ÉL ÓL ÚR ÖV ÖL MŰ TŰ ÁG NŐ HÓ SÓ JÓ ÖT ÚJ ÚT ÉR ÁR
+IGEN VOLT LETT JÖTT KELL MOND NAGY JOBB SZÉP SZEM SZÍV SZÁL SZÁN SZÁR
+SZER SZÉL SZÍN SZÉK CSAK NÉGY NYÁR HÁNY HOGY MERT VAGY MINT AHOL MAJD
+MOST RÉGI ÉLET ESTE KERT VERS UTCA ARCA ALMA ANYA EGÉR EZER EZEK ABBA
+ARRA ERRE FENN LENN BENT KINN BIKA CICA EPER ELEM GOND HANG ITAL LÁNY
+MENT PART RÉSZ TELE ZENE HOLD BANK BOLT BORS CSÓK CSÚF CSER GYÁR GYŰR
+LOMB LÁNG LAZA MEZŐ MÉCS NÉHA PÉNZ RANG REND RING TÉNY TÉRD VALÓ VÉGE
+ZÖLD ERŐS ÉHES OKOS ÉDES ÉLES BELE BELÉ ÁSÍT ÁRVA MÉLY REJT ÉVEK ÁGYÚ
+NÉZZ ÉRETT SÖTÉT KÉRD KÉRI KÖNNYŰ SZOMJÚ
+HIDEG MELEG VILÁG EMBER NINCS ÁLLAT ÉJJEL JÁTÉK KÉPES LAPÁT MESÉL OLDAL
+TANUL ZAVAR TAKAR GÖRÖG GYORS HŐSÉG TALÁN KOMOR HAZAI NYÍLT SZEBB KÖNNY
+NEVET LOVAK MAGAS KICSI NEVEK TÜKÖR KÖNYV TÁBLA SZOBA MIKOR AKKOR EGÉSZ
+ENGEM TÉGED SENKI SEMMI SOSEM LEVÉL ÁLMOS NEKEM NEKIK NAPOS BŐSÉG INDÍT
+SZABAD ASZTAL MINDIG BOLDOG FÁRADT BÜSZKE FONTOS VALAKI GYENGE TISZTA
+NAGYON SZÍVES REGGEL UTOLSÓ KÖZBEN NEKTEK JÖVŐRE MENNEK DÉLBEN
+SZOMJAS
+BARÁTSÁG SZERELEM BOLDOGAN
+  `;
+  const WORDSET_HU  = new Set(RAW_HU.trim().split(/\s+/).filter(w => w.length >= 2 && w.length <= 8));
+  const PREFIXES_HU = new Set();
+  for (const w of WORDSET_HU) {
+    for (let i = 1; i <= w.length; i++) PREFIXES_HU.add(w.slice(0, i));
+  }
+
+  // ── i18n ────────────────────────────────────────────────────────────
+  const STRINGS = {
+    hu: {
+      tagline:    'Egyéni szóvadászat',
+      score:      'Pont',
+      words:      'Szavak',
+      best:       'Legjobb',
+      revealAll:  'Szabad a gazda!',
+      newGame:    'Új játék',
+      foundWords: 'Talált szavak',
+      tally:      n => `${n} szó`,
+      wordMeta:   (len, pts) => `${len} betű · +${pts} pont`,
+      wordShort:  len => `${len} betű`,
+      confirm:    'Új játékot kezdesz? A haladásod elveszik.',
+      langLabel:  '🇭🇺 Magyar',
+    },
+    en: {
+      tagline:    'Solo word hunt',
+      score:      'Score',
+      words:      'Words',
+      best:       'Best',
+      revealAll:  'Reveal all words',
+      newGame:    'New Game',
+      foundWords: 'Found Words',
+      tally:      n => `${n} word${n !== 1 ? 's' : ''}`,
+      wordMeta:   (len, pts) => `${len} letters · +${pts} pts`,
+      wordShort:  len => `${len} letter${len !== 1 ? 's' : ''}`,
+      confirm:    'Start a new game? Your progress will be lost.',
+      langLabel:  '🇬🇧 English',
+    },
+  };
+  let lang = 'hu';
+  const t           = () => STRINGS[lang];
+  const getWordset  = () => lang === 'hu' ? WORDSET_HU  : WORDSET_EN;
+  const getPrefixes = () => lang === 'hu' ? PREFIXES_HU : PREFIXES_EN;
+  const getPool     = () => lang === 'hu' ? POOL_HU     : POOL_EN;
 
   // ── State ───────────────────────────────────────────────────────────
   let grid       = [];
@@ -451,6 +605,7 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
   let bestWord   = '';
   let found      = new Set();
   let totalWords = -1;   // -1 = not yet computed
+  let revealed   = false;
 
   // ── DOM refs ────────────────────────────────────────────────────────
   const gridEl   = document.getElementById('grid');
@@ -467,7 +622,10 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
   // ── Init ────────────────────────────────────────────────────────────
   function initGame() {
     totalWords = -1;
-    grid = Array.from({ length: 16 }, () => LETTERS[Math.floor(Math.random() * LETTERS.length)]);
+    revealed   = false;
+    document.getElementById('reveal-btn').disabled = false;
+    const pool = getPool();
+    grid = Array.from({ length: 16 }, () => pool[Math.floor(Math.random() * pool.length)]);
     renderGrid();
     resetSel();
     updateCountEl();
@@ -509,16 +667,13 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
              y: cr.top  - gr.top  + cr.height / 2 };
   }
 
-  function redrawPath() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (sel.length < 2) return;
-    const pts = sel.map(cellCenter);
-    ctx.strokeStyle = 'rgba(233,69,96,0.22)';
+  function drawStrokePath(pts, glowColor, lineColor) {
+    ctx.lineCap  = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = glowColor;
     ctx.lineWidth   = 22;
-    ctx.lineCap     = 'round';
-    ctx.lineJoin    = 'round';
     tracePath(pts);
-    ctx.strokeStyle = 'rgba(233,69,96,0.85)';
+    ctx.strokeStyle = lineColor;
     ctx.lineWidth   = 7;
     tracePath(pts);
   }
@@ -528,6 +683,129 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
     ctx.moveTo(pts[0].x, pts[0].y);
     for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
     ctx.stroke();
+  }
+
+  function redrawPath() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (sel.length < 2) return;
+    drawStrokePath(sel.map(cellCenter), 'rgba(233,69,96,0.22)', 'rgba(233,69,96,0.85)');
+  }
+
+  // ── Arrow path (for found-word highlight) ───────────────────────────
+  function drawArrowPath(pts, glowColor, lineColor) {
+    const OFFSET      = 23;        // px gap from tile center so arrow never covers the letter
+    const HEAD_LEN    = 12;        // arrowhead arm length
+    const HEAD_SPREAD = Math.PI / 5.5;  // arrowhead half-angle (~33°)
+
+    for (let i = 0; i < pts.length - 1; i++) {
+      const A = pts[i], B = pts[i + 1];
+      const dx = B.x - A.x, dy = B.y - A.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const ux = dx / dist, uy = dy / dist;
+
+      // Shaft: start slightly outside source, end slightly outside dest
+      const sx = A.x + ux * OFFSET, sy = A.y + uy * OFFSET;
+      const ex = B.x - ux * OFFSET, ey = B.y - uy * OFFSET;
+      const angle = Math.atan2(dy, dx);
+
+      // Arrowhead arms
+      const ax1 = ex - HEAD_LEN * Math.cos(angle - HEAD_SPREAD);
+      const ay1 = ey - HEAD_LEN * Math.sin(angle - HEAD_SPREAD);
+      const ax2 = ex - HEAD_LEN * Math.cos(angle + HEAD_SPREAD);
+      const ay2 = ey - HEAD_LEN * Math.sin(angle + HEAD_SPREAD);
+
+      // — Glow pass —
+      ctx.lineCap     = 'round';
+      ctx.lineJoin    = 'round';
+      ctx.strokeStyle = glowColor;
+      ctx.lineWidth   = 20;
+      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(ex, ey); ctx.stroke();
+      ctx.lineWidth   = 14;
+      ctx.beginPath(); ctx.moveTo(ax1, ay1); ctx.lineTo(ex, ey); ctx.lineTo(ax2, ay2); ctx.stroke();
+
+      // — Line pass —
+      ctx.strokeStyle = lineColor;
+      ctx.lineWidth   = 4;
+      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(ex, ey); ctx.stroke();
+      ctx.lineWidth   = 3;
+      ctx.beginPath(); ctx.moveTo(ax1, ay1); ctx.lineTo(ex, ey); ctx.lineTo(ax2, ay2); ctx.stroke();
+    }
+  }
+
+  // ── Word path highlight ──────────────────────────────────────────────
+  function findWordPath(word) {
+    const letters = word.split('');
+    const len     = letters.length;
+    const visited = new Array(16).fill(false);
+    const path    = [];
+
+    function dfs() {
+      const idx  = path.length;
+      if (idx === len) return true;
+      const last = idx > 0 ? path[idx - 1] : -1;
+      for (let c = 0; c < 16; c++) {
+        if (!visited[c] && grid[c] === letters[idx] && (last === -1 || isAdj(last, c))) {
+          visited[c] = true;
+          path.push(c);
+          if (dfs()) return true;
+          path.pop();
+          visited[c] = false;
+        }
+      }
+      return false;
+    }
+
+    dfs();
+    return path.length === len ? [...path] : null;
+  }
+
+  function showHighlight(chipEl, path) {
+    clearHighlight();
+    if (!path) return;
+    chipEl.classList.add('chip-active');
+    const cells = gridEl.children;
+    const last  = path.length - 1;
+
+    path.forEach((cellIdx, pos) => {
+      const cell = cells[cellIdx];
+      cell.classList.add('highlight-found');
+      if (pos === 0) cell.classList.add('first-highlight');
+
+      // Compute travel direction through this tile (prev → next, or edge tiles)
+      const prevIdx = pos > 0    ? path[pos - 1] : null;
+      const nextIdx = pos < last ? path[pos + 1] : null;
+      const refFrom = prevIdx !== null ? prevIdx : cellIdx;
+      const refTo   = nextIdx !== null ? nextIdx : cellIdx;
+      const dc = (refTo % 4)           - (refFrom % 4);
+      const dr = Math.floor(refTo / 4) - Math.floor(refFrom / 4);
+      // CSS gradient angle: 0deg = top, clockwise → atan2(dc, -dr)
+      const deg = Math.round(Math.atan2(dc, -dr) * 180 / Math.PI);
+
+      // Directional gradient colours per position
+      if (pos === 0) {
+        cell.style.background = `linear-gradient(${deg}deg, #fef9c3, #f59e0b)`;
+      } else if (pos === last) {
+        cell.style.background = `linear-gradient(${deg}deg, #fbbf24, #92400e)`;
+      } else {
+        cell.style.background = `linear-gradient(${deg}deg, #fde68a, #d97706)`;
+      }
+    });
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (path.length >= 2) {
+      drawArrowPath(path.map(cellCenter), 'rgba(245,158,11,0.22)', 'rgba(245,158,11,0.88)');
+    }
+  }
+
+  function clearHighlight() {
+    document.querySelectorAll('.chip-active').forEach(el => el.classList.remove('chip-active'));
+    const cells = gridEl.children;
+    for (let i = 0; i < cells.length; i++) {
+      cells[i].classList.remove('highlight-found', 'first-highlight');
+      cells[i].style.background = '';
+    }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (sel.length >= 2) redrawPath();
   }
 
   // ── Selection ───────────────────────────────────────────────────────
@@ -576,9 +854,10 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
       .map((l, i) => `<span class="letter-span" style="animation-delay:${i * 0.04}s">${l}</span>`)
       .join('');
     const len = word.length;
-    wordMeta.textContent = len >= 3
-      ? `${len} letters · +${calcScore(word)} pts`
-      : `${len} letter${len !== 1 ? 's' : ''}`;
+    const minLen = lang === 'hu' ? 2 : 3;
+    wordMeta.textContent = len >= minLen
+      ? t().wordMeta(len, calcScore(word))
+      : t().wordShort(len);
   }
 
   function resetSel() {
@@ -593,7 +872,7 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
     const word = sel.map(i => grid[i]).join('');
 
     // Invalid (too short, unknown, already found): silent reset
-    if (word.length < 3 || !WORDSET.has(word) || found.has(word)) {
+    if (word.length < 2 || !getWordset().has(word) || found.has(word)) {
       resetSel();
       return;
     }
@@ -621,7 +900,7 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
       score += pts;
       scoreEl.textContent = score;
       updateCountEl();
-      tallyEl.textContent = `${found.size} word${found.size !== 1 ? 's' : ''}`;
+      tallyEl.textContent = t().tally(found.size);
 
       if (word.length > bestWord.length) {
         bestWord = word;
@@ -695,11 +974,52 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
   });
 
   // ── Buttons ─────────────────────────────────────────────────────────
-  document.getElementById('clear-btn').addEventListener('click', resetSel);
+  document.getElementById('reveal-btn').addEventListener('click', () => {
+    if (revealed) return;
+    revealed = true;
+    document.getElementById('reveal-btn').disabled = true;
+    const all = getAllWords();
+    const sorted = [...all].sort();
+    for (const word of sorted) {
+      if (!found.has(word)) {
+        found.add(word);
+        addRevealedChip(word);
+      }
+    }
+    updateCountEl();
+    tallyEl.textContent = t().tally(found.size);
+  });
+
+  document.getElementById('lang-btn').addEventListener('click', () => {
+    lang = lang === 'hu' ? 'en' : 'hu';
+    score = 0; bestWord = '';
+    scoreEl.textContent = '0';
+    bestEl.textContent  = '—';
+    tallyEl.textContent = '—';
+    found.clear();
+    wordsList.innerHTML = '';
+    applyLang();
+    initGame();
+  });
+
+  function applyLang() {
+    const s = t();
+    document.documentElement.lang                          = lang;
+    document.getElementById('tagline').textContent         = s.tagline;
+    document.getElementById('lbl-score').textContent       = s.score;
+    document.getElementById('lbl-words').textContent       = s.words;
+    document.getElementById('lbl-best').textContent        = s.best;
+    document.getElementById('reveal-btn').textContent      = s.revealAll;
+    document.getElementById('new-btn').textContent         = s.newGame;
+    document.getElementById('found-words-lbl').textContent = s.foundWords;
+    document.getElementById('lang-btn').textContent        = s.langLabel;
+    if (found.size > 0) tallyEl.textContent = s.tally(found.size);
+    refreshWordDisplay();
+  }
 
   document.getElementById('new-btn').addEventListener('click', () => {
     if (found.size > 0) {
-      if (!confirm('Start a new game? Your progress will be lost.')) return;
+      if (!confirm(t().confirm)) return;
     }
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
@@ -732,17 +1052,44 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
     const chip = document.createElement('div');
     chip.className = 'chip';
     chip.innerHTML = `${word}<span class="pts">+${pts}</span>`;
+
+    chip.addEventListener('mouseenter', () => showHighlight(chip, findWordPath(word)));
+    chip.addEventListener('mouseleave', clearHighlight);
+    chip.addEventListener('touchstart', e => {
+      e.preventDefault();
+      showHighlight(chip, findWordPath(word));
+    }, { passive: false });
+    chip.addEventListener('touchend',    clearHighlight);
+    chip.addEventListener('touchcancel', clearHighlight);
+
     wordsList.prepend(chip);
   }
 
+  function addRevealedChip(word) {
+    const chip = document.createElement('div');
+    chip.className = 'chip chip-revealed';
+    chip.textContent = word;
+    chip.addEventListener('mouseenter', () => showHighlight(chip, findWordPath(word)));
+    chip.addEventListener('mouseleave', clearHighlight);
+    chip.addEventListener('touchstart', e => {
+      e.preventDefault();
+      showHighlight(chip, findWordPath(word));
+    }, { passive: false });
+    chip.addEventListener('touchend',    clearHighlight);
+    chip.addEventListener('touchcancel', clearHighlight);
+    wordsList.append(chip);
+  }
+
   // ── Total words (DFS + prefix pruning) ──────────────────────────────
-  function countTotalWords() {
+  function getAllWords() {
     const all = new Set();
     const vis = new Array(16).fill(false);
+    const ws  = getWordset();
+    const ps  = getPrefixes();
 
     function dfs(last, word) {
-      if (!PREFIXES.has(word)) return;
-      if (word.length >= 3 && WORDSET.has(word)) all.add(word);
+      if (!ps.has(word)) return;
+      if (word.length >= 2 && ws.has(word)) all.add(word);
       if (word.length >= 8) return;
       for (let n = 0; n < 16; n++) {
         if (!vis[n] && isAdj(last, n)) {
@@ -758,13 +1105,16 @@ ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER
       dfs(s, grid[s]);
       vis[s] = false;
     }
-    return all.size;
+    return all;
   }
+
+  function countTotalWords() { return getAllWords().size; }
 
   // ── Resize ───────────────────────────────────────────────────────────
   window.addEventListener('resize', () => requestAnimationFrame(fitCanvas));
 
   // ── Start ────────────────────────────────────────────────────────────
+  applyLang();
   initGame();
 </script>
 </body>
