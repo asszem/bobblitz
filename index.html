@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>BöbBlitz</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background: #0e0e1a;
+      color: white;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100dvh;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 7vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 40%, #6bcb77 70%, #4d96ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: 0.75rem;
+      color: #44445a;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    #score-row {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      color: #55556a;
+    }
+
+    #score-row .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #e0e0f0;
+      line-height: 1.1;
+    }
+
+    /* ── Grid ─────────────────────────────────────────── */
+
+    #grid-wrap {
+      position: relative;
+      width: min(340px, 96vw);
+      padding: 12px;
+      background: linear-gradient(145deg, #1a1a30, #141428);
+      border-radius: 24px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 24px 64px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #canvas-overlay {
+      position: absolute;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .cell {
+      aspect-ratio: 1;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.35rem, 4.8vw, 1.7rem);
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(160deg, #22223e, #191930);
+      border: 1.5px solid rgba(255,255,255,0.07);
+      color: #b0b0d0;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+      will-change: transform;
+      animation: cellAppear 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    .cell.selected {
+      background: linear-gradient(145deg, #e94560, #b5302a);
+      border-color: rgba(255,150,150,0.3);
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 6px 22px rgba(233,69,96,0.55);
+      z-index: 3;
+    }
+
+    .cell.first-selected {
+      background: linear-gradient(145deg, #ff7b7b, #e94560);
+      box-shadow: 0 6px 28px rgba(255,107,107,0.75);
+    }
+
+    /* ── Word display ──────────────────────────────────── */
+
+    #word-area {
+      margin-top: 18px;
+      min-height: 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    #word-display {
+      font-size: clamp(1.7rem, 6.5vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: 7px;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 0 28px rgba(233,69,96,0.5);
+    }
+
+    .letter-span {
+      display: inline-block;
+      animation: letterPop 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    #word-meta {
+      font-size: 0.78rem;
+      color: #444460;
+      letter-spacing: 1px;
+      height: 16px;
+    }
+
+    /* ── Controls ──────────────────────────────────────── */
+
+    #controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 11px 26px;
+      border: none;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: transform 0.1s, box-shadow 0.15s, opacity 0.15s;
+      outline: none;
+    }
+
+    .btn:active { transform: scale(0.94); }
+
+    #submit-btn {
+      background: linear-gradient(135deg, #e94560, #b5302a);
+      color: white;
+      box-shadow: 0 4px 18px rgba(233,69,96,0.45);
+    }
+
+    #submit-btn:not(:disabled):hover {
+      box-shadow: 0 6px 26px rgba(233,69,96,0.65);
+      transform: translateY(-1px);
+    }
+
+    #submit-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #55557a;
+      border: 1.5px solid #2a2a44;
+    }
+
+    .btn-ghost:hover { color: #8888aa; border-color: #3a3a5a; }
+
+    /* ── Found words ───────────────────────────────────── */
+
+    #found-section {
+      margin-top: 24px;
+      width: min(340px, 96vw);
+    }
+
+    #found-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    #found-header h3 {
+      font-size: 0.7rem;
+      color: #33334a;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    #word-tally {
+      font-size: 0.75rem;
+      color: #33334a;
+    }
+
+    #words-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+
+    .chip {
+      background: #1a1a2e;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 50px;
+      padding: 5px 13px;
+      font-size: 0.82rem;
+      color: #c0c0e0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      animation: chipIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    .chip .pts { color: #e94560; font-size: 0.72rem; font-weight: 700; }
+
+    /* ── Animations ────────────────────────────────────── */
+
+    @keyframes cellAppear {
+      0%   { opacity: 0; transform: scale(0.6) translateY(8px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @keyframes letterPop {
+      0%   { transform: scale(0.4) translateY(6px); opacity: 0; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    @keyframes chipIn {
+      from { transform: scale(0.75) translateY(6px); opacity: 0; }
+      to   { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-7px); }
+      40%       { transform: translateX(7px); }
+      60%       { transform: translateX(-5px); }
+      80%       { transform: translateX(5px); }
+    }
+
+    .do-shake { animation: shake 0.32s ease-in-out; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>BöbBlitz</h1>
+  <p class="tagline">Solo word hunt</p>
+</header>
+
+<div id="score-row">
+  <div class="stat">Score<strong id="score">0</strong></div>
+  <div class="stat">Words<strong id="word-count">0</strong></div>
+  <div class="stat">Best<strong id="best">—</strong></div>
+</div>
+
+<div id="grid-wrap">
+  <canvas id="canvas-overlay"></canvas>
+  <div id="grid"></div>
+</div>
+
+<div id="word-area">
+  <div id="word-display"></div>
+  <div id="word-meta"></div>
+</div>
+
+<div id="controls">
+  <button class="btn btn-ghost" id="clear-btn">Clear</button>
+  <button class="btn" id="submit-btn" disabled>Submit</button>
+  <button class="btn btn-ghost" id="new-btn">New Game</button>
+</div>
+
+<div id="found-section">
+  <div id="found-header">
+    <h3>Found Words</h3>
+    <span id="word-tally">—</span>
+  </div>
+  <div id="words-list"></div>
+</div>
+
+<script>
+  // ── Letter pool (weighted, ~100 chars) ──────────────────────────────
+  const POOL =
+    'AAAAAAAAAB' +  // A×9 B×1
+    'BCCDDDDEEE' +  // B×2 C×3 D×4 E×3 (more below)
+    'EEEEEEEEFF' +  // E×10 total F×2
+    'GGGHH IIII' +  // G×3 H×2 I×4 (space filler removed below)
+    'IIIIIJKLLL' +  // I×9 total J×1 K×1 L×4
+    'LMNNNNNNOOO' + // L×5 M×1 N×6 O×3 (more below)
+    'OOOOOOPPQR' +  // O×8 total P×2 Q×1 R×1
+    'RRRRRSSSSTT' + // R×6 total S×4 T×2
+    'TTTTUUUUVV' +  // T×6 total U×4 V×2
+    'WWXYYZ';       // W×2 X×1 Y×2 Z×1
+  // Rebuild without space (typo above)
+  const LETTERS = POOL.replace(/ /g, 'I'); // replace filler space with I
+
+  // ── State ───────────────────────────────────────────────────────────
+  let grid = [];
+  let sel  = [];        // selected cell indices in order
+  let drag = false;
+  let score = 0;
+  let bestWord = '';
+  let found = new Set();
+
+  // ── DOM refs ────────────────────────────────────────────────────────
+  const gridEl     = document.getElementById('grid');
+  const wordDisp   = document.getElementById('word-display');
+  const wordMeta   = document.getElementById('word-meta');
+  const scoreEl    = document.getElementById('score');
+  const countEl    = document.getElementById('word-count');
+  const bestEl     = document.getElementById('best');
+  const tallyEl    = document.getElementById('word-tally');
+  const submitBtn  = document.getElementById('submit-btn');
+  const canvas     = document.getElementById('canvas-overlay');
+  const ctx        = canvas.getContext('2d');
+  const wordsList  = document.getElementById('words-list');
+
+  // ── Init ────────────────────────────────────────────────────────────
+  function initGame() {
+    grid = Array.from({ length: 16 }, () => LETTERS[Math.floor(Math.random() * LETTERS.length)]);
+    renderGrid();
+    resetSel();
+  }
+
+  function renderGrid() {
+    gridEl.innerHTML = '';
+    grid.forEach((letter, i) => {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.textContent = letter;
+      cell.dataset.i = i;
+      cell.style.animationDelay = `${i * 0.03}s`;
+      gridEl.appendChild(cell);
+    });
+    requestAnimationFrame(fitCanvas);
+  }
+
+  // ── Canvas ──────────────────────────────────────────────────────────
+  function fitCanvas() {
+    const gr = gridEl.getBoundingClientRect();
+    const wr = document.getElementById('grid-wrap').getBoundingClientRect();
+    canvas.width  = gr.width;
+    canvas.height = gr.height;
+    canvas.style.left = (gr.left - wr.left) + 'px';
+    canvas.style.top  = (gr.top  - wr.top ) + 'px';
+    redrawPath();
+  }
+
+  function cellCenter(idx) {
+    const cells = gridEl.children;
+    const cr = cells[idx].getBoundingClientRect();
+    const gr = gridEl.getBoundingClientRect();
+    return { x: cr.left - gr.left + cr.width / 2,
+             y: cr.top  - gr.top  + cr.height / 2 };
+  }
+
+  function redrawPath() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (sel.length < 2) return;
+
+    const pts = sel.map(cellCenter);
+
+    // glow pass
+    ctx.strokeStyle = 'rgba(233, 69, 96, 0.22)';
+    ctx.lineWidth   = 22;
+    ctx.lineCap     = 'round';
+    ctx.lineJoin    = 'round';
+    tracePath(pts);
+
+    // main line
+    ctx.strokeStyle = 'rgba(233, 69, 96, 0.85)';
+    ctx.lineWidth   = 7;
+    tracePath(pts);
+  }
+
+  function tracePath(pts) {
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+    ctx.stroke();
+  }
+
+  // ── Selection logic ─────────────────────────────────────────────────
+  function isAdj(a, b) {
+    const ra = Math.floor(a / 4), ca = a % 4;
+    const rb = Math.floor(b / 4), cb = b % 4;
+    return Math.abs(ra - rb) <= 1 && Math.abs(ca - cb) <= 1 && a !== b;
+  }
+
+  function trySelect(idx) {
+    if (idx < 0 || idx >= 16) return;
+
+    const existAt = sel.indexOf(idx);
+    if (existAt >= 0) {
+      // Backtrack: trim back to this cell
+      sel = sel.slice(0, existAt + 1);
+      applyVisuals();
+      return;
+    }
+
+    if (sel.length === 0 || isAdj(sel[sel.length - 1], idx)) {
+      sel.push(idx);
+      applyVisuals();
+    }
+  }
+
+  function applyVisuals() {
+    const cells = gridEl.children;
+    for (let i = 0; i < cells.length; i++) {
+      const pos = sel.indexOf(i);
+      cells[i].classList.toggle('selected',       pos >= 0);
+      cells[i].classList.toggle('first-selected', pos === 0);
+    }
+    redrawPath();
+    refreshWordDisplay();
+  }
+
+  function refreshWordDisplay() {
+    const word = sel.map(i => grid[i]).join('');
+    if (!word) {
+      wordDisp.innerHTML = '';
+      wordMeta.textContent = '';
+      submitBtn.disabled = true;
+      return;
+    }
+    wordDisp.innerHTML = word.split('')
+      .map((l, i) => `<span class="letter-span" style="animation-delay:${i * 0.04}s">${l}</span>`)
+      .join('');
+    const len = word.length;
+    const pts = calcScore(word);
+    wordMeta.textContent = len >= 3
+      ? `${len} letters · +${pts} pts`
+      : `${len} letter${len > 1 ? 's' : ''} · need 3+`;
+    submitBtn.disabled = len < 3;
+  }
+
+  function resetSel() {
+    sel  = [];
+    drag = false;
+    applyVisuals();
+  }
+
+  // ── Event: mouse ────────────────────────────────────────────────────
+  function cellFromEl(el) {
+    const c = el && el.closest ? el.closest('.cell') : null;
+    return c ? parseInt(c.dataset.i) : -1;
+  }
+
+  function cellFromPoint(x, y) {
+    const el = document.elementFromPoint(x, y);
+    if (!el) return -1;
+    if (el.classList.contains('cell')) return parseInt(el.dataset.i);
+    const c = el.closest && el.closest('.cell');
+    return c ? parseInt(c.dataset.i) : -1;
+  }
+
+  gridEl.addEventListener('mousedown', e => {
+    const idx = cellFromEl(e.target);
+    if (idx < 0) return;
+    e.preventDefault();
+    drag = true;
+    sel  = [];
+    trySelect(idx);
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!drag) return;
+    trySelect(cellFromPoint(e.clientX, e.clientY));
+  });
+
+  document.addEventListener('mouseup', () => { drag = false; });
+
+  // ── Event: touch ────────────────────────────────────────────────────
+  gridEl.addEventListener('touchstart', e => {
+    e.preventDefault();
+    drag = true;
+    sel  = [];
+    const t = e.touches[0];
+    trySelect(cellFromPoint(t.clientX, t.clientY));
+  }, { passive: false });
+
+  document.addEventListener('touchmove', e => {
+    if (!drag) return;
+    e.preventDefault();
+    const t = e.touches[0];
+    trySelect(cellFromPoint(t.clientX, t.clientY));
+  }, { passive: false });
+
+  document.addEventListener('touchend', () => { drag = false; });
+
+  // ── Buttons ─────────────────────────────────────────────────────────
+  submitBtn.addEventListener('click', () => {
+    const word = sel.map(i => grid[i]).join('');
+    if (word.length < 3) return;
+
+    if (found.has(word)) {
+      wordDisp.classList.remove('do-shake');
+      void wordDisp.offsetWidth; // reflow to restart animation
+      wordDisp.classList.add('do-shake');
+      wordDisp.addEventListener('animationend', () => wordDisp.classList.remove('do-shake'), { once: true });
+      resetSel();
+      return;
+    }
+
+    found.add(word);
+    const pts = calcScore(word);
+    score += pts;
+    scoreEl.textContent = score;
+    countEl.textContent = found.size;
+    tallyEl.textContent = `${found.size} word${found.size !== 1 ? 's' : ''}`;
+
+    if (word.length > bestWord.length) {
+      bestWord = word;
+      bestEl.textContent = word;
+    }
+
+    addChip(word, pts);
+    resetSel();
+  });
+
+  document.getElementById('clear-btn').addEventListener('click', resetSel);
+
+  document.getElementById('new-btn').addEventListener('click', () => {
+    if (found.size > 0) {
+      if (!confirm('Start a new game? Your progress will be lost.')) return;
+    }
+    score = 0; bestWord = '';
+    scoreEl.textContent = '0';
+    countEl.textContent = '0';
+    bestEl.textContent  = '—';
+    tallyEl.textContent = '—';
+    found.clear();
+    wordsList.innerHTML = '';
+    initGame();
+  });
+
+  // ── Scoring ──────────────────────────────────────────────────────────
+  function calcScore(word) {
+    const n = word.length;
+    if (n < 3)  return 0;
+    if (n === 3) return 1;
+    if (n === 4) return 2;
+    if (n === 5) return 4;
+    if (n === 6) return 7;
+    if (n === 7) return 11;
+    return 15 + (n - 8) * 5;
+  }
+
+  function addChip(word, pts) {
+    const chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.innerHTML = `${word}<span class="pts">+${pts}</span>`;
+    wordsList.prepend(chip);
+  }
+
+  // ── Resize ───────────────────────────────────────────────────────────
+  window.addEventListener('resize', () => requestAnimationFrame(() => { fitCanvas(); }));
+
+  // ── Start ────────────────────────────────────────────────────────────
+  initGame();
+</script>
+</body>
+</html>
