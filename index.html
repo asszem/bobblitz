@@ -126,6 +126,13 @@
       box-shadow: 0 6px 28px rgba(255,107,107,0.75);
     }
 
+    .cell.flash-good {
+      animation: flashGood 0.52s ease-out forwards;
+      transition: none;
+      color: white;
+      z-index: 3;
+    }
+
     /* ── Word display ──────────────────────────────────── */
 
     #word-area {
@@ -147,6 +154,7 @@
       justify-content: center;
       color: white;
       text-shadow: 0 0 28px rgba(233,69,96,0.5);
+      transition: color 0.15s, text-shadow 0.15s;
     }
 
     .letter-span {
@@ -159,6 +167,7 @@
       color: #444460;
       letter-spacing: 1px;
       height: 16px;
+      transition: color 0.15s;
     }
 
     /* ── Controls ──────────────────────────────────────── */
@@ -184,23 +193,6 @@
     }
 
     .btn:active { transform: scale(0.94); }
-
-    #submit-btn {
-      background: linear-gradient(135deg, #e94560, #b5302a);
-      color: white;
-      box-shadow: 0 4px 18px rgba(233,69,96,0.45);
-    }
-
-    #submit-btn:not(:disabled):hover {
-      box-shadow: 0 6px 26px rgba(233,69,96,0.65);
-      transform: translateY(-1px);
-    }
-
-    #submit-btn:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
 
     .btn-ghost {
       background: transparent;
@@ -276,15 +268,19 @@
       to   { transform: scale(1) translateY(0); opacity: 1; }
     }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%       { transform: translateX(-7px); }
-      40%       { transform: translateX(7px); }
-      60%       { transform: translateX(-5px); }
-      80%       { transform: translateX(5px); }
+    @keyframes flashGood {
+      0%   { background: linear-gradient(145deg, #22c55e, #16a34a);
+             box-shadow: 0 6px 28px rgba(34,197,94,0.85);
+             transform: scale(1.1);
+             border-color: rgba(100,255,150,0.5); }
+      55%  { background: linear-gradient(145deg, #4ade80, #22c55e);
+             transform: scale(1.13);
+             box-shadow: 0 8px 32px rgba(34,197,94,0.95); }
+      100% { background: linear-gradient(160deg, #22223e, #191930);
+             box-shadow: none;
+             transform: scale(1);
+             border-color: rgba(255,255,255,0.07); }
     }
-
-    .do-shake { animation: shake 0.32s ease-in-out; }
   </style>
 </head>
 <body>
@@ -296,7 +292,7 @@
 
 <div id="score-row">
   <div class="stat">Score<strong id="score">0</strong></div>
-  <div class="stat">Words<strong id="word-count">0</strong></div>
+  <div class="stat">Words<strong id="word-count">0 / ?</strong></div>
   <div class="stat">Best<strong id="best">—</strong></div>
 </div>
 
@@ -312,7 +308,6 @@
 
 <div id="controls">
   <button class="btn btn-ghost" id="clear-btn">Clear</button>
-  <button class="btn" id="submit-btn" disabled>Submit</button>
   <button class="btn btn-ghost" id="new-btn">New Game</button>
 </div>
 
@@ -325,47 +320,162 @@
 </div>
 
 <script>
-  // ── Letter pool (weighted, ~100 chars) ──────────────────────────────
+  // ── Letter pool (weighted) ───────────────────────────────────────────
   const POOL =
     'AAAAAAAAAB' +  // A×9 B×1
-    'BCCDDDDEEE' +  // B×2 C×3 D×4 E×3 (more below)
+    'BCCDDDDEEE' +  // B×2 C×3 D×4 E×3
     'EEEEEEEEFF' +  // E×10 total F×2
-    'GGGHH IIII' +  // G×3 H×2 I×4 (space filler removed below)
-    'IIIIIJKLLL' +  // I×9 total J×1 K×1 L×4
-    'LMNNNNNNOOO' + // L×5 M×1 N×6 O×3 (more below)
+    'GGGHHIIIII' +  // G×3 H×2 I×5
+    'IIIIIJKLLL' +  // I×9 total J×1 K×1 L×3
+    'LMNNNNNNOOO' + // L×4 M×1 N×6 O×3
     'OOOOOOPPQR' +  // O×8 total P×2 Q×1 R×1
     'RRRRRSSSSTT' + // R×6 total S×4 T×2
     'TTTTUUUUVV' +  // T×6 total U×4 V×2
     'WWXYYZ';       // W×2 X×1 Y×2 Z×1
-  // Rebuild without space (typo above)
-  const LETTERS = POOL.replace(/ /g, 'I'); // replace filler space with I
+  const LETTERS = POOL;
+
+  // ── Word dictionary ──────────────────────────────────────────────────
+  const RAW = `
+ACE ACT ADD AGE AGO AID AIM AIR ALE ALL AND ANT APE ARC ARE ARK ARM ART ASH ASK ATE AWE AXE AYE
+BAD BAG BAN BAR BAT BAY BED BIG BIT BOW BOX BOY BUD BUG BUN BUS BUT BUY
+CAB CAN CAP CAR CAT COB COD COG COP COT COW CRY CUB CUP CUT
+DAB DAD DAM DAY DEN DEW DID DIG DIM DIP DOE DOG DOT DRY DUG DUN DYE
+EAR EAT EEL EGG EGO ELF ELM END ERA EWE EYE
+FAD FAN FAR FAT FEW FIG FIN FIT FIX FLY FOE FOG FOR FOX FRY FUN FUR
+GAG GAP GAS GAY GEL GEM GET GOD GOT GUM GUN GUT GUY GYM
+HAD HAM HAS HAT HAY HEN HER HEW HID HIM HIP HIS HIT HOE HOP HOT HOW HUB HUG HUM HUT
+ICE ILL IMP INK INN ION ITS JAB JAG JAM JAR JAW JET JOB JOG JOT JOY JUG
+KEG KEY KID KIN KIT LAB LAD LAG LAW LAY LED LEG LET LID LIP LIT LOG LOT LOW LUG
+MAD MAN MAP MAT MAY MEN MET MID MIX MOB MOP MUD MUG MUM
+NAB NAG NAP NET NEW NIL NIP NOD NOR NOT NOW NUN
+OAR OAT ODD OFF OIL OLD ONE OPT ORB ORE OUR OUT OWE OWN
+PAD PAN PAR PAW PAY PEA PEG PEN PEP PET PIE PIG PIN PIT PLY POD POP POT PRO PUB PUN PUP PUT
+RAG RAN RAP RAT RAW RAY RED RID RIM RIP ROB ROD ROT ROW RUB RUG RUM RUN RUT RYE
+SAP SAT SAW SAY SEA SET SEW SHE SHY SIN SIP SIR SIT SKI SKY SLY SOB SON SOW SOY SPA SPY SUB SUM SUN
+TAB TAN TAP TAR TEA TEN THE TIP TOE TON TOO TOP TOT TOW TOY TUB TUG TWO
+URN USE VAN VAT VET VOW WAD WAR WAS WAX WAY WEB WED WET WHO WHY WIG WIN WIT WOE WOK WOO
+YAM YAP YAW YES YEW YOU ZAP ZIP ZOO
+ABLE ACHE ACRE AGED AIDE ALSO ALTO AMID ANTE ANTI APEX ARCH AREA ARMY ARMY
+BADE BAKE BALD BALE BALL BANE BANG BANK BARE BARN BASH BASS BATH BAWL BEAD BEAM BEAN BEAR BEAT BEEF BELT BEND BENT BEST BIKE BILE BILL BIND BIRD BITE BLOW BLUE BLUR BOAT BOLD BOLT BONE BOOT BORE BORN BOSS BOUT BOWL BREW BUCK BUFF BULK BULL BUMP BUNK BURY BURN BUSS
+CAGE CAKE CALL CALM CAME CAPE CARD CARE CARP CART CASE CASH CAST CAVE CHIP CITE CLUB CLUE COIL COIN COLD COLT COMA COME CONE COOL COPE CORD CORE CORK CORN COST COUP COVE CROW CULT CURE CURL CURT CUTS
+DAMP DARE DARK DART DASH DAWN DAZE DEAD DEAF DEAL DEAR DEBT DECK DEED DEEP DEFT DENY DESK DIAL DICE DIET DIRT DISK DOME DONE DOTE DOVE DRAG DRAW DRIP DROP DRUM DUPE DUSK DUST
+EACH EARL EARN EASE EAST EDGE EDIT EMIT EVEN EVER EVIL EYES
+FADE FAIL FAIR FAKE FALL FAME FARE FARM FAST FATE FAWN FEAR FEAT FEED FEEL FELL FELT FERN FEUD FILL FILM FIND FINE FIRE FIRM FISH FIST FLAG FLAP FLAT FLAW FLEW FLIP FLOW FOAM FOLD FOLK FOND FOOD FOOL FORE FORK FORM FORT FOUR FREE FUEL FULL FUME FUSE FURY
+GALE GAME GAPE GATE GAVE GAZE GEAR GENE GIFT GIRL GIVE GLAD GLEE GLOW GLUE GNAW GOAL GOAT GOLD GONE GORE GOWN GRAB GRAM GREW GRIM GRIN GRIT GROW GULF GULL GUST
+HAIL HAIR HALE HALF HALT HAND HANG HARD HARE HARM HARP HATE HAUL HAVE HAZE HEAD HEAL HEAP HEAR HEAT HEEL HEIR HELD HELM HELP HERD HERE HIDE HILL HIVE HOLE HOLY HOME HOOD HOOK HOPE HORN HOSE HOST HOUR HUGE HULL HUNG HUNT HURL
+IDEA IDLE INCH IONS JILT JILT JOLT JUNK JUST
+KEEN KEEL KEEP KEYS KILL KIND KING KNEE KNEW KNIT KNOW
+LACE LACK LAKE LAME LAND LANE LARD LARK LASH LASS LAST LATE LAVE LEAD LEAF LEAN LEAP LEND LESS LEVY LIME LINE LINK LINT LION LODE LOFT LOIN LONE LONG LOOK LOOM LORE LOSE LOST LOUD LOVE LUCK LULL LUMP LURE LURK LUST
+MACE MADE MAIN MAKE MALE MANE MANY MARK MARE MAST MATH MATE MAUL MAZE MEAL MEAN MEET MELT MEND MERE MESH MILD MILE MILL MIME MIND MINE MINT MIRE MISS MOAN MOAT MOCK MOLE MOLT MONK MOOD MOON MOOR MOTE MOVE MUCH MURK MUSK MUST MUTE MYTH
+NAIL NAME NAPE NAVY NEAR NEAT NECK NEED NEST NEWT NEXT NICE NICK NODE NONE NOON NOOK NORM NOSE NOTE NUDE NULL NUMB NUTS
+OATH OMEN ONCE ONLY OPEN OPUS OVAL OVEN OVER OWNS
+PACK PAGE PAIL PAIN PAIR PALE PALM PANE PANG PARK PART PASS PAST PATH PAVE PEAK PEAR PEAT PEEL PEER PELT PERK PEST PIER PILE PILL PINE PINK PIPE PLOD PLOT PLOW PLOY PLUG PLUM POEM POLE POLL POND PONY POOL PORE PORT POSE POUR POUT PREY PRIM PROD PROP PUFF PULL PUMP PURE PUSH PYRE PAWN PLUS
+RACK RAID RAIL RAIN RAKE RAMP RANK RANT RAVE REAL REAM REAP REEL REIN RELY REND RENT RIFE RIFT RILL RING RISE RISK ROAM ROAR ROBE ROCK ROLE ROOF ROOK ROOM ROPE ROUT ROVE RUBY RUDE RUIN RULE RUSH RUST RATS RAYS
+SAFE SAGE SAIL SALE SALT SAME SAND SANE SANG SANK SAVE SEAL SEAM SEAR SEED SEEM SEEP SELF SELL SEND SENT SHED SICK SIDE SIGH SILK SILL SILO SILT SING SINK SITE SKEW SIZE SKID SKIN SKIP SLAB SLAM SLAP SLED SLIM SLIP SLIT SLOT SLOW SNAP SOAK SOAR SOCK SOFT SOIL SOLE SOME SONG SOON SORE SORT SOUR SPAN SPAR SPIN SPIT SPOT STAR STAY STEM STEP STEW STIR STOP STUB STUD STUN SUIT SULK SURF SWAP SWAY SANG SUNS
+TALE TALL TAME TANG TANK TASK TAUT TEAR TEEM TELL TEND TENT TERM THAN THAT THEM THEN THEY THIN THUD TICK TIDY TIER TILL TILT TIME TIRE TOAD TOLL TOMB TOME TOOT TORE TORN TOSS TOTE TOUR TOWN TRAP TRAY TREE TREK TRIM TRIO TRIP TROD TROT TRUE TUBE TUCK TUFT TUNE TURF TURN TUSK TWIG TWIN TYPE TABS TAGS TIPS TOPS TINS
+UGLY UNDO UNIT UPON URGE
+VAIN VALE VANE VARY VEER VEIL VEIN VENT VERB VERY VETO VILE VINE VOID VOLT VOTE VATS VANS
+WAIL WAKE WALK WALL WAND WANT WARD WARM WARN WARP WART WARY WASH WASP WEAL WEAN WELD WELL WELT WENT WERE WILE WILL WIND WINE WING WINK WIRE WISE WISH WISP WITH WOLF WOMB WORD WORE WORK WORM WORN WRAP WREN WRIT
+YORE YULE ZINC ZONE ZOOM YELL
+ABIDE ABORT ABOVE ACUTE ADAPT ADMIT ADORE ADULT AGENT AGILE AHEAD AISLE ALBUM ALERT ALIEN ALIGN ALIKE ALIVE ALOFT ALONE ALOOF ALOUD ALTER AMAZE AMONG AMPLE AMUSE ANGEL ANGER ANGLE ANVIL APART APPLE APPLY ARENA ARGUE ARISE ARMOR AROMA ASIDE ATTIC AVOID AWFUL AUNTS AILED AIMED
+BADGE BAKER BATON BATTY BEACH BEADY BLAZE BLESS BLIMP BLISS BLINK BLOOM BLOWN BLUNT BONUS BOOST BRAID BRAKE BRAND BRAVE BRAWL BRAWN BREAK BRIDE BRINE BRING BRINK BRISK BROKE BROTH BROWN BRUNT BUILD BUILT BULKY BUYER BURNS BURLY
+CANDY CARGO CARRY CARVE CATCH CAUSE CEDAR CHAIN CHAIR CHARM CHASE CHEAP CHEER CHESS CHEST CHILI CHILL CHINA CINCH CIVIC CLAIM CLANG CLASH CLASP CLASS CLICK CLIFF CLING CLOAK CLOCK CLOSE CLOTH CLOUD CLOWN COACH COBRA COMET COMIC CORAL COUGH COUNT COURT COVET CRACK CRAFT CRAVE CRAWL CRAZY CREED CREEP CREPT CREST CRISP CROSS CROWD CRUEL CRUST CURVE CYCLE CURLS
+DAILY DAISY DANCE DELTA DEPTH DERBY DODGE DONOR DRAFT DRAIN DRANK DRAPE DRESS DRIED DRIFT DRILL DRINK DRIVE DROVE DROOP DRYER DINES DINED
+EARLY EATER EIGHT ELECT ELITE EMBER EMPTY ENJOY ENTER ENTRY ENVOY EQUAL EVADE EVENT EVERY EXACT EXIST EXTRA EXULT EARNS EASED EATEN
+FABLE FAINT FAITH FALSE FANCY FATAL FAUNA FEAST FENCE FERRY FETCH FEVER FIBER FINAL FIRST FIXED FLAME FLAKE FLANK FLARE FLASH FLASK FLESH FLICK FLOCK FLOOR FLOSS FLOUR FLUTE FOCAL FORCE FORGE FOUND FRANK FRAUD FREAK FRESH FRISK FRONT FROST FROZE FUNNY FADES FALLS FARMS FEARS FEELS FEEDS FINDS FIRES FIRMS
+GAUDY GAUZE GENRE GHOST GIVEN GIDDY GIRTH GLADE GLARE GLASS GLAZE GLEAM GLIDE GLINT GLOOM GLOSS GLOVE GNOME GRACE GRADE GRAIN GRAND GRANT GRAPE GRASP GRAVE GRAZE GREED GREET GRIEF GRILL GROAN GROIN GROSS GROWL GUILE GUISE GUSTO GAMES GAINS GATES GIVES
+HAIRY HANDY HAPPY HARSH HASTE HAUNT HEART HEAVY HEDGE HEIST HELIX HENCE HERBS HERON HILLY HOIST HOLLY HONEY HONOR HORDE HOUSE HUMAN HURRY HUSKY HAIRS HEADS HEAPS HILLS HOLDS HOLES HOMES HOOKS HOPS
+IMAGE IMPLY INDEX INFER INNER INPUT IRATE IVORY ICING
+JAZZY JEWEL JOLLY JOUST JUDGE JUICE JUICY JUROR JOKER JAILS JOKED
+KARMA KNEEL KNIFE KNOCK KNOWN KUDOS KILLS KINDS KINGS KNEES KNELT KNOBS KNOTS
+LABEL LARGE LARVA LASER LATER LAYER LEARN LEAST LEDGE LEMON LEVEL LIGHT LIMBO LIMIT LOBBY LODGE LOGIC LOWER LUCKY LUSTY LANDS LANES LAPS LASHES LASTS LAUGHS LEADS LEAFY LEAPS LEASH LEEKS LEGAL LENDS LIFTS LIKED LINES LINKS LISTS LIVED LIVES LOADS LOCKS LOOKS LOOPS LORDS LOSES
+MAGIC MAJOR MAKER MANOR MARRY MARSH MAYOR MERCY MERIT METAL MIGHT MINOR MIRTH MISER MOIST MONEY MONTH MORAL MOTEL MOUND MOURN MOUTH MUDDY MUSTY MYRRH MAIDS MAILS MARKS MASKS MEALS MEANS MEETS MENDS MILES MILLS MILLS MINDS MINES MINTS MODES MONKS MOODS MOORS MOVES MUDDY MUGS
+NAIVE NAVAL NIGHT NOBLE NOISY NORTH NOTED NOTCH NOVEL NURSE NYMPH NAILS NAMES NEARS NEEDS NESTS NEWLY NINES NODES NORMS NOTES
+OFFER OFTEN OLIVE ORBIT ORDER OTTER OUGHT OUTER OAKEN OPENS OWNED OWNER
+PANEL PAPER PASTA PASTE PAUSE PEACH PEDAL PERCH PERKY PHASE PHONE PHOTO PIANO PINCH PLAID PLAIN PLANE PLANT PLATE PLAZA PLUCK PLUMB PLUME PLUNK POLKA POPPY POUND PRANK PRESS PRICE PRICK PRIME PRINT PRISM PRIZE PROBE PROVE PROUD PULSE PUPPY PURGE PURSE PACED PACKS PAGES PAILS PAINS PAIRS PALMS PANES PANGS PARKS PARTS PATHS PEAKS PEARS PEERS PELTS PERKS PINES PIPES PLANS PLAYS PLEADS PLODS
+QUEEN QUERY QUEST QUICK QUIET QUILL QUOTA QUOTE QUAFF
+RABBI RABID RADAR RADIO RAINY RALLY RASPY RATIO RAYON REACH REALM REBEL REGAL REIGN RELAX RELAY REPAY RISKY RIVAL RIVET ROAST ROBIN ROBOT ROCKY ROUGE ROUGH ROUND ROYAL RUMOR RUSTY RACES RACKS RAIDS RAILS RAINS RAKES RAMPS RANKS RANTS RAVES REAPS REELS RINGS RISKS ROLES ROOFS ROOKS ROOMS ROPES ROSES RULES RUSHS
+SADLY SAINT SALAD SANDY SAUCE SAUCY SCALE SCENE SCORE SCORN SCOUR SEIZE SENSE SERVE SEVEN SHADE SHAFT SHAKE SHALL SHAME SHAPE SHARE SHARP SHEEN SHEER SHELF SHELL SHINY SHIRT SHORE SHOUT SHOVE SHREW SHRUB SHRUG SIEGE SILLY SINCE SIXTH SIXTY SKIRT SKULL SKUNK SLANG SLASH SLAVE SLEEK SLEEP SLICK SLIDE SLING SLOPE SLOTH SMALL SMART SMASH SMELL SMILE SMOKE SNARE SNEAK SNIFF SNORE SNOUT SOLAR SOLID SOLVE SORRY SOUTH SPACE SPADE SPARE SPARK SPEED SPELL SPEND SPINE SPITE SPLIT SPOKE SPOON SPORT SPRAY SPREE SQUAT STAIN STALE STALK STAMP STAND STARK STASH STEAL STEAM STEEL STEEP STEER STERN STICK STILL STING STOCK STONE STORE STORM STORY STOUT STOVE STOMP SWAMP SWEEP SWELL SWORD SAFES SAILS SALES SALTS SANDS SINGS SINKS SITES SIZES SKIDS SKINS SLABS SLEDS SOAKS SOARS SOCKS SOILS SOLES SONGS SORES SORTS SOULS SPANS SPARS SPINS SPOTS STARS STAYS STEMS STEPS STIRS STOPS SUITS SULKS
+TACIT TAFFY TASTY TEACH TERSE THEIR THERE THICK THINK THORN THOSE THREE THREW THROW TIGER TIGHT TOTAL TOUCH TOUGH TOWEL TOXIC TRACE TRACK TRADE TRAIL TRAIN TRAMP TREND TRIED TROVE TRUCE TULIP TUMOR TUNER TUNIC TWEED TWICE TWIST TALES TALLS TAMES TANGS TANKS TASKS TEARS TELLS TENDS TENTS TERMS TICKS TILES TILLS TIMES TIRES TOADS TOLLS TOMBS TOMES TOOTS TORES TORNS TOSSES TOTES TOURS TOWNS TRAPS TRAYS TREES TREKS TRIMS TRIPS TROTS TUBES TUCKS TUFTS TUNES TURFS TURNS TUSKS TWIGS TWINS TYPES
+ULTRA UNDER UNION UNITE UNITY UNTIL UPPER UPSET USHER UTTER ULCERS UNDID
+VALOR VALVE VIGOR VIOLA VIPER VIRUS VISOR VISTA VITAL VOCAL VODKA VOUCH VOWEL VAILS VANES VEERS VEILS VEINS VENTS VESTS VILES VINES VOIDS VOLTS VOTES
+WALTZ WATCH WATER WEAVE WEDGE WEIGH WEIRD WHACK WHICH WHILE WHIRL WHOSE WITCH WOMAN WOMEN WORLD WORRY WORSE WORST WORTH WOULD WRATH WRECK WRING WROTE WAILS WALKS WALLS WANDS WANTS WARDS WARMS WARNS WARPS WARTS WARYS HASTE WADES WAXES WEBS WEEDS WELDS WELLS WELTS WINDS WINES WINGS WINKS WIRES WISPS WOLFS WORDS WORKS WORMS
+YEARN YIELD YOUNG YOUTH YELLS
+ABSENT ABSORB ACCEPT ACCORD ACCUSE ACROSS ACTING ADJUST AFFORD AGENCY ALMOST ALWAYS ANIMAL ANNUAL APPEAL ARRIVE ARTIST ASPIRE ASTRAY ATTAIN AUGUST AUTHOR AUTUMN AVENUE
+BEACON BEAUTY BEHAVE BEHIND BELIEF BELONG BEYOND BISHOP BLANCH BLIGHT BLOODY BOTHER BOTTLE BRAINY BREACH BREATH BRIDGE BRIGHT BROKEN BRUISE BRUTAL BUCKET BUMBLE BUNDLE BURDEN
+CASTLE CASUAL CATTLE CAUGHT CEMENT CHANCE CHANGE CHARGE CHOOSE CIRCLE CLENCH CLEVER CLOSET COFFEE COLUMN COMBAT COMMIT COMPLY CORNER COTTON COUSIN CRISIS CUSTOM
+DAMAGE DANGER DARING DARKEN DECIDE DEEPLY DEFEND DEPUTY DESIGN DETAIL DIFFER DINNER DIRECT DIVIDE DOLLAR DONATE DOUBLE DRAGON DIVINE DRIVEN
+EATING EITHER EMPLOY ENDURE ENERGY ENGAGE ENTIRE ESTATE EVOLVE EXCEPT EXHALE EXPAND EXPECT EXTEND
+FIERCE FIGURE FILTER FINGER FINISH FIRMLY FLOWER FOLLOW FOREST FORMAL FOSTER FREELY FRIEND FRUGAL
+GENTLE GENIUS GLITCH GLOSSY GRAVEL GRIEVE GROWTH GUTTER
+HAPPEN HARDLY HEARTY HOLLOW HUMBLE HUNGER HUNTER HUSTLE
+IGNORE IMPACT IMPORT INDUCE INFECT INJURE INSANE INSECT INSIST INSIDE INSULT INTEND INVEST INVITE ISLAND
+JOCKEY JOYFUL JUGGLE JUMBLE JUNGLE JUNIOR
+LIVELY LOVELY LOSING LOVING LURING
+MAIDEN MARKET MASTER MATTER MEADOW MIDDLE MINING MIRROR MOMENT MORTAL MOTION MOVING MURDER MUSCLE MUTUAL
+NARROW NATION NATURE NEEDLE NEPHEW NICKEL NOTICE
+OBJECT ODIOUS OFFEND OFFICE ORIGIN ORNATE OUTLAW OUTFIT OUTLET OUTRUN OXYGEN OYSTER
+PALACE PARADE PARENT PARROT PATENT PATRON PEBBLE PENCIL PEOPLE PEPPER PERMIT PHRASE PIGEON PLACID PLANET PLEASE PLEDGE PLENTY PLUNGE POCKET POISON POLITE PORTAL POTTER PRETTY PRINCE PRISON PROFIT PROMPT PROPER PUNISH PURPLE PUZZLE
+QUAINT RACIAL RADISH RANDOM RECENT REDUCE REFUSE REMAIN REMIND REMOTE RENTAL RESCUE RETURN RULING RUNWAY
+SACRED SAFETY SALMON SALUTE SAVORY SAYING SCARCE SCHEME SCREEN SECURE SENIOR SERMON SIGNAL SILENT SILVER SINGLE SLEEPY SLIGHT SMOOTH SOCIAL SOFTEN SPIRAL SPOKEN SPREAD SPRING STABLE STATUE STEADY STOLEN STORMY STRONG STRUCK STUPID SUBTLE SUMMER SUPPLY SURELY SURVEY SYMBOL
+TALENT TANGLE TARGET TEMPLE TENNIS THEORY THIEVE THRASH THRILL THRONE TICKET TINDER TOMATO TONGUE TOWARD TRAVEL TREATY TRIPLE TROPHY TUNNEL TUXEDO TWENTY
+UNABLE UNLESS UPHELD UTMOST
+VALLEY VALUES VANITY VICTIM VIOLET VIRTUE VISION VOLUME
+WANDER WARMER WEALTH WEAKEN WITHER WONDER WORTHY
+YELLOW YOGURT ZEALOT ZIPPER
+ABILITY ABSENCE ACCOUNT ACQUIRE ADDRESS ADVERSE AGAINST ALREADY ALTERED AMAZING ANCIENT ARCHIVE ANOTHER
+BLOSSOM CABINET CALCIUM CAPITAL CAPTURE CAPTAIN CAREFUL CARTOON CEILING CENTURY CHAPTER CHARITY CLIMATE COLLECT COMBINE CONTENT CONTROL COUNTER COUNTRY CUSHION
+DYNASTY EDUCATE ELEMENT ENFORCE EVENING EXACTLY
+FAILING FANTASY FEATURE FICTION FORMULA FORSAKE FORWARD
+GALLERY GENERAL GLIMPSE HALFWAY HISTORY HUNDRED
+IMAGINE IMPROVE INCLUDE KINGDOM KITCHEN KNOWING
+LIMITED LOOKING MACHINE MILLION MIXTURE NATURAL NETWORK NOTHING OBSERVE OBVIOUS
+PASSAGE PATHWAY PERFECT PERFORM PICTURE PLASTIC POPULAR POSSESS PREPARE PROTECT PURPOSE
+QUALITY QUARTER QUICKLY RADICAL REALITY REQUIRE
+SECTION SERVANT SIMILAR SOLDIER SPECIES STUDENT SURFACE TEACHER TONIGHT TRAFFIC TROUBLE USUALLY
+VENTURE VERSION VILLAGE WELFARE WHETHER WHISPER WRITING YOUNGER
+ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER DECISION DESCRIBE DISCOVER DOMINANT EVALUATE FRIENDLY GRATEFUL IDENTIFY INFINITE INTEREST LIFETIME MATERIAL MOVEMENT NEGATIVE OFFICIAL OVERCOME PREVIOUS PROBABLE PROPERTY QUESTION RECENTLY RELIGION REMEMBER RESPONSE SECURITY SEPARATE SPECIFIC STANDING STRAIGHT STRUGGLE SUDDENLY TOGETHER TOMORROW TRAINING ULTIMATE VALUABLE WHATEVER WHENEVER WILDLIFE
+  `;
+
+  const WORDSET  = new Set(RAW.trim().split(/\s+/).filter(w => w.length >= 3 && w.length <= 8));
+  const PREFIXES = new Set();
+  for (const w of WORDSET) {
+    for (let i = 1; i <= w.length; i++) PREFIXES.add(w.slice(0, i));
+  }
 
   // ── State ───────────────────────────────────────────────────────────
-  let grid = [];
-  let sel  = [];        // selected cell indices in order
-  let drag = false;
-  let score = 0;
-  let bestWord = '';
-  let found = new Set();
+  let grid       = [];
+  let sel        = [];
+  let drag       = false;
+  let score      = 0;
+  let bestWord   = '';
+  let found      = new Set();
+  let totalWords = -1;   // -1 = not yet computed
 
   // ── DOM refs ────────────────────────────────────────────────────────
-  const gridEl     = document.getElementById('grid');
-  const wordDisp   = document.getElementById('word-display');
-  const wordMeta   = document.getElementById('word-meta');
-  const scoreEl    = document.getElementById('score');
-  const countEl    = document.getElementById('word-count');
-  const bestEl     = document.getElementById('best');
-  const tallyEl    = document.getElementById('word-tally');
-  const submitBtn  = document.getElementById('submit-btn');
-  const canvas     = document.getElementById('canvas-overlay');
-  const ctx        = canvas.getContext('2d');
-  const wordsList  = document.getElementById('words-list');
+  const gridEl   = document.getElementById('grid');
+  const wordDisp = document.getElementById('word-display');
+  const wordMeta = document.getElementById('word-meta');
+  const scoreEl  = document.getElementById('score');
+  const countEl  = document.getElementById('word-count');
+  const bestEl   = document.getElementById('best');
+  const tallyEl  = document.getElementById('word-tally');
+  const canvas   = document.getElementById('canvas-overlay');
+  const ctx      = canvas.getContext('2d');
+  const wordsList = document.getElementById('words-list');
 
   // ── Init ────────────────────────────────────────────────────────────
   function initGame() {
+    totalWords = -1;
     grid = Array.from({ length: 16 }, () => LETTERS[Math.floor(Math.random() * LETTERS.length)]);
     renderGrid();
     resetSel();
+    updateCountEl();
+    // Compute total words after first paint
+    setTimeout(() => {
+      totalWords = countTotalWords();
+      updateCountEl();
+    }, 60);
   }
 
   function renderGrid() {
@@ -388,13 +498,12 @@
     canvas.width  = gr.width;
     canvas.height = gr.height;
     canvas.style.left = (gr.left - wr.left) + 'px';
-    canvas.style.top  = (gr.top  - wr.top ) + 'px';
+    canvas.style.top  = (gr.top  - wr.top)  + 'px';
     redrawPath();
   }
 
   function cellCenter(idx) {
-    const cells = gridEl.children;
-    const cr = cells[idx].getBoundingClientRect();
+    const cr = gridEl.children[idx].getBoundingClientRect();
     const gr = gridEl.getBoundingClientRect();
     return { x: cr.left - gr.left + cr.width / 2,
              y: cr.top  - gr.top  + cr.height / 2 };
@@ -403,18 +512,13 @@
   function redrawPath() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (sel.length < 2) return;
-
     const pts = sel.map(cellCenter);
-
-    // glow pass
-    ctx.strokeStyle = 'rgba(233, 69, 96, 0.22)';
+    ctx.strokeStyle = 'rgba(233,69,96,0.22)';
     ctx.lineWidth   = 22;
     ctx.lineCap     = 'round';
     ctx.lineJoin    = 'round';
     tracePath(pts);
-
-    // main line
-    ctx.strokeStyle = 'rgba(233, 69, 96, 0.85)';
+    ctx.strokeStyle = 'rgba(233,69,96,0.85)';
     ctx.lineWidth   = 7;
     tracePath(pts);
   }
@@ -426,7 +530,7 @@
     ctx.stroke();
   }
 
-  // ── Selection logic ─────────────────────────────────────────────────
+  // ── Selection ───────────────────────────────────────────────────────
   function isAdj(a, b) {
     const ra = Math.floor(a / 4), ca = a % 4;
     const rb = Math.floor(b / 4), cb = b % 4;
@@ -435,15 +539,12 @@
 
   function trySelect(idx) {
     if (idx < 0 || idx >= 16) return;
-
     const existAt = sel.indexOf(idx);
     if (existAt >= 0) {
-      // Backtrack: trim back to this cell
       sel = sel.slice(0, existAt + 1);
       applyVisuals();
       return;
     }
-
     if (sel.length === 0 || isAdj(sel[sel.length - 1], idx)) {
       sel.push(idx);
       applyVisuals();
@@ -465,19 +566,19 @@
     const word = sel.map(i => grid[i]).join('');
     if (!word) {
       wordDisp.innerHTML = '';
+      wordDisp.style.color = '';
+      wordDisp.style.textShadow = '';
       wordMeta.textContent = '';
-      submitBtn.disabled = true;
+      wordMeta.style.color = '';
       return;
     }
     wordDisp.innerHTML = word.split('')
       .map((l, i) => `<span class="letter-span" style="animation-delay:${i * 0.04}s">${l}</span>`)
       .join('');
     const len = word.length;
-    const pts = calcScore(word);
     wordMeta.textContent = len >= 3
-      ? `${len} letters · +${pts} pts`
-      : `${len} letter${len > 1 ? 's' : ''} · need 3+`;
-    submitBtn.disabled = len < 3;
+      ? `${len} letters · +${calcScore(word)} pts`
+      : `${len} letter${len !== 1 ? 's' : ''}`;
   }
 
   function resetSel() {
@@ -486,7 +587,60 @@
     applyVisuals();
   }
 
-  // ── Event: mouse ────────────────────────────────────────────────────
+  // ── Auto-submit on release ───────────────────────────────────────────
+  function trySubmit() {
+    drag = false;
+    const word = sel.map(i => grid[i]).join('');
+
+    // Invalid (too short, unknown, already found): silent reset
+    if (word.length < 3 || !WORDSET.has(word) || found.has(word)) {
+      resetSel();
+      return;
+    }
+
+    // Valid new word — flash green
+    const flashIdxs = [...sel];
+    const cells = gridEl.children;
+
+    sel = [];
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (const i of flashIdxs) {
+      cells[i].classList.remove('selected', 'first-selected');
+      cells[i].classList.add('flash-good');
+    }
+
+    // Turn word display green
+    wordDisp.style.color      = '#4ade80';
+    wordDisp.style.textShadow = '0 0 28px rgba(74,222,128,0.7)';
+    wordMeta.style.color      = '#4ade80';
+
+    setTimeout(() => {
+      found.add(word);
+      const pts = calcScore(word);
+      score += pts;
+      scoreEl.textContent = score;
+      updateCountEl();
+      tallyEl.textContent = `${found.size} word${found.size !== 1 ? 's' : ''}`;
+
+      if (word.length > bestWord.length) {
+        bestWord = word;
+        bestEl.textContent = word;
+      }
+
+      addChip(word, pts);
+
+      for (const i of flashIdxs) cells[i].classList.remove('flash-good');
+
+      wordDisp.innerHTML        = '';
+      wordDisp.style.color      = '';
+      wordDisp.style.textShadow = '';
+      wordMeta.textContent      = '';
+      wordMeta.style.color      = '';
+    }, 520);
+  }
+
+  // ── Mouse events ────────────────────────────────────────────────────
   function cellFromEl(el) {
     const c = el && el.closest ? el.closest('.cell') : null;
     return c ? parseInt(c.dataset.i) : -1;
@@ -514,9 +668,12 @@
     trySelect(cellFromPoint(e.clientX, e.clientY));
   });
 
-  document.addEventListener('mouseup', () => { drag = false; });
+  document.addEventListener('mouseup', () => {
+    if (drag) trySubmit();
+    else drag = false;
+  });
 
-  // ── Event: touch ────────────────────────────────────────────────────
+  // ── Touch events ────────────────────────────────────────────────────
   gridEl.addEventListener('touchstart', e => {
     e.preventDefault();
     drag = true;
@@ -532,38 +689,12 @@
     trySelect(cellFromPoint(t.clientX, t.clientY));
   }, { passive: false });
 
-  document.addEventListener('touchend', () => { drag = false; });
-
-  // ── Buttons ─────────────────────────────────────────────────────────
-  submitBtn.addEventListener('click', () => {
-    const word = sel.map(i => grid[i]).join('');
-    if (word.length < 3) return;
-
-    if (found.has(word)) {
-      wordDisp.classList.remove('do-shake');
-      void wordDisp.offsetWidth; // reflow to restart animation
-      wordDisp.classList.add('do-shake');
-      wordDisp.addEventListener('animationend', () => wordDisp.classList.remove('do-shake'), { once: true });
-      resetSel();
-      return;
-    }
-
-    found.add(word);
-    const pts = calcScore(word);
-    score += pts;
-    scoreEl.textContent = score;
-    countEl.textContent = found.size;
-    tallyEl.textContent = `${found.size} word${found.size !== 1 ? 's' : ''}`;
-
-    if (word.length > bestWord.length) {
-      bestWord = word;
-      bestEl.textContent = word;
-    }
-
-    addChip(word, pts);
-    resetSel();
+  document.addEventListener('touchend', () => {
+    if (drag) trySubmit();
+    else drag = false;
   });
 
+  // ── Buttons ─────────────────────────────────────────────────────────
   document.getElementById('clear-btn').addEventListener('click', resetSel);
 
   document.getElementById('new-btn').addEventListener('click', () => {
@@ -572,7 +703,6 @@
     }
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
-    countEl.textContent = '0';
     bestEl.textContent  = '—';
     tallyEl.textContent = '—';
     found.clear();
@@ -580,10 +710,16 @@
     initGame();
   });
 
-  // ── Scoring ──────────────────────────────────────────────────────────
+  // ── Helpers ──────────────────────────────────────────────────────────
+  function updateCountEl() {
+    countEl.textContent = totalWords >= 0
+      ? `${found.size} / ${totalWords}`
+      : `${found.size} / ?`;
+  }
+
   function calcScore(word) {
     const n = word.length;
-    if (n < 3)  return 0;
+    if (n < 3)   return 0;
     if (n === 3) return 1;
     if (n === 4) return 2;
     if (n === 5) return 4;
@@ -599,8 +735,34 @@
     wordsList.prepend(chip);
   }
 
+  // ── Total words (DFS + prefix pruning) ──────────────────────────────
+  function countTotalWords() {
+    const all = new Set();
+    const vis = new Array(16).fill(false);
+
+    function dfs(last, word) {
+      if (!PREFIXES.has(word)) return;
+      if (word.length >= 3 && WORDSET.has(word)) all.add(word);
+      if (word.length >= 8) return;
+      for (let n = 0; n < 16; n++) {
+        if (!vis[n] && isAdj(last, n)) {
+          vis[n] = true;
+          dfs(n, word + grid[n]);
+          vis[n] = false;
+        }
+      }
+    }
+
+    for (let s = 0; s < 16; s++) {
+      vis[s] = true;
+      dfs(s, grid[s]);
+      vis[s] = false;
+    }
+    return all.size;
+  }
+
   // ── Resize ───────────────────────────────────────────────────────────
-  window.addEventListener('resize', () => requestAnimationFrame(() => { fitCanvas(); }));
+  window.addEventListener('resize', () => requestAnimationFrame(fitCanvas));
 
   // ── Start ────────────────────────────────────────────────────────────
   initGame();
