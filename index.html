@@ -38,15 +38,15 @@
     }
 
     .lang-btn {
-      padding: 4px 12px;
+      padding: 8px 18px;
       border: 1.5px solid #2a2a44;
       border-radius: 50px;
       background: transparent;
       color: #666688;
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.92rem;
+      font-weight: 700;
       cursor: pointer;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       transition: color 0.15s, border-color 0.15s, transform 0.1s;
       outline: none;
       white-space: nowrap;
@@ -163,19 +163,19 @@
     /* â”€â”€ Word display â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
     #word-area {
-      margin-top: 18px;
-      min-height: 72px;
+      margin-top: 4px;
+      min-height: 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 2px;
     }
 
     #word-display {
       font-size: clamp(1.7rem, 6.5vw, 2.4rem);
       font-weight: 900;
       letter-spacing: 7px;
-      min-height: 46px;
+      min-height: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -190,10 +190,10 @@
     }
 
     #word-meta {
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       color: #444460;
       letter-spacing: 1px;
-      height: 16px;
+      height: 14px;
       transition: color 0.15s;
     }
 
@@ -201,8 +201,15 @@
 
     #controls {
       display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 10px;
-      margin-top: 14px;
+      margin-top: 4px;
+    }
+
+    #action-buttons {
+      display: flex;
+      gap: 10px;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -254,6 +261,16 @@
       box-shadow: 0 26px 60px rgba(0,0,0,0.6);
       padding: 18px 18px 16px;
       color: #e6e6f5;
+    }
+
+    .modal-image {
+      display: block;
+      width: min(180px, 55vw);
+      max-height: 180px;
+      object-fit: contain;
+      margin: 0 auto 12px;
+      border-radius: 10px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
     }
 
     .modal-title {
@@ -400,7 +417,6 @@
 <header>
   <div class="header-top">
     <h1>BöbBlitz</h1>
-    <button id="lang-btn" class="lang-btn">đź‡­đź‡ş Magyar</button>
   </div>
   <p class="tagline" id="tagline">EgyĂ©ni szĂłvadĂˇsz</p>
 </header>
@@ -408,7 +424,7 @@
 <div id="score-row">
   <div class="stat"><span id="lbl-score">Pont</span><strong id="score">0</strong></div>
   <div class="stat"><span id="lbl-words">Szavak</span><strong id="word-count">0 / ?</strong></div>
-  <div class="stat"><span id="lbl-best">Legjobb</span><strong id="best">â€”</strong></div>
+  <div class="stat"><span id="lbl-best">Legjobb</span><strong id="best">0</strong></div>
 </div>
 
 <div id="grid-wrap">
@@ -422,20 +438,24 @@
 </div>
 
 <div id="controls">
-  <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
-  <button class="btn btn-ghost" id="new-btn">Ăšj jĂˇtĂ©k</button>
+  <button id="lang-btn" class="lang-btn">🇭🇺 Magyar</button>
+  <div id="action-buttons">
+    <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
+    <button class="btn btn-ghost" id="new-btn">Új játék</button>
+  </div>
 </div>
 
 <div id="found-section">
   <div id="found-header">
     <h3 id="found-words-lbl">TalĂˇlt szavak</h3>
-    <span id="word-tally">â€”</span>
+    <span id="word-tally">0</span>
   </div>
   <div id="words-list"></div>
 </div>
 
 <div id="confirm-modal" class="modal-backdrop" hidden aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+    <img class="modal-image" src="./lexi.png" alt="Lexi" />
     <h3 id="confirm-title" class="modal-title">Warning</h3>
     <p id="confirm-text" class="modal-text"></p>
     <div class="modal-actions">
@@ -446,7 +466,6 @@
 </div>
 
 <script>
-  // â”€â”€ Letter pools (weighted) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const LANG_FILES = {
   hu: './lang/hu.json',
   en: './lang/en.json',
@@ -956,8 +975,8 @@ const getPool     = () => langData.pool;
     await switchLanguage(lang === 'hu' ? 'en' : 'hu');
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
-    bestEl.textContent  = 'â€”';
-    tallyEl.textContent = 'â€”';
+    bestEl.textContent  = '0';
+    tallyEl.textContent = '0';
     found.clear();
     wordsList.innerHTML = '';
     applyLang();
@@ -979,15 +998,17 @@ const getPool     = () => langData.pool;
     confirmTextEl.textContent = s.confirm;
     confirmCancelBtn.textContent = s.confirmCancel;
     confirmOkBtn.textContent = s.confirmOk;
+    if (!bestWord) bestEl.textContent = '0';
     if (found.size > 0) tallyEl.textContent = getTallyText(found.size);
+    else tallyEl.textContent = '0';
     refreshWordDisplay();
   }
 
   function startNewGame() {
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
-    bestEl.textContent  = 'â€”';
-    tallyEl.textContent = 'â€”';
+    bestEl.textContent  = '0';
+    tallyEl.textContent = '0';
     found.clear();
     wordsList.innerHTML = '';
     initGame();
@@ -1121,6 +1142,4 @@ const getPool     = () => langData.pool;
 </script>
 </body>
 </html>
-
-
 
