@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
@@ -92,7 +92,7 @@
       line-height: 1.1;
     }
 
-    /* ── Grid ─────────────────────────────────────────── */
+    /* â”€â”€ Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
     #grid-wrap {
       position: relative;
@@ -160,7 +160,7 @@
       z-index: 3;
     }
 
-    /* ── Word display ──────────────────────────────────── */
+    /* â”€â”€ Word display â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
     #word-area {
       margin-top: 18px;
@@ -197,7 +197,7 @@
       transition: color 0.15s;
     }
 
-    /* ── Controls ──────────────────────────────────────── */
+    /* â”€â”€ Controls â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
     #controls {
       display: flex;
@@ -289,7 +289,7 @@
       filter: brightness(1.05);
     }
 
-    /* ── Found words ───────────────────────────────────── */
+    /* â”€â”€ Found words â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
     #found-section {
       margin-top: 24px;
@@ -363,7 +363,7 @@
       z-index: 3;
     }
 
-    /* ── Animations ────────────────────────────────────── */
+    /* â”€â”€ Animations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
     @keyframes cellAppear {
       0%   { opacity: 0; transform: scale(0.6) translateY(8px); }
@@ -400,15 +400,15 @@
 <header>
   <div class="header-top">
     <h1>BöbBlitz</h1>
-    <button id="lang-btn" class="lang-btn">🇭🇺 Magyar</button>
+    <button id="lang-btn" class="lang-btn">đź‡­đź‡ş Magyar</button>
   </div>
-  <p class="tagline" id="tagline">Egyéni szóvadász</p>
+  <p class="tagline" id="tagline">EgyĂ©ni szĂłvadĂˇsz</p>
 </header>
 
 <div id="score-row">
   <div class="stat"><span id="lbl-score">Pont</span><strong id="score">0</strong></div>
   <div class="stat"><span id="lbl-words">Szavak</span><strong id="word-count">0 / ?</strong></div>
-  <div class="stat"><span id="lbl-best">Legjobb</span><strong id="best">—</strong></div>
+  <div class="stat"><span id="lbl-best">Legjobb</span><strong id="best">â€”</strong></div>
 </div>
 
 <div id="grid-wrap">
@@ -423,13 +423,13 @@
 
 <div id="controls">
   <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
-  <button class="btn btn-ghost" id="new-btn">Új játék</button>
+  <button class="btn btn-ghost" id="new-btn">Ăšj jĂˇtĂ©k</button>
 </div>
 
 <div id="found-section">
   <div id="found-header">
-    <h3 id="found-words-lbl">Talált szavak</h3>
-    <span id="word-tally">—</span>
+    <h3 id="found-words-lbl">TalĂˇlt szavak</h3>
+    <span id="word-tally">â€”</span>
   </div>
   <div id="words-list"></div>
 </div>
@@ -446,225 +446,74 @@
 </div>
 
 <script>
-  // ── Letter pools (weighted) ─────────────────────────────────────────
-  const POOL_EN =
-    'AAAAAAAAAB' +  // A×9 B×1
-    'BCCDDDDEEE' +  // B×2 C×3 D×4 E×3
-    'EEEEEEEEFF' +  // E×10 total F×2
-    'GGGHHIIIII' +  // G×3 H×2 I×5
-    'IIIIIJKLLL' +  // I×9 total J×1 K×1 L×3
-    'LMNNNNNNOOO' + // L×4 M×1 N×6 O×3
-    'OOOOOOPPQR' +  // O×8 total P×2 Q×1 R×1
-    'RRRRRSSSSTT' + // R×6 total S×4 T×2
-    'TTTTUUUUVV' +  // T×6 total U×4 V×2
-    'WWXYYZ';       // W×2 X×1 Y×2 Z×1
+  // â”€â”€ Letter pools (weighted) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  const LANG_FILES = {
+  hu: './lang/hu.json',
+  en: './lang/en.json',
+};
 
-  const POOL_HU =
-    'EEEEEEEEEE' +  // E×10
-    'AAAAAAAA' +    // A×8
-    'ÁÁÁÁÁ' +       // Á×5
-    'TTTTTTT' +     // T×7
-    'NNNNNNN' +     // N×7
-    'LLLLLL' +      // L×6
-    'SSSSSS' +      // S×6
-    'KKKKKK' +      // K×6
-    'IIIII' +       // I×5
-    'OOOO' +        // O×4
-    'RRRR' +        // R×4
-    'MMMM' +        // M×4
-    'ÉÉÉ' +         // É×3
-    'GGG' +         // G×3
-    'BBB' +         // B×3
-    'ZZZ' +         // Z×3
-    'HHH' +         // H×3
-    'DDJJVV' +      // D×2 J×2 V×2
-    'ÓÓÖÖ' +        // Ó×2 Ö×2
-    'FFÍÍ' +        // F×2 Í×2
-    'PPUU' +        // P×2 U×2
-    'ŐŰŰÜÚ' +       // Ő×1 Ű×2 Ü×1 Ú×1
-    'CY';           // C×1 Y×1
+let lang = 'hu';
+let langData = null;
+const langCache = new Map();
 
-  // ── Word dictionary ──────────────────────────────────────────────────
-  const RAW = `
-ACE ACT ADD AGE AGO AID AIM AIR ALE ALL AND ANT APE ARC ARE ARK ARM ART ASH ASK ATE AWE AXE AYE
-BAD BAG BAN BAR BAT BAY BED BIG BIT BOW BOX BOY BUD BUG BUN BUS BUT BUY
-CAB CAN CAP CAR CAT COB COD COG COP COT COW CRY CUB CUP CUT
-DAB DAD DAM DAY DEN DEW DID DIG DIM DIP DOE DOG DOT DRY DUG DUN DYE
-EAR EAT EEL EGG EGO ELF ELM END ERA EWE EYE
-FAD FAN FAR FAT FEW FIG FIN FIT FIX FLY FOE FOG FOR FOX FRY FUN FUR
-GAG GAP GAS GAY GEL GEM GET GOD GOT GUM GUN GUT GUY GYM
-HAD HAM HAS HAT HAY HEN HER HEW HID HIM HIP HIS HIT HOE HOP HOT HOW HUB HUG HUM HUT
-ICE ILL IMP INK INN ION ITS JAB JAG JAM JAR JAW JET JOB JOG JOT JOY JUG
-KEG KEY KID KIN KIT LAB LAD LAG LAW LAY LED LEG LET LID LIP LIT LOG LOT LOW LUG
-MAD MAN MAP MAT MAY MEN MET MID MIX MOB MOP MUD MUG MUM
-NAB NAG NAP NET NEW NIL NIP NOD NOR NOT NOW NUN
-OAR OAT ODD OFF OIL OLD ONE OPT ORB ORE OUR OUT OWE OWN
-PAD PAN PAR PAW PAY PEA PEG PEN PEP PET PIE PIG PIN PIT PLY POD POP POT PRO PUB PUN PUP PUT
-RAG RAN RAP RAT RAW RAY RED RID RIM RIP ROB ROD ROT ROW RUB RUG RUM RUN RUT RYE
-SAP SAT SAW SAY SEA SET SEW SHE SHY SIN SIP SIR SIT SKI SKY SLY SOB SON SOW SOY SPA SPY SUB SUM SUN
-TAB TAN TAP TAR TEA TEN THE TIP TOE TON TOO TOP TOT TOW TOY TUB TUG TWO
-URN USE VAN VAT VET VOW WAD WAR WAS WAX WAY WEB WED WET WHO WHY WIG WIN WIT WOE WOK WOO
-YAM YAP YAW YES YEW YOU ZAP ZIP ZOO
-ABLE ACHE ACRE AGED AIDE ALSO ALTO AMID ANTE ANTI APEX ARCH AREA ARMY ARMY
-BADE BAKE BALD BALE BALL BANE BANG BANK BARE BARN BASH BASS BATH BAWL BEAD BEAM BEAN BEAR BEAT BEEF BELT BEND BENT BEST BIKE BILE BILL BIND BIRD BITE BLOW BLUE BLUR BOAT BOLD BOLT BONE BOOT BORE BORN BOSS BOUT BOWL BREW BUCK BUFF BULK BULL BUMP BUNK BURY BURN BUSS
-CAGE CAKE CALL CALM CAME CAPE CARD CARE CARP CART CASE CASH CAST CAVE CHIP CITE CLUB CLUE COIL COIN COLD COLT COMA COME CONE COOL COPE CORD CORE CORK CORN COST COUP COVE CROW CULT CURE CURL CURT CUTS
-DAMP DARE DARK DART DASH DAWN DAZE DEAD DEAF DEAL DEAR DEBT DECK DEED DEEP DEFT DENY DESK DIAL DICE DIET DIRT DISK DOME DONE DOTE DOVE DRAG DRAW DRIP DROP DRUM DUPE DUSK DUST
-EACH EARL EARN EASE EAST EDGE EDIT EMIT EVEN EVER EVIL EYES
-FADE FAIL FAIR FAKE FALL FAME FARE FARM FAST FATE FAWN FEAR FEAT FEED FEEL FELL FELT FERN FEUD FILL FILM FIND FINE FIRE FIRM FISH FIST FLAG FLAP FLAT FLAW FLEW FLIP FLOW FOAM FOLD FOLK FOND FOOD FOOL FORE FORK FORM FORT FOUR FREE FUEL FULL FUME FUSE FURY
-GALE GAME GAPE GATE GAVE GAZE GEAR GENE GIFT GIRL GIVE GLAD GLEE GLOW GLUE GNAW GOAL GOAT GOLD GONE GORE GOWN GRAB GRAM GREW GRIM GRIN GRIT GROW GULF GULL GUST
-HAIL HAIR HALE HALF HALT HAND HANG HARD HARE HARM HARP HATE HAUL HAVE HAZE HEAD HEAL HEAP HEAR HEAT HEEL HEIR HELD HELM HELP HERD HERE HIDE HILL HIVE HOLE HOLY HOME HOOD HOOK HOPE HORN HOSE HOST HOUR HUGE HULL HUNG HUNT HURL
-IDEA IDLE INCH IONS JILT JILT JOLT JUNK JUST
-KEEN KEEL KEEP KEYS KILL KIND KING KNEE KNEW KNIT KNOW
-LACE LACK LAKE LAME LAND LANE LARD LARK LASH LASS LAST LATE LAVE LEAD LEAF LEAN LEAP LEND LESS LEVY LIME LINE LINK LINT LION LODE LOFT LOIN LONE LONG LOOK LOOM LORE LOSE LOST LOUD LOVE LUCK LULL LUMP LURE LURK LUST
-MACE MADE MAIN MAKE MALE MANE MANY MARK MARE MAST MATH MATE MAUL MAZE MEAL MEAN MEET MELT MEND MERE MESH MILD MILE MILL MIME MIND MINE MINT MIRE MISS MOAN MOAT MOCK MOLE MOLT MONK MOOD MOON MOOR MOTE MOVE MUCH MURK MUSK MUST MUTE MYTH
-NAIL NAME NAPE NAVY NEAR NEAT NECK NEED NEST NEWT NEXT NICE NICK NODE NONE NOON NOOK NORM NOSE NOTE NUDE NULL NUMB NUTS
-OATH OMEN ONCE ONLY OPEN OPUS OVAL OVEN OVER OWNS
-PACK PAGE PAIL PAIN PAIR PALE PALM PANE PANG PARK PART PASS PAST PATH PAVE PEAK PEAR PEAT PEEL PEER PELT PERK PEST PIER PILE PILL PINE PINK PIPE PLOD PLOT PLOW PLOY PLUG PLUM POEM POLE POLL POND PONY POOL PORE PORT POSE POUR POUT PREY PRIM PROD PROP PUFF PULL PUMP PURE PUSH PYRE PAWN PLUS
-RACK RAID RAIL RAIN RAKE RAMP RANK RANT RAVE REAL REAM REAP REEL REIN RELY REND RENT RIFE RIFT RILL RING RISE RISK ROAM ROAR ROBE ROCK ROLE ROOF ROOK ROOM ROPE ROUT ROVE RUBY RUDE RUIN RULE RUSH RUST RATS RAYS
-SAFE SAGE SAIL SALE SALT SAME SAND SANE SANG SANK SAVE SEAL SEAM SEAR SEED SEEM SEEP SELF SELL SEND SENT SHED SICK SIDE SIGH SILK SILL SILO SILT SING SINK SITE SKEW SIZE SKID SKIN SKIP SLAB SLAM SLAP SLED SLIM SLIP SLIT SLOT SLOW SNAP SOAK SOAR SOCK SOFT SOIL SOLE SOME SONG SOON SORE SORT SOUR SPAN SPAR SPIN SPIT SPOT STAR STAY STEM STEP STEW STIR STOP STUB STUD STUN SUIT SULK SURF SWAP SWAY SANG SUNS
-TALE TALL TAME TANG TANK TASK TAUT TEAR TEEM TELL TEND TENT TERM THAN THAT THEM THEN THEY THIN THUD TICK TIDY TIER TILL TILT TIME TIRE TOAD TOLL TOMB TOME TOOT TORE TORN TOSS TOTE TOUR TOWN TRAP TRAY TREE TREK TRIM TRIO TRIP TROD TROT TRUE TUBE TUCK TUFT TUNE TURF TURN TUSK TWIG TWIN TYPE TABS TAGS TIPS TOPS TINS
-UGLY UNDO UNIT UPON URGE
-VAIN VALE VANE VARY VEER VEIL VEIN VENT VERB VERY VETO VILE VINE VOID VOLT VOTE VATS VANS
-WAIL WAKE WALK WALL WAND WANT WARD WARM WARN WARP WART WARY WASH WASP WEAL WEAN WELD WELL WELT WENT WERE WILE WILL WIND WINE WING WINK WIRE WISE WISH WISP WITH WOLF WOMB WORD WORE WORK WORM WORN WRAP WREN WRIT
-YORE YULE ZINC ZONE ZOOM YELL
-ABIDE ABORT ABOVE ACUTE ADAPT ADMIT ADORE ADULT AGENT AGILE AHEAD AISLE ALBUM ALERT ALIEN ALIGN ALIKE ALIVE ALOFT ALONE ALOOF ALOUD ALTER AMAZE AMONG AMPLE AMUSE ANGEL ANGER ANGLE ANVIL APART APPLE APPLY ARENA ARGUE ARISE ARMOR AROMA ASIDE ATTIC AVOID AWFUL AUNTS AILED AIMED
-BADGE BAKER BATON BATTY BEACH BEADY BLAZE BLESS BLIMP BLISS BLINK BLOOM BLOWN BLUNT BONUS BOOST BRAID BRAKE BRAND BRAVE BRAWL BRAWN BREAK BRIDE BRINE BRING BRINK BRISK BROKE BROTH BROWN BRUNT BUILD BUILT BULKY BUYER BURNS BURLY
-CANDY CARGO CARRY CARVE CATCH CAUSE CEDAR CHAIN CHAIR CHARM CHASE CHEAP CHEER CHESS CHEST CHILI CHILL CHINA CINCH CIVIC CLAIM CLANG CLASH CLASP CLASS CLICK CLIFF CLING CLOAK CLOCK CLOSE CLOTH CLOUD CLOWN COACH COBRA COMET COMIC CORAL COUGH COUNT COURT COVET CRACK CRAFT CRAVE CRAWL CRAZY CREED CREEP CREPT CREST CRISP CROSS CROWD CRUEL CRUST CURVE CYCLE CURLS
-DAILY DAISY DANCE DELTA DEPTH DERBY DODGE DONOR DRAFT DRAIN DRANK DRAPE DRESS DRIED DRIFT DRILL DRINK DRIVE DROVE DROOP DRYER DINES DINED
-EARLY EATER EIGHT ELECT ELITE EMBER EMPTY ENJOY ENTER ENTRY ENVOY EQUAL EVADE EVENT EVERY EXACT EXIST EXTRA EXULT EARNS EASED EATEN
-FABLE FAINT FAITH FALSE FANCY FATAL FAUNA FEAST FENCE FERRY FETCH FEVER FIBER FINAL FIRST FIXED FLAME FLAKE FLANK FLARE FLASH FLASK FLESH FLICK FLOCK FLOOR FLOSS FLOUR FLUTE FOCAL FORCE FORGE FOUND FRANK FRAUD FREAK FRESH FRISK FRONT FROST FROZE FUNNY FADES FALLS FARMS FEARS FEELS FEEDS FINDS FIRES FIRMS
-GAUDY GAUZE GENRE GHOST GIVEN GIDDY GIRTH GLADE GLARE GLASS GLAZE GLEAM GLIDE GLINT GLOOM GLOSS GLOVE GNOME GRACE GRADE GRAIN GRAND GRANT GRAPE GRASP GRAVE GRAZE GREED GREET GRIEF GRILL GROAN GROIN GROSS GROWL GUILE GUISE GUSTO GAMES GAINS GATES GIVES
-HAIRY HANDY HAPPY HARSH HASTE HAUNT HEART HEAVY HEDGE HEIST HELIX HENCE HERBS HERON HILLY HOIST HOLLY HONEY HONOR HORDE HOUSE HUMAN HURRY HUSKY HAIRS HEADS HEAPS HILLS HOLDS HOLES HOMES HOOKS HOPS
-IMAGE IMPLY INDEX INFER INNER INPUT IRATE IVORY ICING
-JAZZY JEWEL JOLLY JOUST JUDGE JUICE JUICY JUROR JOKER JAILS JOKED
-KARMA KNEEL KNIFE KNOCK KNOWN KUDOS KILLS KINDS KINGS KNEES KNELT KNOBS KNOTS
-LABEL LARGE LARVA LASER LATER LAYER LEARN LEAST LEDGE LEMON LEVEL LIGHT LIMBO LIMIT LOBBY LODGE LOGIC LOWER LUCKY LUSTY LANDS LANES LAPS LASHES LASTS LAUGHS LEADS LEAFY LEAPS LEASH LEEKS LEGAL LENDS LIFTS LIKED LINES LINKS LISTS LIVED LIVES LOADS LOCKS LOOKS LOOPS LORDS LOSES
-MAGIC MAJOR MAKER MANOR MARRY MARSH MAYOR MERCY MERIT METAL MIGHT MINOR MIRTH MISER MOIST MONEY MONTH MORAL MOTEL MOUND MOURN MOUTH MUDDY MUSTY MYRRH MAIDS MAILS MARKS MASKS MEALS MEANS MEETS MENDS MILES MILLS MILLS MINDS MINES MINTS MODES MONKS MOODS MOORS MOVES MUDDY MUGS
-NAIVE NAVAL NIGHT NOBLE NOISY NORTH NOTED NOTCH NOVEL NURSE NYMPH NAILS NAMES NEARS NEEDS NESTS NEWLY NINES NODES NORMS NOTES
-OFFER OFTEN OLIVE ORBIT ORDER OTTER OUGHT OUTER OAKEN OPENS OWNED OWNER
-PANEL PAPER PASTA PASTE PAUSE PEACH PEDAL PERCH PERKY PHASE PHONE PHOTO PIANO PINCH PLAID PLAIN PLANE PLANT PLATE PLAZA PLUCK PLUMB PLUME PLUNK POLKA POPPY POUND PRANK PRESS PRICE PRICK PRIME PRINT PRISM PRIZE PROBE PROVE PROUD PULSE PUPPY PURGE PURSE PACED PACKS PAGES PAILS PAINS PAIRS PALMS PANES PANGS PARKS PARTS PATHS PEAKS PEARS PEERS PELTS PERKS PINES PIPES PLANS PLAYS PLEADS PLODS
-QUEEN QUERY QUEST QUICK QUIET QUILL QUOTA QUOTE QUAFF
-RABBI RABID RADAR RADIO RAINY RALLY RASPY RATIO RAYON REACH REALM REBEL REGAL REIGN RELAX RELAY REPAY RISKY RIVAL RIVET ROAST ROBIN ROBOT ROCKY ROUGE ROUGH ROUND ROYAL RUMOR RUSTY RACES RACKS RAIDS RAILS RAINS RAKES RAMPS RANKS RANTS RAVES REAPS REELS RINGS RISKS ROLES ROOFS ROOKS ROOMS ROPES ROSES RULES RUSHS
-SADLY SAINT SALAD SANDY SAUCE SAUCY SCALE SCENE SCORE SCORN SCOUR SEIZE SENSE SERVE SEVEN SHADE SHAFT SHAKE SHALL SHAME SHAPE SHARE SHARP SHEEN SHEER SHELF SHELL SHINY SHIRT SHORE SHOUT SHOVE SHREW SHRUB SHRUG SIEGE SILLY SINCE SIXTH SIXTY SKIRT SKULL SKUNK SLANG SLASH SLAVE SLEEK SLEEP SLICK SLIDE SLING SLOPE SLOTH SMALL SMART SMASH SMELL SMILE SMOKE SNARE SNEAK SNIFF SNORE SNOUT SOLAR SOLID SOLVE SORRY SOUTH SPACE SPADE SPARE SPARK SPEED SPELL SPEND SPINE SPITE SPLIT SPOKE SPOON SPORT SPRAY SPREE SQUAT STAIN STALE STALK STAMP STAND STARK STASH STEAL STEAM STEEL STEEP STEER STERN STICK STILL STING STOCK STONE STORE STORM STORY STOUT STOVE STOMP SWAMP SWEEP SWELL SWORD SAFES SAILS SALES SALTS SANDS SINGS SINKS SITES SIZES SKIDS SKINS SLABS SLEDS SOAKS SOARS SOCKS SOILS SOLES SONGS SORES SORTS SOULS SPANS SPARS SPINS SPOTS STARS STAYS STEMS STEPS STIRS STOPS SUITS SULKS
-TACIT TAFFY TASTY TEACH TERSE THEIR THERE THICK THINK THORN THOSE THREE THREW THROW TIGER TIGHT TOTAL TOUCH TOUGH TOWEL TOXIC TRACE TRACK TRADE TRAIL TRAIN TRAMP TREND TRIED TROVE TRUCE TULIP TUMOR TUNER TUNIC TWEED TWICE TWIST TALES TALLS TAMES TANGS TANKS TASKS TEARS TELLS TENDS TENTS TERMS TICKS TILES TILLS TIMES TIRES TOADS TOLLS TOMBS TOMES TOOTS TORES TORNS TOSSES TOTES TOURS TOWNS TRAPS TRAYS TREES TREKS TRIMS TRIPS TROTS TUBES TUCKS TUFTS TUNES TURFS TURNS TUSKS TWIGS TWINS TYPES
-ULTRA UNDER UNION UNITE UNITY UNTIL UPPER UPSET USHER UTTER ULCERS UNDID
-VALOR VALVE VIGOR VIOLA VIPER VIRUS VISOR VISTA VITAL VOCAL VODKA VOUCH VOWEL VAILS VANES VEERS VEILS VEINS VENTS VESTS VILES VINES VOIDS VOLTS VOTES
-WALTZ WATCH WATER WEAVE WEDGE WEIGH WEIRD WHACK WHICH WHILE WHIRL WHOSE WITCH WOMAN WOMEN WORLD WORRY WORSE WORST WORTH WOULD WRATH WRECK WRING WROTE WAILS WALKS WALLS WANDS WANTS WARDS WARMS WARNS WARPS WARTS WARYS HASTE WADES WAXES WEBS WEEDS WELDS WELLS WELTS WINDS WINES WINGS WINKS WIRES WISPS WOLFS WORDS WORKS WORMS
-YEARN YIELD YOUNG YOUTH YELLS
-ABSENT ABSORB ACCEPT ACCORD ACCUSE ACROSS ACTING ADJUST AFFORD AGENCY ALMOST ALWAYS ANIMAL ANNUAL APPEAL ARRIVE ARTIST ASPIRE ASTRAY ATTAIN AUGUST AUTHOR AUTUMN AVENUE
-BEACON BEAUTY BEHAVE BEHIND BELIEF BELONG BEYOND BISHOP BLANCH BLIGHT BLOODY BOTHER BOTTLE BRAINY BREACH BREATH BRIDGE BRIGHT BROKEN BRUISE BRUTAL BUCKET BUMBLE BUNDLE BURDEN
-CASTLE CASUAL CATTLE CAUGHT CEMENT CHANCE CHANGE CHARGE CHOOSE CIRCLE CLENCH CLEVER CLOSET COFFEE COLUMN COMBAT COMMIT COMPLY CORNER COTTON COUSIN CRISIS CUSTOM
-DAMAGE DANGER DARING DARKEN DECIDE DEEPLY DEFEND DEPUTY DESIGN DETAIL DIFFER DINNER DIRECT DIVIDE DOLLAR DONATE DOUBLE DRAGON DIVINE DRIVEN
-EATING EITHER EMPLOY ENDURE ENERGY ENGAGE ENTIRE ESTATE EVOLVE EXCEPT EXHALE EXPAND EXPECT EXTEND
-FIERCE FIGURE FILTER FINGER FINISH FIRMLY FLOWER FOLLOW FOREST FORMAL FOSTER FREELY FRIEND FRUGAL
-GENTLE GENIUS GLITCH GLOSSY GRAVEL GRIEVE GROWTH GUTTER
-HAPPEN HARDLY HEARTY HOLLOW HUMBLE HUNGER HUNTER HUSTLE
-IGNORE IMPACT IMPORT INDUCE INFECT INJURE INSANE INSECT INSIST INSIDE INSULT INTEND INVEST INVITE ISLAND
-JOCKEY JOYFUL JUGGLE JUMBLE JUNGLE JUNIOR
-LIVELY LOVELY LOSING LOVING LURING
-MAIDEN MARKET MASTER MATTER MEADOW MIDDLE MINING MIRROR MOMENT MORTAL MOTION MOVING MURDER MUSCLE MUTUAL
-NARROW NATION NATURE NEEDLE NEPHEW NICKEL NOTICE
-OBJECT ODIOUS OFFEND OFFICE ORIGIN ORNATE OUTLAW OUTFIT OUTLET OUTRUN OXYGEN OYSTER
-PALACE PARADE PARENT PARROT PATENT PATRON PEBBLE PENCIL PEOPLE PEPPER PERMIT PHRASE PIGEON PLACID PLANET PLEASE PLEDGE PLENTY PLUNGE POCKET POISON POLITE PORTAL POTTER PRETTY PRINCE PRISON PROFIT PROMPT PROPER PUNISH PURPLE PUZZLE
-QUAINT RACIAL RADISH RANDOM RECENT REDUCE REFUSE REMAIN REMIND REMOTE RENTAL RESCUE RETURN RULING RUNWAY
-SACRED SAFETY SALMON SALUTE SAVORY SAYING SCARCE SCHEME SCREEN SECURE SENIOR SERMON SIGNAL SILENT SILVER SINGLE SLEEPY SLIGHT SMOOTH SOCIAL SOFTEN SPIRAL SPOKEN SPREAD SPRING STABLE STATUE STEADY STOLEN STORMY STRONG STRUCK STUPID SUBTLE SUMMER SUPPLY SURELY SURVEY SYMBOL
-TALENT TANGLE TARGET TEMPLE TENNIS THEORY THIEVE THRASH THRILL THRONE TICKET TINDER TOMATO TONGUE TOWARD TRAVEL TREATY TRIPLE TROPHY TUNNEL TUXEDO TWENTY
-UNABLE UNLESS UPHELD UTMOST
-VALLEY VALUES VANITY VICTIM VIOLET VIRTUE VISION VOLUME
-WANDER WARMER WEALTH WEAKEN WITHER WONDER WORTHY
-YELLOW YOGURT ZEALOT ZIPPER
-ABILITY ABSENCE ACCOUNT ACQUIRE ADDRESS ADVERSE AGAINST ALREADY ALTERED AMAZING ANCIENT ARCHIVE ANOTHER
-BLOSSOM CABINET CALCIUM CAPITAL CAPTURE CAPTAIN CAREFUL CARTOON CEILING CENTURY CHAPTER CHARITY CLIMATE COLLECT COMBINE CONTENT CONTROL COUNTER COUNTRY CUSHION
-DYNASTY EDUCATE ELEMENT ENFORCE EVENING EXACTLY
-FAILING FANTASY FEATURE FICTION FORMULA FORSAKE FORWARD
-GALLERY GENERAL GLIMPSE HALFWAY HISTORY HUNDRED
-IMAGINE IMPROVE INCLUDE KINGDOM KITCHEN KNOWING
-LIMITED LOOKING MACHINE MILLION MIXTURE NATURAL NETWORK NOTHING OBSERVE OBVIOUS
-PASSAGE PATHWAY PERFECT PERFORM PICTURE PLASTIC POPULAR POSSESS PREPARE PROTECT PURPOSE
-QUALITY QUARTER QUICKLY RADICAL REALITY REQUIRE
-SECTION SERVANT SIMILAR SOLDIER SPECIES STUDENT SURFACE TEACHER TONIGHT TRAFFIC TROUBLE USUALLY
-VENTURE VERSION VILLAGE WELFARE WHETHER WHISPER WRITING YOUNGER
-ABSOLUTE ACCURATE BIRTHDAY CAPACITY COMPLETE CONFLICT CONSIDER CRITICAL DAUGHTER DECISION DESCRIBE DISCOVER DOMINANT EVALUATE FRIENDLY GRATEFUL IDENTIFY INFINITE INTEREST LIFETIME MATERIAL MOVEMENT NEGATIVE OFFICIAL OVERCOME PREVIOUS PROBABLE PROPERTY QUESTION RECENTLY RELIGION REMEMBER RESPONSE SECURITY SEPARATE SPECIFIC STANDING STRAIGHT STRUGGLE SUDDENLY TOGETHER TOMORROW TRAINING ULTIMATE VALUABLE WHATEVER WHENEVER WILDLIFE
-  `;
+function formatTemplate(template, values) {
+  return template.replace(/\{(\w+)\}/g, (_, key) => `${values[key] ?? ''}`);
+}
 
-  const WORDSET_EN  = new Set(RAW.trim().split(/\s+/).filter(w => w.length >= 3 && w.length <= 8));
-  const PREFIXES_EN = new Set();
-  for (const w of WORDSET_EN) {
-    for (let i = 1; i <= w.length; i++) PREFIXES_EN.add(w.slice(0, i));
+function makeWordData(dictRaw, minWordLength, maxWordLength) {
+  const wordset = new Set(
+    dictRaw
+      .trim()
+      .split(/\s+/)
+      .map(w => w.toUpperCase())
+      .filter(w => w.length >= minWordLength && w.length <= maxWordLength)
+  );
+  const prefixes = new Set();
+  for (const w of wordset) {
+    for (let i = 1; i <= w.length; i++) prefixes.add(w.slice(0, i));
   }
+  return { wordset, prefixes };
+}
 
-  // ── Hungarian word dictionary ────────────────────────────────────────
-  const RAW_HU = `
-EGY KÉT HÁT HÁZ HAL HAT HÉT HÍR NAP NÉP NEM MÁR MÁS MÉG MÉZ MÁJ
-KAR KÁR KÉK KÉR KIS KÖR KOR KÚT GÁZ GÉP TÁJ TÁR TÉR TÉL TÍZ TUD
-LÁB LÁT LÉP LÉG SÁR SÍP SEM SEB SOR FÉL FEL FOG FUT FÉK FAL FAR
-FÁJ FÁK FÁZ FIÚ BÁR BÉR BŐR BOR BOT BAJ BAL BŐS BŰN DAL DÉL DÍJ
-DÁM DŰL ÁGY ÁLL ÁRU VÁR VÉR VÍZ VAD VAN VÁG VÁJ VÉG ÍGY ÜGY ÖCS
-CÉL CÍM PAD PÁR PÉK ZÁR ÓRA RÉS RÚD RÉV KÉS NÉZ NŐS KAP MÉR MÉN
-MER GAZ GÁT GÓL HÁG HÁM HEG HÍD HÍM HŐS HÚG IDE ODA IGE ILY ÁLD
-ÁRT ÁSZ RÁD RÁK RÁG RÁZ RAB HÓD SÓS ŐSZ ÉGŐ JÓL LEG ALÁ ELÉ SAR
-TŰZ FŰZ HŰL ÉG ÉL ÓL ÚR ÖV ÖL MŰ TŰ ÁG NŐ HÓ SÓ JÓ ÖT ÚJ ÚT ÉR ÁR
-IGEN VOLT LETT JÖTT KELL MOND NAGY JOBB SZÉP SZEM SZÍV SZÁL SZÁN SZÁR
-SZER SZÉL SZÍN SZÉK CSAK NÉGY NYÁR HÁNY HOGY MERT VAGY MINT AHOL MAJD
-MOST RÉGI ÉLET ESTE KERT VERS UTCA ARCA ALMA ANYA EGÉR EZER EZEK ABBA
-ARRA ERRE FENN LENN BENT KINN BIKA CICA EPER ELEM GOND HANG ITAL LÁNY
-MENT PART RÉSZ TELE ZENE HOLD BANK BOLT BORS CSÓK CSÚF CSER GYÁR GYŰR
-LOMB LÁNG LAZA MEZŐ MÉCS NÉHA PÉNZ RANG REND RING TÉNY TÉRD VALÓ VÉGE
-ZÖLD ERŐS ÉHES OKOS ÉDES ÉLES BELE BELÉ ÁSÍT ÁRVA MÉLY REJT ÉVEK ÁGYÚ
-NÉZZ ÉRETT SÖTÉT KÉRD KÉRI KÖNNYŰ SZOMJÚ
-HIDEG MELEG VILÁG EMBER NINCS ÁLLAT ÉJJEL JÁTÉK KÉPES LAPÁT MESÉL OLDAL
-TANUL ZAVAR TAKAR GÖRÖG GYORS HŐSÉG TALÁN KOMOR HAZAI NYÍLT SZEBB KÖNNY
-NEVET LOVAK MAGAS KICSI NEVEK TÜKÖR KÖNYV TÁBLA SZOBA MIKOR AKKOR EGÉSZ
-ENGEM TÉGED SENKI SEMMI SOSEM LEVÉL ÁLMOS NEKEM NEKIK NAPOS BŐSÉG INDÍT
-SZABAD ASZTAL MINDIG BOLDOG FÁRADT BÜSZKE FONTOS VALAKI GYENGE TISZTA
-NAGYON SZÍVES REGGEL UTOLSÓ KÖZBEN NEKTEK JÖVŐRE MENNEK DÉLBEN
-SZOMJAS
-BARÁTSÁG SZERELEM BOLDOGAN
-  `;
-  const WORDSET_HU  = new Set(RAW_HU.trim().split(/\s+/).filter(w => w.length >= 2 && w.length <= 8));
-  const PREFIXES_HU = new Set();
-  for (const w of WORDSET_HU) {
-    for (let i = 1; i <= w.length; i++) PREFIXES_HU.add(w.slice(0, i));
-  }
-
-  // ── i18n ────────────────────────────────────────────────────────────
-  const STRINGS = {
-    hu: {
-      tagline:    'Egyéni szóvadászat',
-      score:      'Pont',
-      words:      'Szavak',
-      best:       'Legjobb',
-      revealAll:  'Szabad a gazda!',
-      newGame:    'Új játék',
-      foundWords: 'Talált szavak',
-      tally:      n => `${n} szó`,
-      wordMeta:   (len, pts) => `${len} betű · +${pts} pont`,
-      wordShort:  len => `${len} betű`,
-      confirm:    'Tuti új játékot kezdesz? A haladásod elveszik.',
-      langLabel:  '🇭🇺 Magyar',
-    },
-    en: {
-      tagline:    'Solo word hunt',
-      score:      'Score',
-      words:      'Words',
-      best:       'Best',
-      revealAll:  'Reveal all words',
-      newGame:    'New Game',
-      foundWords: 'Found Words',
-      tally:      n => `${n} word${n !== 1 ? 's' : ''}`,
-      wordMeta:   (len, pts) => `${len} letters · +${pts} pts`,
-      wordShort:  len => `${len} letter${len !== 1 ? 's' : ''}`,
-      confirm:    'Start a new game? Your progress will be lost.',
-      langLabel:  '🇬🇧 English',
-    },
+async function loadLanguageData(code) {
+  if (langCache.has(code)) return langCache.get(code);
+  const file = LANG_FILES[code];
+  if (!file) throw new Error(`Unknown language: ${code}`);
+  const res = await fetch(file, { cache: 'no-cache' });
+  if (!res.ok) throw new Error(`Failed to load ${file}: ${res.status}`);
+  const data = await res.json();
+  const minWordLength = Number(data.minWordLength || 2);
+  const maxWordLength = Number(data.maxWordLength || 8);
+  const built = makeWordData(data.dictionaryRaw || '', minWordLength, maxWordLength);
+  const normalized = {
+    ...data,
+    minWordLength,
+    maxWordLength,
+    pool: data.pool || '',
+    labels: data.labels || {},
+    wordset: built.wordset,
+    prefixes: built.prefixes,
   };
-  let lang = 'hu';
-  const t           = () => STRINGS[lang];
-  const getWordset  = () => lang === 'hu' ? WORDSET_HU  : WORDSET_EN;
-  const getPrefixes = () => lang === 'hu' ? PREFIXES_HU : PREFIXES_EN;
-  const getPool     = () => lang === 'hu' ? POOL_HU     : POOL_EN;
+  langCache.set(code, normalized);
+  return normalized;
+}
 
-  // ── State ───────────────────────────────────────────────────────────
+async function switchLanguage(code) {
+  lang = code;
+  langData = await loadLanguageData(code);
+}
+
+function getTallyText(n) {
+  const s = t();
+  const unit = n === 1 ? s.tallyOne : s.tallyMany;
+  return `${n} ${unit}`;
+}
+
+const t           = () => langData.labels;
+const getWordset  = () => langData.wordset;
+const getPrefixes = () => langData.prefixes;
+const getPool     = () => langData.pool;
+// â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let grid       = [];
   let sel        = [];
   let drag       = false;
@@ -674,7 +523,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
   let totalWords = -1;   // -1 = not yet computed
   let revealed   = false;
 
-  // ── DOM refs ────────────────────────────────────────────────────────
+  // â”€â”€ DOM refs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const gridEl   = document.getElementById('grid');
   const wordDisp = document.getElementById('word-display');
   const wordMeta = document.getElementById('word-meta');
@@ -691,7 +540,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
   const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
   const confirmOkBtn = document.getElementById('confirm-ok-btn');
 
-  // ── Init ────────────────────────────────────────────────────────────
+  // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function initGame() {
     totalWords = -1;
     revealed   = false;
@@ -721,7 +570,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
     requestAnimationFrame(fitCanvas);
   }
 
-  // ── Canvas ──────────────────────────────────────────────────────────
+  // â”€â”€ Canvas â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function fitCanvas() {
     const gr = gridEl.getBoundingClientRect();
     const wr = document.getElementById('grid-wrap').getBoundingClientRect();
@@ -780,11 +629,11 @@ BARÁTSÁG SZERELEM BOLDOGAN
     drawStrokePath(sel.map(cellCenter), 'rgba(233,69,96,0.22)', 'rgba(233,69,96,0.85)');
   }
 
-  // ── Arrow path (for found-word highlight) ───────────────────────────
+  // â”€â”€ Arrow path (for found-word highlight) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function drawArrowPath(pts, glowColor, lineColor) {
     const OFFSET      = 23;        // px gap from tile center so arrow never covers the letter
     const HEAD_LEN    = 12;        // arrowhead arm length
-    const HEAD_SPREAD = Math.PI / 5.5;  // arrowhead half-angle (~33°)
+    const HEAD_SPREAD = Math.PI / 5.5;  // arrowhead half-angle (~33Â°)
 
     for (let i = 0; i < pts.length - 1; i++) {
       const A = pts[i], B = pts[i + 1];
@@ -803,7 +652,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
       const ax2 = ex - HEAD_LEN * Math.cos(angle + HEAD_SPREAD);
       const ay2 = ey - HEAD_LEN * Math.sin(angle + HEAD_SPREAD);
 
-      // — Glow pass —
+      // â€” Glow pass â€”
       ctx.lineCap     = 'round';
       ctx.lineJoin    = 'round';
       ctx.strokeStyle = glowColor;
@@ -812,7 +661,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
       ctx.lineWidth   = 14;
       ctx.beginPath(); ctx.moveTo(ax1, ay1); ctx.lineTo(ex, ey); ctx.lineTo(ax2, ay2); ctx.stroke();
 
-      // — Line pass —
+      // â€” Line pass â€”
       ctx.strokeStyle = lineColor;
       ctx.lineWidth   = 4;
       ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(ex, ey); ctx.stroke();
@@ -821,7 +670,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
     }
   }
 
-  // ── Word path highlight ──────────────────────────────────────────────
+  // â”€â”€ Word path highlight â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function findWordPath(word) {
     const letters = word.split('');
     const len     = letters.length;
@@ -879,14 +728,14 @@ BARÁTSÁG SZERELEM BOLDOGAN
       cell.classList.add('highlight-found');
       if (pos === 0) cell.classList.add('first-highlight');
 
-      // Compute travel direction through this tile (prev → next, or edge tiles)
+      // Compute travel direction through this tile (prev â†’ next, or edge tiles)
       const prevIdx = pos > 0    ? path[pos - 1] : null;
       const nextIdx = pos < last ? path[pos + 1] : null;
       const refFrom = prevIdx !== null ? prevIdx : cellIdx;
       const refTo   = nextIdx !== null ? nextIdx : cellIdx;
       const dc = (refTo % 4)           - (refFrom % 4);
       const dr = Math.floor(refTo / 4) - Math.floor(refFrom / 4);
-      // CSS gradient angle: 0deg = top, clockwise → atan2(dc, -dr)
+      // CSS gradient angle: 0deg = top, clockwise â†’ atan2(dc, -dr)
       const deg = Math.round(Math.atan2(dc, -dr) * 180 / Math.PI);
 
       // Directional gradient colours per position
@@ -920,7 +769,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
     if (sel.length >= 2) redrawPath();
   }
 
-  // ── Selection ───────────────────────────────────────────────────────
+  // â”€â”€ Selection â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function isAdj(a, b) {
     const ra = Math.floor(a / 4), ca = a % 4;
     const rb = Math.floor(b / 4), cb = b % 4;
@@ -966,10 +815,11 @@ BARÁTSÁG SZERELEM BOLDOGAN
       .map((l, i) => `<span class="letter-span" style="animation-delay:${i * 0.04}s">${l}</span>`)
       .join('');
     const len = word.length;
-    const minLen = lang === 'hu' ? 2 : 3;
+    const minLen = langData.minWordLength;
+    const s = t();
     wordMeta.textContent = len >= minLen
-      ? t().wordMeta(len, calcScore(word))
-      : t().wordShort(len);
+      ? formatTemplate(s.wordMetaTemplate, { len, pts: calcScore(word) })
+      : formatTemplate(len === 1 ? s.wordShortOne : s.wordShortMany, { len });
   }
 
   function resetSel() {
@@ -978,18 +828,18 @@ BARÁTSÁG SZERELEM BOLDOGAN
     applyVisuals();
   }
 
-  // ── Auto-submit on release ───────────────────────────────────────────
+  // â”€â”€ Auto-submit on release â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function trySubmit() {
     drag = false;
     const word = sel.map(i => grid[i]).join('');
 
     // Invalid (too short, unknown, already found): silent reset
-    if (word.length < 2 || !getWordset().has(word) || found.has(word)) {
+    if (word.length < langData.minWordLength || !getWordset().has(word) || found.has(word)) {
       resetSel();
       return;
     }
 
-    // Valid new word — flash green
+    // Valid new word â€” flash green
     const flashIdxs = [...sel];
     const cells = gridEl.children;
 
@@ -1012,7 +862,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
       score += pts;
       scoreEl.textContent = score;
       updateCountEl();
-      tallyEl.textContent = t().tally(found.size);
+      tallyEl.textContent = getTallyText(found.size);
 
       if (word.length > bestWord.length) {
         bestWord = word;
@@ -1031,7 +881,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
     }, 520);
   }
 
-  // ── Mouse events ────────────────────────────────────────────────────
+  // â”€â”€ Mouse events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function cellFromEl(el) {
     const c = el && el.closest ? el.closest('.cell') : null;
     return c ? parseInt(c.dataset.i) : -1;
@@ -1064,7 +914,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
     else drag = false;
   });
 
-  // ── Touch events ────────────────────────────────────────────────────
+  // â”€â”€ Touch events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   gridEl.addEventListener('touchstart', e => {
     e.preventDefault();
     drag = true;
@@ -1085,7 +935,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
     else drag = false;
   });
 
-  // ── Buttons ─────────────────────────────────────────────────────────
+  // â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   document.getElementById('reveal-btn').addEventListener('click', () => {
     if (revealed) return;
     revealed = true;
@@ -1099,15 +949,15 @@ BARÁTSÁG SZERELEM BOLDOGAN
       }
     }
     updateCountEl();
-    tallyEl.textContent = t().tally(found.size);
+    tallyEl.textContent = getTallyText(found.size);
   });
 
-  document.getElementById('lang-btn').addEventListener('click', () => {
-    lang = lang === 'hu' ? 'en' : 'hu';
+  document.getElementById('lang-btn').addEventListener('click', async () => {
+    await switchLanguage(lang === 'hu' ? 'en' : 'hu');
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
-    bestEl.textContent  = '—';
-    tallyEl.textContent = '—';
+    bestEl.textContent  = 'â€”';
+    tallyEl.textContent = 'â€”';
     found.clear();
     wordsList.innerHTML = '';
     applyLang();
@@ -1125,38 +975,30 @@ BARÁTSÁG SZERELEM BOLDOGAN
     document.getElementById('new-btn').textContent         = s.newGame;
     document.getElementById('found-words-lbl').textContent = s.foundWords;
     document.getElementById('lang-btn').textContent        = s.langLabel;
-    const modalText = getConfirmModalText();
-    confirmTitleEl.textContent = modalText.title;
+    confirmTitleEl.textContent = s.confirmTitle;
     confirmTextEl.textContent = s.confirm;
-    confirmCancelBtn.textContent = modalText.cancel;
-    confirmOkBtn.textContent = modalText.ok;
-    if (found.size > 0) tallyEl.textContent = s.tally(found.size);
+    confirmCancelBtn.textContent = s.confirmCancel;
+    confirmOkBtn.textContent = s.confirmOk;
+    if (found.size > 0) tallyEl.textContent = getTallyText(found.size);
     refreshWordDisplay();
-  }
-
-  function getConfirmModalText() {
-    if (lang === 'hu') {
-      return { title: 'Hahó!', cancel: 'Mégsem', ok: 'Tuti' };
-    }
-    return { title: 'Warning', cancel: 'Cancel', ok: 'New Game' };
   }
 
   function startNewGame() {
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
-    bestEl.textContent  = '—';
-    tallyEl.textContent = '—';
+    bestEl.textContent  = 'â€”';
+    tallyEl.textContent = 'â€”';
     found.clear();
     wordsList.innerHTML = '';
     initGame();
   }
 
   function openNewGameConfirm() {
-    const modalText = getConfirmModalText();
-    confirmTitleEl.textContent = modalText.title;
-    confirmTextEl.textContent = t().confirm;
-    confirmCancelBtn.textContent = modalText.cancel;
-    confirmOkBtn.textContent = modalText.ok;
+    const s = t();
+    confirmTitleEl.textContent = s.confirmTitle;
+    confirmTextEl.textContent = s.confirm;
+    confirmCancelBtn.textContent = s.confirmCancel;
+    confirmOkBtn.textContent = s.confirmOk;
     confirmModal.hidden = false;
     confirmModal.setAttribute('aria-hidden', 'false');
     confirmCancelBtn.focus();
@@ -1187,7 +1029,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
     if (e.key === 'Escape' && !confirmModal.hidden) closeNewGameConfirm();
   });
 
-  // ── Helpers ──────────────────────────────────────────────────────────
+  // â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function updateCountEl() {
     countEl.textContent = totalWords >= 0
       ? `${found.size} / ${totalWords}`
@@ -1237,7 +1079,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
     wordsList.append(chip);
   }
 
-  // ── Total words (DFS + prefix pruning) ──────────────────────────────
+  // â”€â”€ Total words (DFS + prefix pruning) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function getAllWords() {
     const all = new Set();
     const vis = new Array(16).fill(false);
@@ -1246,8 +1088,8 @@ BARÁTSÁG SZERELEM BOLDOGAN
 
     function dfs(last, word) {
       if (!ps.has(word)) return;
-      if (word.length >= 2 && ws.has(word)) all.add(word);
-      if (word.length >= 8) return;
+      if (word.length >= langData.minWordLength && ws.has(word)) all.add(word);
+      if (word.length >= langData.maxWordLength) return;
       for (let n = 0; n < 16; n++) {
         if (!vis[n] && isAdj(last, n)) {
           vis[n] = true;
@@ -1267,12 +1109,18 @@ BARÁTSÁG SZERELEM BOLDOGAN
 
   function countTotalWords() { return getAllWords().size; }
 
-  // ── Resize ───────────────────────────────────────────────────────────
+  // â”€â”€ Resize â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   window.addEventListener('resize', () => requestAnimationFrame(fitCanvas));
 
-  // ── Start ────────────────────────────────────────────────────────────
-  applyLang();
-  initGame();
+  // â”€â”€ Start â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  (async function boot() {
+    await switchLanguage(lang);
+    applyLang();
+    initGame();
+  })();
 </script>
 </body>
 </html>
+
+
+
