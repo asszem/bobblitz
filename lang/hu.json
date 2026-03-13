@@ -16,10 +16,10 @@
     "wordMetaTemplate": "{len} betű +{pts} pont",
     "wordShortOne": "{len} betű",
     "wordShortMany": "{len} betű",
-    "confirm": "Új játékot kezdesz? A haladásod elveszik.",
-    "confirmTitle": "Figyelmeztetés",
+    "confirm": "A haladásod elveszik.",
+    "confirmTitle": "Hahó!",
     "confirmCancel": "Mégse",
-    "confirmOk": "Új játék",
+    "confirmOk": "Rendben",
     "langLabel": "🇭🇺 Magyar"
   },
   "dictionaryFile": "./lang/hu.words"

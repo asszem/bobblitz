@@ -582,6 +582,7 @@ const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
   let found      = new Set();
   let totalWords = -1;   // -1 = not yet computed
   let revealed   = false;
+  let pendingConfirmAction = null;
 
   // â”€â”€ DOM refs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const gridEl   = document.getElementById('grid');
@@ -996,7 +997,11 @@ const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
   });
 
   // â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-  document.getElementById('reveal-btn').addEventListener('click', () => {
+  function hasGameProgress() {
+    return score > 0 || found.size > 0 || bestWord.length > 0;
+  }
+
+  function revealAllWords() {
     if (revealed) return;
     revealed = true;
     document.getElementById('reveal-btn').disabled = true;
@@ -1010,9 +1015,18 @@ const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
     }
     updateCountEl();
     tallyEl.textContent = getTallyText(found.size);
+  }
+
+  document.getElementById('reveal-btn').addEventListener('click', () => {
+    if (revealed) return;
+    if (hasGameProgress()) {
+      openWarningConfirm(() => revealAllWords());
+      return;
+    }
+    revealAllWords();
   });
 
-  document.getElementById('lang-btn').addEventListener('click', async () => {
+  async function switchLanguageAndReset() {
     await switchLanguage(lang === 'hu' ? 'en' : 'hu');
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
@@ -1022,6 +1036,14 @@ const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
     wordsList.innerHTML = '';
     applyLang();
     initGame();
+  }
+
+  document.getElementById('lang-btn').addEventListener('click', async () => {
+    if (hasGameProgress()) {
+      openWarningConfirm(() => switchLanguageAndReset());
+      return;
+    }
+    await switchLanguageAndReset();
   });
 
   function applyLang() {
@@ -1055,34 +1077,37 @@ const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
     initGame();
   }
 
-  function openNewGameConfirm() {
+  function openWarningConfirm(onConfirm) {
     const s = t();
     confirmTitleEl.textContent = s.confirmTitle;
     confirmTextEl.textContent = s.confirm;
     confirmCancelBtn.textContent = s.confirmCancel;
     confirmOkBtn.textContent = s.confirmOk;
+    pendingConfirmAction = onConfirm;
     confirmModal.hidden = false;
     confirmModal.setAttribute('aria-hidden', 'false');
     confirmCancelBtn.focus();
   }
 
   function closeNewGameConfirm() {
+    pendingConfirmAction = null;
     confirmModal.hidden = true;
     confirmModal.setAttribute('aria-hidden', 'true');
   }
 
   document.getElementById('new-btn').addEventListener('click', () => {
-    if (found.size > 0) {
-      openNewGameConfirm();
+    if (score > 0) {
+      openWarningConfirm(() => startNewGame());
       return;
     }
     startNewGame();
   });
 
   confirmCancelBtn.addEventListener('click', closeNewGameConfirm);
-  confirmOkBtn.addEventListener('click', () => {
+  confirmOkBtn.addEventListener('click', async () => {
+    const action = pendingConfirmAction;
     closeNewGameConfirm();
-    startNewGame();
+    if (action) await action();
   });
   confirmModal.addEventListener('click', e => {
     if (e.target === confirmModal) closeNewGameConfirm();

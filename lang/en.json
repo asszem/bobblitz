@@ -16,10 +16,10 @@
     "wordMetaTemplate": "{len} letters +{pts} pts",
     "wordShortOne": "{len} letter",
     "wordShortMany": "{len} letters",
-    "confirm": "Start a new game? Your progress will be lost.",
-    "confirmTitle": "Warning",
+    "confirm": "Your progress will be lost.",
+    "confirmTitle": "Warning!",
     "confirmCancel": "Cancel",
-    "confirmOk": "New Game",
+    "confirmOk": "Okay",
     "langLabel": "🇬🇧 English"
   },
   "dictionaryFile": "./lang/en.words"
