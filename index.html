@@ -841,6 +841,8 @@ const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
     if (idx < 0 || idx >= 16) return;
     const existAt = sel.indexOf(idx);
     if (existAt >= 0) {
+      // Ignore jitter on the same current tile: no redraw, no word refresh.
+      if (existAt === sel.length - 1) return;
       sel = sel.slice(0, existAt + 1);
       applyVisuals();
       return;
