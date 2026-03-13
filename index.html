@@ -230,6 +230,65 @@
 
     .btn-ghost:hover { color: #8888aa; border-color: #3a3a5a; }
 
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(7,8,18,0.72);
+      backdrop-filter: blur(4px);
+      z-index: 25;
+    }
+
+    .modal-backdrop[hidden] {
+      display: none;
+    }
+
+    .modal-card {
+      width: min(420px, 96vw);
+      background: linear-gradient(165deg, #1a1a30, #131325);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      box-shadow: 0 26px 60px rgba(0,0,0,0.6);
+      padding: 18px 18px 16px;
+      color: #e6e6f5;
+    }
+
+    .modal-title {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .modal-text {
+      margin: 0;
+      color: #b8b8d8;
+      line-height: 1.45;
+      font-size: 0.9rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-danger {
+      background: linear-gradient(145deg, #ef4444, #b91c1c);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 24px rgba(185,28,28,0.35);
+    }
+
+    .btn-danger:hover {
+      filter: brightness(1.05);
+    }
+
     /* ── Found words ───────────────────────────────────── */
 
     #found-section {
@@ -293,18 +352,15 @@
     .chip-revealed:hover, .chip-revealed.chip-active { opacity: 0.8; }
 
     .cell.highlight-found {
-      background: linear-gradient(145deg, #f59e0b, #d97706);
-      border-color: rgba(255,220,100,0.4);
+      border-color: rgba(255,255,255,0.35);
       color: white;
       transform: scale(1.08);
-      box-shadow: 0 6px 22px rgba(245,158,11,0.6);
       z-index: 3;
       transition: none;
     }
 
     .cell.first-highlight {
-      background: linear-gradient(145deg, #fbbf24, #f59e0b);
-      box-shadow: 0 6px 28px rgba(251,191,36,0.8);
+      z-index: 3;
     }
 
     /* ── Animations ────────────────────────────────────── */
@@ -376,6 +432,17 @@
     <span id="word-tally">—</span>
   </div>
   <div id="words-list"></div>
+</div>
+
+<div id="confirm-modal" class="modal-backdrop" hidden aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+    <h3 id="confirm-title" class="modal-title">Warning</h3>
+    <p id="confirm-text" class="modal-text"></p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="confirm-cancel-btn">Cancel</button>
+      <button class="btn btn-danger" id="confirm-ok-btn">New Game</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -573,7 +640,7 @@ BARÁTSÁG SZERELEM BOLDOGAN
       tally:      n => `${n} szó`,
       wordMeta:   (len, pts) => `${len} betű · +${pts} pont`,
       wordShort:  len => `${len} betű`,
-      confirm:    'Új játékot kezdesz? A haladásod elveszik.',
+      confirm:    'Tuti új játékot kezdesz? A haladásod elveszik.',
       langLabel:  '🇭🇺 Magyar',
     },
     en: {
@@ -618,6 +685,11 @@ BARÁTSÁG SZERELEM BOLDOGAN
   const canvas   = document.getElementById('canvas-overlay');
   const ctx      = canvas.getContext('2d');
   const wordsList = document.getElementById('words-list');
+  const confirmModal = document.getElementById('confirm-modal');
+  const confirmTitleEl = document.getElementById('confirm-title');
+  const confirmTextEl = document.getElementById('confirm-text');
+  const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
+  const confirmOkBtn = document.getElementById('confirm-ok-btn');
 
   // ── Init ────────────────────────────────────────────────────────────
   function initGame() {
@@ -668,14 +740,15 @@ BARÁTSÁG SZERELEM BOLDOGAN
   }
 
   function drawStrokePath(pts, glowColor, lineColor) {
+    const OFFSET = 21; // keep line outside letter centers
     ctx.lineCap  = 'round';
     ctx.lineJoin = 'round';
     ctx.strokeStyle = glowColor;
     ctx.lineWidth   = 22;
-    tracePath(pts);
+    traceOffsetPath(pts, OFFSET);
     ctx.strokeStyle = lineColor;
     ctx.lineWidth   = 7;
-    tracePath(pts);
+    traceOffsetPath(pts, OFFSET);
   }
 
   function tracePath(pts) {
@@ -683,6 +756,22 @@ BARÁTSÁG SZERELEM BOLDOGAN
     ctx.moveTo(pts[0].x, pts[0].y);
     for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
     ctx.stroke();
+  }
+
+  function traceOffsetPath(pts, offset) {
+    for (let i = 0; i < pts.length - 1; i++) {
+      const A = pts[i], B = pts[i + 1];
+      const dx = B.x - A.x, dy = B.y - A.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (!dist) continue;
+      const ux = dx / dist, uy = dy / dist;
+      const sx = A.x + ux * offset, sy = A.y + uy * offset;
+      const ex = B.x - ux * offset, ey = B.y - uy * offset;
+      ctx.beginPath();
+      ctx.moveTo(sx, sy);
+      ctx.lineTo(ex, ey);
+      ctx.stroke();
+    }
   }
 
   function redrawPath() {
@@ -759,12 +848,31 @@ BARÁTSÁG SZERELEM BOLDOGAN
     return path.length === len ? [...path] : null;
   }
 
-  function showHighlight(chipEl, path) {
+  function showHighlight(chipEl, path, source = 'user') {
     clearHighlight();
     if (!path) return;
     chipEl.classList.add('chip-active');
     const cells = gridEl.children;
     const last  = path.length - 1;
+    const palette = source === 'reveal'
+      ? {
+          first: ['#93c5fd', '#3b82f6'],
+          mid:   ['#3b82f6', '#1d4ed8'],
+          last:  ['#60a5fa', '#1e40af'],
+          border: 'rgba(147,197,253,0.48)',
+          shadow: 'rgba(59,130,246,0.48)',
+          arrowGlow: 'rgba(30,64,175,0.46)',
+          arrowLine: 'rgba(239,246,255,0.98)'
+        }
+      : {
+          first: ['#86efac', '#22c55e'],
+          mid:   ['#22c55e', '#15803d'],
+          last:  ['#4ade80', '#166534'],
+          border: 'rgba(134,239,172,0.48)',
+          shadow: 'rgba(34,197,94,0.46)',
+          arrowGlow: 'rgba(22,101,52,0.45)',
+          arrowLine: 'rgba(240,253,244,0.98)'
+        };
 
     path.forEach((cellIdx, pos) => {
       const cell = cells[cellIdx];
@@ -783,17 +891,19 @@ BARÁTSÁG SZERELEM BOLDOGAN
 
       // Directional gradient colours per position
       if (pos === 0) {
-        cell.style.background = `linear-gradient(${deg}deg, #fef9c3, #f59e0b)`;
+        cell.style.background = `linear-gradient(${deg}deg, ${palette.first[0]}, ${palette.first[1]})`;
       } else if (pos === last) {
-        cell.style.background = `linear-gradient(${deg}deg, #fbbf24, #92400e)`;
+        cell.style.background = `linear-gradient(${deg}deg, ${palette.last[0]}, ${palette.last[1]})`;
       } else {
-        cell.style.background = `linear-gradient(${deg}deg, #fde68a, #d97706)`;
+        cell.style.background = `linear-gradient(${deg}deg, ${palette.mid[0]}, ${palette.mid[1]})`;
       }
+      cell.style.borderColor = palette.border;
+      cell.style.boxShadow = `0 6px 22px ${palette.shadow}`;
     });
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (path.length >= 2) {
-      drawArrowPath(path.map(cellCenter), 'rgba(245,158,11,0.22)', 'rgba(245,158,11,0.88)');
+      drawArrowPath(path.map(cellCenter), palette.arrowGlow, palette.arrowLine);
     }
   }
 
@@ -803,6 +913,8 @@ BARÁTSÁG SZERELEM BOLDOGAN
     for (let i = 0; i < cells.length; i++) {
       cells[i].classList.remove('highlight-found', 'first-highlight');
       cells[i].style.background = '';
+      cells[i].style.borderColor = '';
+      cells[i].style.boxShadow = '';
     }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (sel.length >= 2) redrawPath();
@@ -1013,14 +1125,23 @@ BARÁTSÁG SZERELEM BOLDOGAN
     document.getElementById('new-btn').textContent         = s.newGame;
     document.getElementById('found-words-lbl').textContent = s.foundWords;
     document.getElementById('lang-btn').textContent        = s.langLabel;
+    const modalText = getConfirmModalText();
+    confirmTitleEl.textContent = modalText.title;
+    confirmTextEl.textContent = s.confirm;
+    confirmCancelBtn.textContent = modalText.cancel;
+    confirmOkBtn.textContent = modalText.ok;
     if (found.size > 0) tallyEl.textContent = s.tally(found.size);
     refreshWordDisplay();
   }
 
-  document.getElementById('new-btn').addEventListener('click', () => {
-    if (found.size > 0) {
-      if (!confirm(t().confirm)) return;
+  function getConfirmModalText() {
+    if (lang === 'hu') {
+      return { title: 'Hahó!', cancel: 'Mégsem', ok: 'Tuti' };
     }
+    return { title: 'Warning', cancel: 'Cancel', ok: 'New Game' };
+  }
+
+  function startNewGame() {
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
     bestEl.textContent  = '—';
@@ -1028,6 +1149,42 @@ BARÁTSÁG SZERELEM BOLDOGAN
     found.clear();
     wordsList.innerHTML = '';
     initGame();
+  }
+
+  function openNewGameConfirm() {
+    const modalText = getConfirmModalText();
+    confirmTitleEl.textContent = modalText.title;
+    confirmTextEl.textContent = t().confirm;
+    confirmCancelBtn.textContent = modalText.cancel;
+    confirmOkBtn.textContent = modalText.ok;
+    confirmModal.hidden = false;
+    confirmModal.setAttribute('aria-hidden', 'false');
+    confirmCancelBtn.focus();
+  }
+
+  function closeNewGameConfirm() {
+    confirmModal.hidden = true;
+    confirmModal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('new-btn').addEventListener('click', () => {
+    if (found.size > 0) {
+      openNewGameConfirm();
+      return;
+    }
+    startNewGame();
+  });
+
+  confirmCancelBtn.addEventListener('click', closeNewGameConfirm);
+  confirmOkBtn.addEventListener('click', () => {
+    closeNewGameConfirm();
+    startNewGame();
+  });
+  confirmModal.addEventListener('click', e => {
+    if (e.target === confirmModal) closeNewGameConfirm();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !confirmModal.hidden) closeNewGameConfirm();
   });
 
   // ── Helpers ──────────────────────────────────────────────────────────
@@ -1053,11 +1210,11 @@ BARÁTSÁG SZERELEM BOLDOGAN
     chip.className = 'chip';
     chip.innerHTML = `${word}<span class="pts">+${pts}</span>`;
 
-    chip.addEventListener('mouseenter', () => showHighlight(chip, findWordPath(word)));
+    chip.addEventListener('mouseenter', () => showHighlight(chip, findWordPath(word), 'user'));
     chip.addEventListener('mouseleave', clearHighlight);
     chip.addEventListener('touchstart', e => {
       e.preventDefault();
-      showHighlight(chip, findWordPath(word));
+      showHighlight(chip, findWordPath(word), 'user');
     }, { passive: false });
     chip.addEventListener('touchend',    clearHighlight);
     chip.addEventListener('touchcancel', clearHighlight);
@@ -1069,11 +1226,11 @@ BARÁTSÁG SZERELEM BOLDOGAN
     const chip = document.createElement('div');
     chip.className = 'chip chip-revealed';
     chip.textContent = word;
-    chip.addEventListener('mouseenter', () => showHighlight(chip, findWordPath(word)));
+    chip.addEventListener('mouseenter', () => showHighlight(chip, findWordPath(word), 'reveal'));
     chip.addEventListener('mouseleave', clearHighlight);
     chip.addEventListener('touchstart', e => {
       e.preventDefault();
-      showHighlight(chip, findWordPath(word));
+      showHighlight(chip, findWordPath(word), 'reveal');
     }, { passive: false });
     chip.addEventListener('touchend',    clearHighlight);
     chip.addEventListener('touchcancel', clearHighlight);
