@@ -1,16 +1,15 @@
 # Todo
-new uncar item
-## P2 Game modes (open: 5, done: 4)
-### P1 Word hide (open: 2, done: 4)
-- [ ] P03 - validate findable word (no spaces, etc)
-- [ ] P24 - add next letter hint for szórejtő
-new car item
+## P0 Uncategorized (open: 1, done: 2)
 
-### P2 New modes (open: 3, done: 0)
+## P2 Game modes (open: 6, done: 4)
+### P1 Word hide (open: 3, done: 4)
+- [ ] P2 - add next letter hint for szórejtő
+- [ ] P4 - validate findable word (no spaces, etc)
+
+### P3 New modes (open: 3, done: 0)
 - [ ] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made
 - [ ] P0 - hide multiple words. check during entering new word whether it is possible to add that word.
 - [ ] P0 - display possible word options
-
 
 ## P2 Dictionary fix (open: 3, done: 0)
 - [ ] P0 - update hungarian dictionary with ragozott alakok
@@ -18,6 +17,7 @@ new car item
 - [ ] P0 - purge incorrect words - reopened at 2026-03-14 15:22
 
 ## P3 UI (open: 2, done: 0)
+play mode redesign - when in game phase, hide controls, options, footer
 - [ ] P0 - update the color scheme for better visibility
 - [ ] P0 - update button visibility
 

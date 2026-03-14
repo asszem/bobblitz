@@ -91,10 +91,10 @@ function parseSections(lines, rootDepth) {
       while (stack.length > 1 && stack[stack.length-1].depth >= depth) stack.pop();
       stack[stack.length-1].subsections.push(section);
       stack.push(section);
-    } else if (line.startsWith('- ')) {
+    } else {
+      // Any non-blank, non-header line is treated as an item; fixItemFormat will normalize it
       stack[stack.length-1].items.push(line.trim());
     }
-    // other lines (blank, etc.) ignored; re-added during output
   }
 
   // Items before any section header go into an Uncategorized section

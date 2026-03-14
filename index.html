@@ -222,12 +222,12 @@
     .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
 
     .btn-ghost {
-      background: transparent;
-      color: #55557a;
-      border: 1.5px solid #2a2a44;
+      background: rgba(30, 34, 60, 0.55);
+      color: #cfd6ff;
+      border: 1.5px solid #3a4068;
     }
 
-    .btn-ghost:hover { color: #8888aa; border-color: #3a3a5a; }
+    .btn-ghost:hover { color: #eef2ff; border-color: #4e5793; background: rgba(38, 44, 78, 0.72); }
 
     .modal-backdrop {
       position: fixed;
@@ -392,13 +392,24 @@
     }
 
     .btn-danger {
+      background: linear-gradient(145deg, #22c55e, #15803d);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 24px rgba(21,128,61,0.35);
+    }
+
+    .btn-danger:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn-warning {
       background: linear-gradient(145deg, #ef4444, #b91c1c);
       color: #fff;
       border: 1px solid rgba(255,255,255,0.14);
       box-shadow: 0 10px 24px rgba(185,28,28,0.35);
     }
 
-    .btn-danger:hover {
+    .btn-warning:hover {
       filter: brightness(1.05);
     }
 
@@ -570,6 +581,48 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    footer {
+      margin-top: auto;
+      padding-top: 32px;
+      text-align: center;
+    }
+
+    #feedback-btn {
+      background: transparent;
+      border: 1.5px solid #2a2a44;
+      border-radius: 50px;
+      color: #666688;
+      font-size: 0.82rem;
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      outline: none;
+    }
+
+    #feedback-btn:hover  { color: #9999bb; border-color: #3a3a5a; }
+    #feedback-btn:active { transform: scale(0.94); }
+
+    .feedback-modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #9999bb;
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-top: 12px;
+      padding: 8px 0;
+      transition: color 0.15s;
+    }
+
+    .feedback-modal-link:hover { color: #e94560; }
+
+    .feedback-modal-email {
+      font-size: 0.9rem;
+      color: #9999bb;
+      margin-top: 8px;
+      word-break: break-all;
+    }
+
   </style>
 </head>
 <body>
@@ -619,6 +672,26 @@
 </div>
 
 <div id="toast" class="toast" aria-live="polite"></div>
+
+<footer>
+  <button id="feedback-btn"></button>
+</footer>
+
+<div id="feedback-modal" class="modal-backdrop" hidden aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="feedback-modal-title">
+    <h3 id="feedback-modal-title" class="modal-title"></h3>
+    <p id="feedback-modal-email" class="feedback-modal-email">asszem78@gmail.com</p>
+    <a id="feedback-modal-bluesky" href="https://bsky.app/profile/asszem.bsky.social" target="_blank" rel="noopener" class="feedback-modal-link">
+      <svg width="18" height="18" viewBox="0 0 360 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M180 141.964C163.699 110.262 119.308 51.1817 78.0347 22.1449C38.1307 -5.90745 0 6.00365 0 53.1696V259.274C0 306.44 38.1307 318.351 78.0347 290.294C119.308 261.257 163.699 202.177 180 170.475C196.301 202.177 240.692 261.257 281.965 290.294C322.869 318.351 361 306.44 361 259.274V53.1696C361 6.00365 322.869 -5.90745 281.965 22.1449C240.692 51.1817 196.301 110.262 180 141.964Z" fill="currentColor"/>
+      </svg>
+      <span id="feedback-modal-bluesky-label"></span>
+    </a>
+    <div class="modal-actions">
+      <button class="btn btn-danger" id="feedback-modal-close-btn"></button>
+    </div>
+  </div>
+</div>
 
 <div id="url-error-modal" class="modal-backdrop" hidden aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="url-error-title" aria-describedby="url-error-text">
@@ -677,7 +750,7 @@
     <p id="confirm-text" class="modal-text"></p>
     <div class="modal-actions">
       <button class="btn btn-ghost" id="confirm-cancel-btn">Cancel</button>
-      <button class="btn btn-danger" id="confirm-ok-btn">New Game</button>
+      <button class="btn btn-warning" id="confirm-ok-btn">New Game</button>
     </div>
   </div>
 </div>
@@ -1761,6 +1834,10 @@ document.getElementById('lbl-score').textContent       = s.score;
     hideWordStartBtn.textContent  = getModeLabels(MODE_HIDE_WORD).start || s.confirmOk     || 'Start';
     enterLettersModeBtn.textContent = getModeInfo(MODE_ENTER_LETTERS).name || 'Enter letters';
     entryCloseBtn.textContent       = getModeLabels(MODE_ENTER_LETTERS).close || 'Close';
+    document.getElementById('feedback-btn').textContent           = s.feedbackBtn        || 'Submit feedback, feature request or incorrect word';
+    document.getElementById('feedback-modal-title').textContent    = s.feedbackTitle       || 'Get in touch';
+    document.getElementById('feedback-modal-bluesky-label').textContent = s.feedbackBlueskyLabel || 'Contact me on BlueSky';
+    document.getElementById('feedback-modal-close-btn').textContent = s.feedbackClose      || 'Close';
     setHideWordError('');
     if (!bestWord) bestEl.textContent = '0';
     if (found.size > 0) tallyEl.textContent = getTallyText(found.size);
@@ -2102,6 +2179,22 @@ document.getElementById('lbl-score').textContent       = s.score;
 hideWordModal.addEventListener('click', e => {
     if (e.target === hideWordModal) closeHideWordModal();
   });
+
+  const feedbackModal    = document.getElementById('feedback-modal');
+  const feedbackCloseBtn = document.getElementById('feedback-modal-close-btn');
+
+  function openFeedbackModal() {
+    feedbackModal.hidden = false;
+    feedbackModal.setAttribute('aria-hidden', 'false');
+  }
+  function closeFeedbackModal() {
+    feedbackModal.hidden = true;
+    feedbackModal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('feedback-btn').addEventListener('click', openFeedbackModal);
+  feedbackCloseBtn.addEventListener('click', closeFeedbackModal);
+  feedbackModal.addEventListener('click', e => { if (e.target === feedbackModal) closeFeedbackModal(); });
   document.addEventListener('keydown', e => {
     if (enterLettersPhase) {
       if (e.key === 'Escape') {
