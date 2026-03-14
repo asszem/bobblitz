@@ -21,30 +21,9 @@
     "confirmCancel": "Cancel",
     "confirmOk": "Okay",
     "langLabel": "🇬🇧 English",
-    "gameModes": "Game modes",
-    "gameModesTitle": "Game modes",
-    "gameModesClose": "Close",
-    "gameModesHint": "Select a game mode.",
-    "hideWordMode": "Hide a word",
-    "hideWordShortDesc": "Challenge a friend to find your hidden word.",
-    "hideWordLongDesc": "Type a secret word and share the board with a friend. Your word is hidden somewhere among the letters — they have to find it by swiping. They won't see the word until they discover it themselves.",
-    "hideWordTitle": "Hide a word",
-    "hideWordHint": "Type one word with 4 to 10 letters.",
-    "hideWordPlaceholder": "Enter word",
-    "hideWordStart": "Start",
-    "hideWordClose": "Close",
-    "hideWordErrorLength": "Word length must be between 4 and 10.",
-    "hideWordErrorChars": "Use only letters valid in the selected language.",
-    "standardMode": "Standard",
-    "standardModeShortDesc": "Find all hidden words on the board.",
-    "standardModeLongDesc": "Swipe across adjacent letters to form words. The board is generated with a guaranteed set of findable words — from short 3-letter picks to longer high-scoring ones. Find them all to win.",
-    "standardModeTitle": "Standard",
-    "standardModeHint": "Standard mode rules:",
-    "standardModeStart": "Start",
-    "standardModeClose": "Close",
-    "standardRuleWordLength": "Word length: {min}-{max}",
-    "standardRuleMinFindable": "At least {count} words can be found",
-    "standardRuleRequiredByLength": "At least {count} words with {len} letters",
+    "modeSelectLabel": "Game modes",
+    "modeSelectTitle": "Game modes",
+    "modeSelectHint": "Select a game mode.",
     "winTitle": "Congratulations!",
     "winText": "You found all words on this board.",
     "winClose": "Close",
@@ -53,16 +32,55 @@
     "shareModalCopy": "Copy link",
     "shareModalCopied": "Copied!",
     "shareModalClose": "Close",
-    "urlErrorTitle": "Invalid link",
-    "urlErrorText": "The shared link is invalid or expired. Starting a new game.",
-    "urlErrorClose": "OK",
+    "shareLinkLabel": "Link",
     "shareSenderLabel": "Sender",
     "shareSenderPlaceholder": "Your name",
     "shareMessageLabel": "Message",
     "shareMessagePlaceholder": "Your message",
     "shareDefaultSender": "Böbblitz",
     "shareDefaultMessage": "Try to solve this!",
-    "greetingClose": "Let's go!"
+    "urlErrorTitle": "Invalid link",
+    "urlErrorText": "The shared link is invalid or expired. Starting a new game.",
+    "urlErrorClose": "OK",
+    "greetingRulesLabel": "Rules",
+    "greetingClose": "Let's go!",
+    "greetingWordCount": "Find all {count} words!",
+    "gameModes": {
+      "classic": {
+        "title": "Standard",
+        "hint": "Standard mode rules:",
+        "start": "Start",
+        "close": "Close",
+        "ruleWordLength": "Word length: {min}-{max}",
+        "ruleMinFindable": "At least {count} words can be found",
+        "ruleRequiredByLength": "At least {count} words with {len} letters"
+      },
+      "hide-word": {
+        "title": "Hide a word",
+        "hint": "Type one word with 4 to 10 letters.",
+        "placeholder": "Enter word",
+        "start": "Start",
+        "close": "Close",
+        "errorLength": "Word length must be between 4 and 10.",
+        "errorChars": "Use only letters valid in the selected language."
+      }
+    },
+    "descriptions": {
+      "gameModes": [
+        {
+          "id": "classic",
+          "name": "Standard",
+          "description": "Swipe across adjacent letters to form words. The board is generated with a guaranteed set of findable words — from short 3-letter picks to longer high-scoring ones. Find them all to win.",
+          "receivedDescription": "You've been sent a word board! Swipe across adjacent letters to form words and find them all. Can you clear the board?"
+        },
+        {
+          "id": "hide-word",
+          "name": "Hide a word",
+          "description": "Type a secret word and share the board with a friend. Your word is hidden somewhere among the letters — they have to find it by swiping. They won't see the word until they discover it themselves.",
+          "receivedDescription": "Someone hid a secret word on this board just for you. Swipe across the letters and try to find it — it's in there somewhere!"
+        }
+      ]
+    }
   },
   "dictionaryFile": "./lang/en.words"
 }

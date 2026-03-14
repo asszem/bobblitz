@@ -6,10 +6,11 @@
 
 - assign unique id for every word
 - keep this id during dictionary updates
-- User can add a message as well to the shared 
 
 ## Persistence
 
+- user can set their name which will be included in local storage
+- if user profile does not exist when game loaded 
 - save multiple games in localStore
 - export save to file
 - create a game seed that results in the same words that can be used for the same 

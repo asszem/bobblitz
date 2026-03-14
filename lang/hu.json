@@ -21,30 +21,9 @@
     "confirmCancel": "Mégse",
     "confirmOk": "Sebaj",
     "langLabel": "🇭🇺 Magyar",
-    "gameModes": "Játékmódok",
-    "gameModesTitle": "Játékmódok",
-    "gameModesClose": "Bezárás",
-    "gameModesHint": "Válassz játékmódot.",
-    "hideWordMode": "Szórejtés",
-    "hideWordShortDesc": "Rejtsd el a szavadat, és küldd el egy barátodnak.",
-    "hideWordLongDesc": "Írj be egy titkos szót, majd oszd meg a táblát egy barátoddal. A szavad el van rejtve a betűk között — neki kell megtalálnia. A szót nem látja, amíg rá nem bukkan.",
-    "hideWordTitle": "Szórejtés",
-    "hideWordHint": "Adj meg egy szót 4 és 10 betű között.",
-    "hideWordPlaceholder": "Szó megadása",
-    "hideWordStart": "Indítás",
-    "hideWordClose": "Bezárás",
-    "hideWordErrorLength": "A szó hossza 4 és 10 között lehet.",
-    "hideWordErrorChars": "Csak az adott nyelvben érvényes betűket használj.",
-    "standardMode": "Sima",
-    "standardModeShortDesc": "Találd meg az összes rejtett szót a táblán.",
-    "standardModeLongDesc": "Húzz végig a szomszédos betűkön, hogy szavakat alkoss. A tábla garantáltan tartalmaz megtalálható szavakat — rövid hárombeűsöktől hosszabb, pontosabb szavakig. Találd meg az összeset a győzelemhez.",
-    "standardModeTitle": "Sima",
-    "standardModeHint": "A sima mód szabályai:",
-    "standardModeStart": "Indítás",
-    "standardModeClose": "Bezárás",
-    "standardRuleWordLength": "Szóhossz: {min}-{max} betű",
-    "standardRuleMinFindable": "Legalább {count} megtalálható szó",
-    "standardRuleRequiredByLength": "Legalább {count} darab {len} betűs szó",
+    "modeSelectLabel": "Játékmódok",
+    "modeSelectTitle": "Játékmódok",
+    "modeSelectHint": "Válassz játékmódot.",
     "winTitle": "Gratulálunk!",
     "winText": "Megtaláltad az összes szót ezen a táblán.",
     "winClose": "Bezárás",
@@ -53,16 +32,55 @@
     "shareModalCopy": "Link másolása",
     "shareModalCopied": "Másolva!",
     "shareModalClose": "Bezárás",
-    "urlErrorTitle": "Érvénytelen link",
-    "urlErrorText": "A megosztott link érvénytelen vagy lejárt. Új játék indul.",
-    "urlErrorClose": "OK",
+    "shareLinkLabel": "Link",
     "shareSenderLabel": "Küldő",
     "shareSenderPlaceholder": "A neved",
     "shareMessageLabel": "Üzenet",
     "shareMessagePlaceholder": "Üzeneted",
     "shareDefaultSender": "Böbblitz",
     "shareDefaultMessage": "Meg tudod oldani?",
-    "greetingClose": "Gyerünk!"
+    "urlErrorTitle": "Érvénytelen link",
+    "urlErrorText": "A megosztott link érvénytelen vagy lejárt. Új játék indul.",
+    "urlErrorClose": "OK",
+    "greetingRulesLabel": "Szabályok",
+    "greetingClose": "Gyerünk!",
+    "greetingWordCount": "Találd meg mind a(z) {count} szót!",
+    "gameModes": {
+      "classic": {
+        "title": "Sima",
+        "hint": "A sima mód szabályai:",
+        "start": "Indítás",
+        "close": "Bezárás",
+        "ruleWordLength": "Szóhossz: {min}-{max} betű",
+        "ruleMinFindable": "Legalább {count} megtalálható szó",
+        "ruleRequiredByLength": "Legalább {count} darab {len} betűs szó"
+      },
+      "hide-word": {
+        "title": "Szórejtés",
+        "hint": "Adj meg egy szót 4 és 10 betű között.",
+        "placeholder": "Szó megadása",
+        "start": "Indítás",
+        "close": "Bezárás",
+        "errorLength": "A szó hossza 4 és 10 között lehet.",
+        "errorChars": "Csak az adott nyelvben érvényes betűket használj."
+      }
+    },
+    "descriptions": {
+      "gameModes": [
+        {
+          "id": "classic",
+          "name": "Sima",
+          "description": "Húzz végig a szomszédos betűkön, hogy szavakat alkoss. A tábla garantáltan tartalmaz megtalálható szavakat — rövid hárombeűsöktől hosszabb, pontosabb szavakig. Találd meg az összeset a győzelemhez.",
+          "receivedDescription": "Küldtek neked egy szótáblát! Húzz végig a szomszédos betűkön, alkoss szavakat, és találd meg az összeset. Meg tudod tisztítani a táblát?"
+        },
+        {
+          "id": "hide-word",
+          "name": "Szórejtés",
+          "description": "Írj be egy titkos szót, majd oszd meg a táblát egy barátoddal. A szavad el van rejtve a betűk között — neki kell megtalálnia. A szót nem látja, amíg rá nem bukkan.",
+          "receivedDescription": "Valaki elrejtett egy titkos szót ezen a táblán neked. Húzz végig a betűkön, és próbáld megtalálni — valahol ott van!"
+        }
+      ]
+    }
   },
   "dictionaryFile": "./lang/hu.words"
 }

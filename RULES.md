@@ -1,3 +1,4 @@
+
 # Dictionary Rules
 
 Use these rules for every dictionary update in this repository (`lang/*.words`):
