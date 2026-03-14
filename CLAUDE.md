@@ -39,6 +39,19 @@ Everything is in one file with three clearly delimited sections:
 
 **Scoring**: `calcScore(word)` — 3 letters = 1 pt, 4 = 2, 5 = 4, 6 = 7, 7 = 11, 8+ = 15 + (n−8)×5.
 
+**Game modes**: `currentMode` tracks the active mode (`MODE_STANDARD` or `MODE_HIDE_WORD`). Game generation rules and mode-specific constraints are defined in `RULES.md` — always consult it when generating games or validating game state.
+
+**Win condition**: tracked via `winModalShown` flag; `openWinModal()` fires once when `found.size >= totalWords`.
+
+**Word path cache**: `wordPathCache` (Map) caches `findWordPath` results per word to avoid redundant traversals on chip hover.
+
+## Game rules
+
+All game rules (dictionary rules, game mode requirements, word constraints) live in **`RULES.md`**. Always read `RULES.md` before:
+- Generating or validating a game board
+- Adding or modifying dictionary entries (`lang/*.words`)
+- Implementing or changing game mode logic
+
 ### CSS conventions
 
 - Dark theme: background `#0e0e1a`, card `#1a1a30`, accent `#e94560`

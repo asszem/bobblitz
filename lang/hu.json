@@ -32,7 +32,18 @@
     "hideWordStart": "Indítás",
     "hideWordClose": "Bezárás",
     "hideWordErrorLength": "A szó hossza 4 és 10 között lehet.",
-    "hideWordErrorChars": "Csak az adott nyelvben érvényes betűket használj."
+    "hideWordErrorChars": "Csak az adott nyelvben érvényes betűket használj.",
+    "standardMode": "Sima",
+    "standardModeTitle": "Sima",
+    "standardModeHint": "A sima mód szabályai:",
+    "standardModeStart": "Indítás",
+    "standardModeClose": "Bezárás",
+    "standardRuleWordLength": "Szóhossz: {min}-{max} betű",
+    "standardRuleMinFindable": "Legalább {count} megtalálható szó",
+    "standardRuleRequiredByLength": "Legalább {count} darab {len} betűs szó",
+    "winTitle": "Gratulálunk!",
+    "winText": "Megtaláltad az összes szót ezen a táblán.",
+    "winClose": "Bezárás"
   },
   "dictionaryFile": "./lang/hu.words"
 }

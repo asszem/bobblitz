@@ -25,16 +25,16 @@ Use these rules for every dictionary update in this repository (`lang/*.words`):
 
 # Game rules
 
-- When creating a new game, the following rules must be met
+- When creating a new game, the game rules depend on the actual game mode selected
 
-## Standard game
+## Standard game mode
 
 - The minimum findable words per game should be at least 5 words
 - Every game must have at least the following number of words
   - 4 letter word: 3
   - 5 letter word: 2
 
-## Hide a word game
+## Hide a word game mode
 - Hidden word must be at least 4, max 10 character long, no space
 - Only this word should be included in the game field
 - The rest of the positions should be filled with random, language valid characters

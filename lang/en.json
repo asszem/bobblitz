@@ -32,7 +32,18 @@
     "hideWordStart": "Start",
     "hideWordClose": "Close",
     "hideWordErrorLength": "Word length must be between 4 and 10.",
-    "hideWordErrorChars": "Use only letters valid in the selected language."
+    "hideWordErrorChars": "Use only letters valid in the selected language.",
+    "standardMode": "Standard",
+    "standardModeTitle": "Standard",
+    "standardModeHint": "Standard mode rules:",
+    "standardModeStart": "Start",
+    "standardModeClose": "Close",
+    "standardRuleWordLength": "Word length: {min}-{max}",
+    "standardRuleMinFindable": "At least {count} words can be found",
+    "standardRuleRequiredByLength": "At least {count} words with {len} letters",
+    "winTitle": "Congratulations!",
+    "winText": "You found all words on this board.",
+    "winClose": "Close"
   },
   "dictionaryFile": "./lang/en.words"
 }
