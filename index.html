@@ -515,6 +515,38 @@
       z-index: 3;
     }
 
+    /* ── Entry mode (Enter letters) ──────────────────────────────────────────── */
+    #grid.entry-mode .cell {
+      cursor: text;
+    }
+
+    #grid.entry-mode .cell.cell-empty:not(.cell-focused)::after {
+      content: '·';
+      color: #2a2a44;
+      font-weight: 300;
+    }
+
+    #grid.entry-mode .cell.cell-focused {
+      border-color: rgba(96, 165, 250, 0.8);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25), 0 6px 22px rgba(59, 130, 246, 0.2);
+      background: linear-gradient(160deg, #1e2a40, #162035);
+      color: #fff;
+      transform: scale(1.08);
+      z-index: 3;
+      outline: none;
+    }
+
+    #grid.entry-mode .cell.cell-focused.cell-empty::after {
+      content: '|';
+      color: #60a5fa;
+      font-weight: 300;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
     .toast {
       position: fixed;
       bottom: 32px;
@@ -574,6 +606,7 @@
     <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
     <button class="btn btn-ghost" id="share-btn">Játék megosztása</button>
     <button class="btn btn-ghost" id="new-btn">Új játék</button>
+    <button class="btn btn-ghost" id="entry-close-btn" style="display:none">Close</button>
   </div>
 </div>
 
@@ -655,7 +688,8 @@
     <h3 id="win-title" class="modal-title">Congratulations!</h3>
     <p id="win-text" class="modal-text">You found all words on this board.</p>
     <div class="modal-actions">
-      <button class="btn btn-ghost" id="win-close-btn">Close</button>
+      <button class="btn btn-ghost" id="win-new-btn">New Game</button>
+      <button class="btn btn-danger" id="win-share-btn">Share game</button>
     </div>
   </div>
 </div>
@@ -668,6 +702,7 @@
     <p id="modes-long-desc" class="modal-text"></p>
     <button class="btn btn-ghost mode-option" id="mode-standard-btn">Standard</button>
     <button class="btn btn-ghost mode-option" id="mode-hide-word-btn">Hide a word</button>
+    <button class="btn btn-ghost mode-option" id="mode-enter-letters-btn">Enter letters</button>
   </div>
 </div>
 
@@ -682,6 +717,18 @@
     <div class="modal-actions">
       <button class="btn btn-ghost" id="hide-word-cancel-btn">Close</button>
       <button class="btn btn-danger" id="hide-word-start-btn">Start</button>
+    </div>
+  </div>
+</div>
+
+<div id="entry-ready-modal" class="modal-backdrop" hidden aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="entry-ready-title" aria-describedby="entry-ready-text">
+    <h3 id="entry-ready-title" class="modal-title"></h3>
+    <p id="entry-ready-text" class="modal-text"></p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="entry-ready-back-btn">Back</button>
+      <button class="btn btn-ghost" id="entry-ready-share-btn">Share this game</button>
+      <button class="btn btn-danger" id="entry-ready-play-btn">Play this game</button>
     </div>
   </div>
 </div>
@@ -791,6 +838,7 @@ const t           = () => langData.labels;
 const getPool     = () => langData.pool;
 const MODE_CLASSIC = 'classic';
 const MODE_HIDE_WORD = 'hide-word';
+const MODE_ENTER_LETTERS = 'enter-letters';
 let currentMode = MODE_CLASSIC;
 let hideWordTarget = '';
 
@@ -835,6 +883,9 @@ const SAVE_KEY = 'bobblitz-save-v1';
   let totalWords = -1;   // -1 = not yet computed
   let revealed   = false;
   let winModalShown = false;
+  let enterLettersPhase = false;   // true while user is filling in the grid
+  let enterLettersData  = new Array(16).fill('');  // user-entered letters
+  let entryFocusIdx     = 0;
   let hoveredChip = null;
   const wordPathCache = new Map();
   let pendingConfirmAction = null;
@@ -858,7 +909,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
   const winModal = document.getElementById('win-modal');
   const winTitleEl = document.getElementById('win-title');
   const winTextEl = document.getElementById('win-text');
-  const winCloseBtn = document.getElementById('win-close-btn');
+  const winNewBtn   = document.getElementById('win-new-btn');
+  const winShareBtn = document.getElementById('win-share-btn');
   const modesModal      = document.getElementById('modes-modal');
   const modesTitleEl    = document.getElementById('modes-title');
   const modesLongDescEl = document.getElementById('modes-long-desc');
@@ -872,6 +924,16 @@ const SAVE_KEY = 'bobblitz-save-v1';
   const hideWordErrorEl = document.getElementById('hide-word-error');
   const hideWordCancelBtn = document.getElementById('hide-word-cancel-btn');
   const hideWordStartBtn = document.getElementById('hide-word-start-btn');
+
+  const wordAreaEl          = document.getElementById('word-area');
+  const entryCloseBtn       = document.getElementById('entry-close-btn');
+  const enterLettersModeBtn = document.getElementById('mode-enter-letters-btn');
+  const entryReadyModal     = document.getElementById('entry-ready-modal');
+  const entryReadyTitleEl   = document.getElementById('entry-ready-title');
+  const entryReadyTextEl    = document.getElementById('entry-ready-text');
+  const entryReadyPlayBtn   = document.getElementById('entry-ready-play-btn');
+  const entryReadyShareBtn  = document.getElementById('entry-ready-share-btn');
+  const entryReadyBackBtn   = document.getElementById('entry-ready-back-btn');
 
   function clearSavedGame() {
     try {
@@ -905,6 +967,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
 
   function persistGameState() {
+    if (currentMode === MODE_ENTER_LETTERS && enterLettersPhase) return;
     if (!Array.isArray(grid) || grid.length !== 16) return;
     if (!Array.isArray(gameWords) || gameWords.length < 1) return;
     const words = [...gameWords]
@@ -957,7 +1020,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
     await switchLanguage(payload.lang);
 
-    const mode = payload.mode === MODE_HIDE_WORD ? MODE_HIDE_WORD : MODE_CLASSIC;
+    const mode = payload.mode === MODE_HIDE_WORD ? MODE_HIDE_WORD :
+                 payload.mode === MODE_ENTER_LETTERS ? MODE_ENTER_LETTERS : MODE_CLASSIC;
     let restoredTargetWord = '';
     if (mode === MODE_HIDE_WORD) {
       const validTarget = validateHideWordInput(payload.targetWord || '');
@@ -965,6 +1029,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
       restoredTargetWord = validTarget.word;
     }
     currentMode = mode;
+    enterLettersPhase = false;
     hideWordTarget = restoredTargetWord;
 
     const normalizedGrid = payload.grid.map(ch => String(ch || '').trim().toUpperCase());
@@ -1023,6 +1088,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
     applyLang();
     renderGrid();
     resetSel();
+    updateControlsVisibility();
     scoreEl.textContent = `${score}`;
     bestEl.textContent = bestWord || '0';
     tallyEl.textContent = found.size > 0 ? getTallyText(found.size) : '0';
@@ -1566,6 +1632,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
   }
 
   gridEl.addEventListener('mousedown', e => {
+    if (enterLettersPhase) return;
     const idx = cellFromEl(e.target);
     if (idx < 0) return;
     e.preventDefault();
@@ -1586,6 +1653,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
   // â”€â”€ Touch events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   gridEl.addEventListener('touchstart', e => {
+    if (enterLettersPhase) return;
     e.preventDefault();
     drag = true;
     sel  = [];
@@ -1641,6 +1709,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
     await switchLanguage(lang === 'hu' ? 'en' : 'hu');
     currentMode = MODE_CLASSIC;
     hideWordTarget = '';
+    enterLettersPhase = false;
+    gridEl.classList.remove('entry-mode');
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
     bestEl.textContent  = '0';
@@ -1650,6 +1720,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
     wordsList.innerHTML = '';
     applyLang();
     initGame();
+    updateControlsVisibility();
     persistGameState();
   }
 
@@ -1676,9 +1747,10 @@ document.getElementById('lbl-score').textContent       = s.score;
     confirmTextEl.textContent = s.confirm;
     confirmCancelBtn.textContent = s.confirmCancel;
     confirmOkBtn.textContent = s.confirmOk;
-    winTitleEl.textContent = s.winTitle || 'Congratulations!';
-    winTextEl.textContent = s.winText || 'You found all words on this board.';
-    winCloseBtn.textContent = s.winClose || s.confirmCancel || 'Close';
+    winTitleEl.textContent  = s.winTitle   || 'Congratulations!';
+    winTextEl.textContent   = s.winText    || 'You found all words on this board.';
+    winNewBtn.textContent   = s.winNewGame || s.newGame   || 'New Game';
+    winShareBtn.textContent = s.winShare   || s.shareGame || 'Share game';
     modesTitleEl.textContent = s.modeSelectTitle || s.modeSelectLabel;
     standardModeBtn.textContent = getModeInfo(MODE_CLASSIC).name   || 'Standard';
     hideWordModeBtn.textContent = getModeInfo(MODE_HIDE_WORD).name || 'Hide a word';
@@ -1687,6 +1759,8 @@ document.getElementById('lbl-score').textContent       = s.score;
     hideWordInputEl.placeholder = getModeLabels(MODE_HIDE_WORD).placeholder || '';
     hideWordCancelBtn.textContent = getModeLabels(MODE_HIDE_WORD).close || s.confirmCancel || 'Close';
     hideWordStartBtn.textContent  = getModeLabels(MODE_HIDE_WORD).start || s.confirmOk     || 'Start';
+    enterLettersModeBtn.textContent = getModeInfo(MODE_ENTER_LETTERS).name || 'Enter letters';
+    entryCloseBtn.textContent       = getModeLabels(MODE_ENTER_LETTERS).close || 'Close';
     setHideWordError('');
     if (!bestWord) bestEl.textContent = '0';
     if (found.size > 0) tallyEl.textContent = getTallyText(found.size);
@@ -1696,11 +1770,12 @@ document.getElementById('lbl-score').textContent       = s.score;
   }
 
   function updateGameModeLabel() {
-    const s = t();
     const el = document.getElementById('game-mode-label');
     if (!el) return;
     if (currentMode === MODE_HIDE_WORD) {
       el.textContent = getModeInfo(MODE_HIDE_WORD).name || 'Hide a word';
+    } else if (currentMode === MODE_ENTER_LETTERS) {
+      el.textContent = getModeInfo(MODE_ENTER_LETTERS).name || 'Enter letters';
     } else {
       el.textContent = getModeInfo(MODE_CLASSIC).name || 'Standard';
     }
@@ -1709,6 +1784,8 @@ document.getElementById('lbl-score').textContent       = s.score;
   function startNewGame() {
     currentMode = MODE_CLASSIC;
     hideWordTarget = '';
+    enterLettersPhase = false;
+    gridEl.classList.remove('entry-mode');
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
     bestEl.textContent  = '0';
@@ -1718,6 +1795,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     wordsList.innerHTML = '';
     initGame();
     updateGameModeLabel();
+    updateControlsVisibility();
     persistGameState();
   }
 
@@ -1741,12 +1819,13 @@ document.getElementById('lbl-score').textContent       = s.score;
 
   function openWinModal() {
     const s = t();
-    winTitleEl.textContent = s.winTitle || 'Congratulations!';
-    winTextEl.textContent = s.winText || 'You found all words on this board.';
-    winCloseBtn.textContent = s.winClose || s.confirmCancel || 'Close';
+    winTitleEl.textContent  = s.winTitle   || 'Congratulations!';
+    winTextEl.textContent   = s.winText    || 'You found all words on this board.';
+    winNewBtn.textContent   = s.winNewGame || s.newGame   || 'New Game';
+    winShareBtn.textContent = s.winShare   || s.shareGame || 'Share game';
     winModal.hidden = false;
     winModal.setAttribute('aria-hidden', 'false');
-    winCloseBtn.focus();
+    winNewBtn.focus();
   }
 
   function closeWinModal() {
@@ -1759,6 +1838,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     modesTitleEl.textContent    = s.modeSelectTitle || s.modeSelectLabel;
     standardModeBtn.textContent = getModeInfo(MODE_CLASSIC).name   || 'Standard';
     hideWordModeBtn.textContent = getModeInfo(MODE_HIDE_WORD).name || 'Hide a word';
+    enterLettersModeBtn.textContent = getModeInfo(MODE_ENTER_LETTERS).name || 'Enter letters';
     modesLongDescEl.textContent = getModeInfo(MODE_CLASSIC).description || '';
     modesModal.hidden = false;
     modesModal.setAttribute('aria-hidden', 'false');
@@ -1807,6 +1887,149 @@ document.getElementById('lbl-score').textContent       = s.score;
     persistGameState();
   }
 
+  function updateControlsVisibility() {
+    const inEntry = currentMode === MODE_ENTER_LETTERS && enterLettersPhase;
+    document.getElementById('reveal-btn').style.display = inEntry ? 'none' : '';
+    document.getElementById('share-btn').style.display  = inEntry ? 'none' : '';
+    document.getElementById('new-btn').style.display    = inEntry ? 'none' : '';
+    entryCloseBtn.style.display = inEntry ? '' : 'none';
+    wordAreaEl.style.display    = inEntry ? 'none' : '';
+  }
+
+  function renderEntryGrid() {
+    gridEl.innerHTML = '';
+    gridEl.classList.add('entry-mode');
+    enterLettersData.forEach((letter, i) => {
+      const cell = document.createElement('div');
+      cell.className = 'cell' + (letter ? '' : ' cell-empty');
+      cell.textContent = letter || '';
+      cell.dataset.i = i;
+      cell.tabIndex = 0;
+      cell.style.animationDelay = `${i * 0.03}s`;
+      cell.addEventListener('click', () => focusEntryCell(i));
+      cell.addEventListener('touchend', e => { e.preventDefault(); focusEntryCell(i); });
+      cell.addEventListener('keydown', e => handleEntryKey(i, e));
+      gridEl.appendChild(cell);
+    });
+    requestAnimationFrame(() => { fitCanvas(); focusEntryCell(entryFocusIdx); });
+  }
+
+  function focusEntryCell(idx) {
+    entryFocusIdx = idx;
+    const cells = gridEl.children;
+    for (let i = 0; i < cells.length; i++) {
+      cells[i].classList.toggle('cell-focused', i === idx);
+    }
+    if (cells[idx]) cells[idx].focus({ preventScroll: true });
+  }
+
+  function updateEntryCell(idx) {
+    const cell = gridEl.children[idx];
+    if (!cell) return;
+    const letter = enterLettersData[idx];
+    cell.textContent = letter || '';
+    cell.classList.toggle('cell-empty', !letter);
+  }
+
+  function checkEntryComplete() {
+    if (enterLettersData.every(ch => ch.length === 1)) openEntryReadyModal();
+  }
+
+  function openEntryReadyModal() {
+    const s = t();
+    const ml = getModeLabels(MODE_ENTER_LETTERS);
+    grid = [...enterLettersData];
+    const wordCount = analyzeGridWords(false).totalWords;
+    const hasWords  = wordCount > 0;
+    entryReadyTitleEl.textContent = ml.entryReadyTitle || 'Ready!';
+    entryReadyTextEl.textContent  = hasWords
+      ? formatTemplate(ml.entryReadyText    || 'Found {count} words on this board.', { count: wordCount })
+      : (ml.entryReadyNoWordsText || 'No words found. Try different letters.');
+    entryReadyPlayBtn.hidden  = !hasWords;
+    entryReadyShareBtn.hidden = !hasWords;
+    entryReadyPlayBtn.textContent  = ml.entryReadyPlay  || 'Play this game';
+    entryReadyShareBtn.textContent = ml.entryReadyShare || 'Share this game';
+    entryReadyBackBtn.textContent  = ml.entryReadyBack  || 'Back';
+    entryReadyModal.hidden = false;
+    entryReadyModal.setAttribute('aria-hidden', 'false');
+    (hasWords ? entryReadyPlayBtn : entryReadyBackBtn).focus();
+  }
+
+  function closeEntryReadyModal() {
+    entryReadyModal.hidden = true;
+    entryReadyModal.setAttribute('aria-hidden', 'true');
+    focusEntryCell(entryFocusIdx);
+  }
+
+  function handleEntryKey(idx, e) {
+    const { key } = e;
+    const col = idx % 4;
+    const row = Math.floor(idx / 4);
+    if (key === 'ArrowRight') { e.preventDefault(); e.stopPropagation(); focusEntryCell(row * 4 + (col + 1) % 4); return; }
+    if (key === 'ArrowLeft')  { e.preventDefault(); e.stopPropagation(); focusEntryCell(row * 4 + (col + 3) % 4); return; }
+    if (key === 'ArrowDown')  { e.preventDefault(); e.stopPropagation(); focusEntryCell(((row + 1) % 4) * 4 + col); return; }
+    if (key === 'ArrowUp')    { e.preventDefault(); e.stopPropagation(); focusEntryCell(((row + 3) % 4) * 4 + col); return; }
+    if (key === 'Backspace' || key === 'Delete') {
+      e.preventDefault(); e.stopPropagation();
+      enterLettersData[idx] = '';
+      updateEntryCell(idx);
+      if (key === 'Backspace' && idx > 0) focusEntryCell(idx - 1);
+      return;
+    }
+    if (key === 'Escape') return; // let the document handler deal with Escape
+    e.preventDefault();
+    e.stopPropagation();
+    if (key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      const ch = key.toLocaleUpperCase(lang === 'hu' ? 'hu-HU' : 'en-US');
+      if (!getPoolCharset().has(ch)) {
+        showToast(getModeLabels(MODE_ENTER_LETTERS).errorChars || 'Invalid character');
+        return;
+      }
+      enterLettersData[idx] = ch;
+      updateEntryCell(idx);
+      if (idx < 15) focusEntryCell(idx + 1);
+      else checkEntryComplete();
+    }
+  }
+
+  function startEnterLettersMode() {
+    currentMode = MODE_ENTER_LETTERS;
+    enterLettersPhase = true;
+    entryFocusIdx = 0;
+    enterLettersData = new Array(16).fill('');
+    score = 0; bestWord = '';
+    scoreEl.textContent = '0';
+    bestEl.textContent  = '0';
+    tallyEl.textContent = '0';
+    found.clear();
+    revealedWords.clear();
+    wordsList.innerHTML = '';
+    winModalShown = false;
+    revealed = false;
+    wordPathCache.clear();
+    hoveredChip = null;
+    clearHighlight();
+    renderEntryGrid();
+    updateControlsVisibility();
+    updateGameModeLabel();
+  }
+
+  function startSolvePhaseFromEntry() {
+    // grid already set by openEntryReadyModal; analysis already confirmed totalWords > 0
+    enterLettersPhase = false;
+    gridEl.classList.remove('entry-mode');
+    entryReadyModal.hidden = true;
+    entryReadyModal.setAttribute('aria-hidden', 'true');
+    const analysis = analyzeGridWords(false);
+    gameWords = [...analysis.allWords];
+    totalWords = analysis.totalWords;
+    renderGrid();
+    resetSel();
+    updateCountEl();
+    updateControlsVisibility();
+    persistGameState();
+  }
+
   function submitHideWordMode() {
     const s = t();
     const validation = validateHideWordInput(hideWordInputEl.value);
@@ -1832,6 +2055,12 @@ document.getElementById('lbl-score').textContent       = s.score;
   standardModeBtn.addEventListener('mouseenter', () => updateModesDesc(MODE_CLASSIC));
   hideWordModeBtn.addEventListener('focus',      () => updateModesDesc(MODE_HIDE_WORD));
   hideWordModeBtn.addEventListener('mouseenter', () => updateModesDesc(MODE_HIDE_WORD));
+  enterLettersModeBtn.addEventListener('focus',      () => updateModesDesc(MODE_ENTER_LETTERS));
+  enterLettersModeBtn.addEventListener('mouseenter', () => updateModesDesc(MODE_ENTER_LETTERS));
+  enterLettersModeBtn.addEventListener('click', () => {
+    closeGameModesModal();
+    startEnterLettersMode();
+  });
 
   standardModeBtn.addEventListener('click', () => {
     closeGameModesModal();
@@ -1850,6 +2079,11 @@ document.getElementById('lbl-score').textContent       = s.score;
       submitHideWordMode();
     }
   });
+  entryCloseBtn.addEventListener('click', () => { enterLettersPhase = false; gridEl.classList.remove('entry-mode'); updateControlsVisibility(); openGameModesModal(); });
+  entryReadyPlayBtn.addEventListener('click',  startSolvePhaseFromEntry);
+  entryReadyShareBtn.addEventListener('click', () => { entryReadyModal.hidden = true; entryReadyModal.setAttribute('aria-hidden', 'true'); openShareModal(); });
+  entryReadyBackBtn.addEventListener('click',  closeEntryReadyModal);
+  entryReadyModal.addEventListener('click', e => { if (e.target === entryReadyModal) closeEntryReadyModal(); });
 
   confirmCancelBtn.addEventListener('click', closeNewGameConfirm);
   confirmOkBtn.addEventListener('click', async () => {
@@ -1857,17 +2091,25 @@ document.getElementById('lbl-score').textContent       = s.score;
     closeNewGameConfirm();
     if (action) await action();
   });
-  winCloseBtn.addEventListener('click', () => { closeWinModal(); openGameModesModal(); });
+  winNewBtn.addEventListener('click',   () => { closeWinModal(); openGameModesModal(); });
+  winShareBtn.addEventListener('click', () => { closeWinModal(); openShareModal(); });
   confirmModal.addEventListener('click', e => {
     if (e.target === confirmModal) closeNewGameConfirm();
   });
   winModal.addEventListener('click', e => {
-    if (e.target === winModal) { closeWinModal(); openGameModesModal(); }
+    if (e.target === winModal) { closeWinModal(); openGameModesModal(); }  // backdrop = new game
   });
 hideWordModal.addEventListener('click', e => {
     if (e.target === hideWordModal) closeHideWordModal();
   });
   document.addEventListener('keydown', e => {
+    if (enterLettersPhase) {
+      if (e.key === 'Escape') {
+        if (!entryReadyModal.hidden) closeEntryReadyModal();
+        else { enterLettersPhase = false; gridEl.classList.remove('entry-mode'); updateControlsVisibility(); openGameModesModal(); }
+      }
+      return;
+    }
     if (e.key !== 'Escape') return;
     if (!confirmModal.hidden) closeNewGameConfirm();
     if (!winModal.hidden) { closeWinModal(); openGameModesModal(); }
@@ -1875,7 +2117,7 @@ hideWordModal.addEventListener('click', e => {
     if (!hideWordModal.hidden) closeHideWordModal();
   });
   modesModal.addEventListener('keydown', e => {
-    const modeBtns = [standardModeBtn, hideWordModeBtn];
+    const modeBtns = [standardModeBtn, hideWordModeBtn, enterLettersModeBtn];
     const idx = modeBtns.indexOf(document.activeElement);
     if (idx < 0) return;
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
@@ -2235,7 +2477,8 @@ hideWordModal.addEventListener('click', e => {
     // Switch language first so validateHideWordInput uses correct char set
     await switchLanguage(l);
 
-    const mode = m === MODE_HIDE_WORD ? MODE_HIDE_WORD : MODE_CLASSIC;
+    const mode = m === MODE_HIDE_WORD ? MODE_HIDE_WORD :
+                 m === MODE_ENTER_LETTERS ? MODE_ENTER_LETTERS : MODE_CLASSIC;
     let targetWord = '';
     if (mode === MODE_HIDE_WORD) {
       const decoded = decodeWord(params.get('w') || '');
@@ -2253,6 +2496,7 @@ hideWordModal.addEventListener('click', e => {
       targetWord = validation.word;
     }
     currentMode = mode;
+    enterLettersPhase = false;
     hideWordTarget = targetWord;
     grid = gridChars;
 
@@ -2278,6 +2522,7 @@ hideWordModal.addEventListener('click', e => {
     resetSel();
     updateCountEl();
     updateGameModeLabel();
+    updateControlsVisibility();
     persistGameState();
 
     const sender  = decodeWord(params.get('snd') || '') || '';

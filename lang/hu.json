@@ -26,7 +26,8 @@
     "modeSelectHint": "Válassz játékmódot.",
     "winTitle": "Gratulálunk!",
     "winText": "Megtaláltad az összes szót ezen a táblán.",
-    "winClose": "Bezárás",
+    "winNewGame": "Új játék",
+    "winShare": "Megosztás",
     "shareGame": "Játék megosztása",
     "shareModalTitle": "Játék megosztása",
     "shareModalCopy": "Link másolása",
@@ -63,6 +64,18 @@
         "close": "Bezárás",
         "errorLength": "A szó hossza 4 és 10 között lehet.",
         "errorChars": "Csak az adott nyelvben érvényes betűket használj."
+      },
+      "enter-letters": {
+        "title": "Betűk megadása",
+        "hint": "Kattints egy cellára vagy nyilakkal navigálj. Gépeld be a betűket.",
+        "close": "Bezárás",
+        "errorChars": "Csak az adott nyelvben érvényes betűket használj.",
+        "entryReadyTitle": "Kész!",
+        "entryReadyText": "{count} szót találtunk a táblán.",
+        "entryReadyNoWordsText": "Nem találtunk szavakat ezen a táblán. Próbálj más betűket.",
+        "entryReadyPlay": "Játék indítása",
+        "entryReadyShare": "Megosztás",
+        "entryReadyBack": "Vissza"
       }
     },
     "descriptions": {
@@ -78,6 +91,12 @@
           "name": "Szórejtés",
           "description": "Írj be egy titkos szót, majd oszd meg a táblát egy barátoddal. A szavad el van rejtve a betűk között — neki kell megtalálnia. A szót nem látja, amíg rá nem bukkan.",
           "receivedDescription": "Valaki elrejtett egy titkos szót ezen a táblán neked. Húzz végig a betűkön, és próbáld megtalálni — valahol ott van!"
+        },
+        {
+          "id": "enter-letters",
+          "name": "Betűk megadása",
+          "description": "Töltsd ki mind a 16 cellát saját betűiddel. Navigálj nyílbillentyűkkel vagy koppints egy cellára, majd gépeld be a betűt. Ha a tábla kész, nyomd meg a 'Szavak keresése' gombot — majd old meg a táblát!",
+          "receivedDescription": "Valaki egyedi betűtáblát készített neked. Húzz végig a szomszédos betűkön, és találd meg az összes szót!"
         }
       ]
     }

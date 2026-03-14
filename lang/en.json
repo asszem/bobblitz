@@ -26,7 +26,8 @@
     "modeSelectHint": "Select a game mode.",
     "winTitle": "Congratulations!",
     "winText": "You found all words on this board.",
-    "winClose": "Close",
+    "winNewGame": "New Game",
+    "winShare": "Share game",
     "shareGame": "Share game",
     "shareModalTitle": "Share game",
     "shareModalCopy": "Copy link",
@@ -63,6 +64,18 @@
         "close": "Close",
         "errorLength": "Word length must be between 4 and 10.",
         "errorChars": "Use only letters valid in the selected language."
+      },
+      "enter-letters": {
+        "title": "Enter letters",
+        "hint": "Click a cell or use arrow keys to navigate. Type to fill in letters.",
+        "close": "Close",
+        "errorChars": "Use only letters valid in the selected language.",
+        "entryReadyTitle": "Ready!",
+        "entryReadyText": "Found {count} words on this board.",
+        "entryReadyNoWordsText": "No words found on this board. Try different letters.",
+        "entryReadyPlay": "Play this game",
+        "entryReadyShare": "Share this game",
+        "entryReadyBack": "Back"
       }
     },
     "descriptions": {
@@ -78,6 +91,12 @@
           "name": "Hide a word",
           "description": "Type a secret word and share the board with a friend. Your word is hidden somewhere among the letters — they have to find it by swiping. They won't see the word until they discover it themselves.",
           "receivedDescription": "Someone hid a secret word on this board just for you. Swipe across the letters and try to find it — it's in there somewhere!"
+        },
+        {
+          "id": "enter-letters",
+          "name": "Enter letters",
+          "description": "Fill in all 16 cells with letters of your choice. Navigate with arrow keys or tap a cell, then type. When the board is complete, tap 'Find words' to discover what words are hidden — then solve the board.",
+          "receivedDescription": "Someone built a custom letter board for you. Find all the hidden words by swiping across adjacent letters."
         }
       ]
     }
