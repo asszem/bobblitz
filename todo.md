@@ -1,6 +1,8 @@
 # Todo
-## P0 Uncategorized (open: 1, done: 2)
-- [x ] P0 - ask to ID component references
+## P1 Dictionary fix (open: 3, done: 0)
+- [ ] P0 - update hungarian dictionary with ragozott alakok
+- [ ] P0 - add new words
+- [ ] P0 - purge incorrect words - reopened at 2026-03-14 15:22
 
 ## P2 Game modes (open: 5, done: 5)
 ### P1 Word hide (open: 2, done: 5)
@@ -8,15 +10,10 @@
 - [ ] P4 - validate findable word (no spaces, language valid characters)
 
 ### P3 New modes (open: 3, done: 0)
-- [ ] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made
+- [] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made
 - [ ] P0 - hide multiple words. check during entering new word whether it is possible to ndd that word.
 - [ ] P0 - display possible word options
 
-
-## P1 Dictionary fix (open: 3, done: 0)
-- [ ] P0 - update hungarian dictionary with ragozott alakok
-- [ ] P0 - add new words
-- [ ] P0 - purge incorrect words - reopened at 2026-03-14 15:22
 
 ## P3 UI (open: 1, done: 2)
 - [ ] P0 - play mode redesign - when in game phase, hide controls, options, footer
@@ -27,10 +24,10 @@
 
 ## P4 Feedback (open: 1, done: 1)
 - [ ] P0 - report missing word option
-- [] P0 - report incorrect word option for revealed list - reopened at 2026-03-14 19:22
+- [] P0 - report incorrect word option for revealed list - reopened at 2026-03-14 20:38
 
 ## P4 Usability (open: 1, done: 0)
-- [ ] P0 - fix less sensitive vertical movement
+- [x ] P0 - fix less sensitive vertical movement
 
 ## P5 Share game (open: 2, done: 0)
 - [ ] P0 - assign unique id for every word
@@ -53,8 +50,9 @@
 
 # Done
 
-## P0 Uncategorized (done: 2)
+## P0 Uncategorized (done: 3)
 - [x] P0 - this is a test todo ite - completed at 2026-03-14 15:10
+- [x ] P0 - ask to ID component references - completed at 2026-03-14 20:38
 - [x] P3 - this is another test todo item - completed at 2026-03-14 15:10
 
 ## P2 Game modes (done: 5)
