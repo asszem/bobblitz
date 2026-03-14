@@ -174,7 +174,10 @@ function loadVerifySourceSet(language, min, max) {
 
   const sourceWords = [];
   for (const filePath of sourceFiles) {
-    sourceWords.push(...parseSourceFile(filePath));
+    const parsed = parseSourceFile(filePath);
+    for (const word of parsed) {
+      sourceWords.push(word);
+    }
   }
 
   const sourceValid = toValidUnique(sourceWords, language, min, max, null);
