@@ -43,7 +43,15 @@
     "standardRuleRequiredByLength": "Legalább {count} darab {len} betűs szó",
     "winTitle": "Gratulálunk!",
     "winText": "Megtaláltad az összes szót ezen a táblán.",
-    "winClose": "Bezárás"
+    "winClose": "Bezárás",
+    "shareGame": "Játék megosztása",
+    "shareModalTitle": "Játék megosztása",
+    "shareModalCopy": "Link másolása",
+    "shareModalCopied": "Másolva!",
+    "shareModalClose": "Bezárás",
+    "urlErrorTitle": "Érvénytelen link",
+    "urlErrorText": "A megosztott link érvénytelen vagy lejárt. Új játék indul.",
+    "urlErrorClose": "OK"
   },
   "dictionaryFile": "./lang/hu.words"
 }

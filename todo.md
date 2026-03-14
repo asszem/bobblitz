@@ -2,9 +2,6 @@
 
 ## Share game
 
-- add share game option
-  - generate url from generated game, without solves
-  - accept url parameters to load game
 - assign unique id for every word
 - keep this id during dictionary updates
 
@@ -16,9 +13,6 @@
 ## UI
 
 - improve the found word effect
-- remove the gamemode button, clicking new game should open the game mode selection
-- the selected new game should be the previous game
-- display the current game mode
 
 ## Game modes
 
@@ -33,3 +27,7 @@
 ## Usability
 
 - fix less sensitive vertical movement
+
+## Dictionary fix
+- purge incorrect words
+- add new words

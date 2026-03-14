@@ -26,7 +26,7 @@
 
     header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
 
     .header-top {
@@ -320,7 +320,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-align: center;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     .modal-input {
@@ -448,6 +448,19 @@
       z-index: 3;
     }
 
+    .share-url-input {
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0;
+      text-transform: none;
+      cursor: text;
+      user-select: all;
+      word-break: break-all;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.5;
+    }
+
     /* â”€â”€ Animations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
     @keyframes cellAppear {
@@ -511,6 +524,7 @@
 <div id="controls">
   <div id="action-buttons">
     <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
+    <button class="btn btn-ghost" id="share-btn">Játék megosztása</button>
     <button class="btn btn-ghost" id="new-btn">Új játék</button>
   </div>
 </div>
@@ -521,6 +535,26 @@
     <span id="word-tally">0</span>
   </div>
   <div id="words-list"></div>
+</div>
+
+<div id="url-error-modal" class="modal-backdrop" hidden aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="url-error-title" aria-describedby="url-error-text">
+    <h3 id="url-error-title" class="modal-title">Invalid link</h3>
+    <p id="url-error-text" class="modal-text">The shared link is invalid or expired. Starting a new game.</p>
+    <div class="modal-actions">
+      <button class="btn btn-danger" id="url-error-close-btn">OK</button>
+    </div>
+  </div>
+</div>
+
+<div id="share-modal" class="modal-backdrop" hidden aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
+    <h3 id="share-modal-title" class="modal-title">Share game</h3>
+    <textarea id="share-url-input" class="modal-input share-url-input" readonly rows="1"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-danger" id="share-modal-copy-btn">Copy link</button>
+    </div>
+  </div>
 </div>
 
 <div id="confirm-modal" class="modal-backdrop" hidden aria-hidden="true">
@@ -1507,6 +1541,7 @@ const hideWordModal = document.getElementById('hide-word-modal');
     document.getElementById('lbl-words').textContent       = s.words;
     document.getElementById('lbl-best').textContent        = s.best;
     document.getElementById('reveal-btn').textContent      = s.revealAll;
+    document.getElementById('share-btn').textContent       = s.shareGame || 'Share game';
     document.getElementById('new-btn').textContent         = s.newGame;
     document.getElementById('found-words-lbl').textContent = s.foundWords;
     document.getElementById('lang-btn').textContent        = s.langLabel;
@@ -1539,7 +1574,7 @@ const hideWordModal = document.getElementById('hide-word-modal');
     const el = document.getElementById('game-mode-label');
     if (!el) return;
     if (currentMode === MODE_HIDE_WORD) {
-      el.textContent = `${s.hideWordMode || 'Hide a word'}${hideWordTarget ? ': ' + hideWordTarget : ''}`;
+      el.textContent = s.hideWordMode || 'Hide a word';
     } else {
       el.textContent = s.standardMode || 'Standard';
     }
@@ -1701,6 +1736,7 @@ hideWordModal.addEventListener('click', e => {
     if (e.key !== 'Escape') return;
     if (!confirmModal.hidden) closeNewGameConfirm();
     if (!winModal.hidden) { closeWinModal(); openGameModesModal(); }
+    if (!shareModal.hidden) closeShareModal();
     if (!hideWordModal.hidden) closeHideWordModal();
   });
   modesModal.addEventListener('keydown', e => {
@@ -1859,8 +1895,170 @@ hideWordModal.addEventListener('click', e => {
   // â”€â”€ Resize â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   window.addEventListener('resize', () => requestAnimationFrame(fitCanvas));
 
+  // ── Share ────────────────────────────────────────────────────────────────
+  const shareModal        = document.getElementById('share-modal');
+  const shareModalTitle   = document.getElementById('share-modal-title');
+  const shareUrlInput     = document.getElementById('share-url-input');
+  const shareModalCopyBtn = document.getElementById('share-modal-copy-btn');
+
+  function encodeWord(word) {
+    const bytes = new TextEncoder().encode(word);
+    return btoa(String.fromCharCode(...bytes));
+  }
+
+  function decodeWord(encoded) {
+    try {
+      const bytes = Uint8Array.from(atob(encoded), c => c.charCodeAt(0));
+      return new TextDecoder().decode(bytes);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function generateShareUrl() {
+    const params = new URLSearchParams();
+    params.set('l', lang);
+    params.set('m', currentMode);
+    params.set('g', grid.join(''));
+    if (currentMode === MODE_HIDE_WORD && hideWordTarget) params.set('w', encodeWord(hideWordTarget));
+    return `${location.origin}${location.pathname}?${params.toString()}`;
+  }
+
+  async function copyShareUrl() {
+    const url = shareUrlInput.value;
+    shareUrlInput.select();
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch (_) {
+      document.execCommand('copy');
+    }
+    closeShareModal();
+  }
+
+  function openShareModal() {
+    const s = t();
+    shareModalTitle.textContent   = s.shareModalTitle || 'Share game';
+    shareModalCopyBtn.textContent = s.shareModalCopy  || 'Copy link';
+    shareUrlInput.value = generateShareUrl();
+    shareUrlInput.style.height = 'auto';
+    shareModal.hidden = false;
+    shareModal.setAttribute('aria-hidden', 'false');
+    shareUrlInput.style.height = shareUrlInput.scrollHeight + 'px';
+    shareUrlInput.select();
+  }
+
+  function closeShareModal() {
+    shareModal.hidden = true;
+    shareModal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('share-btn').addEventListener('click', openShareModal);
+  shareModalCopyBtn.addEventListener('click', copyShareUrl);
+  shareModal.addEventListener('click', e => { if (e.target === shareModal) closeShareModal(); });
+
+  // ── URL error modal ───────────────────────────────────────────────────────
+  const urlErrorModal    = document.getElementById('url-error-modal');
+  const urlErrorTitle    = document.getElementById('url-error-title');
+  const urlErrorText     = document.getElementById('url-error-text');
+  const urlErrorCloseBtn = document.getElementById('url-error-close-btn');
+
+  function showUrlError(onClose) {
+    const s = t();
+    urlErrorTitle.textContent = s.urlErrorTitle || 'Invalid link';
+    urlErrorText.textContent  = s.urlErrorText  || 'The shared link is invalid or expired. Starting a new game.';
+    urlErrorCloseBtn.textContent = s.urlErrorClose || 'OK';
+    urlErrorModal.hidden = false;
+    urlErrorModal.setAttribute('aria-hidden', 'false');
+    urlErrorCloseBtn.focus();
+    urlErrorCloseBtn.onclick = () => {
+      urlErrorModal.hidden = true;
+      urlErrorModal.setAttribute('aria-hidden', 'true');
+      if (onClose) onClose();
+    };
+  }
+
+  // ── Load from URL ────────────────────────────────────────────────────────
+  async function tryLoadFromUrl() {
+    const params = new URLSearchParams(location.search);
+    const g = params.get('g');
+    const l = params.get('l');
+    const m = params.get('m');
+
+    // No URL params at all — not a shared link
+    if (!g && !l && !m) return false;
+
+    // Strip URL params immediately so refresh uses localStorage
+    history.replaceState(null, '', location.pathname);
+
+    // Validate structure
+    if (!g || !l || !LANG_FILES[l]) {
+      await switchLanguage(lang);
+      applyLang();
+      showUrlError(() => openGameModesModal());
+      return true;
+    }
+    const gridChars = [...g.toUpperCase()];
+    if (gridChars.length !== 16) {
+      await switchLanguage(lang);
+      applyLang();
+      showUrlError(() => openGameModesModal());
+      return true;
+    }
+
+    // Switch language first so validateHideWordInput uses correct char set
+    await switchLanguage(l);
+
+    const mode = m === MODE_HIDE_WORD ? MODE_HIDE_WORD : MODE_CLASSIC;
+    let targetWord = '';
+    if (mode === MODE_HIDE_WORD) {
+      const decoded = decodeWord(params.get('w') || '');
+      if (!decoded) {
+        applyLang();
+        showUrlError(() => openGameModesModal());
+        return true;
+      }
+      const validation = validateHideWordInput(decoded);
+      if (!validation.ok) {
+        applyLang();
+        showUrlError(() => openGameModesModal());
+        return true;
+      }
+      targetWord = validation.word;
+    }
+    currentMode = mode;
+    hideWordTarget = targetWord;
+    grid = gridChars;
+
+    score = 0; bestWord = '';
+    scoreEl.textContent = '0';
+    bestEl.textContent  = '0';
+    tallyEl.textContent = '0';
+    found.clear();
+    revealedWords.clear();
+    winModalShown = false;
+    revealed = false;
+    hoveredChip = null;
+    clearHighlight();
+    wordPathCache.clear();
+    wordsList.innerHTML = '';
+
+    const analysis = analyzeGridWords(false);
+    gameWords = [...analysis.allWords];
+    totalWords = analysis.totalWords;
+
+    applyLang();
+    renderGrid();
+    resetSel();
+    updateCountEl();
+    updateGameModeLabel();
+    persistGameState();
+    return true;
+  }
+
   // â”€â”€ Start â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   (async function boot() {
+    const fromUrl = await tryLoadFromUrl();
+    if (fromUrl) return;
     const restored = await tryLoadSavedGame();
     if (restored) return;
     await switchLanguage(lang);

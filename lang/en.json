@@ -43,7 +43,15 @@
     "standardRuleRequiredByLength": "At least {count} words with {len} letters",
     "winTitle": "Congratulations!",
     "winText": "You found all words on this board.",
-    "winClose": "Close"
+    "winClose": "Close",
+    "shareGame": "Share game",
+    "shareModalTitle": "Share game",
+    "shareModalCopy": "Copy link",
+    "shareModalCopied": "Copied!",
+    "shareModalClose": "Close",
+    "urlErrorTitle": "Invalid link",
+    "urlErrorText": "The shared link is invalid or expired. Starting a new game.",
+    "urlErrorClose": "OK"
   },
   "dictionaryFile": "./lang/en.words"
 }
