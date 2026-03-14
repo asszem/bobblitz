@@ -1,35 +1,33 @@
 # Todo
-ask to ID component references
 ## P0 Uncategorized (open: 1, done: 2)
+- [x ] P0 - ask to ID component references
 
-## P2 Game modes (open: 6, done: 4)
-### P1 Word hide (open: 3, done: 4)
-- [ ] P2 - add next letter hint for szórejtő
-- [ ] P4 - validate findable word (no spaces, etc)
+## P2 Game modes (open: 5, done: 5)
+### P1 Word hide (open: 2, done: 5)
+- [ ] P0 - check board to make sure no other valid word is added
+- [ ] P4 - validate findable word (no spaces, language valid characters)
 
 ### P3 New modes (open: 3, done: 0)
 - [ ] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made
 - [ ] P0 - hide multiple words. check during entering new word whether it is possible to ndd that word.
 - [ ] P0 - display possible word options
 
+
 ## P2 Dictionary fix (open: 3, done: 0)
 - [ ] P0 - update hungarian dictionary with ragozott alakok
 - [ ] P0 - add new words
 - [ ] P0 - purge incorrect words - reopened at 2026-03-14 15:22
 
-## P3 UI (open: 2, done: 0)
-play mode redesign - when in game phase, hide controls, options, footer
-- [x] P0 - update the color scheme for better visibility
-- [ x] P0 - update button visibility
+## P3 UI (open: 1, done: 2)
+- [ ] P0 - play mode redesign - when in game phase, hide controls, options, footer
 
 ## P3 Game options (open: 2, done: 0)
 - [ ] P0 - option to combine languages
 - [ ] P0 - adjustable grid size
 
-## P4 Feedback (open: 3, done: 0)
-- [x ] P0 - add feedback and name to header
-- [] P0 - report incorrect word option for revealed list
+## P4 Feedback (open: 1, done: 1)
 - [ ] P0 - report missing word option
+- [] P0 - report incorrect word option for revealed list - reopened at 2026-03-14 19:22
 
 ## P4 Usability (open: 1, done: 0)
 - [ ] P0 - fix less sensitive vertical movement
@@ -59,15 +57,23 @@ play mode redesign - when in game phase, hide controls, options, footer
 - [x] P0 - this is a test todo ite - completed at 2026-03-14 15:10
 - [x] P3 - this is another test todo item - completed at 2026-03-14 15:10
 
-## P2 Game modes (done: 4)
-### P1 Word hide (done: 4)
+## P2 Game modes (done: 5)
+### P1 Word hide (done: 5)
 - [x] P0 - test item in word hide j - completed at 2026-03-14 15:10
 - [x] P2 - marked as done - completed at 2026-03-14 15:06
 - [x] P2 - marked as done with wxtra whitespaces - completed at 2026-03-14 15:06
 - [x] P2 - marked as done with wxtra whitespaces - completed at 2026-03-14 15:06
+- [x] P2 - add next letter hint for szórejtő - completed at 2026-03-14 19:22
 
 
 ## P2 Dictionary fix (done: 0)
+
+## P3 UI (done: 2)
+- [x] P0 - update the color scheme for better visibility - completed at 2026-03-14 19:22
+- [ x] P0 - update button visibility - completed at 2026-03-14 19:22
+
+## P4 Feedback (done: 1)
+- [x ] P0 - add feedback and name to header - completed at 2026-03-14 19:22
 
 ## P5 Leaderboard (done: 1)
 - [x] P0 - add author to saved game - completed at 2026-03-14 15:22

@@ -145,6 +145,12 @@
       box-shadow: 0 6px 28px rgba(255,107,107,0.75);
     }
 
+    .cell.cell-hint {
+      background: linear-gradient(145deg, #f59e0b, #b45309);
+      border-color: rgba(255,210,100,0.4);
+      box-shadow: 0 6px 22px rgba(245,158,11,0.55);
+    }
+
 
     /* â”€â”€ Word display â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
@@ -200,6 +206,13 @@
     }
 
     #action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .action-row {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -707,10 +720,15 @@
     <button id="help-btn" class="help-btn" aria-label="Help">?</button>
   </div>
   <div id="action-buttons">
-    <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
-    <button class="btn btn-ghost" id="share-btn">Játék megosztása</button>
-    <button class="btn btn-ghost" id="new-btn">Új játék</button>
-    <button class="btn btn-ghost" id="entry-close-btn" style="display:none">Close</button>
+    <div class="action-row" id="action-row-top">
+      <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
+      <button class="btn btn-ghost" id="hint-btn" style="display:none"></button>
+    </div>
+    <div class="action-row" id="action-row-bottom">
+      <button class="btn btn-ghost" id="share-btn">Játék megosztása</button>
+      <button class="btn btn-ghost" id="new-btn">Új játék</button>
+      <button class="btn btn-ghost" id="entry-close-btn" style="display:none">Close</button>
+    </div>
   </div>
 </div>
 
@@ -830,6 +848,7 @@
 <div id="modes-modal" class="modal-backdrop" hidden aria-hidden="true">
   <div class="modal-card modes-modal-card" role="dialog" aria-modal="true" aria-labelledby="modes-title">
     <h3 id="modes-title" class="modal-title">Game modes</h3>
+    <p id="modes-hint" class="modal-text"></p>
     <div class="mode-options-list">
       <button class="mode-card" id="mode-standard-btn">
         <span class="mode-card-name"></span>
@@ -1023,6 +1042,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
   let gameWords  = [];
   let totalWords = -1;   // -1 = not yet computed
   let revealed   = false;
+  let hintCount    = 0;
+  let lockedSector = null; // committed swipe direction; null when in dead zone
   let winModalShown = false;
   let enterLettersPhase = false;   // true while user is filling in the grid
   let enterLettersData  = new Array(16).fill('');  // user-entered letters
@@ -1309,6 +1330,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
   function initGame() {
     totalWords = -1;
     revealed   = false;
+    hintCount  = 0;
     winModalShown = false;
     hoveredChip = null;
     clearHighlight();
@@ -1316,6 +1338,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
     revealedWords.clear();
     closeWinModal();
     document.getElementById('reveal-btn').disabled = false;
+    document.getElementById('hint-btn').disabled   = false;
 
     if (currentMode === MODE_HIDE_WORD) {
       if (!hideWordTarget) {
@@ -1654,8 +1677,9 @@ const SAVE_KEY = 'bobblitz-save-v1';
   }
 
   function resetSel() {
-    sel  = [];
-    drag = false;
+    sel          = [];
+    drag         = false;
+    lockedSector = null;
     applyVisuals();
   }
 
@@ -1761,16 +1785,44 @@ const SAVE_KEY = 'bobblitz-save-v1';
     // Dead zone: pointer must leave the current cell (≥50% of slot width from
     // center) before a direction switch fires. The actual cell edge sits at
     // ~46% of slot width, so this ensures the pointer has crossed into the gap.
-    if (dist < cellW * 0.5) return prev;
+    if (dist < cellW * 0.5) {
+      lockedSector = null; // reset lock when back inside dead zone
+      return prev;
+    }
 
-    // Snap to one of 8 directions (45° sectors)
-    const sector   = Math.round(Math.atan2(dy, dx) / (Math.PI / 4));
-    const dirX     = Math.round(Math.cos(sector * Math.PI / 4));
-    const dirY     = Math.round(Math.sin(sector * Math.PI / 4));
+    // Snap to one of 8 directions (45° sectors) with angular hysteresis.
+    // Once a sector is committed, require >22.5° (half a sector) of angular
+    // deviation before switching — prevents flickering at sector boundaries.
+    const rawAngle  = Math.atan2(dy, dx);
+    const rawSector = Math.round(rawAngle / (Math.PI / 4));
+    let sector;
+    if (lockedSector !== null) {
+      let diff = rawAngle - lockedSector * (Math.PI / 4);
+      while (diff >  Math.PI) diff -= 2 * Math.PI;
+      while (diff < -Math.PI) diff += 2 * Math.PI;
+      sector = Math.abs(diff) > Math.PI / 8 ? rawSector : lockedSector;
+    } else {
+      sector = rawSector;
+    }
+    lockedSector = sector;
+    const dirX      = Math.round(Math.cos(sector * Math.PI / 4));
+    const dirY      = Math.round(Math.sin(sector * Math.PI / 4));
     const targetRow = prevRow + dirY;
     const targetCol = prevCol + dirX;
     if (targetRow < 0 || targetRow >= 4 || targetCol < 0 || targetCol >= 4) return -1;
-    return targetRow * 4 + targetCol;
+    const targetIdx = targetRow * 4 + targetCol;
+
+    // Backtrack guard: when the candidate cell is already in sel (would trigger
+    // a backtrack), require the pointer to be ≥92% of slot width from `prev`
+    // before committing. This prevents oscillation in the diagonal-overshoot
+    // zone: when entering a diagonal neighbor the pointer lands at ~91% of slot
+    // width from the new cell (pointing back at the old one), which would
+    // immediately fire a backtrack on the very next frame without this guard.
+    if (sel.indexOf(targetIdx) >= 0 && targetIdx !== prev) {
+      if (dist < cellW * 0.92) return prev;
+    }
+
+    return targetIdx;
   }
 
   gridEl.addEventListener('mousedown', e => {
@@ -1847,6 +1899,18 @@ const SAVE_KEY = 'bobblitz-save-v1';
     revealAllWords();
   });
 
+  function revealNextHintLetter() {
+    if (currentMode !== MODE_HIDE_WORD || !hideWordTarget) return;
+    const path = findWordPath(hideWordTarget);
+    if (!path || hintCount >= path.length) return;
+    gridEl.children[path[hintCount]].classList.add('cell-hint');
+    hintCount++;
+    const btn = document.getElementById('hint-btn');
+    if (hintCount >= path.length) btn.disabled = true;
+  }
+
+  document.getElementById('hint-btn').addEventListener('click', revealNextHintLetter);
+
   async function switchLanguageAndReset() {
     await switchLanguage(lang === 'hu' ? 'en' : 'hu');
     currentMode = MODE_CLASSIC;
@@ -1881,6 +1945,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     document.getElementById('lbl-words').textContent       = s.words;
     document.getElementById('lbl-best').textContent        = s.best;
     document.getElementById('reveal-btn').textContent      = s.revealAll;
+    document.getElementById('hint-btn').textContent        = s.hintBtn || 'Reveal 1 letter';
     document.getElementById('share-btn').textContent       = s.shareGame || 'Share game';
     document.getElementById('new-btn').textContent         = s.newGame;
     document.getElementById('found-words-lbl').textContent = s.foundWords;
@@ -1894,6 +1959,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     winNewBtn.textContent   = s.winNewGame || s.newGame   || 'New Game';
     winShareBtn.textContent = s.winShare   || s.shareGame || 'Share game';
     modesTitleEl.textContent = s.modeSelectTitle || s.modeSelectLabel;
+    document.getElementById('modes-hint').textContent = s.modeSelectHint || '';
     standardModeBtn.querySelector('.mode-card-name').textContent  = getModeInfo(MODE_CLASSIC).name      || 'Standard';
     standardModeBtn.querySelector('.mode-card-desc').textContent  = getModeInfo(MODE_CLASSIC).description || '';
     hideWordModeBtn.querySelector('.mode-card-name').textContent  = getModeInfo(MODE_HIDE_WORD).name     || 'Hide a word';
@@ -2029,12 +2095,15 @@ document.getElementById('lbl-score').textContent       = s.score;
     wordsList.innerHTML = '';
     initGame();
     updateGameModeLabel();
+    updateControlsVisibility();
     persistGameState();
   }
 
   function updateControlsVisibility() {
-    const inEntry = currentMode === MODE_ENTER_LETTERS && enterLettersPhase;
+    const inEntry    = currentMode === MODE_ENTER_LETTERS && enterLettersPhase;
+    const inHideWord = currentMode === MODE_HIDE_WORD && !enterLettersPhase;
     document.getElementById('reveal-btn').style.display = inEntry ? 'none' : '';
+    document.getElementById('hint-btn').style.display   = inHideWord ? '' : 'none';
     document.getElementById('share-btn').style.display  = inEntry ? 'none' : '';
     document.getElementById('new-btn').style.display    = inEntry ? 'none' : '';
     entryCloseBtn.style.display = inEntry ? '' : 'none';
@@ -2151,6 +2220,8 @@ document.getElementById('lbl-score').textContent       = s.score;
     wordsList.innerHTML = '';
     winModalShown = false;
     revealed = false;
+    hintCount = 0;
+    document.getElementById('hint-btn').disabled = false;
     wordPathCache.clear();
     hoveredChip = null;
     clearHighlight();
@@ -2660,6 +2731,8 @@ hideWordModal.addEventListener('click', e => {
     revealedWords.clear();
     winModalShown = false;
     revealed = false;
+    hintCount = 0;
+    document.getElementById('hint-btn').disabled = false;
     hoveredChip = null;
     clearHighlight();
     wordPathCache.clear();

@@ -51,14 +51,24 @@ Everything is in one file with three clearly delimited sections:
 
 **New game flow**: pressing New Game (or closing the win modal) opens the game mode modal. The mode modal is mandatory — it has no close button and cannot be dismissed with Escape or backdrop click. After mode selection, Standard mode starts immediately; Hide a word mode opens a word-entry modal.
 
+## Command shortcuts
+
+- `imp` is shorthand for implementation commands — e.g. `imp i3` means "implement i3", `imp update` means "implementations update", `imp move i3 to done` means "move i3 to done", `imp reopen i3` means "reopen i3", etc.
+- `comp` is shorthand for component-references commands — e.g. `comp update` means "update component references".
+
 ## Implementation tasks
 
 `IMPLEMENTATION-TASKS.md` tracks feature/fix tasks. Update rules are defined in its own `# Update rules` section. Key points:
 - Task headers follow the format: `(Status) iN Description`
-- Steps follow the format: `- [x] iN-N Description`
-- Assign the next available integer ID to each new task; assign sequential sub-IDs to its steps.
-- Mark each step `[x]` when done, `[ ]` when not. Heading is `(Done)` when all steps are checked, `(Open)` otherwise.
+- Steps follow the format: `(status) iN-N Description`
+- Step statuses: `(open)` = not started, `(fix)` = implemented but broken and needs a fix, `(test)` = implemented/fixed and awaiting user approval, `(done)` = approved by user.
+- When implementing or fixing a step, set it to `(test)` — never set to `(done)` yourself.
+- Header status: `(open)` if any step is open, `(test)` if all implemented but not all approved, `(done)` only when all steps are done.
+- When asked to implement `iN`, only implement open steps under that exact task. Never touch steps from a different task ID.
+- Always list the implemented step IDs in the response (e.g. "Implemented: i3-5, i3-6").
+- When asked for "implementations update": reformat and reword all tasks to follow the rules (IDs, statuses, header format), but do not implement anything.
 - Do **not** move tasks to `implementations-done.md` unless the user explicitly asks.
+- When moving a task to `implementations-done.md`, append a completion timestamp to its header: `- completed at yyyy-mm-dd hh:mm`
 
 ## Todo list
 

@@ -6,27 +6,29 @@ Keep this list updated as the UI evolves.
 
 ## Table of contents
 
-- [c1 Game states](#game-states)
-- [c2 Header](#header)
-- [c3 Score bar](#score-bar)
-- [c4 Game board](#game-board)
-- [c5 Word input area](#word-input-area)
-- [c6 Bottom controls](#bottom-controls)
-- [c7 Found words list](#found-words-list)
-- [c8 Toast](#toast)
-- [c9 Modals](#modals)
-  - [c9-1 Confirm modal](#confirm-modal)
-  - [c9-2 Win modal](#win-modal)
-  - [c9-3 Game modes modal](#game-modes-modal)
-  - [c9-4 Hide a word config modal](#hide-a-word-config-modal)
-  - [c9-5 Enter letters config](#enter-letters-config)
-  - [c9-6 Entry ready modal](#entry-ready-modal)
-  - [c9-7 Share modal](#share-modal)
-  - [c9-8 Greeting modal](#greeting-modal)
-  - [c9-9 Help modal](#help-modal)
-  - [c9-10 URL error modal](#url-error-modal)
-  - [c9-11 Feedback modal](#feedback-modal)
-- [c10 Footer](#footer)
+- [Game component references](#game-component-references)
+  - [Table of contents](#table-of-contents)
+  - [c1 Game states](#c1-game-states)
+  - [c2 Header](#c2-header)
+  - [c3 Score bar](#c3-score-bar)
+  - [c4 Game board](#c4-game-board)
+  - [c5 Word input area](#c5-word-input-area)
+  - [c6 Bottom controls](#c6-bottom-controls)
+  - [c7 Found words list](#c7-found-words-list)
+  - [c8 Toast](#c8-toast)
+  - [c9 Modals](#c9-modals)
+    - [c9-1 Confirm modal](#c9-1-confirm-modal)
+    - [c9-2 Win modal](#c9-2-win-modal)
+    - [c9-3 Game modes modal](#c9-3-game-modes-modal)
+    - [c9-4 Hide a word config modal](#c9-4-hide-a-word-config-modal)
+    - [c9-5 Enter letters config](#c9-5-enter-letters-config)
+    - [c9-6 Entry ready modal](#c9-6-entry-ready-modal)
+    - [c9-7 Share modal](#c9-7-share-modal)
+    - [c9-8 Greeting modal](#c9-8-greeting-modal)
+    - [c9-9 Help modal](#c9-9-help-modal)
+    - [c9-10 URL error modal](#c9-10-url-error-modal)
+    - [c9-11 Feedback modal](#c9-11-feedback-modal)
+  - [c10 Footer](#c10-footer)
 
 ## c1 Game states
 
@@ -115,6 +117,7 @@ Below the controls; lists all discovered words (`#found-section`).
 ## c9 Modals
 
 ### c9-1 Confirm modal
+
 Shown before discarding game progress. Features Lexi the cat.
 
 - **c9-1-1 confirm modal** — the warning dialog (`#confirm-modal`)
@@ -122,6 +125,7 @@ Shown before discarding game progress. Features Lexi the cat.
 - **c9-1-3 confirm ok button** — proceeds with the destructive action (`#confirm-ok-btn`)
 
 ### c9-2 Win modal
+
 Shown when all words are found. Features Kavics the cat.
 
 - **c9-2-1 win modal** — the end-of-game dialog (`#win-modal`)
@@ -129,6 +133,7 @@ Shown when all words are found. Features Kavics the cat.
 - **c9-2-3 win share button** — closes the modal and opens the share modal (`#win-share-btn`)
 
 ### c9-3 Game modes modal
+
 Shown when starting a new game.
 
 - **c9-3-1 modes modal** — the game mode selection dialog (`#modes-modal`)
@@ -137,6 +142,7 @@ Shown when starting a new game.
 - **c9-3-4 enter-letters mode card** — selects Enter letters mode (`#mode-enter-letters-btn`)
 
 ### c9-4 Hide a word config modal
+
 Shown during config phase for Hide a Word mode.
 
 - **c9-4-1 hide-word modal** — the secret word entry dialog (`#hide-word-modal`)
@@ -147,9 +153,11 @@ Shown during config phase for Hide a Word mode.
 - **c9-4-6 hide-word start button** — validates and starts the game (`#hide-word-start-btn`)
 
 ### c9-5 Enter letters config
+
 Not a modal — the board itself becomes the input surface during entry phase. See [c4 Game board](#c4-game-board) and [c6 Bottom controls](#c6-bottom-controls) for the relevant components. The close button (c6-7) and Escape exit this phase.
 
 ### c9-6 Entry ready modal
+
 Shown automatically when all 16 cells are filled in Enter letters mode.
 
 - **c9-6-1 entry ready modal** — the completion dialog (`#entry-ready-modal`)
@@ -160,6 +168,7 @@ Shown automatically when all 16 cells are filled in Enter letters mode.
 - **c9-6-6 entry ready back button** — closes the modal and returns to entry phase, preserving all letters and cursor position (`#entry-ready-back-btn`)
 
 ### c9-7 Share modal
+
 Lets the player compose and copy a shareable link.
 
 - **c9-7-1 share modal** — the sharing dialog (`#share-modal`)
@@ -169,6 +178,7 @@ Lets the player compose and copy a shareable link.
 - **c9-7-5 copy link button** — copies the URL to clipboard and closes the modal (`#share-modal-copy-btn`)
 
 ### c9-8 Greeting modal
+
 Shown to the recipient when opening a link-shared game.
 
 - **c9-8-1 greeting modal** — the welcome dialog (`#greeting-modal`)
@@ -179,6 +189,7 @@ Shown to the recipient when opening a link-shared game.
 - **c9-8-6 greeting close button** — dismisses the greeting and starts solve phase (`#greeting-close-btn`)
 
 ### c9-9 Help modal
+
 Opened via the help button (c6-3); describes the currently active game mode.
 
 - **c9-9-1 help modal** — the mode description dialog (`#help-modal`)
@@ -187,12 +198,14 @@ Opened via the help button (c6-3); describes the currently active game mode.
 - **c9-9-4 help modal close button** — closes the dialog (`#help-modal-close-btn`)
 
 ### c9-10 URL error modal
+
 Shown when a shared link is invalid or cannot be decoded.
 
 - **c9-10-1 url error modal** — the invalid-link error dialog (`#url-error-modal`)
 - **c9-10-2 url error close button** — closes the dialog and starts a fresh game (`#url-error-close-btn`)
 
 ### c9-11 Feedback modal
+
 Opened via the feedback button (c10-1); lets the player contact the developer.
 
 - **c9-11-1 feedback modal** — the contact dialog (`#feedback-modal`)
@@ -208,3 +221,7 @@ Opened via the feedback button (c10-1); lets the player contact the developer.
 ## c10 Footer
 
 - **c10-1 feedback button** — opens the feedback modal (c9-11); always visible at the bottom of the page (`#feedback-btn`)
+
+## Update rules
+
+- Command shortcut: `comp` is shorthand for component-references commands — e.g. `comp update` = update component references

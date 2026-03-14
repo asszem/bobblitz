@@ -11,17 +11,19 @@ A single-player, browser-based word-hunt game inspired by WordBlitz. Swipe acros
 
 ## Game modes
 
-**Standard** — The board is generated with a guaranteed set of findable words. Find them all.
+**Standard** — The board is randomly generated with a guaranteed set of findable words. Find them all to win.
 
-**Hide a word** — A friend enters a secret word (4–10 letters). It is hidden somewhere on the board. Can you find it?
+**Hide a word** — Enter a secret word (4–10 letters) and share the board with a friend. Your word is hidden somewhere among the letters — they have to find it by swiping. They won't see the word until they discover it themselves.
+
+**Enter letters** — Fill in all 16 cells with letters of your choice. When the board is complete the game finds all valid words and you solve it yourself, or share it with someone else.
 
 ## Sharing
 
-Use the **Share game** button to copy a link to the current board. Anyone who opens the link gets the exact same grid and game mode — including the hidden word in Hide a word mode (encoded so it stays secret in the URL).
+Use the **Share game** button to generate a link to the current board. The recipient gets the exact same grid and game mode. In Hide a word mode the secret word is encoded in the URL so it stays hidden. You can optionally include your name and a message that greets the recipient when they open the link.
 
 ## Languages
 
-Supports **English** and **Hungarian**. Switch with the language toggle at the top. Each language has its own letter pool weighted by frequency and its own dictionary.
+Supports **English** and **Hungarian**. Switch with the language toggle at the top-right. Each language has its own letter pool weighted by frequency and its own word dictionary.
 
 ## Running locally
 
