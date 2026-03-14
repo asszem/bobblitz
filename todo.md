@@ -9,7 +9,7 @@ ask to ID component references
 
 ### P3 New modes (open: 3, done: 0)
 - [ ] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made
-- [ ] P0 - hide multiple words. check during entering new word whether it is possible to add that word.
+- [ ] P0 - hide multiple words. check during entering new word whether it is possible to ndd that word.
 - [ ] P0 - display possible word options
 
 ## P2 Dictionary fix (open: 3, done: 0)
