@@ -578,6 +578,7 @@ const GAME_GENERATION_RULES = Object.freeze({
   requiredByLength: Object.freeze({ 4: 3, 5: 2 }),
   maxAttempts: 5000,
 });
+const SAVE_KEY = 'bobblitz-save-v1';
 // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let grid       = [];
   let sel        = [];
@@ -585,6 +586,8 @@ const GAME_GENERATION_RULES = Object.freeze({
   let score      = 0;
   let bestWord   = '';
   let found      = new Set();
+  let revealedWords = new Set();
+  let gameWords  = [];
   let totalWords = -1;   // -1 = not yet computed
   let revealed   = false;
   let pendingConfirmAction = null;
@@ -606,6 +609,128 @@ const GAME_GENERATION_RULES = Object.freeze({
   const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
   const confirmOkBtn = document.getElementById('confirm-ok-btn');
 
+  function clearSavedGame() {
+    try {
+      localStorage.removeItem(SAVE_KEY);
+    } catch (_) {}
+  }
+
+  function persistGameState() {
+    if (!Array.isArray(grid) || grid.length !== 16) return;
+    if (!Array.isArray(gameWords) || gameWords.length < 1) return;
+    const words = [...gameWords]
+      .sort((a, b) => a.localeCompare(b, lang === 'hu' ? 'hu-HU' : 'en-US'))
+      .map(w => ({
+        w,
+        s: revealedWords.has(w) ? 'revealed' : (found.has(w) ? 'found' : 'none'),
+      }));
+    const payload = {
+      v: 1,
+      lang,
+      grid: [...grid],
+      score,
+      words,
+      savedAt: Date.now(),
+    };
+    try {
+      localStorage.setItem(SAVE_KEY, JSON.stringify(payload));
+    } catch (_) {}
+  }
+
+  function invalidSavedGame() {
+    clearSavedGame();
+    return false;
+  }
+
+  async function tryLoadSavedGame() {
+    let raw = '';
+    try {
+      raw = localStorage.getItem(SAVE_KEY) || '';
+    } catch (_) {
+      return false;
+    }
+    if (!raw) return false;
+
+    let payload = null;
+    try {
+      payload = JSON.parse(raw);
+    } catch (_) {
+      return invalidSavedGame();
+    }
+
+    if (!payload || payload.v !== 1) return invalidSavedGame();
+    if (typeof payload.lang !== 'string' || !LANG_FILES[payload.lang]) return invalidSavedGame();
+    if (!Array.isArray(payload.grid) || payload.grid.length !== 16) return invalidSavedGame();
+    if (!Array.isArray(payload.words) || payload.words.length < 1) return invalidSavedGame();
+    if (!Number.isFinite(payload.score) || payload.score < 0) return invalidSavedGame();
+
+    await switchLanguage(payload.lang);
+
+    const normalizedGrid = payload.grid.map(ch => String(ch || '').trim().toUpperCase());
+    if (normalizedGrid.some(ch => ch.length < 1)) return invalidSavedGame();
+    grid = normalizedGrid;
+
+    const analysis = analyzeGridWords(false);
+    gameWords = [...analysis.allWords];
+    totalWords = analysis.totalWords;
+    const validWords = new Set(gameWords);
+
+    if (payload.words.length !== validWords.size) return invalidSavedGame();
+
+    const restoredFound = new Set();
+    const restoredRevealed = new Set();
+    const savedStatuses = [];
+    const seen = new Set();
+    for (const item of payload.words) {
+      if (!item || typeof item.w !== 'string') {
+        return invalidSavedGame();
+      }
+      let status = 'none';
+      if (typeof item.s === 'string') {
+        if (item.s !== 'none' && item.s !== 'found' && item.s !== 'revealed') {
+          return invalidSavedGame();
+        }
+        status = item.s;
+      } else if (typeof item.found === 'boolean') {
+        // Backward compatibility for older save format.
+        status = item.found ? 'found' : 'none';
+      } else {
+        return invalidSavedGame();
+      }
+      const w = item.w.trim().toUpperCase();
+      if (!w || seen.has(w) || !validWords.has(w)) return invalidSavedGame();
+      seen.add(w);
+      if (status === 'found' || status === 'revealed') restoredFound.add(w);
+      if (status === 'revealed') restoredRevealed.add(w);
+      savedStatuses.push({ w, status });
+    }
+    if (seen.size !== validWords.size) return invalidSavedGame();
+
+    found = restoredFound;
+    revealedWords = restoredRevealed;
+    score = Number(payload.score) || 0;
+    bestWord = '';
+    for (const w of found) {
+      if (w.length > bestWord.length) bestWord = w;
+    }
+    revealed = revealedWords.size > 0;
+
+    applyLang();
+    renderGrid();
+    resetSel();
+    scoreEl.textContent = `${score}`;
+    bestEl.textContent = bestWord || '0';
+    tallyEl.textContent = found.size > 0 ? getTallyText(found.size) : '0';
+    updateCountEl();
+    wordsList.innerHTML = '';
+    for (const item of savedStatuses) {
+      if (item.status === 'found') addChip(item.w, calcScore(item.w));
+      else if (item.status === 'revealed') addRevealedChip(item.w);
+    }
+    document.getElementById('reveal-btn').disabled = revealed;
+    return true;
+  }
+
   // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function randomGridFromPool(pool) {
     return Array.from({ length: 16 }, () => pool[Math.floor(Math.random() * pool.length)]);
@@ -621,6 +746,7 @@ const GAME_GENERATION_RULES = Object.freeze({
   function initGame() {
     totalWords = -1;
     revealed   = false;
+    revealedWords.clear();
     document.getElementById('reveal-btn').disabled = false;
     const pool = getPool();
     let chosenGrid = null;
@@ -639,7 +765,9 @@ const GAME_GENERATION_RULES = Object.freeze({
     }
 
     grid = chosenGrid;
-    totalWords = countTotalWords();
+    const analysis = analyzeGridWords(false);
+    gameWords = [...analysis.allWords];
+    totalWords = analysis.totalWords;
     renderGrid();
     resetSel();
     updateCountEl();
@@ -948,6 +1076,7 @@ const GAME_GENERATION_RULES = Object.freeze({
 
     setTimeout(() => {
       found.add(word);
+      revealedWords.delete(word);
       const pts = calcScore(word);
       score += pts;
       scoreEl.textContent = score;
@@ -968,6 +1097,7 @@ const GAME_GENERATION_RULES = Object.freeze({
       wordDisp.style.textShadow = '';
       wordMeta.textContent      = '';
       wordMeta.style.color      = '';
+      persistGameState();
     }, 520);
   }
 
@@ -1039,11 +1169,13 @@ const GAME_GENERATION_RULES = Object.freeze({
     for (const word of sorted) {
       if (!found.has(word)) {
         found.add(word);
+        revealedWords.add(word);
         addRevealedChip(word);
       }
     }
     updateCountEl();
     tallyEl.textContent = getTallyText(found.size);
+    persistGameState();
   }
 
   document.getElementById('reveal-btn').addEventListener('click', () => {
@@ -1062,9 +1194,11 @@ const GAME_GENERATION_RULES = Object.freeze({
     bestEl.textContent  = '0';
     tallyEl.textContent = '0';
     found.clear();
+    revealedWords.clear();
     wordsList.innerHTML = '';
     applyLang();
     initGame();
+    persistGameState();
   }
 
   document.getElementById('lang-btn').addEventListener('click', async () => {
@@ -1102,8 +1236,10 @@ const GAME_GENERATION_RULES = Object.freeze({
     bestEl.textContent  = '0';
     tallyEl.textContent = '0';
     found.clear();
+    revealedWords.clear();
     wordsList.innerHTML = '';
     initGame();
+    persistGameState();
   }
 
   function openWarningConfirm(onConfirm) {
@@ -1241,17 +1377,19 @@ const GAME_GENERATION_RULES = Object.freeze({
     };
   }
 
-  function getAllWords() { return analyzeGridWords(false).allWords; }
-  function countTotalWords() { return analyzeGridWords(false).totalWords; }
+  function getAllWords() { return new Set(gameWords); }
+  function countTotalWords() { return gameWords.length; }
 
   // â”€â”€ Resize â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   window.addEventListener('resize', () => requestAnimationFrame(fitCanvas));
 
   // â”€â”€ Start â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   (async function boot() {
+    const restored = await tryLoadSavedGame();
+    if (restored) return;
     await switchLanguage(lang);
     applyLang();
-    initGame();
+    startNewGame();
   })();
 </script>
 </body>
