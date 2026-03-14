@@ -13,7 +13,7 @@
 - [ ] P0 - display possible word options
 
 
-## P2 Dictionary fix (open: 3, done: 0)
+## P1 Dictionary fix (open: 3, done: 0)
 - [ ] P0 - update hungarian dictionary with ragozott alakok
 - [ ] P0 - add new words
 - [ ] P0 - purge incorrect words - reopened at 2026-03-14 15:22

@@ -1133,6 +1133,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
       grid: [...grid],
       score,
       words,
+      hintCount: currentMode === MODE_HIDE_WORD ? hintCount : 0,
       savedAt: Date.now(),
     };
     try {
@@ -1234,9 +1235,28 @@ const SAVE_KEY = 'bobblitz-save-v1';
     revealed = revealedWords.size > 0;
     winModalShown = totalWords > 0 && found.size >= totalWords;
 
+    hintCount = 0;
+    document.getElementById('hint-btn').disabled = false;
+
     applyLang();
     renderGrid();
     resetSel();
+
+    // Restore cell-hint highlights for Hide a Word mode
+    if (mode === MODE_HIDE_WORD && typeof payload.hintCount === 'number' && payload.hintCount > 0) {
+      const path = findWordPath(hideWordTarget);
+      if (path) {
+        const count = Math.min(payload.hintCount, path.length);
+        for (let i = 0; i < count; i++) {
+          gridEl.children[path[i]].classList.add('cell-hint');
+        }
+        hintCount = count;
+        if (hintCount >= path.length) {
+          document.getElementById('hint-btn').disabled = true;
+        }
+      }
+    }
+
     updateControlsVisibility();
     scoreEl.textContent = `${score}`;
     bestEl.textContent = bestWord || '0';

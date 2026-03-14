@@ -1,3 +1,7 @@
+# (Done) i6 Fix incorrectly displayed letter hint when a shared game is loaded - completed at 2026-03-14 19:22
+
+- (done) i6-1 When a shared Hide a Word game is loaded via URL, ensure hint letters (c4-3 cell-hint highlights) are restored correctly and not shown when they shouldn't be
+
 # (Done) i5 Word input area (c5) fixes - completed at 2026-03-14 19:22
 
 - (done) i5-1 Remove the typed-letters preview (c5-2) from the word input area
