@@ -27,9 +27,11 @@ Everything is in one file with three clearly delimited sections:
 
 ### Key JS concepts
 
-**State** (module-level vars): `grid` (16-char array), `sel` (selected cell indices in order), `drag` (bool), `score`, `bestWord`, `found` (Set of submitted words).
+**State** (module-level vars): `grid` (16-char array), `sel` (selected cell indices in order), `drag` (bool), `score`, `bestWord`, `found` (Set of submitted words), `winModalShown` (bool), `wordPathCache` (Map, word→path), `hoveredChip` (DOM element or null), `hideWordTarget` (string, hide-word mode only).
 
 **Input pipeline**: Both mouse and touch funnel through `cellFromPoint(x, y)` → `trySelect(idx)` → `applyVisuals()`. The canvas overlay has `pointer-events: none` so `document.elementFromPoint` resolves to the `.cell` beneath it.
+
+**Direction-based selection**: When `sel` is non-empty, `cellFromPoint` does not use hit-testing. Instead it computes the movement angle from the last selected cell's center, snaps it to one of 8 directions (45° sectors), and returns the cell in that direction. A 40%-of-cell-width dead zone prevents jitter from switching cells. This stops diagonal swipes from accidentally registering orthogonal neighbors.
 
 **Backtracking**: `trySelect` trims `sel` back to any already-selected cell when the pointer re-enters it, rather than blocking the move.
 
@@ -41,9 +43,13 @@ Everything is in one file with three clearly delimited sections:
 
 **Game modes**: `currentMode` tracks the active mode (`MODE_STANDARD` or `MODE_HIDE_WORD`). Game generation rules and mode-specific constraints are defined in `RULES.md` — always consult it when generating games or validating game state.
 
-**Win condition**: tracked via `winModalShown` flag; `openWinModal()` fires once when `found.size >= totalWords`.
+**Win condition**: tracked via `winModalShown` flag; `openWinModal()` fires once when `found.size >= totalWords`. Closing the win modal immediately opens the game mode selector.
 
 **Word path cache**: `wordPathCache` (Map) caches `findWordPath` results per word to avoid redundant traversals on chip hover.
+
+**Share**: `generateShareUrl()` encodes `l` (lang), `m` (mode), `g` (grid string) as URL params. In hide-word mode the target word is encoded with `encodeWord()` (UTF-8 → base64) and stored as `w`. `tryLoadFromUrl()` reads these params at boot, switches language first (so char validation uses the correct alphabet), then restores game state. Invalid/malformed URLs show a modal error and fall through to the mode selector.
+
+**New game flow**: pressing New Game (or closing the win modal) opens the game mode modal. The mode modal is mandatory — it has no close button and cannot be dismissed with Escape or backdrop click. After mode selection, Standard mode starts immediately; Hide a word mode opens a word-entry modal.
 
 ## Game rules
 
