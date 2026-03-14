@@ -575,8 +575,8 @@ const hasWord     = word => {
 const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
 const GAME_GENERATION_RULES = Object.freeze({
   minFindableWords: 5,
-  requiredByLength: Object.freeze({ 4: 1, 5: 1 }),
-  maxAttempts: 400,
+  requiredByLength: Object.freeze({ 4: 3, 5: 2 }),
+  maxAttempts: 5000,
 });
 // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let grid       = [];
@@ -623,28 +623,22 @@ const GAME_GENERATION_RULES = Object.freeze({
     revealed   = false;
     document.getElementById('reveal-btn').disabled = false;
     const pool = getPool();
-    let bestGrid = null;
-    let bestStats = null;
+    let chosenGrid = null;
 
     for (let attempt = 0; attempt < GAME_GENERATION_RULES.maxAttempts; attempt++) {
       grid = randomGridFromPool(pool);
       const quickStats = analyzeGridWords(true);
-      if (!bestStats || quickStats.totalWords > bestStats.totalWords) {
-        bestGrid = [...grid];
-        bestStats = quickStats;
-      }
       if (meetsGameGenerationRules(quickStats)) {
-        bestGrid = [...grid];
+        chosenGrid = [...grid];
         break;
       }
     }
 
-    if (bestGrid) {
-      grid = bestGrid;
-    } else {
-      grid = randomGridFromPool(pool);
+    if (!chosenGrid) {
+      throw new Error('Unable to generate a board that meets game rules.');
     }
 
+    grid = chosenGrid;
     totalWords = countTotalWords();
     renderGrid();
     resetSel();

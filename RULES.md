@@ -28,5 +28,5 @@ Use these rules for every dictionary update in this repository (`lang/*.words`):
 * When creating a new game, the following rules must be met
 * The minimum findable words per game should be at least 5 words
 * Every game must have at least the following number of words 
-    * 4 letter word: 1
-    * 5 letter word: 1
+    * 4 letter word: 3
+    * 5 letter word: 2
