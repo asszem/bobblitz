@@ -6,6 +6,9 @@
 - `lang/en.words`, `lang/hu.words`: newline-separated dictionary word lists.
 - `lexi.png`: modal image asset.
 - `CLAUDE.md`: internal project notes and architecture hints.
+- `COMPONENT-REFERENCES.md`: canonical names for every UI component. **Always consult this file when interpreting prompts that mention UI elements, or when deciding which element to modify.**
+- `RULES.md`: game rules and dictionary rules. Consult before touching game logic or dictionaries.
+- `todo.md`: task tracking. **Update this file when completing work or adding new tasks**, following the rules in its `# Update rules` section exactly (checkbox states, timestamps, section counts, done/reopen flow).
 
 Keep feature logic in the existing JS section of `index.html` unless a clear split is needed.
 

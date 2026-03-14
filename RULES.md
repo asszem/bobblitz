@@ -1,59 +1,77 @@
-
 # Dictionary Rules
 
-Use these rules for every dictionary update in this repository (`lang/*.words`):
+Apply these rules for every dictionary update (`lang/*.words`).
 
-# General rules, applicable for every language
+## General rules
 
-- Words minimum length: **3 characters**.
-- Words maximum length: **8 characters**.
-- All words must be unique
-- Suffixes are valid new words (like plurals)
-- Only valid words can be used, that exists in the selected language.
-- Names can be valid words
-- Remove only invalid words from the dictionary when updating dictionary
-- Add shorter, but valid words to reach the minimum words / game rule
+- Minimum word length: **3 characters**.
+- Maximum word length: **8 characters**.
+- All words must be unique.
+- Only real, valid words in the target language.
+- Suffixes count as separate valid words (e.g. plurals).
+- Names are allowed if they are common words in the language.
+- Never remove valid words. Only remove words that do not exist in the language.
+- Add shorter valid words when the board needs more findable words.
+- Do not add placeholders, random letter combinations, or invented words.
+- Validate 3- and 4-letter words with extra care.
 
-## Hungarian special rules
+## Hungarian
 
-- Make sure Hungarian diacritics preserved
+- Preserve all diacritics (á, é, í, ó, ö, ő, ú, ü, ű).
 
 ## Scope
 
-- Apply these rules separately per language dictionary.
-- Do not add placeholders, random combinations, or non-words.
-- Validate short words (3 or 4 letters) especially carefully to be existing, real words in the given language
+- Apply rules separately per language.
+
+---
 
 # Game phases
-There are two main phase 
-1. Game configuration phasse
-    - In this phase, according to the game mode, the user does the configurations
-2. Game solve phase
-    - in this phase, the user does the word highlighting and actually plays the gaame
-# Game rules
 
-- When creating a new game, the game rules depend on the actual game mode selected
+Every game mode has two phases.
 
-## Standard game mode
+**Config phase** — the player sets up the game. What happens here depends on the mode.
 
-- The minimum findable words per game should be at least 5 words
-- Every game must have at least the following number of words
-  - 4 letter word: 3
-  - 5 letter word: 2
+**Solve phase** — the player swipes across adjacent cells to form words. Swipe paths can go in all 8 directions. Each cell can only be used once per word. A word is submitted when the player lifts their finger or releases the mouse.
 
-## Hide a word game mode
-- Hidden word must be at least 4, max 10 character long, no space
-- Only this word should be included in the game field
-- The rest of the positions should be filled with random, language valid characters
+---
 
-## Enter letters game mode
-- This game mode lets user enter enter a language-valid letter to any point in the grid. 
-- When the game mode is selected, the user can navigate the grids with the cursor keys, or tap 
-- When a grid is selected, it enters into input mode. 
-- when an input is entered, itis validated against the available characters in that language
-- when incorrect, a toast notification displayed and the letter is removed
-- when valid, it remains
-- the user can overwrite any letters
-- When all letters are entered, a button of "Find words" becomes enabled
-- When user presses this button, the game finds all the words that is on the board, according to the language file
-- Then the user can go to Solve mode, which works the same 
+# Game modes
+
+## Standard
+
+The board is randomly generated. Generation repeats until the board meets these requirements:
+
+- At least 5 findable words total.
+- At least 3 words with exactly 4 letters.
+- At least 2 words with exactly 5 letters.
+
+There is no config phase. The board is ready immediately.
+
+## Hide a word
+
+**Config phase:** the player types a secret word. Rules for the secret word:
+
+- Between 4 and 10 characters. No spaces.
+- Only characters valid in the selected language.
+
+The secret word is placed on the board along a random adjacent path. The remaining cells are filled with random language-valid characters. The secret word is the only findable word on the board.
+
+**Solve phase:** the recipient must find the hidden word by swiping.
+
+## Enter letters
+
+**Config phase:** the player fills in all 16 cells manually.
+
+- Navigate between cells with arrow keys or by tapping.
+- Type any language-valid character into the focused cell.
+- Invalid characters show a toast error and are not accepted.
+- Any cell can be overwritten at any time.
+- Pressing Backspace clears the current cell and moves back one.
+- Pressing Close or Escape discards the board and returns to mode selection.
+
+When all 16 cells are filled, a modal appears automatically:
+
+- If words were found: shows the word count. The player can start the game or share the board.
+- If no words were found: shows a message. The player can go back and edit the board. The letters and cursor position are preserved.
+
+**Solve phase:** works the same as Standard mode, using the player's custom board.

@@ -3,3 +3,4 @@
 *.tmp
 .aider*
 dictionary-sources
+.claude

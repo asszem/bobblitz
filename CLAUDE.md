@@ -51,6 +51,22 @@ Everything is in one file with three clearly delimited sections:
 
 **New game flow**: pressing New Game (or closing the win modal) opens the game mode modal. The mode modal is mandatory — it has no close button and cannot be dismissed with Escape or backdrop click. After mode selection, Standard mode starts immediately; Hide a word mode opens a word-entry modal.
 
+## Todo list
+
+`todo.md` tracks all work items. When completing a task or adding new items, update `todo.md` according to the rules defined in its own `# Update rules` section. Key points:
+- Move checked items to `# Done` with a `- completed at yyyy-mm-dd hh:mm` timestamp.
+- Move re-opened items back to `# Todo` with a `- reopened at yyyy-mm-dd hh:mm` timestamp.
+- Keep section header counts accurate after every change.
+
+## Component references
+
+All UI components have canonical names defined in **`COMPONENT-REFERENCES.md`**. Always consult it when:
+- Interpreting a prompt that refers to a part of the UI (e.g. "the close button", "the win modal", "entry phase")
+- Describing UI elements in a response
+- Deciding which HTML element or JS function to touch for a given change
+
+When the user refers to a component by name or a reasonable variation of a name, map it to the entry in `COMPONENT-REFERENCES.md` before acting.
+
 ## Game rules
 
 All game rules (dictionary rules, game mode requirements, word constraints) live in **`RULES.md`**. Always read `RULES.md` before:
