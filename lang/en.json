@@ -20,7 +20,19 @@
     "confirmTitle": "Warning!",
     "confirmCancel": "Cancel",
     "confirmOk": "Okay",
-    "langLabel": "🇬🇧 English"
+    "langLabel": "🇬🇧 English",
+    "gameModes": "Game modes",
+    "gameModesTitle": "Game modes",
+    "gameModesClose": "Close",
+    "gameModesHint": "Select a game mode.",
+    "hideWordMode": "Hide a word",
+    "hideWordTitle": "Hide a word",
+    "hideWordHint": "Type one word with 4 to 10 letters.",
+    "hideWordPlaceholder": "Enter word",
+    "hideWordStart": "Start",
+    "hideWordClose": "Close",
+    "hideWordErrorLength": "Word length must be between 4 and 10.",
+    "hideWordErrorChars": "Use only letters valid in the selected language."
   },
   "dictionaryFile": "./lang/en.words"
 }

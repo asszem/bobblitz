@@ -4,7 +4,8 @@
 
 - add Challenge friend option
 
-- save games in localstorage and continue
+- save multiple games in localStore
+- export save to file
 
 - new game modes: 
 - hide a long word
@@ -17,3 +18,5 @@
 - user types a word
 - a new game is generated, only with that word
 - the game is shared
+
+- adjustable grid size 

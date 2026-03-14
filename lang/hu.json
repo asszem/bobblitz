@@ -20,7 +20,19 @@
     "confirmTitle": "Hahó!",
     "confirmCancel": "Mégse",
     "confirmOk": "Rendben",
-    "langLabel": "🇭🇺 Magyar"
+    "langLabel": "🇭🇺 Magyar",
+    "gameModes": "Játékmódok",
+    "gameModesTitle": "Játékmódok",
+    "gameModesClose": "Bezárás",
+    "gameModesHint": "Válassz játékmódot.",
+    "hideWordMode": "Szorejtes",
+    "hideWordTitle": "Szorejtes",
+    "hideWordHint": "Adj meg egy szót 4 és 10 betű között.",
+    "hideWordPlaceholder": "Szó megadása",
+    "hideWordStart": "Indítás",
+    "hideWordClose": "Bezárás",
+    "hideWordErrorLength": "A szó hossza 4 és 10 között lehet.",
+    "hideWordErrorChars": "Csak az adott nyelvben érvényes betűket használj."
   },
   "dictionaryFile": "./lang/hu.words"
 }

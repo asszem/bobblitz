@@ -293,6 +293,50 @@
       font-size: 0.9rem;
     }
 
+    .mode-option {
+      width: 100%;
+      justify-content: flex-start;
+      text-align: left;
+      margin-top: 12px;
+      color: #cfd6ff;
+      border-color: #3a4068;
+      background: rgba(30, 34, 60, 0.55);
+    }
+
+    .mode-option:hover {
+      color: #eef2ff;
+      border-color: #4e5793;
+      background: rgba(38, 44, 78, 0.72);
+    }
+
+    .modal-input {
+      width: 100%;
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(17, 19, 34, 0.8);
+      color: #eef2ff;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      outline: none;
+    }
+
+    .modal-input:focus {
+      border-color: rgba(96, 165, 250, 0.8);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+    }
+
+    .modal-error {
+      min-height: 18px;
+      margin-top: 8px;
+      color: #fda4af;
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+
     .modal-actions {
       display: flex;
       justify-content: flex-end;
@@ -448,6 +492,7 @@
   <div id="action-buttons">
     <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
     <button class="btn btn-ghost" id="new-btn">Új játék</button>
+    <button class="btn btn-ghost" id="modes-btn">Game modes</button>
   </div>
 </div>
 
@@ -471,6 +516,31 @@
   </div>
 </div>
 
+
+
+<div id="modes-modal" class="modal-backdrop" hidden aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modes-title" aria-describedby="modes-text">
+    <h3 id="modes-title" class="modal-title">Game modes</h3>
+    <p id="modes-text" class="modal-text"></p>
+    <button class="btn btn-ghost mode-option" id="mode-hide-word-btn">Hide a word</button>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="modes-close-btn">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="hide-word-modal" class="modal-backdrop" hidden aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="hide-word-title" aria-describedby="hide-word-text">
+    <h3 id="hide-word-title" class="modal-title">Hide a word</h3>
+    <p id="hide-word-text" class="modal-text">Enter one word with 4 to 10 letters.</p>
+    <input id="hide-word-input" class="modal-input" type="text" maxlength="10" spellcheck="false" autocomplete="off" />
+    <p id="hide-word-error" class="modal-error"></p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="hide-word-cancel-btn">Close</button>
+      <button class="btn btn-danger" id="hide-word-start-btn">Start</button>
+    </div>
+  </div>
+</div>
 <script>
   const LANG_FILES = {
   hu: './lang/hu.json',
@@ -568,11 +638,34 @@ function getTallyText(n) {
 
 const t           = () => langData.labels;
 const getPool     = () => langData.pool;
-const hasWord     = word => {
+const MODE_CLASSIC = 'classic';
+const MODE_HIDE_WORD = 'hide-word';
+let currentMode = MODE_CLASSIC;
+let hideWordTarget = '';
+
+const dictionaryHasWord = word => {
   const node = trieStep(langData.trie, word);
   return !!(node && node.end);
 };
-const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
+const dictionaryHasPrefix = prefix => !!trieStep(langData.trie, prefix);
+const hasWord = word => {
+  if (currentMode === MODE_HIDE_WORD) return !!hideWordTarget && word === hideWordTarget;
+  return dictionaryHasWord(word);
+};
+const hasPrefix = prefix => {
+  if (currentMode === MODE_HIDE_WORD) return !!hideWordTarget && hideWordTarget.startsWith(prefix);
+  return dictionaryHasPrefix(prefix);
+};
+const getActiveMinWordLength = () => (
+  currentMode === MODE_HIDE_WORD
+    ? Math.max(Number(langData.minWordLength || 3), 4)
+    : Number(langData.minWordLength || 3)
+);
+const getActiveMaxWordLength = () => (
+  currentMode === MODE_HIDE_WORD
+    ? Math.max(Number(langData.maxWordLength || 8), hideWordTarget.length || 0)
+    : Number(langData.maxWordLength || 8)
+);
 const GAME_GENERATION_RULES = Object.freeze({
   minFindableWords: 5,
   requiredByLength: Object.freeze({ 4: 3, 5: 2 }),
@@ -608,11 +701,47 @@ const SAVE_KEY = 'bobblitz-save-v1';
   const confirmTextEl = document.getElementById('confirm-text');
   const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
   const confirmOkBtn = document.getElementById('confirm-ok-btn');
+  const modesModal = document.getElementById('modes-modal');
+  const modesTitleEl = document.getElementById('modes-title');
+  const modesTextEl = document.getElementById('modes-text');
+  const hideWordModeBtn = document.getElementById('mode-hide-word-btn');
+  const modesCloseBtn = document.getElementById('modes-close-btn');
+  const hideWordModal = document.getElementById('hide-word-modal');
+  const hideWordTitleEl = document.getElementById('hide-word-title');
+  const hideWordTextEl = document.getElementById('hide-word-text');
+  const hideWordInputEl = document.getElementById('hide-word-input');
+  const hideWordErrorEl = document.getElementById('hide-word-error');
+  const hideWordCancelBtn = document.getElementById('hide-word-cancel-btn');
+  const hideWordStartBtn = document.getElementById('hide-word-start-btn');
 
   function clearSavedGame() {
     try {
       localStorage.removeItem(SAVE_KEY);
     } catch (_) {}
+  }
+
+  function normalizeInputWord(raw) {
+    return String(raw || '').trim().toLocaleUpperCase(lang === 'hu' ? 'hu-HU' : 'en-US');
+  }
+
+  function getPoolCharset() {
+    return new Set([...getPool()]);
+  }
+
+  function validateHideWordInput(rawWord) {
+    const word = normalizeInputWord(rawWord);
+    if (word.length < 4 || word.length > 10) {
+      return { ok: false, word: '', errorKey: 'hideWordErrorLength' };
+    }
+    const charset = getPoolCharset();
+    if (![...word].every(ch => charset.has(ch))) {
+      return { ok: false, word: '', errorKey: 'hideWordErrorChars' };
+    }
+    return { ok: true, word, errorKey: '' };
+  }
+
+  function setHideWordError(message) {
+    hideWordErrorEl.textContent = message || '';
   }
 
   function persistGameState() {
@@ -627,6 +756,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
     const payload = {
       v: 1,
       lang,
+      mode: currentMode,
+      targetWord: currentMode === MODE_HIDE_WORD ? hideWordTarget : '',
       grid: [...grid],
       score,
       words,
@@ -665,6 +796,16 @@ const SAVE_KEY = 'bobblitz-save-v1';
     if (!Number.isFinite(payload.score) || payload.score < 0) return invalidSavedGame();
 
     await switchLanguage(payload.lang);
+
+    const mode = payload.mode === MODE_HIDE_WORD ? MODE_HIDE_WORD : MODE_CLASSIC;
+    let restoredTargetWord = '';
+    if (mode === MODE_HIDE_WORD) {
+      const validTarget = validateHideWordInput(payload.targetWord || '');
+      if (!validTarget.ok) return invalidSavedGame();
+      restoredTargetWord = validTarget.word;
+    }
+    currentMode = mode;
+    hideWordTarget = restoredTargetWord;
 
     const normalizedGrid = payload.grid.map(ch => String(ch || '').trim().toUpperCase());
     if (normalizedGrid.some(ch => ch.length < 1)) return invalidSavedGame();
@@ -736,6 +877,58 @@ const SAVE_KEY = 'bobblitz-save-v1';
     return Array.from({ length: 16 }, () => pool[Math.floor(Math.random() * pool.length)]);
   }
 
+  function shuffleInPlace(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = tmp;
+    }
+  }
+
+  function findRandomPath(length) {
+    if (length < 1 || length > 16) return null;
+    const maxStartAttempts = 350;
+
+    function growPath(path, used, targetLength) {
+      if (path.length === targetLength) return true;
+      const last = path[path.length - 1];
+      const options = [];
+      for (let i = 0; i < 16; i++) {
+        if (!used.has(i) && isAdj(last, i)) options.push(i);
+      }
+      shuffleInPlace(options);
+      for (const next of options) {
+        used.add(next);
+        path.push(next);
+        if (growPath(path, used, targetLength)) return true;
+        path.pop();
+        used.delete(next);
+      }
+      return false;
+    }
+
+    for (let attempt = 0; attempt < maxStartAttempts; attempt++) {
+      const start = Math.floor(Math.random() * 16);
+      const used = new Set([start]);
+      const path = [start];
+      if (growPath(path, used, length)) return path;
+    }
+    return null;
+  }
+
+  function generateHideWordGrid(word) {
+    const pool = getPool();
+    if (!pool || pool.length < 1) throw new Error('Language pool is empty.');
+    const path = findRandomPath(word.length);
+    if (!path) throw new Error('Unable to generate path for hidden word.');
+    const nextGrid = randomGridFromPool(pool);
+    for (let i = 0; i < word.length; i++) {
+      nextGrid[path[i]] = word[i];
+    }
+    return nextGrid;
+  }
+
   function meetsGameGenerationRules(stats) {
     if (!stats) return false;
     if (stats.totalWords < GAME_GENERATION_RULES.minFindableWords) return false;
@@ -748,6 +941,24 @@ const SAVE_KEY = 'bobblitz-save-v1';
     revealed   = false;
     revealedWords.clear();
     document.getElementById('reveal-btn').disabled = false;
+
+    if (currentMode === MODE_HIDE_WORD) {
+      if (!hideWordTarget) {
+        throw new Error('Hide-word mode requires a target word.');
+      }
+      grid = generateHideWordGrid(hideWordTarget);
+      const analysis = analyzeGridWords(false);
+      gameWords = [...analysis.allWords];
+      totalWords = analysis.totalWords;
+      if (!gameWords.includes(hideWordTarget)) {
+        throw new Error('Hidden word not found on generated board.');
+      }
+      renderGrid();
+      resetSel();
+      updateCountEl();
+      return;
+    }
+
     const pool = getPool();
     let chosenGrid = null;
 
@@ -1033,7 +1244,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
       .map((l, i) => `<span class="letter-span" style="animation-delay:${i * 0.04}s">${l}</span>`)
       .join('');
     const len = word.length;
-    const minLen = langData.minWordLength;
+    const minLen = getActiveMinWordLength();
     const s = t();
     wordMeta.textContent = len >= minLen
       ? formatTemplate(s.wordMetaTemplate, { len, pts: calcScore(word) })
@@ -1052,7 +1263,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
     const word = sel.map(i => grid[i]).join('');
 
     // Invalid (too short, unknown, already found): silent reset
-    if (word.length < langData.minWordLength || !hasWord(word) || found.has(word)) {
+    if (word.length < getActiveMinWordLength() || !hasWord(word) || found.has(word)) {
       resetSel();
       return;
     }
@@ -1189,6 +1400,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
   async function switchLanguageAndReset() {
     await switchLanguage(lang === 'hu' ? 'en' : 'hu');
+    currentMode = MODE_CLASSIC;
+    hideWordTarget = '';
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
     bestEl.textContent  = '0';
@@ -1218,12 +1431,23 @@ const SAVE_KEY = 'bobblitz-save-v1';
     document.getElementById('lbl-best').textContent        = s.best;
     document.getElementById('reveal-btn').textContent      = s.revealAll;
     document.getElementById('new-btn').textContent         = s.newGame;
+    document.getElementById('modes-btn').textContent       = s.gameModes;
     document.getElementById('found-words-lbl').textContent = s.foundWords;
     document.getElementById('lang-btn').textContent        = s.langLabel;
     confirmTitleEl.textContent = s.confirmTitle;
     confirmTextEl.textContent = s.confirm;
     confirmCancelBtn.textContent = s.confirmCancel;
     confirmOkBtn.textContent = s.confirmOk;
+    modesTitleEl.textContent = s.gameModesTitle || s.gameModes;
+    modesTextEl.textContent = s.gameModesHint || '';
+    hideWordModeBtn.textContent = s.hideWordMode || 'Hide a word';
+    modesCloseBtn.textContent = s.gameModesClose || s.confirmCancel || 'Close';
+    hideWordTitleEl.textContent = s.hideWordTitle || s.hideWordMode || 'Hide a word';
+    hideWordTextEl.textContent = s.hideWordHint || '';
+    hideWordInputEl.placeholder = s.hideWordPlaceholder || '';
+    hideWordCancelBtn.textContent = s.hideWordClose || s.confirmCancel || 'Close';
+    hideWordStartBtn.textContent = s.hideWordStart || s.confirmOk || 'Start';
+    setHideWordError('');
     if (!bestWord) bestEl.textContent = '0';
     if (found.size > 0) tallyEl.textContent = getTallyText(found.size);
     else tallyEl.textContent = '0';
@@ -1231,6 +1455,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
   }
 
   function startNewGame() {
+    currentMode = MODE_CLASSIC;
+    hideWordTarget = '';
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
     bestEl.textContent  = '0';
@@ -1260,12 +1486,95 @@ const SAVE_KEY = 'bobblitz-save-v1';
     confirmModal.setAttribute('aria-hidden', 'true');
   }
 
+  function openGameModesModal() {
+    const s = t();
+    modesTitleEl.textContent = s.gameModesTitle || s.gameModes;
+    modesTextEl.textContent = s.gameModesHint || '';
+    hideWordModeBtn.textContent = s.hideWordMode || 'Hide a word';
+    modesCloseBtn.textContent = s.gameModesClose || s.confirmCancel || 'Close';
+    modesModal.hidden = false;
+    modesModal.setAttribute('aria-hidden', 'false');
+    modesCloseBtn.focus();
+  }
+
+  function closeGameModesModal() {
+    modesModal.hidden = true;
+    modesModal.setAttribute('aria-hidden', 'true');
+  }
+
+  function openHideWordModal() {
+    const s = t();
+    hideWordTitleEl.textContent = s.hideWordTitle || s.hideWordMode || 'Hide a word';
+    hideWordTextEl.textContent = s.hideWordHint || '';
+    hideWordInputEl.placeholder = s.hideWordPlaceholder || '';
+    hideWordCancelBtn.textContent = s.hideWordClose || s.confirmCancel || 'Close';
+    hideWordStartBtn.textContent = s.hideWordStart || s.confirmOk || 'Start';
+    hideWordInputEl.value = '';
+    setHideWordError('');
+    hideWordModal.hidden = false;
+    hideWordModal.setAttribute('aria-hidden', 'false');
+    hideWordInputEl.focus();
+  }
+
+  function closeHideWordModal() {
+    hideWordModal.hidden = true;
+    hideWordModal.setAttribute('aria-hidden', 'true');
+    hideWordInputEl.value = '';
+    setHideWordError('');
+  }
+
+  function startHideWordGame(word) {
+    currentMode = MODE_HIDE_WORD;
+    hideWordTarget = word;
+    score = 0; bestWord = '';
+    scoreEl.textContent = '0';
+    bestEl.textContent  = '0';
+    tallyEl.textContent = '0';
+    found.clear();
+    revealedWords.clear();
+    wordsList.innerHTML = '';
+    initGame();
+    persistGameState();
+  }
+
+  function submitHideWordMode() {
+    const s = t();
+    const validation = validateHideWordInput(hideWordInputEl.value);
+    if (!validation.ok) {
+      setHideWordError(s[validation.errorKey] || s.hideWordErrorLength || '');
+      return;
+    }
+    if (hasGameProgress()) {
+      closeHideWordModal();
+      closeGameModesModal();
+      openWarningConfirm(() => startHideWordGame(validation.word));
+      return;
+    }
+    closeHideWordModal();
+    closeGameModesModal();
+    startHideWordGame(validation.word);
+  }
+
   document.getElementById('new-btn').addEventListener('click', () => {
     if (score > 0) {
       openWarningConfirm(() => startNewGame());
       return;
     }
     startNewGame();
+  });
+  document.getElementById('modes-btn').addEventListener('click', openGameModesModal);
+  hideWordModeBtn.addEventListener('click', () => {
+    closeGameModesModal();
+    openHideWordModal();
+  });
+  hideWordCancelBtn.addEventListener('click', closeHideWordModal);
+  hideWordStartBtn.addEventListener('click', submitHideWordMode);
+  hideWordInputEl.addEventListener('input', () => setHideWordError(''));
+  hideWordInputEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      submitHideWordMode();
+    }
   });
 
   confirmCancelBtn.addEventListener('click', closeNewGameConfirm);
@@ -1274,11 +1583,21 @@ const SAVE_KEY = 'bobblitz-save-v1';
     closeNewGameConfirm();
     if (action) await action();
   });
+  modesCloseBtn.addEventListener('click', closeGameModesModal);
   confirmModal.addEventListener('click', e => {
     if (e.target === confirmModal) closeNewGameConfirm();
   });
+  modesModal.addEventListener('click', e => {
+    if (e.target === modesModal) closeGameModesModal();
+  });
+  hideWordModal.addEventListener('click', e => {
+    if (e.target === hideWordModal) closeHideWordModal();
+  });
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !confirmModal.hidden) closeNewGameConfirm();
+    if (e.key !== 'Escape') return;
+    if (!confirmModal.hidden) closeNewGameConfirm();
+    if (!modesModal.hidden) closeGameModesModal();
+    if (!hideWordModal.hidden) closeHideWordModal();
   });
 
   // â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -1336,6 +1655,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
     const all = new Set();
     const vis = new Array(16).fill(false);
     const lengthCounts = Object.create(null);
+    const maxLen = getActiveMaxWordLength();
     let stop = false;
 
     function registerWord(word) {
@@ -1352,7 +1672,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
       if (stop) return;
       if (!hasPrefix(word)) return;
       if (word.length >= langData.minWordLength && hasWord(word)) registerWord(word);
-      if (stop || word.length >= langData.maxWordLength) return;
+      if (stop || word.length >= maxLen) return;
       for (let n = 0; n < 16; n++) {
         if (!vis[n] && isAdj(last, n)) {
           vis[n] = true;
