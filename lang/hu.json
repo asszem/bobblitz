@@ -1,6 +1,6 @@
 {
   "code": "hu",
-  "minWordLength": 2,
+  "minWordLength": 3,
   "maxWordLength": 8,
   "pool": "AAAAAAAAAÁÁÁÁÁBBBCCDDDEEEEEEEEEEÉÉÉÉFFGGGHHIIIIIIÍÍÍJJKKKKKKLLLLLLMMMMNNNNNNOOOOOOÓÓÓÖÖÖŐŐPPPQRRRRRRSSSSTTTTTTTUUUUÚÚÚÜÜÜŰŰVVVWXYYZZZZ",
   "labels": {
