@@ -26,6 +26,8 @@
     "gameModesClose": "Close",
     "gameModesHint": "Select a game mode.",
     "hideWordMode": "Hide a word",
+    "hideWordShortDesc": "Challenge a friend to find your hidden word.",
+    "hideWordLongDesc": "Type a secret word and share the board with a friend. Your word is hidden somewhere among the letters — they have to find it by swiping. They won't see the word until they discover it themselves.",
     "hideWordTitle": "Hide a word",
     "hideWordHint": "Type one word with 4 to 10 letters.",
     "hideWordPlaceholder": "Enter word",
@@ -34,6 +36,8 @@
     "hideWordErrorLength": "Word length must be between 4 and 10.",
     "hideWordErrorChars": "Use only letters valid in the selected language.",
     "standardMode": "Standard",
+    "standardModeShortDesc": "Find all hidden words on the board.",
+    "standardModeLongDesc": "Swipe across adjacent letters to form words. The board is generated with a guaranteed set of findable words — from short 3-letter picks to longer high-scoring ones. Find them all to win.",
     "standardModeTitle": "Standard",
     "standardModeHint": "Standard mode rules:",
     "standardModeStart": "Start",
@@ -51,7 +55,14 @@
     "shareModalClose": "Close",
     "urlErrorTitle": "Invalid link",
     "urlErrorText": "The shared link is invalid or expired. Starting a new game.",
-    "urlErrorClose": "OK"
+    "urlErrorClose": "OK",
+    "shareSenderLabel": "Sender",
+    "shareSenderPlaceholder": "Your name",
+    "shareMessageLabel": "Message",
+    "shareMessagePlaceholder": "Your message",
+    "shareDefaultSender": "Böbblitz",
+    "shareDefaultMessage": "Try to solve this!",
+    "greetingClose": "Let's go!"
   },
   "dictionaryFile": "./lang/en.words"
 }
