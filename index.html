@@ -473,11 +473,12 @@
     }
 
     .cell.flash-good {
-      background: linear-gradient(145deg, #4ade80, #16a34a) !important;
-      border-color: #86efac !important;
-      box-shadow: 0 0 14px 4px rgba(74,222,128,0.6) !important;
-      color: #052e16 !important;
+      border-color: rgba(134,239,172,0.48) !important;
+      box-shadow: 0 6px 22px rgba(34,197,94,0.46) !important;
+      color: white !important;
+      transform: scale(1.08) !important;
       transition: none !important;
+      z-index: 3;
     }
 
   </style>
@@ -1368,18 +1369,34 @@ const hideWordModal = document.getElementById('hide-word-modal');
     const flashIdxs = [...sel];
     const cells = gridEl.children;
     for (let i = 0; i < cells.length; i++) cells[i].classList.remove('selected', 'first-selected');
-    for (const i of flashIdxs) cells[i].classList.add('flash-good');
     sel = [];
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const STAGGER = 40;
+    const flashPalette = { first: ['#86efac', '#22c55e'], mid: ['#22c55e', '#15803d'], last: ['#4ade80', '#166534'] };
+    const flashLast = flashIdxs.length - 1;
+    // Add each letter one by one, keep all highlighted until last is on,
+    // then hold for 2× stagger before clearing all at once.
+    flashIdxs.forEach((idx, n) => {
+      setTimeout(() => {
+        const cell = cells[idx];
+        const colors = n === 0 ? flashPalette.first : n === flashLast ? flashPalette.last : flashPalette.mid;
+        const prevIdx = n > 0         ? flashIdxs[n - 1] : idx;
+        const nextIdx = n < flashLast ? flashIdxs[n + 1] : idx;
+        const dc = (nextIdx % 4)           - (prevIdx % 4);
+        const dr = Math.floor(nextIdx / 4) - Math.floor(prevIdx / 4);
+        const deg = Math.round(Math.atan2(dc, -dr) * 180 / Math.PI);
+        cell.style.background = `linear-gradient(${deg}deg, ${colors[0]}, ${colors[1]})`;
+        cell.classList.add('flash-good');
+      }, n * STAGGER);
+    });
     setTimeout(() => {
-      for (const i of flashIdxs) {
-        cells[i].style.transition = 'none';
-        cells[i].classList.remove('flash-good');
+      for (const idx of flashIdxs) {
+        cells[idx].style.transition = 'none';
+        cells[idx].classList.remove('flash-good');
+        cells[idx].style.background = '';
       }
-      requestAnimationFrame(() => {
-        for (const i of flashIdxs) cells[i].style.transition = '';
-      });
-    }, 250);
+      requestAnimationFrame(() => { for (const idx of flashIdxs) cells[idx].style.transition = ''; });
+    }, flashLast * STAGGER + STAGGER * 2);
 
     found.add(word);
     revealedWords.delete(word);
