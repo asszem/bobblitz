@@ -4,9 +4,19 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = __dirname;
-const RULES_PATH = path.join(ROOT, 'RULES.md');
-const LANG_DIR = path.join(ROOT, 'lang');
+const SCRIPT_DIR = __dirname;
+const REPO_ROOT = resolveRepoRoot(SCRIPT_DIR);
+const RULES_PATH = path.join(REPO_ROOT, 'RULES.md');
+const LANG_DIR = path.join(REPO_ROOT, 'lang');
+
+function resolveRepoRoot(startDir) {
+  const direct = path.join(startDir, 'RULES.md');
+  if (fs.existsSync(direct)) return startDir;
+  const parent = path.dirname(startDir);
+  const parentRules = path.join(parent, 'RULES.md');
+  if (fs.existsSync(parentRules)) return parent;
+  return startDir;
+}
 
 function fail(message) {
   console.error(`Error: ${message}`);
@@ -18,19 +28,23 @@ function usage() {
     [
       'Usage:',
       '  update-dictionary <language> <length-count> [<length-count> ...]',
+      '  update-dictionary verify [language]',
       '',
-      'Example:',
+      'Examples:',
       '  update-dictionary hu 3-100 4-100 5-100',
+      '  update-dictionary verify',
+      '  update-dictionary verify hu',
       '',
       'Notes:',
       '  - <length-count> format: 3-100 means add 100 new words of length 3.',
       '  - Rules (min/max length) are read from RULES.md.',
-      '  - Source candidates are read from lang/<language>.source.words or known .dic files.',
+      '  - verify mode removes invalid words from existing dictionaries.',
     ].join('\n')
   );
 }
 
 function parseRules() {
+  if (!fs.existsSync(RULES_PATH)) fail(`RULES.md not found at ${RULES_PATH}`);
   const raw = fs.readFileSync(RULES_PATH, 'utf8');
   const minMatch = raw.match(/Words minimum length:\s*\*\*(\d+)\*\*/i);
   const maxMatch = raw.match(/Words maximum length:\s*\*\*(\d+)\*\*/i);
@@ -43,29 +57,41 @@ function parseRules() {
 }
 
 function parseArgs(argv, min, max) {
-  if (argv.length < 2) {
+  if (argv.length < 1) {
     usage();
     process.exit(1);
   }
-  const language = argv[0].toLowerCase();
+
+  const verify = argv.some((t) => t.toLowerCase() === 'verify');
+  const nonVerify = argv.filter((t) => t.toLowerCase() !== 'verify');
+
+  let language = null;
   const specs = new Map();
 
-  for (const token of argv.slice(1)) {
-    const match = token.match(/^(\d+)-(\d+)$/);
-    if (!match) {
-      fail(`Invalid spec "${token}". Expected format <length-count>, e.g. 4-120`);
+  for (const token of nonVerify) {
+    const spec = token.match(/^(\d+)-(\d+)$/);
+    if (spec) {
+      const len = Number(spec[1]);
+      const count = Number(spec[2]);
+      if (!Number.isInteger(len) || !Number.isInteger(count) || len < 1 || count < 0) {
+        fail(`Invalid spec "${token}"`);
+      }
+      if (len < min || len > max) {
+        fail(`Length ${len} is outside rules range ${min}..${max}`);
+      }
+      specs.set(len, (specs.get(len) || 0) + count);
+      continue;
     }
-    const len = Number(match[1]);
-    const count = Number(match[2]);
-    if (!Number.isInteger(len) || !Number.isInteger(count) || len < 1 || count < 0) {
-      fail(`Invalid spec "${token}"`);
+
+    if (!language) {
+      language = token.toLowerCase();
+      continue;
     }
-    if (len < min || len > max) {
-      fail(`Length ${len} is outside rules range ${min}..${max}`);
-    }
-    specs.set(len, (specs.get(len) || 0) + count);
+
+    fail(`Unexpected argument: "${token}"`);
   }
-  return { language, specs };
+
+  return { verify, language, specs };
 }
 
 function targetDictionaryPath(language) {
@@ -104,9 +130,12 @@ function parseHunspellDic(text) {
 function findSourceCandidates(language) {
   const candidates = [
     { type: 'words', file: path.join(LANG_DIR, `${language}.source.words`) },
-    { type: 'dic', file: path.join(ROOT, `${language}.dic`) },
-    { type: 'dic', file: path.join(ROOT, `${language}_HU.dic`) },
-    { type: 'dic', file: path.join(ROOT, `${language}_US.dic`) },
+    { type: 'dic', file: path.join(REPO_ROOT, `${language}.dic`) },
+    { type: 'dic', file: path.join(REPO_ROOT, `${language}_HU.dic`) },
+    { type: 'dic', file: path.join(REPO_ROOT, `${language}_US.dic`) },
+    { type: 'dic', file: path.join(SCRIPT_DIR, `${language}.dic`) },
+    { type: 'dic', file: path.join(SCRIPT_DIR, `${language}_HU.dic`) },
+    { type: 'dic', file: path.join(SCRIPT_DIR, `${language}_US.dic`) },
   ];
 
   if (language === 'hu') {
@@ -156,27 +185,65 @@ function histogram(words) {
     .join(' ');
 }
 
-function main() {
-  if (!fs.existsSync(RULES_PATH)) fail('RULES.md not found');
+function listLanguages() {
+  if (!fs.existsSync(LANG_DIR)) fail(`Language directory not found: ${LANG_DIR}`);
+  return fs
+    .readdirSync(LANG_DIR)
+    .filter((name) => name.endsWith('.words'))
+    .map((name) => name.replace(/\.words$/, ''))
+    .sort();
+}
 
-  const { min, max } = parseRules();
-  const { language, specs } = parseArgs(process.argv.slice(2), min, max);
+function loadSourceSet(language, min, max, existingRaw) {
+  const source =
+    findSourceCandidates(language) ||
+    {
+      sourcePath: `${targetDictionaryPath(language)} (self)`,
+      words: existingRaw,
+    };
+  const sourceValid = toValidUnique(source.words, language, min, max, null);
+  return {
+    sourcePath: source.sourcePath,
+    sourceValid,
+    sourceSet: new Set(sourceValid),
+  };
+}
+
+function verifyLanguage(language, min, max) {
   const dictPath = targetDictionaryPath(language);
-
   if (!fs.existsSync(dictPath)) {
     fail(`Dictionary not found: ${dictPath}`);
   }
 
   const existingRaw = parseWordLines(fs.readFileSync(dictPath, 'utf8'));
-  const source =
-    findSourceCandidates(language) ||
-    {
-      sourcePath: `${dictPath} (self)`,
-      words: existingRaw,
-    };
+  const { sourcePath, sourceSet } = loadSourceSet(language, min, max, existingRaw);
+  const cleaned = toValidUnique(existingRaw, language, min, max, sourceSet);
 
-  const sourceValid = toValidUnique(source.words, language, min, max, null);
-  const sourceSet = new Set(sourceValid);
+  fs.writeFileSync(dictPath, cleaned.join('\n') + (cleaned.length ? '\n' : ''), 'utf8');
+
+  console.log(`Verified ${dictPath}`);
+  console.log(`Rules: min=${min}, max=${max}`);
+  console.log(`Source: ${sourcePath}`);
+  console.log(`Removed invalid/unsupported existing words: ${existingRaw.length - cleaned.length}`);
+  console.log(`Final word count: ${cleaned.length}`);
+  console.log(`Length histogram: ${histogram(cleaned)}`);
+}
+
+function updateLanguage(language, specs, min, max) {
+  if (!language) {
+    fail('Language is required when adding words. Example: update-dictionary hu 3-100 4-100');
+  }
+  if (specs.size < 1) {
+    fail('At least one <length-count> spec is required when adding words.');
+  }
+
+  const dictPath = targetDictionaryPath(language);
+  if (!fs.existsSync(dictPath)) {
+    fail(`Dictionary not found: ${dictPath}`);
+  }
+
+  const existingRaw = parseWordLines(fs.readFileSync(dictPath, 'utf8'));
+  const { sourcePath, sourceValid, sourceSet } = loadSourceSet(language, min, max, existingRaw);
   const cleanedExisting = toValidUnique(existingRaw, language, min, max, sourceSet);
   const existingSet = new Set(cleanedExisting);
 
@@ -210,7 +277,7 @@ function main() {
 
   console.log(`Updated ${dictPath}`);
   console.log(`Rules: min=${min}, max=${max}`);
-  console.log(`Source: ${source.sourcePath} (${sourceValid.length} valid candidates)`);
+  console.log(`Source: ${sourcePath} (${sourceValid.length} valid candidates)`);
   console.log(`Removed invalid/unsupported existing words: ${existingRaw.length - cleanedExisting.length}`);
   console.log(`Added new words: ${toAdd.length}`);
   console.log(
@@ -222,6 +289,21 @@ function main() {
   );
   console.log(`Final word count: ${finalWords.length}`);
   console.log(`Length histogram: ${histogram(finalWords)}`);
+}
+
+function main() {
+  const { min, max } = parseRules();
+  const { verify, language, specs } = parseArgs(process.argv.slice(2), min, max);
+
+  if (verify && specs.size === 0) {
+    const languages = language ? [language] : listLanguages();
+    for (const lang of languages) {
+      verifyLanguage(lang, min, max);
+    }
+    return;
+  }
+
+  updateLanguage(language, specs, min, max);
 }
 
 main();
