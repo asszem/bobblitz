@@ -1430,11 +1430,41 @@ const hideWordModal = document.getElementById('hide-word-modal');
   }
 
   function cellFromPoint(x, y) {
-    const el = document.elementFromPoint(x, y);
-    if (!el) return -1;
-    if (el.classList.contains('cell')) return parseInt(el.dataset.i);
-    const c = el.closest && el.closest('.cell');
-    return c ? parseInt(c.dataset.i) : -1;
+    if (sel.length === 0) {
+      // Initial tap — use hit-test directly
+      const el = document.elementFromPoint(x, y);
+      if (!el) return -1;
+      if (el.classList.contains('cell')) return parseInt(el.dataset.i);
+      const c = el.closest && el.closest('.cell');
+      return c ? parseInt(c.dataset.i) : -1;
+    }
+
+    // Direction-based selection: snap movement angle from the last selected
+    // cell's center to one of 8 directions. This prevents diagonal swipes from
+    // accidentally registering orthogonal neighbors that the pointer grazes.
+    const prev    = sel[sel.length - 1];
+    const gr      = gridEl.getBoundingClientRect();
+    const cellW   = gr.width  / 4;
+    const cellH   = gr.height / 4;
+    const prevCol = prev % 4;
+    const prevRow = Math.floor(prev / 4);
+    const prevCx  = gr.left + (prevCol + 0.5) * cellW;
+    const prevCy  = gr.top  + (prevRow + 0.5) * cellH;
+    const dx      = x - prevCx;
+    const dy      = y - prevCy;
+    const dist    = Math.hypot(dx, dy);
+
+    // Dead zone: pointer must leave 40% of a cell width before switching cells
+    if (dist < cellW * 0.4) return prev;
+
+    // Snap to one of 8 directions (45° sectors)
+    const sector   = Math.round(Math.atan2(dy, dx) / (Math.PI / 4));
+    const dirX     = Math.round(Math.cos(sector * Math.PI / 4));
+    const dirY     = Math.round(Math.sin(sector * Math.PI / 4));
+    const targetRow = prevRow + dirY;
+    const targetCol = prevCol + dirX;
+    if (targetRow < 0 || targetRow >= 4 || targetCol < 0 || targetCol >= 4) return -1;
+    return targetRow * 4 + targetCol;
   }
 
   gridEl.addEventListener('mousedown', e => {
