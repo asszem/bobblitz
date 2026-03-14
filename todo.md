@@ -1,4 +1,5 @@
 # Todo
+ask to ID component references
 ## P0 Uncategorized (open: 1, done: 2)
 
 ## P2 Game modes (open: 6, done: 4)
@@ -18,16 +19,16 @@
 
 ## P3 UI (open: 2, done: 0)
 play mode redesign - when in game phase, hide controls, options, footer
-- [ ] P0 - update the color scheme for better visibility
-- [ ] P0 - update button visibility
+- [x] P0 - update the color scheme for better visibility
+- [ x] P0 - update button visibility
 
 ## P3 Game options (open: 2, done: 0)
 - [ ] P0 - option to combine languages
 - [ ] P0 - adjustable grid size
 
 ## P4 Feedback (open: 3, done: 0)
-- [ ] P0 - add feedback and name to header
-- [ ] P0 - report incorrect word option for revealed list
+- [x ] P0 - add feedback and name to header
+- [] P0 - report incorrect word option for revealed list
 - [ ] P0 - report missing word option
 
 ## P4 Usability (open: 1, done: 0)

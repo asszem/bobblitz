@@ -45,6 +45,7 @@
     "urlErrorClose": "OK",
     "feedbackBtn": "Visszajelzés, funkcióötlet vagy hibás szó beküldése",
     "feedbackTitle": "Kapcsolat",
+    "feedbackDesc": "Játékkal kapcsolatos visszajelzést, funkcióötletet vagy hibajelentést emailben várok",
     "feedbackEmailLabel": "Küldj emailt",
     "feedbackBlueskyLabel": "Keress meg BlueSky-on",
     "feedbackClose": "Bezárás",

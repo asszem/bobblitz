@@ -31,7 +31,7 @@ Everything is in one file with three clearly delimited sections:
 
 **Input pipeline**: Both mouse and touch funnel through `cellFromPoint(x, y)` → `trySelect(idx)` → `applyVisuals()`. The canvas overlay has `pointer-events: none` so `document.elementFromPoint` resolves to the `.cell` beneath it.
 
-**Direction-based selection**: When `sel` is non-empty, `cellFromPoint` does not use hit-testing. Instead it computes the movement angle from the last selected cell's center, snaps it to one of 8 directions (45° sectors), and returns the cell in that direction. A 40%-of-cell-width dead zone prevents jitter from switching cells. This stops diagonal swipes from accidentally registering orthogonal neighbors.
+**Direction-based selection**: When `sel` is non-empty, `cellFromPoint` does not use hit-testing. Instead it computes the movement angle from the last selected cell's center, snaps it to one of 8 directions (45° sectors), and returns the cell in that direction. A 50%-of-slot-width dead zone ensures a cell switch only fires once the pointer has crossed the cell boundary into the gap. This stops diagonal swipes from accidentally registering orthogonal neighbors.
 
 **Backtracking**: `trySelect` trims `sel` back to any already-selected cell when the pointer re-enters it, rather than blocking the move.
 
@@ -50,6 +50,15 @@ Everything is in one file with three clearly delimited sections:
 **Share**: `generateShareUrl()` encodes `l` (lang), `m` (mode), `g` (grid string) as URL params. In hide-word mode the target word is encoded with `encodeWord()` (UTF-8 → base64) and stored as `w`. `tryLoadFromUrl()` reads these params at boot, switches language first (so char validation uses the correct alphabet), then restores game state. Invalid/malformed URLs show a modal error and fall through to the mode selector.
 
 **New game flow**: pressing New Game (or closing the win modal) opens the game mode modal. The mode modal is mandatory — it has no close button and cannot be dismissed with Escape or backdrop click. After mode selection, Standard mode starts immediately; Hide a word mode opens a word-entry modal.
+
+## Implementation tasks
+
+`IMPLEMENTATION-TASKS.md` tracks feature/fix tasks. Update rules are defined in its own `# Update rules` section. Key points:
+- Task headers follow the format: `(Status) ID:n Description`
+- Steps follow the format: `- [x] IDn-n Description`
+- Assign the next available integer ID to each new task; assign sequential sub-IDs to its steps.
+- Mark each step `[x]` when done, `[ ]` when not. Heading is `(Done)` when all steps are checked, `(Open)` otherwise.
+- Do **not** move tasks to `implementations-done.md` unless the user explicitly asks.
 
 ## Todo list
 

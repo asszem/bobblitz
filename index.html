@@ -284,20 +284,62 @@
       font-size: 0.9rem;
     }
 
-    .mode-option {
-      width: 100%;
-      justify-content: flex-start;
-      text-align: left;
-      margin-top: 12px;
-      color: #cfd6ff;
-      border-color: #3a4068;
-      background: rgba(30, 34, 60, 0.55);
+    .modes-modal-card {
+      width: min(480px, 96vw);
     }
 
-    .mode-option:hover {
-      color: #eef2ff;
+    .mode-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mode-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1.5px solid #3a4068;
+      background: rgba(30, 34, 60, 0.55);
+      color: inherit;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+      outline: none;
+    }
+
+    .mode-card:hover {
       border-color: #4e5793;
       background: rgba(38, 44, 78, 0.72);
+    }
+
+    .mode-card:active {
+      transform: scale(0.98);
+    }
+
+    .mode-card-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #cfd6ff;
+      letter-spacing: 0.2px;
+    }
+
+    .mode-card:hover .mode-card-name {
+      color: #eef2ff;
+    }
+
+    .mode-card-desc {
+      font-size: 0.82rem;
+      color: #7878a8;
+      line-height: 1.45;
+    }
+
+    .mode-card:hover .mode-card-desc {
+      color: #9999cc;
     }
 
     .game-mode-row {
@@ -616,10 +658,19 @@
 
     .feedback-modal-link:hover { color: #e94560; }
 
-    .feedback-modal-email {
-      font-size: 0.9rem;
-      color: #9999bb;
+    .feedback-modal-desc {
       margin-top: 8px;
+    }
+
+    .feedback-modal-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      clip-path: none;
+      margin-bottom: 10px;
+    }
+
+    .feedback-modal-email-link {
       word-break: break-all;
     }
 
@@ -679,8 +730,15 @@
 
 <div id="feedback-modal" class="modal-backdrop" hidden aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="feedback-modal-title">
+    <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:tk57t3uykdvzeb4atgszbaf7/bafkreie3vflchrdacltsprbxxygh5l2w3j6oj4vhx7fnsefbuyi5fxjyxq" alt="Profile picture" class="modal-image modal-image-rounded feedback-modal-avatar">
     <h3 id="feedback-modal-title" class="modal-title"></h3>
-    <p id="feedback-modal-email" class="feedback-modal-email">asszem78@gmail.com</p>
+    <p id="feedback-modal-desc" class="modal-text feedback-modal-desc"></p>
+    <a id="feedback-modal-email" href="mailto:asszem78@gmail.com" class="feedback-modal-link feedback-modal-email-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M2 4h20v16H2V4zm0 0l10 9 10-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span><span id="feedback-modal-email-label"></span> asszem78@gmail.com</span>
+    </a>
     <a id="feedback-modal-bluesky" href="https://bsky.app/profile/asszem.bsky.social" target="_blank" rel="noopener" class="feedback-modal-link">
       <svg width="18" height="18" viewBox="0 0 360 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M180 141.964C163.699 110.262 119.308 51.1817 78.0347 22.1449C38.1307 -5.90745 0 6.00365 0 53.1696V259.274C0 306.44 38.1307 318.351 78.0347 290.294C119.308 261.257 163.699 202.177 180 170.475C196.301 202.177 240.692 261.257 281.965 290.294C322.869 318.351 361 306.44 361 259.274V53.1696C361 6.00365 322.869 -5.90745 281.965 22.1449C240.692 51.1817 196.301 110.262 180 141.964Z" fill="currentColor"/>
@@ -770,12 +828,22 @@
 
 
 <div id="modes-modal" class="modal-backdrop" hidden aria-hidden="true">
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modes-title" aria-describedby="modes-long-desc">
+  <div class="modal-card modes-modal-card" role="dialog" aria-modal="true" aria-labelledby="modes-title">
     <h3 id="modes-title" class="modal-title">Game modes</h3>
-    <p id="modes-long-desc" class="modal-text"></p>
-    <button class="btn btn-ghost mode-option" id="mode-standard-btn">Standard</button>
-    <button class="btn btn-ghost mode-option" id="mode-hide-word-btn">Hide a word</button>
-    <button class="btn btn-ghost mode-option" id="mode-enter-letters-btn">Enter letters</button>
+    <div class="mode-options-list">
+      <button class="mode-card" id="mode-standard-btn">
+        <span class="mode-card-name"></span>
+        <span class="mode-card-desc" id="mode-standard-desc"></span>
+      </button>
+      <button class="mode-card" id="mode-hide-word-btn">
+        <span class="mode-card-name"></span>
+        <span class="mode-card-desc" id="mode-hide-word-desc"></span>
+      </button>
+      <button class="mode-card" id="mode-enter-letters-btn">
+        <span class="mode-card-name"></span>
+        <span class="mode-card-desc" id="mode-enter-letters-desc"></span>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -986,7 +1054,6 @@ const SAVE_KEY = 'bobblitz-save-v1';
   const winShareBtn = document.getElementById('win-share-btn');
   const modesModal      = document.getElementById('modes-modal');
   const modesTitleEl    = document.getElementById('modes-title');
-  const modesLongDescEl = document.getElementById('modes-long-desc');
   const standardModeBtn = document.getElementById('mode-standard-btn');
   const hideWordModeBtn = document.getElementById('mode-hide-word-btn');
   const hideWordModal        = document.getElementById('hide-word-modal');
@@ -1691,8 +1758,10 @@ const SAVE_KEY = 'bobblitz-save-v1';
     const dy      = y - prevCy;
     const dist    = Math.hypot(dx, dy);
 
-    // Dead zone: pointer must leave 40% of a cell width before switching cells
-    if (dist < cellW * 0.4) return prev;
+    // Dead zone: pointer must leave the current cell (≥50% of slot width from
+    // center) before a direction switch fires. The actual cell edge sits at
+    // ~46% of slot width, so this ensures the pointer has crossed into the gap.
+    if (dist < cellW * 0.5) return prev;
 
     // Snap to one of 8 directions (45° sectors)
     const sector   = Math.round(Math.atan2(dy, dx) / (Math.PI / 4));
@@ -1825,17 +1894,22 @@ document.getElementById('lbl-score').textContent       = s.score;
     winNewBtn.textContent   = s.winNewGame || s.newGame   || 'New Game';
     winShareBtn.textContent = s.winShare   || s.shareGame || 'Share game';
     modesTitleEl.textContent = s.modeSelectTitle || s.modeSelectLabel;
-    standardModeBtn.textContent = getModeInfo(MODE_CLASSIC).name   || 'Standard';
-    hideWordModeBtn.textContent = getModeInfo(MODE_HIDE_WORD).name || 'Hide a word';
+    standardModeBtn.querySelector('.mode-card-name').textContent  = getModeInfo(MODE_CLASSIC).name      || 'Standard';
+    standardModeBtn.querySelector('.mode-card-desc').textContent  = getModeInfo(MODE_CLASSIC).description || '';
+    hideWordModeBtn.querySelector('.mode-card-name').textContent  = getModeInfo(MODE_HIDE_WORD).name     || 'Hide a word';
+    hideWordModeBtn.querySelector('.mode-card-desc').textContent  = getModeInfo(MODE_HIDE_WORD).description || '';
     hideWordTitleEl.textContent = getModeLabels(MODE_HIDE_WORD).title || 'Hide a word';
     hideWordTextEl.textContent  = getModeLabels(MODE_HIDE_WORD).hint  || '';
     hideWordInputEl.placeholder = getModeLabels(MODE_HIDE_WORD).placeholder || '';
     hideWordCancelBtn.textContent = getModeLabels(MODE_HIDE_WORD).close || s.confirmCancel || 'Close';
     hideWordStartBtn.textContent  = getModeLabels(MODE_HIDE_WORD).start || s.confirmOk     || 'Start';
-    enterLettersModeBtn.textContent = getModeInfo(MODE_ENTER_LETTERS).name || 'Enter letters';
+    enterLettersModeBtn.querySelector('.mode-card-name').textContent = getModeInfo(MODE_ENTER_LETTERS).name        || 'Enter letters';
+    enterLettersModeBtn.querySelector('.mode-card-desc').textContent = getModeInfo(MODE_ENTER_LETTERS).description || '';
     entryCloseBtn.textContent       = getModeLabels(MODE_ENTER_LETTERS).close || 'Close';
     document.getElementById('feedback-btn').textContent           = s.feedbackBtn        || 'Submit feedback, feature request or incorrect word';
     document.getElementById('feedback-modal-title').textContent    = s.feedbackTitle       || 'Get in touch';
+    document.getElementById('feedback-modal-desc').textContent     = s.feedbackDesc        || 'For any game related feedback, feature request or bug report, contact me via email';
+    document.getElementById('feedback-modal-email-label').textContent = s.feedbackEmailLabel || 'Send email to';
     document.getElementById('feedback-modal-bluesky-label').textContent = s.feedbackBlueskyLabel || 'Contact me on BlueSky';
     document.getElementById('feedback-modal-close-btn').textContent = s.feedbackClose      || 'Close';
     setHideWordError('');
@@ -1911,12 +1985,6 @@ document.getElementById('lbl-score').textContent       = s.score;
   }
 
   function openGameModesModal() {
-    const s = t();
-    modesTitleEl.textContent    = s.modeSelectTitle || s.modeSelectLabel;
-    standardModeBtn.textContent = getModeInfo(MODE_CLASSIC).name   || 'Standard';
-    hideWordModeBtn.textContent = getModeInfo(MODE_HIDE_WORD).name || 'Hide a word';
-    enterLettersModeBtn.textContent = getModeInfo(MODE_ENTER_LETTERS).name || 'Enter letters';
-    modesLongDescEl.textContent = getModeInfo(MODE_CLASSIC).description || '';
     modesModal.hidden = false;
     modesModal.setAttribute('aria-hidden', 'false');
     standardModeBtn.focus();
@@ -2125,15 +2193,6 @@ document.getElementById('lbl-score').textContent       = s.score;
     }
     openGameModesModal();
   });
-  function updateModesDesc(mode) {
-    modesLongDescEl.textContent = getModeInfo(mode).description || '';
-  }
-  standardModeBtn.addEventListener('focus',      () => updateModesDesc(MODE_CLASSIC));
-  standardModeBtn.addEventListener('mouseenter', () => updateModesDesc(MODE_CLASSIC));
-  hideWordModeBtn.addEventListener('focus',      () => updateModesDesc(MODE_HIDE_WORD));
-  hideWordModeBtn.addEventListener('mouseenter', () => updateModesDesc(MODE_HIDE_WORD));
-  enterLettersModeBtn.addEventListener('focus',      () => updateModesDesc(MODE_ENTER_LETTERS));
-  enterLettersModeBtn.addEventListener('mouseenter', () => updateModesDesc(MODE_ENTER_LETTERS));
   enterLettersModeBtn.addEventListener('click', () => {
     closeGameModesModal();
     startEnterLettersMode();
