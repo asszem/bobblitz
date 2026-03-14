@@ -3,6 +3,7 @@
 - keep this id during dictionary updates
 
 - add Challenge friend option
+- accept game as url parameter
 
 - save multiple games in localStore
 - export save to file
@@ -20,3 +21,5 @@
 - the game is shared
 
 - adjustable grid size 
+
+- fix less sensitive vertical movement
