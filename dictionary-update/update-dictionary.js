@@ -8,6 +8,7 @@ const SCRIPT_DIR = __dirname;
 const REPO_ROOT = resolveRepoRoot(SCRIPT_DIR);
 const RULES_PATH = path.join(REPO_ROOT, 'RULES.md');
 const LANG_DIR = path.join(REPO_ROOT, 'lang');
+const DICTIONARY_SOURCES_DIR = path.join(REPO_ROOT, '/dictionary-update/dictionary-sources');
 
 function resolveRepoRoot(startDir) {
   const direct = path.join(startDir, 'RULES.md');
@@ -38,7 +39,7 @@ function usage() {
       'Notes:',
       '  - <length-count> format: 3-100 means add 100 new words of length 3.',
       '  - Rules (min/max length) are read from RULES.md.',
-      '  - verify mode removes invalid words from existing dictionaries.',
+      '  - verify mode validates words against dictionary-sources/<language>/ files.',
     ].join('\n')
   );
 }
@@ -127,6 +128,38 @@ function parseHunspellDic(text) {
   return words;
 }
 
+function parseSourceFile(filePath) {
+  const raw = fs.readFileSync(filePath, 'utf8');
+  const ext = path.extname(filePath).toLowerCase();
+  if (ext === '.dic') return parseHunspellDic(raw);
+
+  const words = [];
+  const lines = raw.split(/\r?\n/);
+  for (const lineRaw of lines) {
+    const line = lineRaw.trim();
+    if (!line || line.startsWith('#')) continue;
+    let token = line.split(/\s+/)[0];
+    token = token.split('/')[0].trim();
+    if (token) words.push(token);
+  }
+  return words;
+}
+
+function walkFilesRecursive(rootDir) {
+  const out = [];
+  const stack = [rootDir];
+  while (stack.length > 0) {
+    const current = stack.pop();
+    const entries = fs.readdirSync(current, { withFileTypes: true });
+    for (const entry of entries) {
+      const full = path.join(current, entry.name);
+      if (entry.isDirectory()) stack.push(full);
+      else if (entry.isFile()) out.push(full);
+    }
+  }
+  return out.sort((a, b) => a.localeCompare(b));
+}
+
 function findSourceCandidates(language) {
   const candidates = [
     { type: 'words', file: path.join(LANG_DIR, `${language}.source.words`) },
@@ -170,6 +203,35 @@ function toValidUnique(words, language, min, max, sourceSetOrNull) {
   }
 
   return out;
+}
+
+function loadVerifySourceSet(language, min, max) {
+  const sourceDir = path.join(DICTIONARY_SOURCES_DIR, language);
+  if (!fs.existsSync(sourceDir)) {
+    fail(`Missing source folder for "${language}": ${sourceDir}`);
+  }
+
+  const sourceFiles = walkFilesRecursive(sourceDir);
+  if (sourceFiles.length < 1) {
+    fail(`No source files found for "${language}" in: ${sourceDir}`);
+  }
+
+  const sourceWords = [];
+  for (const filePath of sourceFiles) {
+    sourceWords.push(...parseSourceFile(filePath));
+  }
+
+  const sourceValid = toValidUnique(sourceWords, language, min, max, null);
+  if (sourceValid.length < 1) {
+    fail(`No valid source words parsed for "${language}" from: ${sourceDir}`);
+  }
+
+  return {
+    sourcePath: `${sourceDir} (${sourceFiles.length} files)`,
+    sourceFiles,
+    sourceValid,
+    sourceSet: new Set(sourceValid),
+  };
 }
 
 function histogram(words) {
@@ -216,7 +278,7 @@ function verifyLanguage(language, min, max) {
   }
 
   const existingRaw = parseWordLines(fs.readFileSync(dictPath, 'utf8'));
-  const { sourcePath, sourceSet } = loadSourceSet(language, min, max, existingRaw);
+  const { sourcePath, sourceSet, sourceFiles, sourceValid } = loadVerifySourceSet(language, min, max);
   const cleaned = toValidUnique(existingRaw, language, min, max, sourceSet);
 
   fs.writeFileSync(dictPath, cleaned.join('\n') + (cleaned.length ? '\n' : ''), 'utf8');
@@ -224,6 +286,8 @@ function verifyLanguage(language, min, max) {
   console.log(`Verified ${dictPath}`);
   console.log(`Rules: min=${min}, max=${max}`);
   console.log(`Source: ${sourcePath}`);
+  console.log(`Source files used: ${sourceFiles.length}`);
+  console.log(`Valid source words: ${sourceValid.length}`);
   console.log(`Removed invalid/unsupported existing words: ${existingRaw.length - cleaned.length}`);
   console.log(`Final word count: ${cleaned.length}`);
   console.log(`Length histogram: ${histogram(cleaned)}`);

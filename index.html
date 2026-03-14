@@ -573,6 +573,11 @@ const hasWord     = word => {
   return !!(node && node.end);
 };
 const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
+const GAME_GENERATION_RULES = Object.freeze({
+  minFindableWords: 5,
+  requiredByLength: Object.freeze({ 4: 1, 5: 1 }),
+  maxAttempts: 400,
+});
 // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let grid       = [];
   let sel        = [];
@@ -602,20 +607,48 @@ const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
   const confirmOkBtn = document.getElementById('confirm-ok-btn');
 
   // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  function randomGridFromPool(pool) {
+    return Array.from({ length: 16 }, () => pool[Math.floor(Math.random() * pool.length)]);
+  }
+
+  function meetsGameGenerationRules(stats) {
+    if (!stats) return false;
+    if (stats.totalWords < GAME_GENERATION_RULES.minFindableWords) return false;
+    const lengths = GAME_GENERATION_RULES.requiredByLength;
+    return Object.keys(lengths).every(len => (stats.lengthCounts[len] || 0) >= lengths[len]);
+  }
+
   function initGame() {
     totalWords = -1;
     revealed   = false;
     document.getElementById('reveal-btn').disabled = false;
     const pool = getPool();
-    grid = Array.from({ length: 16 }, () => pool[Math.floor(Math.random() * pool.length)]);
+    let bestGrid = null;
+    let bestStats = null;
+
+    for (let attempt = 0; attempt < GAME_GENERATION_RULES.maxAttempts; attempt++) {
+      grid = randomGridFromPool(pool);
+      const quickStats = analyzeGridWords(true);
+      if (!bestStats || quickStats.totalWords > bestStats.totalWords) {
+        bestGrid = [...grid];
+        bestStats = quickStats;
+      }
+      if (meetsGameGenerationRules(quickStats)) {
+        bestGrid = [...grid];
+        break;
+      }
+    }
+
+    if (bestGrid) {
+      grid = bestGrid;
+    } else {
+      grid = randomGridFromPool(pool);
+    }
+
+    totalWords = countTotalWords();
     renderGrid();
     resetSel();
     updateCountEl();
-    // Compute total words after first paint
-    setTimeout(() => {
-      totalWords = countTotalWords();
-      updateCountEl();
-    }, 60);
   }
 
   function renderGrid() {
@@ -1169,32 +1202,53 @@ const hasPrefix   = prefix => !!trieStep(langData.trie, prefix);
   }
 
   // â”€â”€ Total words (DFS + prefix pruning) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-  function getAllWords() {
+  function analyzeGridWords(earlyStopOnGameRules = false) {
     const all = new Set();
     const vis = new Array(16).fill(false);
+    const lengthCounts = Object.create(null);
+    let stop = false;
+
+    function registerWord(word) {
+      if (all.has(word)) return;
+      all.add(word);
+      const len = word.length;
+      lengthCounts[len] = (lengthCounts[len] || 0) + 1;
+      if (earlyStopOnGameRules && meetsGameGenerationRules({ totalWords: all.size, lengthCounts })) {
+        stop = true;
+      }
+    }
 
     function dfs(last, word) {
+      if (stop) return;
       if (!hasPrefix(word)) return;
-      if (word.length >= langData.minWordLength && hasWord(word)) all.add(word);
-      if (word.length >= langData.maxWordLength) return;
+      if (word.length >= langData.minWordLength && hasWord(word)) registerWord(word);
+      if (stop || word.length >= langData.maxWordLength) return;
       for (let n = 0; n < 16; n++) {
         if (!vis[n] && isAdj(last, n)) {
           vis[n] = true;
           dfs(n, word + grid[n]);
           vis[n] = false;
+          if (stop) return;
         }
       }
     }
 
     for (let s = 0; s < 16; s++) {
+      if (stop) break;
       vis[s] = true;
       dfs(s, grid[s]);
       vis[s] = false;
     }
-    return all;
+
+    return {
+      allWords: all,
+      totalWords: all.size,
+      lengthCounts,
+    };
   }
 
-  function countTotalWords() { return getAllWords().size; }
+  function getAllWords() { return analyzeGridWords(false).allWords; }
+  function countTotalWords() { return analyzeGridWords(false).totalWords; }
 
   // â”€â”€ Resize â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   window.addEventListener('resize', () => requestAnimationFrame(fitCanvas));
