@@ -153,12 +153,6 @@
       box-shadow: 0 6px 28px rgba(255,107,107,0.75);
     }
 
-    .cell.flash-good {
-      animation: flashGood 0.52s ease-out forwards;
-      transition: none;
-      color: white;
-      z-index: 3;
-    }
 
     /* â”€â”€ Word display â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
@@ -478,19 +472,14 @@
       to   { transform: scale(1) translateY(0); opacity: 1; }
     }
 
-    @keyframes flashGood {
-      0%   { background: linear-gradient(145deg, #22c55e, #16a34a);
-             box-shadow: 0 6px 28px rgba(34,197,94,0.85);
-             transform: scale(1.1);
-             border-color: rgba(100,255,150,0.5); }
-      55%  { background: linear-gradient(145deg, #4ade80, #22c55e);
-             transform: scale(1.13);
-             box-shadow: 0 8px 32px rgba(34,197,94,0.95); }
-      100% { background: linear-gradient(160deg, #22223e, #191930);
-             box-shadow: none;
-             transform: scale(1);
-             border-color: rgba(255,255,255,0.07); }
+    .cell.flash-good {
+      background: linear-gradient(145deg, #4ade80, #16a34a) !important;
+      border-color: #86efac !important;
+      box-shadow: 0 0 14px 4px rgba(74,222,128,0.6) !important;
+      color: #052e16 !important;
+      transition: none !important;
     }
+
   </style>
 </head>
 <body>
@@ -1375,52 +1364,45 @@ const hideWordModal = document.getElementById('hide-word-modal');
       return;
     }
 
-    // Valid new word â€” flash green
+    // Valid new word — flash all letters simultaneously
     const flashIdxs = [...sel];
     const cells = gridEl.children;
-
+    for (let i = 0; i < cells.length; i++) cells[i].classList.remove('selected', 'first-selected');
+    for (const i of flashIdxs) cells[i].classList.add('flash-good');
     sel = [];
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    setTimeout(() => {
+      for (const i of flashIdxs) {
+        cells[i].style.transition = 'none';
+        cells[i].classList.remove('flash-good');
+      }
+      requestAnimationFrame(() => {
+        for (const i of flashIdxs) cells[i].style.transition = '';
+      });
+    }, 250);
 
-    for (const i of flashIdxs) {
-      cells[i].classList.remove('selected', 'first-selected');
-      cells[i].classList.add('flash-good');
+    found.add(word);
+    revealedWords.delete(word);
+    const pts = calcScore(word);
+    score += pts;
+    scoreEl.textContent = score;
+    updateCountEl();
+    tallyEl.textContent = getTallyText(found.size);
+
+    if (word.length > bestWord.length) {
+      bestWord = word;
+      bestEl.textContent = word;
     }
 
-    // Turn word display green
-    wordDisp.style.color      = '#4ade80';
-    wordDisp.style.textShadow = '0 0 28px rgba(74,222,128,0.7)';
-    wordMeta.style.color      = '#4ade80';
+    addChip(word, pts);
 
-    setTimeout(() => {
-      found.add(word);
-      revealedWords.delete(word);
-      const pts = calcScore(word);
-      score += pts;
-      scoreEl.textContent = score;
-      updateCountEl();
-      tallyEl.textContent = getTallyText(found.size);
-
-      if (word.length > bestWord.length) {
-        bestWord = word;
-        bestEl.textContent = word;
-      }
-
-      addChip(word, pts);
-
-      for (const i of flashIdxs) cells[i].classList.remove('flash-good');
-
-      wordDisp.innerHTML        = '';
-      wordDisp.style.color      = '';
-      wordDisp.style.textShadow = '';
-      wordMeta.textContent      = '';
-      wordMeta.style.color      = '';
-      persistGameState();
-      if (!winModalShown && totalWords > 0 && found.size >= totalWords) {
-        winModalShown = true;
-        openWinModal();
-      }
-    }, 520);
+    wordDisp.innerHTML   = '';
+    wordMeta.textContent = '';
+    persistGameState();
+    if (!winModalShown && totalWords > 0 && found.size >= totalWords) {
+      winModalShown = true;
+      openWinModal();
+    }
   }
 
   // â”€â”€ Mouse events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
