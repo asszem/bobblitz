@@ -314,6 +314,15 @@
       background: rgba(38, 44, 78, 0.72);
     }
 
+    .game-mode-label {
+      font-size: 0.68rem;
+      color: #44445a;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
     .modal-input {
       width: 100%;
       margin-top: 12px;
@@ -481,6 +490,8 @@
   <p class="tagline" id="tagline">EgyĂ©ni szĂłvadĂˇsz</p>
 </header>
 
+<p id="game-mode-label" class="game-mode-label"></p>
+
 <div id="score-row">
   <div class="stat"><span id="lbl-score">Pont</span><strong id="score">0</strong></div>
   <div class="stat"><span id="lbl-words">Szavak</span><strong id="word-count">0 / ?</strong></div>
@@ -501,7 +512,6 @@
   <div id="action-buttons">
     <button class="btn btn-ghost" id="reveal-btn">Szabad a gazda!</button>
     <button class="btn btn-ghost" id="new-btn">Új játék</button>
-    <button class="btn btn-ghost" id="modes-btn">Game modes</button>
   </div>
 </div>
 
@@ -544,23 +554,9 @@
     <p id="modes-text" class="modal-text"></p>
     <button class="btn btn-ghost mode-option" id="mode-standard-btn">Standard</button>
     <button class="btn btn-ghost mode-option" id="mode-hide-word-btn">Hide a word</button>
-    <div class="modal-actions">
-      <button class="btn btn-ghost" id="modes-close-btn">Close</button>
-    </div>
   </div>
 </div>
 
-<div id="standard-mode-modal" class="modal-backdrop" hidden aria-hidden="true">
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="standard-mode-title" aria-describedby="standard-mode-rules">
-    <h3 id="standard-mode-title" class="modal-title">Standard</h3>
-    <p id="standard-mode-text" class="modal-text"></p>
-    <p id="standard-mode-rules" class="modal-text modal-rules"></p>
-    <div class="modal-actions">
-      <button class="btn btn-ghost" id="standard-mode-cancel-btn">Close</button>
-      <button class="btn btn-danger" id="standard-mode-start-btn">Start</button>
-    </div>
-  </div>
-</div>
 
 <div id="hide-word-modal" class="modal-backdrop" hidden aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="hide-word-title" aria-describedby="hide-word-text">
@@ -746,14 +742,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
   const modesTextEl = document.getElementById('modes-text');
   const standardModeBtn = document.getElementById('mode-standard-btn');
   const hideWordModeBtn = document.getElementById('mode-hide-word-btn');
-  const modesCloseBtn = document.getElementById('modes-close-btn');
-  const standardModeModal = document.getElementById('standard-mode-modal');
-  const standardModeTitleEl = document.getElementById('standard-mode-title');
-  const standardModeTextEl = document.getElementById('standard-mode-text');
-  const standardModeRulesEl = document.getElementById('standard-mode-rules');
-  const standardModeCancelBtn = document.getElementById('standard-mode-cancel-btn');
-  const standardModeStartBtn = document.getElementById('standard-mode-start-btn');
-  const hideWordModal = document.getElementById('hide-word-modal');
+const hideWordModal = document.getElementById('hide-word-modal');
   const hideWordTitleEl = document.getElementById('hide-word-title');
   const hideWordTextEl = document.getElementById('hide-word-text');
   const hideWordInputEl = document.getElementById('hide-word-input');
@@ -791,28 +780,6 @@ const SAVE_KEY = 'bobblitz-save-v1';
     hideWordErrorEl.textContent = message || '';
   }
 
-  function buildStandardRulesText() {
-    const s = t();
-    const lines = [
-      formatTemplate(
-        s.standardRuleWordLength || 'Word length: {min}-{max}',
-        { min: langData.minWordLength, max: langData.maxWordLength },
-      ),
-      formatTemplate(
-        s.standardRuleMinFindable || 'At least {count} words can be found',
-        { count: GAME_GENERATION_RULES.minFindableWords },
-      ),
-    ];
-    const requiredByLength = Object.entries(GAME_GENERATION_RULES.requiredByLength)
-      .sort((a, b) => Number(a[0]) - Number(b[0]));
-    for (const [len, count] of requiredByLength) {
-      lines.push(formatTemplate(
-        s.standardRuleRequiredByLength || 'At least {count} words with {len} letters',
-        { count, len },
-      ));
-    }
-    return lines.join('\n');
-  }
 
   function persistGameState() {
     if (!Array.isArray(grid) || grid.length !== 16) return;
@@ -1478,7 +1445,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
   // â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function hasGameProgress() {
-    return score > 0 || found.size > 0 || bestWord.length > 0;
+    return score > 0 || bestWord.length > 0;
   }
 
   function revealAllWords() {
@@ -1541,7 +1508,6 @@ const SAVE_KEY = 'bobblitz-save-v1';
     document.getElementById('lbl-best').textContent        = s.best;
     document.getElementById('reveal-btn').textContent      = s.revealAll;
     document.getElementById('new-btn').textContent         = s.newGame;
-    document.getElementById('modes-btn').textContent       = s.gameModes;
     document.getElementById('found-words-lbl').textContent = s.foundWords;
     document.getElementById('lang-btn').textContent        = s.langLabel;
     confirmTitleEl.textContent = s.confirmTitle;
@@ -1555,12 +1521,6 @@ const SAVE_KEY = 'bobblitz-save-v1';
     modesTextEl.textContent = s.gameModesHint || '';
     standardModeBtn.textContent = s.standardMode || 'Standard';
     hideWordModeBtn.textContent = s.hideWordMode || 'Hide a word';
-    modesCloseBtn.textContent = s.gameModesClose || s.confirmCancel || 'Close';
-    standardModeTitleEl.textContent = s.standardModeTitle || s.standardMode || 'Standard';
-    standardModeTextEl.textContent = s.standardModeHint || '';
-    standardModeRulesEl.textContent = buildStandardRulesText();
-    standardModeCancelBtn.textContent = s.standardModeClose || s.confirmCancel || 'Close';
-    standardModeStartBtn.textContent = s.standardModeStart || s.confirmOk || 'Start';
     hideWordTitleEl.textContent = s.hideWordTitle || s.hideWordMode || 'Hide a word';
     hideWordTextEl.textContent = s.hideWordHint || '';
     hideWordInputEl.placeholder = s.hideWordPlaceholder || '';
@@ -1571,6 +1531,18 @@ const SAVE_KEY = 'bobblitz-save-v1';
     if (found.size > 0) tallyEl.textContent = getTallyText(found.size);
     else tallyEl.textContent = '0';
     refreshWordDisplay();
+    updateGameModeLabel();
+  }
+
+  function updateGameModeLabel() {
+    const s = t();
+    const el = document.getElementById('game-mode-label');
+    if (!el) return;
+    if (currentMode === MODE_HIDE_WORD) {
+      el.textContent = `${s.hideWordMode || 'Hide a word'}${hideWordTarget ? ': ' + hideWordTarget : ''}`;
+    } else {
+      el.textContent = s.standardMode || 'Standard';
+    }
   }
 
   function startNewGame() {
@@ -1584,6 +1556,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
     revealedWords.clear();
     wordsList.innerHTML = '';
     initGame();
+    updateGameModeLabel();
     persistGameState();
   }
 
@@ -1626,10 +1599,9 @@ const SAVE_KEY = 'bobblitz-save-v1';
     modesTextEl.textContent = s.gameModesHint || '';
     standardModeBtn.textContent = s.standardMode || 'Standard';
     hideWordModeBtn.textContent = s.hideWordMode || 'Hide a word';
-    modesCloseBtn.textContent = s.gameModesClose || s.confirmCancel || 'Close';
     modesModal.hidden = false;
     modesModal.setAttribute('aria-hidden', 'false');
-    modesCloseBtn.focus();
+    standardModeBtn.focus();
   }
 
   function closeGameModesModal() {
@@ -1637,36 +1609,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
     modesModal.setAttribute('aria-hidden', 'true');
   }
 
-  function openStandardModeModal() {
-    const s = t();
-    standardModeTitleEl.textContent = s.standardModeTitle || s.standardMode || 'Standard';
-    standardModeTextEl.textContent = s.standardModeHint || '';
-    standardModeRulesEl.textContent = buildStandardRulesText();
-    standardModeCancelBtn.textContent = s.standardModeClose || s.confirmCancel || 'Close';
-    standardModeStartBtn.textContent = s.standardModeStart || s.confirmOk || 'Start';
-    standardModeModal.hidden = false;
-    standardModeModal.setAttribute('aria-hidden', 'false');
-    standardModeStartBtn.focus();
-  }
-
-  function closeStandardModeModal() {
-    standardModeModal.hidden = true;
-    standardModeModal.setAttribute('aria-hidden', 'true');
-  }
-
-  function submitStandardMode() {
-    if (hasGameProgress()) {
-      closeStandardModeModal();
-      closeGameModesModal();
-      openWarningConfirm(() => startNewGame());
-      return;
-    }
-    closeStandardModeModal();
-    closeGameModesModal();
-    startNewGame();
-  }
-
-  function openHideWordModal() {
+function openHideWordModal() {
     const s = t();
     hideWordTitleEl.textContent = s.hideWordTitle || s.hideWordMode || 'Hide a word';
     hideWordTextEl.textContent = s.hideWordHint || '';
@@ -1698,6 +1641,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
     revealedWords.clear();
     wordsList.innerHTML = '';
     initGame();
+    updateGameModeLabel();
     persistGameState();
   }
 
@@ -1708,31 +1652,21 @@ const SAVE_KEY = 'bobblitz-save-v1';
       setHideWordError(s[validation.errorKey] || s.hideWordErrorLength || '');
       return;
     }
-    if (hasGameProgress()) {
-      closeHideWordModal();
-      closeGameModesModal();
-      openWarningConfirm(() => startHideWordGame(validation.word));
-      return;
-    }
     closeHideWordModal();
-    closeGameModesModal();
     startHideWordGame(validation.word);
   }
 
   document.getElementById('new-btn').addEventListener('click', () => {
-    if (score > 0) {
-      openWarningConfirm(() => startNewGame());
+    if (hasGameProgress()) {
+      openWarningConfirm(openGameModesModal);
       return;
     }
-    startNewGame();
+    openGameModesModal();
   });
-  document.getElementById('modes-btn').addEventListener('click', openGameModesModal);
   standardModeBtn.addEventListener('click', () => {
     closeGameModesModal();
-    openStandardModeModal();
+    startNewGame();
   });
-  standardModeCancelBtn.addEventListener('click', closeStandardModeModal);
-  standardModeStartBtn.addEventListener('click', submitStandardMode);
   hideWordModeBtn.addEventListener('click', () => {
     closeGameModesModal();
     openHideWordModal();
@@ -1753,30 +1687,33 @@ const SAVE_KEY = 'bobblitz-save-v1';
     closeNewGameConfirm();
     if (action) await action();
   });
-  winCloseBtn.addEventListener('click', closeWinModal);
-  modesCloseBtn.addEventListener('click', closeGameModesModal);
+  winCloseBtn.addEventListener('click', () => { closeWinModal(); openGameModesModal(); });
   confirmModal.addEventListener('click', e => {
     if (e.target === confirmModal) closeNewGameConfirm();
   });
   winModal.addEventListener('click', e => {
-    if (e.target === winModal) closeWinModal();
+    if (e.target === winModal) { closeWinModal(); openGameModesModal(); }
   });
-  modesModal.addEventListener('click', e => {
-    if (e.target === modesModal) closeGameModesModal();
-  });
-  standardModeModal.addEventListener('click', e => {
-    if (e.target === standardModeModal) closeStandardModeModal();
-  });
-  hideWordModal.addEventListener('click', e => {
+hideWordModal.addEventListener('click', e => {
     if (e.target === hideWordModal) closeHideWordModal();
   });
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
     if (!confirmModal.hidden) closeNewGameConfirm();
-    if (!winModal.hidden) closeWinModal();
-    if (!modesModal.hidden) closeGameModesModal();
-    if (!standardModeModal.hidden) closeStandardModeModal();
+    if (!winModal.hidden) { closeWinModal(); openGameModesModal(); }
     if (!hideWordModal.hidden) closeHideWordModal();
+  });
+  modesModal.addEventListener('keydown', e => {
+    const modeBtns = [standardModeBtn, hideWordModeBtn];
+    const idx = modeBtns.indexOf(document.activeElement);
+    if (idx < 0) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      modeBtns[(idx + 1) % modeBtns.length].focus();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      modeBtns[(idx + modeBtns.length - 1) % modeBtns.length].focus();
+    }
   });
   wordsList.addEventListener('mouseleave', () => {
     hoveredChip = null;
@@ -1789,6 +1726,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
     countEl.textContent = totalWords >= 0
       ? `${found.size} / ${totalWords}`
       : `${found.size} / ?`;
+    const allFound = totalWords > 0 && found.size >= totalWords;
+    document.getElementById('reveal-btn').disabled = revealed || allFound;
   }
 
   function calcScore(word) {
