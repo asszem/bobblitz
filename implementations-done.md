@@ -1,3 +1,27 @@
+# (Done) i5 Word input area (c5) fixes - completed at 2026-03-14 19:22
+
+- (done) i5-1 Remove the typed-letters preview (c5-2) from the word input area
+- (done) i5-2 Ensure the word input area (c5-1) does not change size when a letter is selected or deselected
+- (done) i5-3 When a new letter is added to the selection, append it to c5 instead of redrawing the full display
+
+# (Done) i3 Next letter hint in Hide a Word mode - completed at 2026-03-14 19:22
+
+- (done) i3-1 Add a "Reveal 1 letter" button visible only during Hide a Word solve phase
+- (done) i3-2 First press reveals the first letter of the hidden word on the board
+- (done) i3-3 Each subsequent press reveals the next letter in sequence
+- (done) i3-4 All letters of the hidden word can be revealed this way
+- (done) i3-5 Layout: action buttons in two rows — "Reveal all" + "Reveal 1 letter" on top, "Share game" + "New game" on bottom
+- (done) i3-6 Bug fix: "Reveal 1 letter" button stays disabled after starting a new game if all letters were revealed in the previous game
+- (done) i3-7 Bug fix: after starting a new game, the first "Reveal 1 letter" press always reveals letter 1, not a later letter
+- (done) i3-8 Bug fix: "Reveal all words" button is no longer visible
+- (done) i3-9 When all letters of the hidden word are revealed via hint, also trigger "Reveal all" so the word is marked as found
+- (done) i3-10 After all letters are revealed via hint, update game state so starting a new game does not show a progress-loss warning
+
+# (Done) i4 Win screen button order and highlight - completed at 2026-03-14 19:22
+
+- (done) i4-1 On the win screen, move "New game" to the right side and apply a highlighted (primary) style
+- (done) i4-2 Move "Share game" to the left side with the default ghost style
+
 # (Done) i2 Fix flickering word selection on cell boundaries - completed at 2026-03-14 19:22
 
 - (done) i2-1 Increased the direction-based dead zone from 40% to 50% of slot width in `cellFromPoint`

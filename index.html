@@ -157,12 +157,10 @@
     #word-area {
       margin-top: 10px;
       width: min(340px, 96vw);
-      min-height: 82px;
+      height: 62px;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
       padding: 10px 12px;
       border-radius: 14px;
       background: rgba(34, 34, 58, 0.35);
@@ -187,15 +185,7 @@
       animation: letterPop 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
-    #word-meta {
-      font-size: 0.74rem;
-      color: #444460;
-      letter-spacing: 1px;
-      height: 16px;
-      transition: color 0.15s;
-    }
-
-    /* â”€â”€ Controls â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â”€â”€ Controls â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
     #controls {
       display: flex;
@@ -711,7 +701,6 @@
 
 <div id="word-area">
   <div id="word-display"></div>
-  <div id="word-meta"></div>
 </div>
 
 <div id="controls">
@@ -837,8 +826,8 @@
     <h3 id="win-title" class="modal-title">Congratulations!</h3>
     <p id="win-text" class="modal-text">You found all words on this board.</p>
     <div class="modal-actions">
-      <button class="btn btn-ghost" id="win-new-btn">New Game</button>
-      <button class="btn btn-danger" id="win-share-btn">Share game</button>
+      <button class="btn btn-ghost" id="win-share-btn">Share game</button>
+      <button class="btn btn-danger" id="win-new-btn">New Game</button>
     </div>
   </div>
 </div>
@@ -1055,7 +1044,6 @@ const SAVE_KEY = 'bobblitz-save-v1';
   // â”€â”€ DOM refs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const gridEl   = document.getElementById('grid');
   const wordDisp = document.getElementById('word-display');
-  const wordMeta = document.getElementById('word-meta');
   const scoreEl  = document.getElementById('score');
   const countEl  = document.getElementById('word-count');
   const bestEl   = document.getElementById('best');
@@ -1657,23 +1645,27 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
   function refreshWordDisplay() {
     const word = sel.map(i => grid[i]).join('');
+    const cur  = wordDisp.children.length;
     if (!word) {
-      wordDisp.innerHTML = '';
-      wordDisp.style.color = '';
-      wordDisp.style.textShadow = '';
-      wordMeta.textContent = '';
-      wordMeta.style.color = '';
+      if (cur > 0) {
+        wordDisp.innerHTML = '';
+        wordDisp.style.color = '';
+        wordDisp.style.textShadow = '';
+      }
       return;
     }
-    wordDisp.innerHTML = word.split('')
-      .map((l, i) => `<span class="letter-span" style="animation-delay:${i * 0.04}s">${l}</span>`)
-      .join('');
-    const len = word.length;
-    const minLen = getActiveMinWordLength();
-    const s = t();
-    wordMeta.textContent = len >= minLen
-      ? formatTemplate(s.wordMetaTemplate, { len, pts: calcScore(word) })
-      : formatTemplate(len === 1 ? s.wordShortOne : s.wordShortMany, { len });
+    // Trim extra spans if selection was backtracked
+    while (wordDisp.children.length > word.length) {
+      wordDisp.removeChild(wordDisp.lastChild);
+    }
+    // Append only new spans
+    for (let i = wordDisp.children.length; i < word.length; i++) {
+      const span = document.createElement('span');
+      span.className = 'letter-span';
+      span.style.animationDelay = `${i * 0.04}s`;
+      span.textContent = word[i];
+      wordDisp.appendChild(span);
+    }
   }
 
   function resetSel() {
@@ -1742,8 +1734,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
     addChip(word, pts);
 
-    wordDisp.innerHTML   = '';
-    wordMeta.textContent = '';
+    wordDisp.innerHTML = '';
     persistGameState();
     if (!winModalShown && totalWords > 0 && found.size >= totalWords) {
       winModalShown = true;
@@ -1869,7 +1860,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
   // â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function hasGameProgress() {
-    return score > 0 || bestWord.length > 0;
+    return !revealed && (score > 0 || bestWord.length > 0);
   }
 
   function revealAllWords() {
@@ -1906,7 +1897,10 @@ const SAVE_KEY = 'bobblitz-save-v1';
     gridEl.children[path[hintCount]].classList.add('cell-hint');
     hintCount++;
     const btn = document.getElementById('hint-btn');
-    if (hintCount >= path.length) btn.disabled = true;
+    if (hintCount >= path.length) {
+      btn.disabled = true;
+      revealAllWords();
+    }
   }
 
   document.getElementById('hint-btn').addEventListener('click', revealNextHintLetter);
