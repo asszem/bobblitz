@@ -1,18 +1,28 @@
 # Todo
-- [x] P0 - write a workflow summary and reminder for me - completed at 2026-03-15 00:00
-## P5 Dictionary fix (open: 3, done: 0)
-- [ ] P0 - update hungarian dictionary with ragozott alakok
-- [ ] P0 - add new words
-- [x] P0 - purge incorrect words - reopened at 2026-03-14 15:22
+## P0 Uncategorized (open: 1, done: 4)
+- [ ] P0 - add a switch that can toggle wheter hints are available for sent words
 
-## P3 Game modes (open: 5, done: 5)
-### P3 Word hide (open: 2, done: 5)
+## P1 Persistence (open: 5, done: 0)
+- [ ] P0 - user can set their name which will be included in local storage
+- [ ] P0 - export save to file
+- [ ] P0 - create a game seed that results in the same words that can be used for the same
+- [ ] P2 - if user profile does not exist when game loaded
+- [ ] P4 - save multiple games in localStore
+
+## P2 Leaderboard (open: 3, done: 0)
+- [ ] P0 - create a leaderboard for a specific game
+- [ ] P0 - create a leaderboard list
+- [ ] P0 - create a list of handmade levels
+
+## P3 Game modes (open: 3, done: 0)
+### P2 New modes (open: 1, done: 0)
+- [ ] P0 - hide multiple words. check during entering new word whether it is possible to ndd that word.
+- [] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made - reopened at 2026-03-15 03:36
+
+### P3 Word hide (open: 2, done: 0)
 - [ ] P1 - check board to make sure no other valid word is added
 - [ ] P4 - validate findable word (no spaces, language valid characters)
 
-### P3 New modes (open: 3, done: 0)
-- [] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made
-- [ ] P0 - hide multiple words. check during entering new word whether it is possible to ndd that word.
 
 ## P3 UI (open: 1, done: 2)
 - [ ] P0 - play mode redesign - when in game phase, hide controls, options, footer
@@ -21,37 +31,27 @@
 - [ ] P0 - option to combine languages
 - [ ] P0 - adjustable grid size
 
-## P4 Feedback (open: 1, done: 1)
+## P4 Feedback (open: 2, done: 1)
 - [ ] P0 - report missing word option
 - [ ] P0 - report incorrect word option for revealed list - reopened at 2026-03-14 20:38
 
-## P4 Usability (open: 1, done: 0)
-- [x ] P0 - fix less sensitive vertical movement
+## P5 Dictionary fix (open: 2, done: 1)
+- [ ] P3 - update hungarian dictionary with ragozott alakok
+- [ ] P4 - add new words
 
 ## P5 Share game (open: 2, done: 0)
 - [ ] P0 - assign unique id for every word
 - [ ] P0 - keep this id during dictionary updates
-
-## P5 Persistence (open: 5, done: 0)
-- [ ] P0 - user can set their name which will be included in local storage
-- [ ] P0 - if user profile does not exist when game loaded
-- [ ] P0 - save multiple games in localStore
-- [ ] P0 - export save to file
-- [ ] P0 - create a game seed that results in the same words that can be used for the same
-
-## P5 Leaderboard (open: 3, done: 1)
-- [ ] P0 - create a leaderboard for a specific game
-- [ ] P0 - create a leaderboard list
-- [ ] P0 - create a list of handmade levels
 
 ## P10 Világom (open: 1, done: 0)
 - [ ] P0 - Create a modal and add to the game
 
 # Done
 
-## P0 Uncategorized (done: 3)
+## P0 Uncategorized (done: 4)
 - [x] P0 - this is a test todo ite - completed at 2026-03-14 15:10
 - [x ] P0 - ask to ID component references - completed at 2026-03-14 20:38
+- [x] P0 - write a workflow summary and reminder for me - completed at 2026-03-15 03:36
 - [x] P3 - this is another test todo item - completed at 2026-03-14 15:10
 
 ## P2 Game modes (done: 5)
@@ -69,11 +69,21 @@
 - [x] P0 - update the color scheme for better visibility - completed at 2026-03-14 19:22
 - [ x] P0 - update button visibility - completed at 2026-03-14 19:22
 
+## P3 Game modes (done: 0)
+### P2 New modes (done: 0)
+
+
 ## P4 Feedback (done: 1)
 - [x ] P0 - add feedback and name to header - completed at 2026-03-14 19:22
 
+## P4 Usability (done: 1)
+- [x ] P0 - fix less sensitive vertical movement - completed at 2026-03-15 03:36
+
 ## P5 Leaderboard (done: 1)
 - [x] P0 - add author to saved game - completed at 2026-03-14 15:22
+
+## P5 Dictionary fix (done: 1)
+- [x] P0 - purge incorrect words - completed at 2026-03-15 03:36
 
 # Update rules 
 
