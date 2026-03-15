@@ -65,11 +65,11 @@
       },
       "hide-word": {
         "title": "Szórejtés",
-        "hint": "Adj meg egy szót 4 és 10 betű között.",
+        "hint": "Adj meg egy szót 4 és 12 betű között.",
         "placeholder": "Szó megadása",
         "start": "Indítás",
         "close": "Bezárás",
-        "errorLength": "A szó hossza 4 és 10 között lehet.",
+        "errorLength": "A szó hossza 4 és 12 között lehet.",
         "errorChars": "Csak az adott nyelvben érvényes betűket használj."
       },
       "enter-letters": {

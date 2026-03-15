@@ -871,8 +871,8 @@
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="hide-word-title" aria-describedby="hide-word-long-desc">
     <h3 id="hide-word-title" class="modal-title">Hide a word</h3>
     <p id="hide-word-long-desc" class="modal-text"></p>
-    <p id="hide-word-text" class="modal-text">Enter one word with 4 to 10 letters.</p>
-    <input id="hide-word-input" class="modal-input" type="text" maxlength="10" spellcheck="false" autocomplete="off" />
+    <p id="hide-word-text" class="modal-text">Enter one word with 4 to 12 letters.</p>
+    <input id="hide-word-input" class="modal-input" type="text" maxlength="12" spellcheck="false" autocomplete="off" />
     <p id="hide-word-error" class="modal-error"></p>
     <div class="modal-actions">
       <button class="btn btn-ghost" id="hide-word-cancel-btn">Close</button>
@@ -1114,7 +1114,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
   function validateHideWordInput(rawWord) {
     const word = normalizeInputWord(rawWord);
-    if (word.length < 4 || word.length > 10) {
+    if (word.length < 4 || word.length > 12) {
       return { ok: false, word: '', errorKey: 'errorLength' };
     }
     const charset = getPoolCharset();

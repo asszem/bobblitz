@@ -65,11 +65,11 @@
       },
       "hide-word": {
         "title": "Hide a word",
-        "hint": "Type one word with 4 to 10 letters.",
+        "hint": "Type one word with 4 to 12 letters.",
         "placeholder": "Enter word",
         "start": "Start",
         "close": "Close",
-        "errorLength": "Word length must be between 4 and 10.",
+        "errorLength": "Word length must be between 4 and 12.",
         "errorChars": "Use only letters valid in the selected language."
       },
       "enter-letters": {
