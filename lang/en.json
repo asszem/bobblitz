@@ -82,7 +82,8 @@
         "entryReadyNoWordsText": "No words found on this board. Try different letters.",
         "entryReadyPlay": "Play this game",
         "entryReadyShare": "Share this game",
-        "entryReadyBack": "Back"
+        "entryReadyBack": "Back",
+        "entryDoneBtn": "I'm Done"
       }
     },
     "descriptions": {

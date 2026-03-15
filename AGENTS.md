@@ -7,7 +7,7 @@
 - `lang/en.words`, `lang/hu.words`: newline-separated dictionary word lists (one uppercase word per line).
 - `lexi.png`: modal image asset.
 - `CLAUDE.md`: internal project notes, architecture hints, and operational rules.
-- `COMPONENT-REFERENCES.md`: canonical names and IDs for every UI component. **Always consult before interpreting prompts that mention UI elements or deciding which element to modify.**
+- `COMPONENT-REFERENCES.md`: canonical names and hierarchical IDs (cN, cN-N, cN-N-N) for every UI component and game mode. **Always consult before interpreting prompts that mention UI elements or deciding which element to modify.**
 - `RULES.md`: game rules and dictionary rules. **Always consult before touching game logic, game generation, or dictionaries.**
 - `IMPLEMENTATION-TASKS.md`: active feature/fix tasks with step-level tracking. See workflow below.
 - `implementations-done.md`: completed (and optionally reopened) implementation tasks.
@@ -27,6 +27,25 @@ Keep all feature logic in the existing JS section of `index.html` unless a clear
   - `imp reopen i3` = reopen i3 from `implementations-done.md`
 - `comp <command>` — shorthand for component-references commands:
   - `comp update` = update component references
+- Component ID format: `cN` (section), `cN-N` (sub-component), `cN-N-N` (element within sub-component). When a prompt uses a cN ID, resolve it via `COMPONENT-REFERENCES.md` before acting.
+
+---
+
+## Component References
+
+All UI components and game modes have canonical names and IDs in **`COMPONENT-REFERENCES.md`**. Read it before:
+- Interpreting any prompt that mentions a UI element (e.g. "the close button", "the win modal", "entry phase", "game mode select")
+- Deciding which HTML element or JS function to modify
+- Describing UI elements in a response
+
+**ID format:** `cN` → section, `cN-N` → sub-component, `cN-N-N` → individual element. When a prompt uses a cN ID, resolve it via `COMPONENT-REFERENCES.md`.
+
+**Top-level sections:**
+- c1 Game states, c2 Header, c3 Score bar, c4 Game board, c5 Word input area
+- c6 Bottom controls, c7 Found words list, c8 Toast, c9 Modals, c10 Footer
+- c11 Game modes (c11-1 Classic, c11-2 Hide a Word, c11-3 Enter Letters)
+
+**Key modal IDs (c9):** c9-1 Confirm, c9-2 Win, c9-3 Game modes, c9-4 Hide-a-word config, c9-5 Enter-letters config, c9-6 Entry ready, c9-7 Share, c9-8 Greeting, c9-9 Help, c9-10 URL error, c9-11 Feedback
 
 ---
 

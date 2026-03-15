@@ -79,12 +79,15 @@ Everything is in one file with three clearly delimited sections:
 
 ## Component references
 
-All UI components have canonical names defined in **`COMPONENT-REFERENCES.md`**. Always consult it when:
-- Interpreting a prompt that refers to a part of the UI (e.g. "the close button", "the win modal", "entry phase")
+All UI components and game modes have canonical names and hierarchical IDs defined in **`COMPONENT-REFERENCES.md`**. Always consult it when:
+- Interpreting a prompt that refers to a part of the UI (e.g. "the close button", "the win modal", "entry phase", "game mode select")
 - Describing UI elements in a response
 - Deciding which HTML element or JS function to touch for a given change
+- A prompt uses a cN or cN-N ID (e.g. c9-6, c11-2) — look it up in `COMPONENT-REFERENCES.md` to resolve the exact element
 
-When the user refers to a component by name or a reasonable variation of a name, map it to the entry in `COMPONENT-REFERENCES.md` before acting.
+When the user refers to a component by name, variation, or cN ID, map it to the canonical entry in `COMPONENT-REFERENCES.md` before acting. The file is organized as:
+- **c1–c10**: game screen sections (states, header, score bar, board, word area, controls, found words, toast, modals, footer)
+- **c11**: game modes (c11-1 Classic, c11-2 Hide a Word, c11-3 Enter Letters)
 
 ## Game rules
 

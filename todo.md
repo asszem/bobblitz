@@ -1,19 +1,18 @@
 # Todo
-## P1 Dictionary fix (open: 3, done: 0)
+- [x] P0 - write a workflow summary and reminder for me - completed at 2026-03-15 00:00
+## P5 Dictionary fix (open: 3, done: 0)
 - [ ] P0 - update hungarian dictionary with ragozott alakok
 - [ ] P0 - add new words
-- [ ] P0 - purge incorrect words - reopened at 2026-03-14 15:22
+- [x] P0 - purge incorrect words - reopened at 2026-03-14 15:22
 
-## P2 Game modes (open: 5, done: 5)
-### P1 Word hide (open: 2, done: 5)
-- [ ] P0 - check board to make sure no other valid word is added
+## P3 Game modes (open: 5, done: 5)
+### P3 Word hide (open: 2, done: 5)
+- [ ] P1 - check board to make sure no other valid word is added
 - [ ] P4 - validate findable word (no spaces, language valid characters)
 
 ### P3 New modes (open: 3, done: 0)
 - [] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made
 - [ ] P0 - hide multiple words. check during entering new word whether it is possible to ndd that word.
-- [ ] P0 - display possible word options
-
 
 ## P3 UI (open: 1, done: 2)
 - [ ] P0 - play mode redesign - when in game phase, hide controls, options, footer
@@ -24,7 +23,7 @@
 
 ## P4 Feedback (open: 1, done: 1)
 - [ ] P0 - report missing word option
-- [] P0 - report incorrect word option for revealed list - reopened at 2026-03-14 20:38
+- [ ] P0 - report incorrect word option for revealed list - reopened at 2026-03-14 20:38
 
 ## P4 Usability (open: 1, done: 0)
 - [x ] P0 - fix less sensitive vertical movement

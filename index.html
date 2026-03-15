@@ -223,6 +223,11 @@
 
     .btn:active  { transform: scale(0.94); }
     .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+    .btn:focus-visible {
+      outline: 2px solid rgba(96, 165, 250, 0.9);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.22);
+    }
 
     .btn-ghost {
       background: rgba(30, 34, 60, 0.55);
@@ -323,6 +328,16 @@
     .mode-card:active {
       transform: scale(0.98);
     }
+
+    .mode-card:focus-visible {
+      outline: 2px solid rgba(96, 165, 250, 0.9);
+      outline-offset: 2px;
+      border-color: rgba(96, 165, 250, 0.6);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18), 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .mode-card:focus-visible .mode-card-name { color: #eef2ff; }
+    .mode-card:focus-visible .mode-card-desc { color: #9999cc; }
 
     .mode-card-name {
       font-size: 0.95rem;
@@ -434,6 +449,11 @@
       gap: 10px;
       margin-top: 16px;
       flex-wrap: wrap;
+    }
+
+    #entry-ready-modal .modal-actions {
+      justify-content: center;
+      flex-wrap: nowrap;
     }
 
     .btn-danger {
@@ -592,16 +612,6 @@
       outline: none;
     }
 
-    #grid.entry-mode .cell.cell-focused.cell-empty::after {
-      content: '|';
-      color: #60a5fa;
-      font-weight: 300;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
 
     .toast {
       position: fixed;
@@ -717,6 +727,7 @@
       <button class="btn btn-ghost" id="share-btn">Játék megosztása</button>
       <button class="btn btn-ghost" id="new-btn">Új játék</button>
       <button class="btn btn-ghost" id="entry-close-btn" style="display:none">Close</button>
+      <button class="btn btn-danger" id="entry-done-btn" style="display:none">I'm Done</button>
     </div>
   </div>
 </div>
@@ -1037,6 +1048,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
   let enterLettersPhase = false;   // true while user is filling in the grid
   let enterLettersData  = new Array(16).fill('');  // user-entered letters
   let entryFocusIdx     = 0;
+  let entryWasPreFilled = false;   // true once board was fully filled; suppresses auto-open on edits
+  let shareReturnToEntryReady = false; // true when share modal was opened from entry-ready modal
   let hoveredChip = null;
   const wordPathCache = new Map();
   let pendingConfirmAction = null;
@@ -1076,6 +1089,7 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
   const wordAreaEl          = document.getElementById('word-area');
   const entryCloseBtn       = document.getElementById('entry-close-btn');
+  const entryDoneBtn        = document.getElementById('entry-done-btn');
   const enterLettersModeBtn = document.getElementById('mode-enter-letters-btn');
   const entryReadyModal     = document.getElementById('entry-ready-modal');
   const entryReadyTitleEl   = document.getElementById('entry-ready-title');
@@ -1986,6 +2000,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     enterLettersModeBtn.querySelector('.mode-card-name').textContent = getModeInfo(MODE_ENTER_LETTERS).name        || 'Enter letters';
     enterLettersModeBtn.querySelector('.mode-card-desc').textContent = getModeInfo(MODE_ENTER_LETTERS).description || '';
     entryCloseBtn.textContent       = getModeLabels(MODE_ENTER_LETTERS).close || 'Close';
+    entryDoneBtn.textContent        = getModeLabels(MODE_ENTER_LETTERS).entryDoneBtn || "I'm Done";
     document.getElementById('feedback-btn').textContent           = s.feedbackBtn        || 'Submit feedback, feature request or incorrect word';
     document.getElementById('feedback-modal-title').textContent    = s.feedbackTitle       || 'Get in touch';
     document.getElementById('feedback-modal-desc').textContent     = s.feedbackDesc        || 'For any game related feedback, feature request or bug report, contact me via email';
@@ -2121,6 +2136,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     document.getElementById('share-btn').style.display  = inEntry ? 'none' : '';
     document.getElementById('new-btn').style.display    = inEntry ? 'none' : '';
     entryCloseBtn.style.display = inEntry ? '' : 'none';
+    entryDoneBtn.style.display  = inEntry && entryWasPreFilled ? '' : 'none';
     wordAreaEl.style.display    = inEntry ? 'none' : '';
   }
 
@@ -2160,7 +2176,11 @@ document.getElementById('lbl-score').textContent       = s.score;
   }
 
   function checkEntryComplete() {
-    if (enterLettersData.every(ch => ch.length === 1)) openEntryReadyModal();
+    if (!enterLettersData.every(ch => ch.length === 1)) return;
+    if (entryWasPreFilled) return; // board was already full; user edits don't auto-open modal
+    entryWasPreFilled = true;
+    updateControlsVisibility();
+    openEntryReadyModal();
   }
 
   function openEntryReadyModal() {
@@ -2186,6 +2206,7 @@ document.getElementById('lbl-score').textContent       = s.score;
   function closeEntryReadyModal() {
     entryReadyModal.hidden = true;
     entryReadyModal.setAttribute('aria-hidden', 'true');
+    updateControlsVisibility();
     focusEntryCell(entryFocusIdx);
   }
 
@@ -2197,6 +2218,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     if (key === 'ArrowLeft')  { e.preventDefault(); e.stopPropagation(); focusEntryCell(row * 4 + (col + 3) % 4); return; }
     if (key === 'ArrowDown')  { e.preventDefault(); e.stopPropagation(); focusEntryCell(((row + 1) % 4) * 4 + col); return; }
     if (key === 'ArrowUp')    { e.preventDefault(); e.stopPropagation(); focusEntryCell(((row + 3) % 4) * 4 + col); return; }
+    if (key === 'Enter' && entryWasPreFilled) { e.preventDefault(); e.stopPropagation(); openEntryReadyModal(); return; }
     if (key === 'Backspace' || key === 'Delete') {
       e.preventDefault(); e.stopPropagation();
       enterLettersData[idx] = '';
@@ -2215,8 +2237,7 @@ document.getElementById('lbl-score').textContent       = s.score;
       }
       enterLettersData[idx] = ch;
       updateEntryCell(idx);
-      if (idx < 15) focusEntryCell(idx + 1);
-      else checkEntryComplete();
+      checkEntryComplete();
     }
   }
 
@@ -2224,6 +2245,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     currentMode = MODE_ENTER_LETTERS;
     enterLettersPhase = true;
     entryFocusIdx = 0;
+    entryWasPreFilled = false;
     enterLettersData = new Array(16).fill('');
     score = 0; bestWord = '';
     scoreEl.textContent = '0';
@@ -2301,8 +2323,9 @@ document.getElementById('lbl-score').textContent       = s.score;
     }
   });
   entryCloseBtn.addEventListener('click', () => { enterLettersPhase = false; gridEl.classList.remove('entry-mode'); updateControlsVisibility(); openGameModesModal(); });
+  entryDoneBtn.addEventListener('click', openEntryReadyModal);
   entryReadyPlayBtn.addEventListener('click',  startSolvePhaseFromEntry);
-  entryReadyShareBtn.addEventListener('click', () => { entryReadyModal.hidden = true; entryReadyModal.setAttribute('aria-hidden', 'true'); openShareModal(); });
+  entryReadyShareBtn.addEventListener('click', () => { entryReadyModal.hidden = true; entryReadyModal.setAttribute('aria-hidden', 'true'); shareReturnToEntryReady = true; openShareModal(); });
   entryReadyBackBtn.addEventListener('click',  closeEntryReadyModal);
   entryReadyModal.addEventListener('click', e => { if (e.target === entryReadyModal) closeEntryReadyModal(); });
 
@@ -2330,6 +2353,7 @@ hideWordModal.addEventListener('click', e => {
   function openFeedbackModal() {
     feedbackModal.hidden = false;
     feedbackModal.setAttribute('aria-hidden', 'false');
+    feedbackCloseBtn.focus();
   }
   function closeFeedbackModal() {
     feedbackModal.hidden = true;
@@ -2348,23 +2372,33 @@ hideWordModal.addEventListener('click', e => {
       return;
     }
     if (e.key !== 'Escape') return;
-    if (!confirmModal.hidden) closeNewGameConfirm();
-    if (!winModal.hidden) { closeWinModal(); openGameModesModal(); }
-    if (!shareModal.hidden) closeShareModal();
-    if (!hideWordModal.hidden) closeHideWordModal();
+    if (!confirmModal.hidden)   closeNewGameConfirm();
+    if (!winModal.hidden)       { closeWinModal(); openGameModesModal(); }
+    if (!shareModal.hidden)     closeShareModal();
+    if (!hideWordModal.hidden)  closeHideWordModal();
+    if (!feedbackModal.hidden)  closeFeedbackModal();
+    if (!helpModal.hidden)      { helpModal.hidden = true; helpModal.setAttribute('aria-hidden', 'true'); }
+    if (!urlErrorModal.hidden)  urlErrorCloseBtn.click();
   });
-  modesModal.addEventListener('keydown', e => {
-    const modeBtns = [standardModeBtn, hideWordModeBtn, enterLettersModeBtn];
-    const idx = modeBtns.indexOf(document.activeElement);
-    if (idx < 0) return;
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+  // Arrow-key navigation helper for modal button lists
+  function addModalArrowNav(modalEl, getBtns) {
+    modalEl.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' &&
+          e.key !== 'ArrowUp'   && e.key !== 'ArrowDown') return;
+      const btns = getBtns().filter(b => !b.hidden && b.style.display !== 'none');
+      const idx  = btns.findIndex(b => b === document.activeElement || b.contains(document.activeElement));
+      if (idx < 0) return;
       e.preventDefault();
-      modeBtns[(idx + 1) % modeBtns.length].focus();
-    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-      e.preventDefault();
-      modeBtns[(idx + modeBtns.length - 1) % modeBtns.length].focus();
-    }
-  });
+      const fwd = e.key === 'ArrowRight' || e.key === 'ArrowDown';
+      btns[(idx + (fwd ? 1 : btns.length - 1)) % btns.length].focus();
+    });
+  }
+
+  addModalArrowNav(modesModal,      () => [standardModeBtn, hideWordModeBtn, enterLettersModeBtn]);
+  addModalArrowNav(confirmModal,    () => [confirmCancelBtn, confirmOkBtn]);
+  addModalArrowNav(winModal,        () => [winShareBtn, winNewBtn]);
+  addModalArrowNav(hideWordModal,   () => [hideWordCancelBtn, document.getElementById('hide-word-start-btn')]);
+  addModalArrowNav(entryReadyModal, () => [entryReadyBackBtn, entryReadyShareBtn, entryReadyPlayBtn]);
   wordsList.addEventListener('mouseleave', () => {
     hoveredChip = null;
     clearHighlight();
@@ -2565,7 +2599,6 @@ hideWordModal.addEventListener('click', e => {
     } catch (_) {
       document.execCommand('copy');
     }
-    closeShareModal();
     const s = t();
     showToast(s.shareModalCopied || 'Copied!');
   }
@@ -2597,6 +2630,11 @@ hideWordModal.addEventListener('click', e => {
   function closeShareModal() {
     shareModal.hidden = true;
     shareModal.setAttribute('aria-hidden', 'true');
+    if (shareReturnToEntryReady) {
+      shareReturnToEntryReady = false;
+      entryReadyModal.hidden = false;
+      entryReadyModal.setAttribute('aria-hidden', 'false');
+    }
   }
 
   document.getElementById('share-btn').addEventListener('click', openShareModal);

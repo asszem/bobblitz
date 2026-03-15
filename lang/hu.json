@@ -82,7 +82,8 @@
         "entryReadyNoWordsText": "Nem találtunk szavakat ezen a táblán. Próbálj más betűket.",
         "entryReadyPlay": "Játék indítása",
         "entryReadyShare": "Megosztás",
-        "entryReadyBack": "Vissza"
+        "entryReadyBack": "Vissza",
+        "entryDoneBtn": "Kész vagyok"
       }
     },
     "descriptions": {

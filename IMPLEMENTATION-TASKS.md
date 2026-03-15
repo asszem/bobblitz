@@ -1,4 +1,3 @@
-
 # Update rules
 
 - Each task header follows the format: `(Status) iN Description`

@@ -28,6 +28,7 @@ Keep this list updated as the UI evolves.
     - [c9-9 Help modal](#c9-9-help-modal)
     - [c9-10 URL error modal](#c9-10-url-error-modal)
     - [c9-11 Feedback modal](#c9-11-feedback-modal)
+  - [c11 Game modes](#c11-game-modes)
   - [c10 Footer](#c10-footer)
 
 ## c1 Game states
@@ -221,6 +222,16 @@ Opened via the feedback button (c10-1); lets the player contact the developer.
 ## c10 Footer
 
 - **c10-1 feedback button** — opens the feedback modal (c9-11); always visible at the bottom of the page (`#feedback-btn`)
+
+---
+
+## c11 Game modes
+
+The three selectable game modes. Mode ID strings are used in `currentMode` and URL params.
+
+- **c11-1 Classic mode** — standard word hunt; board is randomly generated (`MODE_CLASSIC = 'classic'`)
+- **c11-2 Hide a Word mode** — creator hides a secret word in a shared board; recipient must find it (`MODE_HIDE_WORD = 'hide-word'`)
+- **c11-3 Enter Letters mode** — creator fills all 16 cells with custom letters, then shares or plays the board (`MODE_ENTER_LETTERS = 'enter-letters'`)
 
 ## Update rules
 

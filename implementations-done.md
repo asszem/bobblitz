@@ -1,3 +1,21 @@
+# (done) i8 Modal keyboard navigation consistency - completed at 2026-03-15 00:00
+
+- (done) i8-1 Arrow key navigation should move focus between buttons in every modal (confirm, win, hide-word, entry-ready)
+- (done) i8-2 Enter key should activate the currently focused button in every modal
+- (done) i8-3 Escape key should trigger the back/close button in every modal
+- (done) i8-4 Arrow key navigation should work in the game mode select modal (c9-3)
+
+# (done) i7 Enter letters mode updates - completed at 2026-03-15 00:00
+
+- (done) i7-1 Add a game modes section to `COMPONENT-REFERENCES.md` so individual modes can be referenced by ID
+- (done) i7-2 Change letter entry navigation (c4 entry phase): when a letter is typed, focus stays on the current cell instead of advancing to the next
+- (done) i7-3 When the last empty cell (c4-4) is filled, automatically open the entry ready modal (c9-6)
+- (done) i7-4 When the user re-enters entry phase with all cells already filled, do not auto-trigger c9-6; instead show an "I'm Done" button next to the close button (c6-7) that opens c9-6 on press
+- (done) i7-5 In c9-6, arrange buttons in a single row in order: Back (c9-6-6), Share (c9-6-5), Start game (c9-6-4)
+- (done) i7-6 When the share link is copied from c9-6, keep the modal open so the user can choose to go back to edit or start the game
+- (done) i7-7 Remove the blinking cursor from the focused cell (c4-3) in entry phase, but keep the focused/selected visual style
+- (done) i7-8 When the "I'm Done" button (c6-7) is visible in entry phase, pressing Enter should open c9-6
+
 # (Done) i6 Fix incorrectly displayed letter hint when a shared game is loaded - completed at 2026-03-14 19:22
 
 - (done) i6-1 When a shared Hide a Word game is loaded via URL, ensure hint letters (c4-3 cell-hint highlights) are restored correctly and not shown when they shouldn't be
