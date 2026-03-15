@@ -1,3 +1,11 @@
+# (done) i9 Share game with hint/reveal restrictions - completed at 2026-03-15
+
+- (done) i9-1 Add two toggle buttons to the share game modal (c9-6): "Disable hints" and "Disable reveal words", both off by default
+- (done) i9-2 Encode the toggle states in the share URL as a parameter, using the same encoding scheme as the target word (UTF-8 → base64) so the values are not easily tweakable
+- (done) i9-3 When loading a game from URL, disable or enable the hint button (c4-6) and reveal-all button (c5-4) according to the encoded URL parameters
+- (done) i9-4 Ensure the hint/reveal restrictions apply only to the specific game loaded from the URL, not to subsequently started games
+- (done) i9-5 Persist the hint/reveal restriction state in localStorage alongside the game state, so reloading without URL parameters preserves the button states
+
 # (done) i8 Modal keyboard navigation consistency - completed at 2026-03-15 00:00
 
 - (done) i8-1 Arrow key navigation should move focus between buttons in every modal (confirm, win, hide-word, entry-ready)

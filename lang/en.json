@@ -41,6 +41,8 @@
     "shareMessagePlaceholder": "Your message",
     "shareDefaultSender": "Böbblitz",
     "shareDefaultMessage": "Try to solve this!",
+    "shareDisableHints": "Disable hints",
+    "shareDisableReveal": "Disable reveal words",
     "urlErrorTitle": "Invalid link",
     "urlErrorText": "The shared link is invalid or expired. Starting a new game.",
     "urlErrorClose": "OK",

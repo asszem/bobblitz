@@ -41,6 +41,8 @@
     "shareMessagePlaceholder": "Üzeneted",
     "shareDefaultSender": "Böbblitz",
     "shareDefaultMessage": "Meg tudod oldani?",
+    "shareDisableHints": "Tippek letiltva",
+    "shareDisableReveal": "Szavak felfedése letiltva",
     "urlErrorTitle": "Érvénytelen link",
     "urlErrorText": "A megosztott link érvénytelen vagy lejárt. Új játék indul.",
     "urlErrorClose": "OK",

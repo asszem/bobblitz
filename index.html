@@ -552,6 +552,59 @@
       z-index: 3;
     }
 
+    .share-restrictions {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .share-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #c4c9e8;
+      user-select: none;
+    }
+
+    .share-toggle input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 36px;
+      height: 20px;
+      border-radius: 10px;
+      background: #2a2a4a;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .share-toggle input[type="checkbox"]::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #8888aa;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .share-toggle input[type="checkbox"]:checked {
+      background: #e94560;
+      border-color: #e94560;
+    }
+
+    .share-toggle input[type="checkbox"]:checked::after {
+      transform: translateX(16px);
+      background: #fff;
+    }
+
     .share-url-input {
       font-weight: 400;
       font-size: 0.78rem;
@@ -786,6 +839,16 @@
     <input id="share-sender-input" class="modal-input" type="text" maxlength="40" spellcheck="false" autocomplete="off" />
     <label id="share-message-label" class="modal-label" for="share-message-input">Message</label>
     <input id="share-message-input" class="modal-input" type="text" maxlength="120" spellcheck="false" autocomplete="off" />
+    <div class="share-restrictions">
+      <label class="share-toggle">
+        <input type="checkbox" id="share-disable-hints-cb" />
+        <span id="share-disable-hints-label">Disable hints</span>
+      </label>
+      <label class="share-toggle">
+        <input type="checkbox" id="share-disable-reveal-cb" />
+        <span id="share-disable-reveal-label">Disable reveal words</span>
+      </label>
+    </div>
     <label id="share-url-label" class="modal-label" for="share-url-input">Link</label>
     <textarea id="share-url-input" class="modal-input share-url-input" readonly rows="1"></textarea>
     <div class="modal-actions">
@@ -1043,6 +1106,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
   let totalWords = -1;   // -1 = not yet computed
   let revealed   = false;
   let hintCount    = 0;
+  let sharedHintsDisabled  = false; // set when game is loaded from URL or localStorage with hint restriction
+  let sharedRevealDisabled = false; // set when game is loaded from URL or localStorage with reveal restriction
   let lockedSector = null; // committed swipe direction; null when in dead zone
   let winModalShown = false;
   let enterLettersPhase = false;   // true while user is filling in the grid
@@ -1148,6 +1213,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
       score,
       words,
       hintCount: currentMode === MODE_HIDE_WORD ? hintCount : 0,
+      disableHints:  sharedHintsDisabled  || false,
+      disableReveal: sharedRevealDisabled || false,
       savedAt: Date.now(),
     };
     try {
@@ -1281,7 +1348,10 @@ const SAVE_KEY = 'bobblitz-save-v1';
       if (item.status === 'found') addChip(item.w, calcScore(item.w));
       else if (item.status === 'revealed') addRevealedChip(item.w);
     }
+    sharedHintsDisabled  = payload.disableHints  === true;
+    sharedRevealDisabled = payload.disableReveal === true;
     document.getElementById('reveal-btn').disabled = revealed;
+    applySharedRestrictions();
     return true;
   }
 
@@ -1353,6 +1423,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
     totalWords = -1;
     revealed   = false;
     hintCount  = 0;
+    sharedHintsDisabled  = false;
+    sharedRevealDisabled = false;
     winModalShown = false;
     hoveredChip = null;
     clearHighlight();
@@ -2140,6 +2212,15 @@ document.getElementById('lbl-score').textContent       = s.score;
     wordAreaEl.style.display    = inEntry ? 'none' : '';
   }
 
+  function applySharedRestrictions() {
+    if (sharedHintsDisabled) {
+      document.getElementById('hint-btn').disabled = true;
+    }
+    if (sharedRevealDisabled) {
+      document.getElementById('reveal-btn').disabled = true;
+    }
+  }
+
   function renderEntryGrid() {
     gridEl.innerHTML = '';
     gridEl.classList.add('entry-mode');
@@ -2579,6 +2660,10 @@ hideWordModal.addEventListener('click', e => {
     const message = shareMessageInput.value.trim();
     if (sender)  params.set('snd', encodeWord(sender));
     if (message) params.set('msg', encodeWord(message));
+    const disableHintsCb  = document.getElementById('share-disable-hints-cb');
+    const disableRevealCb = document.getElementById('share-disable-reveal-cb');
+    const bits = (disableHintsCb.checked ? 1 : 0) | (disableRevealCb.checked ? 2 : 0);
+    if (bits > 0) params.set('r', encodeWord(String(bits)));
     return `${location.origin}${location.pathname}?${params.toString()}`;
   }
 
@@ -2618,6 +2703,10 @@ hideWordModal.addEventListener('click', e => {
     shareMessageLabel.textContent    = s.shareMessageLabel      || 'Message';
     shareMessageInput.placeholder    = s.shareMessagePlaceholder || 'Your message';
     shareUrlLabel.textContent        = s.shareLinkLabel         || 'Link';
+    document.getElementById('share-disable-hints-label').textContent  = s.shareDisableHints  || 'Disable hints';
+    document.getElementById('share-disable-reveal-label').textContent = s.shareDisableReveal || 'Disable reveal words';
+    document.getElementById('share-disable-hints-cb').checked  = false;
+    document.getElementById('share-disable-reveal-cb').checked = false;
     if (!shareSenderInput.value)  shareSenderInput.value  = s.shareDefaultSender  || 'Böbblitz';
     if (!shareMessageInput.value) shareMessageInput.value = s.shareDefaultMessage || 'Try to solve this!';
     shareUrlInput.style.height = 'auto';
@@ -2646,6 +2735,8 @@ hideWordModal.addEventListener('click', e => {
   }
   shareSenderInput.addEventListener('input', debouncedRefreshShareUrl);
   shareMessageInput.addEventListener('input', debouncedRefreshShareUrl);
+  document.getElementById('share-disable-hints-cb').addEventListener('change', refreshShareUrl);
+  document.getElementById('share-disable-reveal-cb').addEventListener('change', refreshShareUrl);
 
   // ── Help modal ────────────────────────────────────────────────────────────
   const helpModal         = document.getElementById('help-modal');
@@ -2785,10 +2876,17 @@ hideWordModal.addEventListener('click', e => {
     revealed = false;
     hintCount = 0;
     document.getElementById('hint-btn').disabled = false;
+    document.getElementById('reveal-btn').disabled = false;
     hoveredChip = null;
     clearHighlight();
     wordPathCache.clear();
     wordsList.innerHTML = '';
+
+    const rParam = params.get('r');
+    const rDecoded = rParam ? decodeWord(rParam) : null;
+    const rBits = rDecoded !== null ? parseInt(rDecoded, 10) : 0;
+    sharedHintsDisabled  = !!(rBits & 1);
+    sharedRevealDisabled = !!(rBits & 2);
 
     const analysis = analyzeGridWords(false);
     gameWords = [...analysis.allWords];
@@ -2800,6 +2898,7 @@ hideWordModal.addEventListener('click', e => {
     updateCountEl();
     updateGameModeLabel();
     updateControlsVisibility();
+    applySharedRestrictions();
     persistGameState();
 
     const sender  = decodeWord(params.get('snd') || '') || '';
