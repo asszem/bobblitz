@@ -303,6 +303,50 @@
       margin-top: 14px;
     }
 
+    .max-words-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: rgba(30, 34, 60, 0.55);
+      border: 1.5px solid #3a4068;
+    }
+    .max-words-label {
+      font-size: 0.9rem;
+      color: #a0a8d0;
+    }
+    .max-words-stepper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .max-words-stepper button {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: 1.5px solid #3a4068;
+      background: rgba(30, 34, 60, 0.8);
+      color: #e0e4ff;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.12s, border-color 0.12s;
+    }
+    .max-words-stepper button:hover {
+      background: rgba(233, 69, 96, 0.15);
+      border-color: #e94560;
+    }
+    .max-words-value {
+      min-width: 28px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #e0e4ff;
+    }
+
     .mode-card {
       display: flex;
       flex-direction: column;
@@ -926,6 +970,14 @@
         <span class="mode-card-desc" id="mode-enter-letters-desc"></span>
       </button>
     </div>
+    <div class="max-words-row" id="max-words-row">
+      <span class="max-words-label" id="max-words-label">Max words</span>
+      <div class="max-words-stepper">
+        <button id="max-words-dec" aria-label="Decrease max words">−</button>
+        <span class="max-words-value" id="max-words-display">15</span>
+        <button id="max-words-inc" aria-label="Increase max words">+</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1064,6 +1116,9 @@ const MODE_HIDE_WORD = 'hide-word';
 const MODE_ENTER_LETTERS = 'enter-letters';
 let currentMode = MODE_CLASSIC;
 let hideWordTarget = '';
+let maxWordsLimit = 15;
+let gameWordSet   = null;   // Set<string> when word-limit is active
+let gamePrefixSet = null;   // Set<string> of all prefixes when word-limit is active
 
 const dictionaryHasWord = word => {
   const node = trieStep(langData.trie, word);
@@ -1072,10 +1127,12 @@ const dictionaryHasWord = word => {
 const dictionaryHasPrefix = prefix => !!trieStep(langData.trie, prefix);
 const hasWord = word => {
   if (currentMode === MODE_HIDE_WORD) return !!hideWordTarget && word === hideWordTarget;
+  if (gameWordSet) return gameWordSet.has(word);
   return dictionaryHasWord(word);
 };
 const hasPrefix = prefix => {
   if (currentMode === MODE_HIDE_WORD) return !!hideWordTarget && hideWordTarget.startsWith(prefix);
+  if (gamePrefixSet) return gamePrefixSet.has(prefix);
   return dictionaryHasPrefix(prefix);
 };
 const getActiveMinWordLength = () => (
@@ -1093,7 +1150,37 @@ const GAME_GENERATION_RULES = Object.freeze({
   requiredByLength: Object.freeze({ 4: 3, 5: 2 }),
   maxAttempts: 5000,
 });
-const SAVE_KEY = 'bobblitz-save-v1';
+const SAVE_KEY     = 'bobblitz-save-v1';
+const SETTINGS_KEY = 'bobblitz-settings-v1';
+
+function loadSettings() {
+  try {
+    const raw = localStorage.getItem(SETTINGS_KEY) || '';
+    if (raw) {
+      const s = JSON.parse(raw);
+      if (Number.isInteger(s.maxWordsLimit) && s.maxWordsLimit >= 1 && s.maxWordsLimit <= 100) {
+        maxWordsLimit = s.maxWordsLimit;
+      }
+    }
+  } catch (_) {}
+  document.getElementById('max-words-display').textContent = maxWordsLimit;
+}
+
+function saveSettings() {
+  try {
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ maxWordsLimit }));
+  } catch (_) {}
+}
+
+function buildGameWordSets(words) {
+  gameWordSet   = new Set(words);
+  gamePrefixSet = new Set();
+  for (const w of words) {
+    for (let i = 1; i <= w.length; i++) {
+      gamePrefixSet.add(w.slice(0, i));
+    }
+  }
+}
 // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let grid       = [];
   let sel        = [];
@@ -1271,16 +1358,13 @@ const SAVE_KEY = 'bobblitz-save-v1';
     wordPathCache.clear();
 
     const analysis = analyzeGridWords(false);
-    gameWords = [...analysis.allWords];
-    totalWords = analysis.totalWords;
-    const validWords = new Set(gameWords);
-
-    if (payload.words.length !== validWords.size) return invalidSavedGame();
+    const boardWords = new Set([...analysis.allWords]);
 
     const restoredFound = new Set();
     const restoredRevealed = new Set();
     const savedStatuses = [];
     const seen = new Set();
+    const restoredGameWords = [];
     for (const item of payload.words) {
       if (!item || typeof item.w !== 'string') {
         return invalidSavedGame();
@@ -1298,13 +1382,23 @@ const SAVE_KEY = 'bobblitz-save-v1';
         return invalidSavedGame();
       }
       const w = item.w.trim().toUpperCase();
-      if (!w || seen.has(w) || !validWords.has(w)) return invalidSavedGame();
+      if (!w || seen.has(w) || !boardWords.has(w)) return invalidSavedGame();
       seen.add(w);
+      restoredGameWords.push(w);
       if (status === 'found' || status === 'revealed') restoredFound.add(w);
       if (status === 'revealed') restoredRevealed.add(w);
       savedStatuses.push({ w, status });
     }
-    if (seen.size !== validWords.size) return invalidSavedGame();
+    if (seen.size !== payload.words.length) return invalidSavedGame();
+
+    gameWords = restoredGameWords;
+    totalWords = gameWords.length;
+    if (currentMode !== MODE_HIDE_WORD) {
+      buildGameWordSets(gameWords);
+    } else {
+      gameWordSet   = null;
+      gamePrefixSet = null;
+    }
 
     found = restoredFound;
     revealedWords = restoredRevealed;
@@ -1438,6 +1532,8 @@ const SAVE_KEY = 'bobblitz-save-v1';
       if (!hideWordTarget) {
         throw new Error('Hide-word mode requires a target word.');
       }
+      gameWordSet   = null;
+      gamePrefixSet = null;
       grid = generateHideWordGrid(hideWordTarget);
       const analysis = analyzeGridWords(false);
       gameWords = [...analysis.allWords];
@@ -1450,6 +1546,9 @@ const SAVE_KEY = 'bobblitz-save-v1';
       updateCountEl();
       return;
     }
+
+    gameWordSet   = null;
+    gamePrefixSet = null;
 
     const pool = getPool();
     let chosenGrid = null;
@@ -1469,8 +1568,14 @@ const SAVE_KEY = 'bobblitz-save-v1';
 
     grid = chosenGrid;
     const analysis = analyzeGridWords(false);
-    gameWords = [...analysis.allWords];
-    totalWords = analysis.totalWords;
+    let allWords = [...analysis.allWords];
+    allWords.sort((a, b) => calcScore(b) - calcScore(a) || b.length - a.length || a.localeCompare(b));
+    if (allWords.length > maxWordsLimit) {
+      allWords = allWords.slice(0, maxWordsLimit);
+    }
+    gameWords = allWords;
+    totalWords = gameWords.length;
+    buildGameWordSets(gameWords);
     renderGrid();
     resetSel();
     updateCountEl();
@@ -2060,6 +2165,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     winShareBtn.textContent = s.winShare   || s.shareGame || 'Share game';
     modesTitleEl.textContent = s.modeSelectTitle || s.modeSelectLabel;
     document.getElementById('modes-hint').textContent = s.modeSelectHint || '';
+    document.getElementById('max-words-label').textContent = s.maxWordsLabel || 'Max words';
     standardModeBtn.querySelector('.mode-card-name').textContent  = getModeInfo(MODE_CLASSIC).name      || 'Standard';
     standardModeBtn.querySelector('.mode-card-desc').textContent  = getModeInfo(MODE_CLASSIC).description || '';
     hideWordModeBtn.querySelector('.mode-card-name').textContent  = getModeInfo(MODE_HIDE_WORD).name     || 'Hide a word';
@@ -2386,6 +2492,21 @@ document.getElementById('lbl-score').textContent       = s.score;
     startEnterLettersMode();
   });
 
+  document.getElementById('max-words-dec').addEventListener('click', () => {
+    if (maxWordsLimit > 1) {
+      maxWordsLimit--;
+      document.getElementById('max-words-display').textContent = maxWordsLimit;
+      saveSettings();
+    }
+  });
+  document.getElementById('max-words-inc').addEventListener('click', () => {
+    if (maxWordsLimit < 100) {
+      maxWordsLimit++;
+      document.getElementById('max-words-display').textContent = maxWordsLimit;
+      saveSettings();
+    }
+  });
+
   standardModeBtn.addEventListener('click', () => {
     closeGameModesModal();
     startNewGame();
@@ -2656,6 +2777,7 @@ hideWordModal.addEventListener('click', e => {
     params.set('m', currentMode);
     params.set('g', grid.join(''));
     if (currentMode === MODE_HIDE_WORD && hideWordTarget) params.set('w', encodeWord(hideWordTarget));
+    if (gameWordSet && currentMode !== MODE_HIDE_WORD) params.set('wl', encodeWord(gameWords.join(',')));
     const sender  = shareSenderInput.value.trim();
     const message = shareMessageInput.value.trim();
     if (sender)  params.set('snd', encodeWord(sender));
@@ -2888,9 +3010,24 @@ hideWordModal.addEventListener('click', e => {
     sharedHintsDisabled  = !!(rBits & 1);
     sharedRevealDisabled = !!(rBits & 2);
 
+    gameWordSet   = null;
+    gamePrefixSet = null;
     const analysis = analyzeGridWords(false);
-    gameWords = [...analysis.allWords];
-    totalWords = analysis.totalWords;
+    const boardWords = new Set([...analysis.allWords]);
+    const wlParam = currentMode !== MODE_HIDE_WORD ? params.get('wl') : null;
+    if (wlParam) {
+      const decoded = decodeWord(wlParam);
+      const wlWords = decoded ? decoded.split(',').map(w => w.trim().toUpperCase()).filter(Boolean) : [];
+      if (wlWords.length > 0 && wlWords.every(w => boardWords.has(w))) {
+        gameWords = wlWords;
+        buildGameWordSets(gameWords);
+      } else {
+        gameWords = [...boardWords];
+      }
+    } else {
+      gameWords = [...boardWords];
+    }
+    totalWords = gameWords.length;
 
     applyLang();
     renderGrid();
@@ -2914,6 +3051,7 @@ hideWordModal.addEventListener('click', e => {
   }
 
   // â”€â”€ Start â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  loadSettings();
   (async function boot() {
     const fromUrl = await tryLoadFromUrl();
     if (fromUrl) return;

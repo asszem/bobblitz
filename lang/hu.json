@@ -25,6 +25,7 @@
     "modeSelectLabel": "Játékmódok",
     "modeSelectTitle": "Játékmódok",
     "modeSelectHint": "Válassz játékmódot.",
+    "maxWordsLabel": "Max szavak",
     "winTitle": "Gratulálunk!",
     "winText": "Megtaláltad az összes szót ezen a táblán.",
     "winNewGame": "Új játék",
@@ -67,11 +68,11 @@
       },
       "hide-word": {
         "title": "Szórejtés",
-        "hint": "Adj meg egy szót 4 és 12 betű között.",
+        "hint": "Adj meg egy szót 4 és 16 betű között.",
         "placeholder": "Szó megadása",
         "start": "Indítás",
         "close": "Bezárás",
-        "errorLength": "A szó hossza 4 és 12 között lehet.",
+        "errorLength": "A szó hossza 4 és 16 között lehet.",
         "errorChars": "Csak az adott nyelvben érvényes betűket használj."
       },
       "enter-letters": {

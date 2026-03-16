@@ -25,6 +25,7 @@
     "modeSelectLabel": "Game modes",
     "modeSelectTitle": "Game modes",
     "modeSelectHint": "Select a game mode.",
+    "maxWordsLabel": "Max words",
     "winTitle": "Congratulations!",
     "winText": "You found all words on this board.",
     "winNewGame": "New Game",
@@ -67,11 +68,11 @@
       },
       "hide-word": {
         "title": "Hide a word",
-        "hint": "Type one word with 4 to 12 letters.",
+        "hint": "Type one word with 4 to 16 letters.",
         "placeholder": "Enter word",
         "start": "Start",
         "close": "Close",
-        "errorLength": "Word length must be between 4 and 12.",
+        "errorLength": "Word length must be between 4 and 16.",
         "errorChars": "Use only letters valid in the selected language."
       },
       "enter-letters": {
