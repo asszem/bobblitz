@@ -59,8 +59,9 @@ Everything is in one file with three clearly delimited sections:
 ## Implementation tasks
 
 `IMPLEMENTATION-TASKS.md` tracks feature/fix tasks. Update rules are defined in its own `# Update rules` section. Key points:
-- Task headers follow the format: `(Status) iN Description`
+- Task headers follow the format: `# (Status) iN Description`
 - Steps follow the format: `(status) iN-N Description`
+- IDs are permanent — never reuse an iN ID, even after a task is moved to `implementations-done.md`.
 - Step statuses: `(open)` = not started, `(fix)` = implemented but broken and needs a fix, `(test)` = implemented/fixed and awaiting user approval, `(done)` = approved by user.
 - When implementing or fixing a step, set it to `(test)` — never set to `(done)` yourself.
 - Header status: `(open)` if any step is open, `(test)` if all implemented but not all approved, `(done)` only when all steps are done.
