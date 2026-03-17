@@ -78,3 +78,14 @@
   - Email address as a `mailto:asszem78@gmail.com` link with "Send email to" label
   - Bluesky profile link: https://bsky.app/profile/asszem.bsky.social
   - Close button
+# (done) i12 Set maximum number of findable words per game - completed at 2026-03-17 22:07
+
+- (done) i12-1 Add a max-words selector to the new game modal, defaulting to 5
+- (done) i12-2 Allow the user to change the value (min 1, max 100)
+- (done) i12-3 When generating a game, ensure only the allowed maximum number of words is findable on the board
+- (done) i12-4 Ensure filler letters do not accidentally allow additional words beyond the maximum
+- (done) i12-5 In Hide a Word mode, set the maximum word count to the number of hidden words (currently 1)
+- (done) i12-6 The max word limit is not respected when a game is shared — the shared game should reflect the same word limit as the original
+- (done) i12-7 The max words label is hardcoded — it should come from the language file ("Max words" in English, "Max szavak" in Hungarian)
+- (done) i12-8 Change the default max words value from 5 to 15
+- (done) i12-9 If the board has fewer words than the limit, that is acceptable — the limit is a cap, not a required count
