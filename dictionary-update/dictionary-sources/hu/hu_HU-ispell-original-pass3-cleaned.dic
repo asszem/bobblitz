@@ -1,20 +1,5 @@
-!!!
-X_000
-X_100
-X_200
-X_300
-X_400
-X_500
-X_600
-X_700
-X_800
-X_900
-???
 Aba
-X_ABC
-X_ABS
 Abt
-X_ACL
 Ada
 adu
 Ady
@@ -36,32 +21,18 @@ alt
 alá
 aló
 ama
-X_AMD
 ami
-X_any
 apa
 Apc
-X_API
-X_APM
-X_app
 apu
 apó
 ara
 arc
-X_ARP
-X_art
 Arz
-X_ASP
 asz
-X_ATA
-X_atm
-X_ATM
-X_ATP
-X_ATV
 aty
 azt
 azé
-X_B12
 bab
 Bag
 baj
@@ -69,36 +40,20 @@ Baj
 bak
 Bak
 bal
-X_bar
 Bay
-X_BBC
-X_BCG
 Bea
 beh
 bej
 Bek
 Bem
 Bia
-X_bio
-X_bit
-X_biz
-X_BKV
-X_BME
-X_BMP
-X_BMW
-X_BNV
 boa
-X_bob
 Bod
 bog
 bon
 bor
 bot
-X_boy
 brr
-X_BSc
-X_BSD
-X_BTK
 Bud
 Buj
 báb
@@ -112,7 +67,6 @@ bég
 bél
 bér
 Bér
-X_BÉT
 bír
 bíz
 bók
@@ -129,25 +83,11 @@ bőr
 Bős
 bűn
 bűz
-X_cal
-X_CBA
 cet
-X_CEU
-X_CGI
 Che
-X_CIA
 cin
-X_cm2
-X_cm3
-X_CNC
 col
-X_cos
-X_CPU
-X_CRC
-X_CRL
-X_CSS
 cső
-X_ctg
 Cák
 cár
 cég
@@ -158,34 +98,17 @@ cúg
 Cún
 dac
 Dad
-X_dag
 dal
 Dar
-X_DDE
-X_DDT
 dia
 dió
-X_dkg
-X_DLL
-X_dm2
-X_dm3
-X_DMA
-X_DNS
-X_DNy
 dob
 dog
 doh
-X_DOI
 Don
-X_DOS
-X_DSL
-X_DTD
-X_DTP
 dug
 Dux
 duó
-X_dvd
-X_DVD
 dzs
 Dág
 dák
@@ -214,13 +137,9 @@ Eck
 edd
 Ede
 edz
-X_EEG
-X_ego
 egy
-X_eho
 ejt
 eke
-X_EKG
 elv
 elé
 elő
@@ -237,7 +156,6 @@ esz
 eső
 Eta
 Ete
-X_EUR
 eva
 evő
 ezt
@@ -245,14 +163,11 @@ ezé
 faj
 fal
 far
-X_fax
-X_FBI
 fed
 fej
 fel
 fen
 fez
-X_FHB
 fia
 fix
 fiú
@@ -260,15 +175,10 @@ fog
 fok
 fon
 fos
-X_FSF
-X_FTC
-X_FTP
 fut
-X_FVM
 fád
 fáj
 Fáj
-X_FÁK
 fás
 Fáy
 fék
@@ -292,28 +202,10 @@ fűl
 fűt
 fűz
 gaz
-X_GBP
-X_GDP
 geg
-X_GeV
-X_GHz
-X_GiB
 Gic
-X_GIF
-X_gin
-X_gmk
-X_GMO
-X_GNU
 gnú
-X_GPa
-X_GPG
-X_GPL
-X_GPS
 Gró
-X_GSM
-X_GTK
-X_GTP
-X_GUI
 gyí
 gyű
 Gád
@@ -336,36 +228,27 @@ Göd
 Gül
 gőg
 gőz
-X_H2O
 hab
 had
 Hag
 hah
 haj
 hal
-X_HAL
 has
 hat
-X_HBO
 heg
 heh
 hej
 Hir
 hit
-X_HIV
 hiú
 hja
-X_hmm
 hol
 hon
 hoz
-X_hPa
-X_HPV
-X_HUF
 huh
 huj
 hun
-X_HVG
 hág
 háj
 hál
@@ -377,7 +260,6 @@ héj
 hét
 Hét
 hév
-X_HÉV
 híd
 híg
 híj
@@ -386,7 +268,6 @@ hír
 hív
 hód
 Hór
-X_HÖK
 húg
 húr
 hús
@@ -398,13 +279,11 @@ hűn
 hűs
 hűt
 Ibi
-X_IBM
 Ica
 Icu
 Ida
 idd
 ide
-X_IDE
 idő
 ifi
 iga
@@ -422,9 +301,6 @@ ion
 ipa
 Irk
 irt
-X_isi
-X_ISM
-X_ISO
 itt
 ivó
 Ivó
@@ -434,12 +310,9 @@ izé
 jaj
 jak
 jel
-X_jen
 jer
 jog
 Joó
-X_JPG
-X_JSP
 juh
 juj
 jut
@@ -450,40 +323,26 @@ jég
 Jób
 jód
 jól
-X_jón
 jós
 jön
 kan
 kap
 kar
 kas
-X_KDE
 keh
 kel
 ken
-X_keV
-X_KGB
-X_khi
 khm
-X_kHz
 Kia
-X_KiB
 kik
 kis
 Kis
-X_kkv
-X_km2
-X_km3
 Kol
 kor
 kos
 Koy
-X_kPa
-X_KSH
-X_KTM
 kun
 Kup
-X_kWh
 kád
 Kál
 Kám
@@ -507,7 +366,6 @@ kór
 Kós
 köb
 köd
-X_KÖM
 köp
 kör
 köt
@@ -525,27 +383,18 @@ lap
 Las
 lat
 Lau
-X_LCD
 led
-X_LED
 Lee
-X_lej
 lel
 len
 lep
 les
-X_lex
 Leó
-X_LGT
 lik
-X_LMP
 lob
-X_log
 lom
 lop
 Los
-X_LSD
-X_luc
 luk
 lux
 Lux
@@ -575,51 +424,24 @@ Mao
 mar
 Max
 May
-X_MDF
 meg
-X_MEK
 mer
-X_MeV
 mez
-X_meó
-X_MHz
-X_MiB
 mik
-X_min
-X_miá
-X_MKM
-X_mm2
-X_mm3
 Mme
-X_MNB
-X_MOB
 moh
 mol
-X_MOL
 mos
-X_MP3
-X_MPa
-X_MR1
-X_MR2
-X_MR3
-X_MR4
-X_MR5
 Mrd
 Mrs
-X_MSc
-X_MTA
-X_MTI
-X_MTV
 Mád
 máj
 mák
 már
 más
-X_MÁV
 máz
 még
 méh
-X_MÉH
 mém
 mén
 mér
@@ -632,24 +454,14 @@ Mór
 műt
 Nak
 nap
-X_NAT
-X_NAV
-X_NDK
 nej
 nem
-X_NER
 net
 New
 Ney
-X_NFS
 Nil
-X_NIS
-X_nm2
-X_nm3
-X_NOB
 nos
 Noé
-X_NTP
 nyí
 nyű
 nád
@@ -661,20 +473,11 @@ nút
 női
 nőj
 nős
-X_OBH
 oda
-X_ODF
-X_ODP
-X_ODS
-X_ODT
 odú
-X_OEM
-X_OEP
-X_OGG
 ohm
 ohó
 ojt
-X_OKJ
 oké
 Ola
 old
@@ -684,44 +487,23 @@ olt
 oly
 Ond
 ont
-X_OOo
-X_OOP
 orr
 orv
 Ory
-X_OTP
 ott
-X_OVB
-X_ovi
 pad
 pap
 Pap
 Pat
 Paz
-X_PBS
-X_PCI
-X_PCR
-X_pdf
-X_PDF
 pej
 per
-X_PET
 pfű
-X_PhD
-X_PHP
 phű
 pia
-X_PiB
-X_PIN
-X_PNG
 Poe
-X_pop
 por
-X_pró
-X_PTE
-X_pub
 pun
-X_PVC
 pác
 Pál
 pán
@@ -741,25 +523,17 @@ pök
 pör
 púp
 rab
-X_rad
 rag
 raj
 rak
-X_RAM
-X_rap
 Ray
 Red
-X_rep
 Rex
 reá
 Rhé
 Rio
-X_RNS
 rom
-X_ROM
 rop
-X_RPM
-X_RTL
 rum
 Rum
 rác
@@ -795,34 +569,20 @@ sas
 sav
 Sax
 Say
-X_SDK
 seb
-X_sec
 sej
 sem
-X_sic
-X_sin
 Sir
 sió
 Sió
-X_ska
-X_SLP
-X_sms
-X_SMS
 sok
 som
 Som
 sor
-X_SOS
 Soó
-X_SQL
 Srí
-X_SSD
-X_SSH
 Sun
 sut
-X_SVG
-X_SZU
 szí
 szó
 szú
@@ -853,40 +613,22 @@ Tab
 tag
 taj
 tan
-X_tao
 tar
 Tar
 Tas
 tat
-X_tau
-X_tbc
-X_TBC
-X_TCP
-X_TDK
 tea
 tej
-X_TeV
-X_TeX
-X_TGM
-X_thm
-X_TiB
-X_TIT
 tok
 tol
 Tom
 top
 tor
 Tot
-X_TPa
 tré
-X_tsz
-X_TTK
 tud
 Tur
 tus
-X_TV2
-X_TVK
-X_TXT
 tyű
 Tác
 tág
@@ -920,20 +662,13 @@ tűr
 tűz
 Tűz
 ufó
-X_uhu
-X_UHU
 ujj
 Ukk
 Ulm
 Und
 Ung
 Ura
-X_URH
-X_URL
 Urr
-X_USA
-X_USB
-X_USD
 Uza
 vad
 vaj
@@ -948,12 +683,8 @@ ver
 vet
 Vid
 Vig
-X_VIP
-X_VIT
-X_VNC
 vok
 von
-X_VPN
 Vuk
 Vác
 vád
@@ -977,27 +708,15 @@ vét
 víg
 vív
 víz
-X_WAP
 web
-X_WEP
-X_WHO
 Wix
-X_WMA
-X_WWF
-X_WWW
-X_X11
 Xen
 Xgl
-X_XML
-X_XXL
 Ybl
 zab
 zaj
 Zay
-X_zen
-X_ZMD
 Zoé
-X_zrí
 zug
 Zám
 záp
@@ -1018,16 +737,12 @@ zűr
 áld
 áll
 Ámi
-X_ÁPV
 árt
 áru
 ász
-X_ÁSZ
 ásó
 Áta
 Áts
-X_ÁVH
-X_ÁVO
 Åbo
 éca
 Écs
@@ -1035,7 +750,6 @@ X_ÁVO
 éji
 élc
 élő
-X_ÉNy
 épp
 éra
 érc
@@ -1078,8 +792,6 @@ X_ÉNy
 üde
 üdv
 ügy
-X_ühg
-X_ÜHG
 ünő
 ürü
 üst
@@ -1090,11 +802,8 @@ X_ÜHG
 ősz
 Ősz
 Őze
-X_1000
-X_2000
 Abay
 abba
-X_ABBA
 abbé
 Abda
 Abel
@@ -1103,15 +812,12 @@ Abod
 abál
 Acer
 acil
-X_ACPI
 acsa
 Acsa
 acél
 adag
 adat
-X_ADHD
 Adri
-X_ADSL
 adta
 aduz
 adys
@@ -1121,7 +827,6 @@ agár
 agát
 ahol
 Aida
-X_AIDS
 ainu
 aiol
 Airy
@@ -1181,9 +886,7 @@ amíg
 Anda
 Andi
 Angi
-X_Anna
 anno
-X_ANSI
 anti
 Anti
 Antl
@@ -1194,7 +897,6 @@ anód
 apad
 apai
 Apaj
-X_APEH
 Apod
 Apor
 apró
@@ -1308,9 +1010,7 @@ bige
 bika
 bike
 bili
-X_Bill
 biom
-X_BIOS
 Biri
 birs
 Biró
@@ -1329,7 +1029,6 @@ Boba
 boci
 bocs
 Boda
-X_body
 Bodó
 Bogi
 Bohm
@@ -1355,7 +1054,6 @@ borz
 ború
 Both
 Boér
-X_BRFK
 brit
 Brno
 brrr
@@ -1380,8 +1078,6 @@ busó
 buta
 Buza
 buzi
-X_BVSC
-X_byte
 bába
 bábu
 Bács
@@ -1438,7 +1134,6 @@ búgó
 búra
 búvó
 búza
-X_BÚÉK
 büfi
 büfé
 bükk
@@ -1457,7 +1152,6 @@ cech
 cenk
 cent
 cesz
-X_chat
 Chen
 Chet
 Cheé
@@ -1541,8 +1235,6 @@ Dani
 Dank
 dara
 daru
-X_DBUS
-X_DCOM
 deci
 Decs
 dedó
@@ -1560,7 +1252,6 @@ desz
 Detk
 deák
 Deér
-X_DHCP
 Dick
 dics
 didi
@@ -1577,7 +1268,6 @@ dién
 Diós
 Doba
 Doby
-X_DOCX
 dodó
 doga
 doki
@@ -1587,8 +1277,6 @@ Domi
 dong
 Dori
 Dory
-X_DPMS
-X_Drag
 drog
 Drom
 drón
@@ -1639,7 +1327,6 @@ Ebes
 Ebro
 ebéd
 ebír
-X_ECDL
 ecet
 echó
 Edde
@@ -1661,9 +1348,7 @@ egye
 egál
 egér
 ehet
-X_EHÖK
 ehül
-X_EIDE
 eisz
 ejha
 Elba
@@ -1676,7 +1361,6 @@ Eliz
 Ella
 elme
 első
-X_ELTE
 elvi
 Elza
 elán
@@ -1692,7 +1376,6 @@ emel
 emez
 Emil
 emlő
-X_Emma
 emse
 emír
 Emőd
@@ -1700,7 +1383,6 @@ Encs
 enne
 enni
 enné
-X_ENSZ
 Entz
 enyh
 enyv
@@ -1749,7 +1431,6 @@ euro
 euró
 evet
 evez
-X_EVMS
 Evva
 evés
 exet
@@ -1763,7 +1444,6 @@ Fabó
 fach
 Fadd
 fagy
-X_fair
 fajd
 faji
 fakk
@@ -1828,9 +1508,6 @@ fiuk
 fizu
 fiág
 fiók
-X_FKGP
-X_flip
-X_flow
 flór
 foci
 Fogl
@@ -1931,7 +1608,6 @@ Ganz
 gané
 Gara
 Garé
-X_GATE
 Gaul
 Gaál
 Gaár
@@ -1951,13 +1627,11 @@ gida
 giga
 Gige
 gimi
-X_GIMP
 Gina
 Gion
 gisz
 gitt
 Gizi
-X_GmbH
 gnóm
 goda
 Goda
@@ -1971,7 +1645,6 @@ gond
 gong
 Goró
 Goya
-X_gray
 Graz
 grog
 Groó
@@ -1993,7 +1666,6 @@ Guti
 gyed
 gyep
 gyes
-X_GYIK
 gyom
 Gyál
 gyám
@@ -2043,7 +1715,6 @@ gúzs
 gümő
 güzü
 gőte
-X_H1N1
 Haan
 Haar
 Haas
@@ -2128,7 +1799,6 @@ Hort
 hova
 hová
 Hoór
-X_HTML
 Huba
 Huet
 hugi
@@ -2220,7 +1890,6 @@ ihat
 ihog
 ihol
 ijed
-X_IKEA
 iker
 ikes
 ikon
@@ -2235,7 +1904,6 @@ illó
 illő
 Ilma
 Ilus
-X_IMAP
 Imre
 imád
 imám
@@ -2253,15 +1921,11 @@ inni
 inná
 inog
 Iowa
-X_iPad
 ipar
-X_iPod
 ipse
-X_IPv6
 Irak
 iram
 irat
-X_IrDA
 ireg
 irha
 irka
@@ -2274,8 +1938,6 @@ Irán
 Irás
 Irén
 irón
-X_ISBN
-X_ISDN
 Isoz
 Isti
 ital
@@ -2298,7 +1960,6 @@ Jahn
 Jani
 Janó
 jard
-X_JATE
 jatt
 java
 Java
@@ -2310,14 +1971,10 @@ jobb
 Joci
 Jocó
 jogi
-X_John
 jojó
 Joli
 José
 Joós
-X_JPEG
-X_JPTE
-X_Juan
 Juba
 Juci
 jugó
@@ -2375,7 +2032,6 @@ Kapy
 karc
 kard
 kari
-X_Karl
 karr
 karó
 Kass
@@ -2387,7 +2043,6 @@ Kayr
 Kazi
 Kaán
 kcal
-X_KDNP
 kece
 kecs
 kedd
@@ -2412,11 +2067,8 @@ kesu
 Keve
 Kevi
 kezd
-X_KFKI
-X_KGST
 Khin
 khmm
-X_KHVM
 khüm
 kies
 Kilb
@@ -2425,12 +2077,10 @@ kinn
 kint
 kipp
 Kiss
-X_KISZ
 kitt
 kivi
 kiút
 klip
-X_KLTE
 klub
 Klug
 klán
@@ -2566,14 +2216,12 @@ kőút
 Laca
 Laci
 Lada
-X_lady
 lajt
 lakk
 Laky
 lakó
 Lali
 Lamm
-X_LAMP
 Lang
 lant
 lapp
@@ -2585,7 +2233,6 @@ Laub
 laza
 Laáb
 Laár
-X_LDAP
 Lear
 legó
 Lehr
@@ -2600,7 +2247,6 @@ lett
 Levi
 levő
 Lexi
-X_LGPL
 liba
 Lidl
 lift
@@ -2614,10 +2260,8 @@ link
 Linz
 linó
 Lipp
-X_Lisa
 Lisp
 lián
-X_LMBT
 Lobl
 Loew
 Logo
@@ -2626,7 +2270,6 @@ Lola
 lomb
 lonc
 Lora
-X_lord
 Lote
 Lotz
 lovi
@@ -2726,14 +2369,12 @@ Mari
 mars
 Mars
 Marx
-X_Mary
 Mata
 matt
 maté
 Maus
 maxi
 mbar
-X_MDNP
 megy
 Meli
 mell
@@ -2756,7 +2397,6 @@ Mike
 Miki
 Mikó
 mily
-X_MIME
 mind
 mini
 mint
@@ -2767,9 +2407,7 @@ mise
 Misi
 miss
 mián
-X_MIÉP
 Mlle
-X_MLSZ
 mmol
 moci
 moha
@@ -2778,7 +2416,6 @@ Mohi
 Mohl
 mohó
 Mojs
-X_MOKK
 moll
 moly
 Mona
@@ -2792,8 +2429,6 @@ Moró
 most
 mozi
 Moór
-X_mRNS
-X_MSZP
 muci
 Muck
 mudi
@@ -2861,8 +2496,6 @@ nana
 naná
 napa
 napi
-X_NASA
-X_NATO
 necc
 nedv
 nedű
@@ -2876,7 +2509,6 @@ nerc
 nesz
 nett
 Nexø
-X_Nick
 Nike
 Niki
 Nikó
@@ -2884,17 +2516,12 @@ nini
 nipp
 nitt
 Niño
-X_NKÖM
 noha
 Noll
 Nonn
 nono
 noná
 Nosz
-X_nova
-X_Nova
-X_NSZK
-X_NTFS
 nuku
 null
 Nusi
@@ -2964,14 +2591,12 @@ ocsú
 Odin
 Odry
 odáz
-X_OECD
 Oetl
 Ohio
 okit
 okol
 okos
 okoz
-X_OKTV
 okul
 okád
 okéz
@@ -2988,7 +2613,6 @@ omol
 Omán
 ondó
 Onga
-X_OPEC
 Opel
 Opos
 opus
@@ -2997,7 +2621,6 @@ orca
 Orci
 orda
 ordó
-X_ORFK
 Orfű
 orja
 orom
@@ -3008,20 +2631,16 @@ orrú
 Orsi
 orsó
 Orth
-X_ORTT
 orzó
 Osli
 Oslo
 oson
 Osza
-X_OSZK
 oszt
-X_OTKA
 Otta
 Ottó
 Oulu
 ovis
-X_OVSZ
 oxid
 oxán
 paca
@@ -3048,7 +2667,6 @@ pasi
 pata
 patt
 Pató
-X_Paul
 Paur
 Payr
 Paál
@@ -3117,13 +2735,11 @@ Poll
 Polo
 ponc
 pont
-X_POP3
 popó
 porc
 port
 poén
 Poór
-X_PPTX
 Pray
 Prod
 prém
@@ -3188,7 +2804,6 @@ pörk
 püff
 püré
 pőre
-X_quad
 Radó
 ragu
 Ragó
@@ -3239,7 +2854,6 @@ ring
 riog
 Ripa
 Ripp
-X_Rita
 rizs
 riói
 Robi
@@ -3354,22 +2968,16 @@ Sass
 satu
 Saul
 savó
-X_SCDB
-X_SCPM
-X_SCSI
 scsí
-X_SEAT
 seft
 segg
 Sehy
 sejk
 sejt
 sekk
-X_self
 Senn
 Seri
 sete
-X_SGML
 Shaw
 shop
 show
@@ -3391,7 +2999,6 @@ skac
 skíz
 skót
 slag
-X_slam
 smár
 Sobó
 sodó
@@ -3406,11 +3013,8 @@ Sony
 sors
 sort
 sose
-X_SOTE
-X_soul
 Soós
 Spar
-X_spin
 spré
 Spur
 spór
@@ -3426,12 +3030,9 @@ Sugó
 Suha
 Suki
 suli
-X_SUMF
 suny
 Surd
 Susa
-X_SuSE
-X_SUSE
 suta
 Suva
 sváb
@@ -3459,8 +3060,6 @@ szja
 Szob
 szol
 szop
-X_SZOT
-X_SZTE
 szád
 száj
 szák
@@ -3611,7 +3210,6 @@ tosz
 totó
 tova
 trió
-X_tRNS
 trák
 trén
 trón
@@ -3622,7 +3220,6 @@ tuja
 Tuli
 Tull
 Tura
-X_turf
 turi
 Tury
 tusa
@@ -3684,7 +3281,6 @@ Tőry
 tűrt
 Ubul
 uccu
-X_UEFA
 ugar
 ugat
 Ugod
@@ -3833,9 +3429,6 @@ Wohl
 Wolf
 Word
 Wény
-X_XLSX
-X_XSLT
-X_XXXL
 yard
 ybli
 York
@@ -5945,7 +5538,6 @@ füzes
 füzet
 füzér
 Füzér
-fő mű
 főadó
 főapa
 főbűn
@@ -11025,7 +10617,6 @@ złoty
 űrbél
 űrlap
 űzött
-ab ovo
 Abaffy
 Abasár
 abbeli
@@ -11045,7 +10636,6 @@ Ackner
 Acsády
 acélos
 acéloz
-ad hoc
 adagio
 adagol
 adalék
@@ -11487,7 +11077,6 @@ bauxit
 bazalt
 Bazita
 Bazsay
-be mer
 beadás
 beagle
 Becker
@@ -12453,7 +12042,6 @@ Darány
 darázs
 Davida
 davosi
-de hát
 Debian
 decens
 Dedics
@@ -13018,7 +12606,6 @@ expiál
 export
 expozé
 extrém
-ez évi
 ezerjó
 ezután
 ezúton
@@ -13450,10 +13037,6 @@ füvész
 Füzesy
 füzike
 füzény
-fő baj
-fő cél
-fő elv
-fő érv
 főalak
 főapát
 főbíró
@@ -14643,7 +14226,6 @@ játszó
 jázmin
 jégeső
 Jékely
-jó pár
 Jóboru
 Jócsik
 Jócsák
@@ -14940,7 +14522,6 @@ kevély
 kezdet
 kezelő
 Kharón
-ki tud
 kiabál
 kiadás
 kiadós
@@ -15347,7 +14928,6 @@ Kászon
 Kátoly
 Kázmér
 kéjenc
-kék fú
 Kékcse
 Kékesd
 Kékkút
@@ -16813,7 +16393,6 @@ nőcike
 nőfaló
 nőhető
 nőjünk
-nők és
 nőnemű
 nőniök
 nőniük
@@ -17413,7 +16992,6 @@ pántoz
 Pányok
 pányva
 Páprád
-pár év
 párbaj
 párbér
 párdal
@@ -19313,7 +18891,6 @@ többen
 többes
 többet
 többük
-tök jó
 tökbél
 tökfej
 tökmag
@@ -20276,7 +19853,6 @@ zürjén
 étolaj
 étrend
 étvágy
-év vég
 évente
 évszak
 évszám
@@ -22062,7 +21638,6 @@ Daróczy
 dativus
 datolya
 dauerol
-de jure
 debella
 debilis
 Debréte
@@ -22113,7 +21688,6 @@ despota
 deszant
 deszkáz
 Detroit
-deus ex
 Deutsch
 Deutsek
 Devecis
@@ -22305,7 +21879,6 @@ dühösít
 düledék
 dülledt
 dünnyög
-e világ
 ebadtáz
 Ebeczky
 Ebergőc
@@ -22396,7 +21969,6 @@ ekkorra
 ekrazit
 ekvátor
 eközben
-El Niño
 eladdig
 eladónő
 elavult
@@ -23166,8 +22738,6 @@ fásszín
 fátylak
 féksaru
 fékutak
-fél nap
-fél pár
 félcipő
 félelem
 féleség
@@ -23305,7 +22875,6 @@ Füvellő
 füvesit
 füvesít
 Füzessy
-fő hiba
 főbérlő
 fődolog
 fődíjak
@@ -24105,7 +23674,6 @@ hosszas
 hosszat
 hosszít
 Hosztót
-hot dog
 hotplug
 Houston
 Hovorka
@@ -24165,7 +23733,6 @@ házasít
 házbeli
 házfedő
 házhely
-házi eb
 házilag
 háznagy
 házorom
@@ -24212,8 +23779,6 @@ hívogat
 hívódik
 hízeleg
 hízelgő
-hó vége
-hó végi
 Hóbiárt
 hóbucka
 hódolat
@@ -24383,7 +23948,6 @@ imponál
 Impress
 impúrum
 imádság
-in vivo
 inaktív
 Inczefi
 Inczédi
@@ -24640,7 +24204,6 @@ jégmező
 jégtörő
 jégárak
 Jézuska
-jó nevű
 jóakaró
 jóbarát
 jócskán
@@ -24681,8 +24244,6 @@ jövendő
 jöveszt
 jövetel
 jövöget
-jövő hó
-jövő év
 júdásfa
 jődögél
 kabbala
@@ -26050,7 +25611,6 @@ Lénárth
 lépcsőz
 lépeget
 lépfene
-lépi át
 Lészped
 létesít
 létesül
@@ -26266,7 +25826,6 @@ meditál
 Medvigy
 medália
 meeting
-meg mer
 megabit
 megadás
 megafon
@@ -26645,7 +26204,6 @@ másztat
 mászóka
 Máttyus
 Mátéffy
-még egy
 méghogy
 méhsejt
 mélyedt
@@ -26694,8 +26252,6 @@ múlandó
 múlanák
 múlanál
 múlanám
-múlt hó
-múlt év
 müezzin
 München
 Münnich
@@ -26730,7 +26286,6 @@ művelet
 művileg
 műértés
 műítész
-na most
 Nadányi
 nagyadó
 nagyagy
@@ -27669,9 +27224,6 @@ pánikol
 pányváz
 pápaság
 pápista
-pár hét
-pár nap
-pár óra
 páradús
 Párducz
 párharc
@@ -28296,7 +27848,6 @@ sodrott
 sodródó
 sodrófa
 sohasem
-sok más
 sokadik
 sokasul
 sokaság
@@ -29518,7 +29069,6 @@ többmás
 többség
 többévi
 Töhötöm
-tök jól
 tökfejű
 tölcsér
 tölgyes
@@ -29549,7 +29099,6 @@ törődik
 Tötössy
 töviről
 tövises
-túl van
 túlerej
 túlerős
 túlmenő
@@ -30496,7 +30045,6 @@ zümmögő
 éjszaka
 Éjszaki
 éjsötét
-ék alak
 ékcsont
 ékkövek
 éktelen
@@ -30612,7 +30160,6 @@ zümmögő
 étkezik
 étlenül
 étterem
-év végi
 évezred
 évhetek
 évjárat
@@ -30806,7 +30353,6 @@ zümmögő
 útdíjak
 útfelek
 úthossz
-úti cél
 útilapu
 útiláda
 útirajz
@@ -31179,7 +30725,6 @@ ammónium
 amodális
 amorális
 Amundsen
-amúgy is
 anafront
 anakonda
 Anakreón
@@ -32401,7 +31946,6 @@ darabáru
 darazsak
 Dareiosz
 Daruváry
-de facto
 Debrecen
 Debreczy
 Debrőczi
@@ -32571,7 +32115,6 @@ domonkos
 Domonkos
 Domoszló
 domínium
-Don Juan
 Donogány
 dorbézol
 dorombol
@@ -32678,7 +32221,6 @@ döbbenet
 Döbrököz
 Döbrönte
 döcögtet
-dög erős
 döghalál
 dögleszt
 dögletes
@@ -32702,7 +32244,6 @@ dühroham
 dülleszt
 dülékeny
 dülöngél
-e világi
 Ebenböcb
 Ebergény
 Eberhard
@@ -33100,7 +32641,6 @@ esküszik
 esküszöl
 esküszöm
 Espersit
-est omen
 estefelé
 eszement
 eszerint
@@ -33413,7 +32953,6 @@ Fernbach
 ferrites
 fertelem
 fertilis
-Fertő tó
 Fertőboz
 feslődik
 fesselek
@@ -33641,11 +33180,6 @@ fátyolos
 fátyoloz
 fázékony
 féktelen
-fél deka
-fél kiló
-fél perc
-fél szem
-fél áron
 félannyi
 félbalra
 félbarna
@@ -33809,8 +33343,6 @@ füstakna
 füstölgő
 füstölög
 füttyent
-fő irány
-fő művek
 főangyal
 főbiztos
 fődolgok
@@ -34700,7 +34232,6 @@ házasuló
 házatlan
 házbelső
 házfalak
-házi por
 háziasul
 háziasít
 házibuli
@@ -34740,7 +34271,6 @@ hívogató
 hízelegő
 hízelgés
 hízékony
-hó végén
 hóbortos
 hólyagfa
 hólyagos
@@ -34874,7 +34404,6 @@ impulzus
 impulzív
 impérium
 Imrehegy
-in vitro
 incidens
 incseleg
 incselgő
@@ -35187,10 +34716,6 @@ jöttment
 jöttötök
 jövendöl
 jövevény
-jövő hét
-jövő idő
-jövő tél
-jövő ősz
 jövőbeli
 jövőbeni
 kabaktök
@@ -35442,13 +34967,6 @@ kezdődik
 kezdőnap
 kezeltet
 kezesség
-ki tudja
-ki tudna
-ki tudod
-ki tudok
-ki tudom
-ki tudsz
-ki tudta
 kiadatás
 kiadmány
 kiadvány
@@ -36274,7 +35792,6 @@ külterek
 külvilág
 külvizek
 külváros
-külön él
 különben
 különdíj
 különgép
@@ -36988,7 +36505,6 @@ Mericzay
 meridián
 Mersevát
 merszünk
-mert hát
 merthogy
 merényel
 merénylő
@@ -37192,7 +36708,6 @@ mosogató
 mosolygó
 mosolyog
 Mossóczi
-most már
 mostanig
 mostanra
 moszkitó
@@ -37254,7 +36769,6 @@ Mályinka
 mángorló
 mángorol
 mániákus
-már csak
 Máriássy
 Márkháza
 márpedig
@@ -37281,7 +36795,6 @@ mátkapár
 mátkaság
 mázatlan
 máztalan
-még csak
 méghozzá
 mégpedig
 Méhkerék
@@ -37338,10 +36851,6 @@ múlanánk
 múlottak
 múlottam
 múlottál
-múlt hét
-múlt idő
-múlt tél
-múlt ősz
 múltbéli
 múltkori
 múlékony
@@ -37561,7 +37070,6 @@ nitrogén
 nitrálás
 nivellál
 nobélium
-non plus
 nonillió
 normatív
 normális
@@ -38276,7 +37784,6 @@ primátus
 priorált
 pritamin
 privátim
-pro bono
 proaktív
 probléma
 probáció
@@ -38370,12 +37877,6 @@ páncéloz
 pántlika
 pányvafa
 pápaszem
-pár deka
-pár havi
-pár hete
-pár heti
-pár kiló
-pár perc
 páratelt
 páratlan
 párbajoz
@@ -39028,7 +38529,6 @@ snidling
 sodorint
 sodralék
 sodródik
-sok ezer
 sokalakú
 sokezres
 sokfajta
@@ -39635,7 +39135,6 @@ szívódik
 szívókar
 szívósít
 szívózik
-szó végi
 szóbokor
 szócsata
 szódavíz
@@ -39946,7 +39445,6 @@ Telmányi
 telnetek
 telnének
 telnétek
-telt ház
 teltetek
 telített
 tematika
@@ -40282,7 +39780,6 @@ tébolyul
 tébolyít
 téeszcsé
 tékozlás
-tél végi
 téliesít
 téligumi
 télikert
@@ -40313,7 +39810,6 @@ tízpróba
 tócsagaz
 Tórshavn
 Tóvölgyi
-több más
 többedik
 többesít
 többfelé
@@ -40324,7 +39820,6 @@ többnejű
 többször
 többtagú
 többórai
-tök erős
 tökbelek
 töketlen
 töltelék
@@ -40362,11 +39857,6 @@ Törőcsik
 Töttössy
 tötyörgő
 tötyörög
-túl erős
-túl lesz
-túl lett
-túl vagy
-túl volt
 túlbuzgó
 túlerejű
 túlfolyó
@@ -40514,7 +40004,6 @@ vadkutya
 vadkörte
 vadlovak
 vadmurok
-vadon él
 vadrózsa
 vadszőlő
 vadállat
@@ -40875,7 +40364,6 @@ végtelen
 végzendő
 végzetes
 végződik
-végül is
 vékonyka
 vékonyul
 vékonyít
@@ -41267,12 +40755,10 @@ zűrzavar
 égzengés
 égőpiros
 égővörös
-éhen hal
 éhgyomor
 éjfekete
 éjjeliőr
 éjszakáz
-ék alakú
 ékelődik
 ékhorony
 ékírásos
@@ -41297,7 +40783,6 @@ zűrzavar
 éljenzés
 élmezőny
 élvvágyó
-élő zene
 élőflóra
 élőlábak
 élőmunka
@@ -41399,7 +40884,6 @@ zűrzavar
 írógépel
 írómappa
 írópapír
-ív alakú
 ívegység
 ívelődik
 ívnyomás
@@ -41428,7 +40912,6 @@ zűrzavar
 órásolaj
 ótemplom
 óvakodik
-óvó néni
 ózonlyuk
 öccseink
 öcséitek
@@ -41975,7 +41458,6 @@ amennyien
 amennyiük
 amerícium
 amfetamin
-amikor is
 amikorról
 amikortól
 amilyenek
@@ -42172,7 +41654,6 @@ Babilónia
 Babolcsai
 babonaság
 babrálgat
-baby boom
 Backhausz
 Badacsony
 bajnokság
@@ -42736,7 +42217,6 @@ campanile
 cankógoda
 capriccio
 casanovai
-cash flow
 Cavallier
 Ceaușescu
 Celesztin
@@ -42970,7 +42450,6 @@ csukoljék
 csuktalak
 csuktatok
 csuktátok
-csupa vér
 csupaszít
 csurdogál
 csurgalék
@@ -43033,7 +42512,6 @@ cukorrépa
 cukrozott
 cukrászat
 cukrászda
-cum laude
 Czekelius
 Czilchert
 cáfolódik
@@ -43331,8 +42809,6 @@ dízelesít
 dízelolaj
 Döbrentei
 Döbörhegy
-dög meleg
-dög nehéz
 dögvészes
 döngicsél
 döntetlen
@@ -43367,10 +42843,7 @@ Egerbakta
 Egercsehi
 Egervölgy
 egerészik
-eget verő
 egressyes
-egy helyi
-egy közös
 egybeesés
 egybillió
 egycentes
@@ -43426,7 +42899,6 @@ egyzłotys
 egyébként
 egyénileg
 egyöntetű
-együtt él
 együttlét
 egzaltált
 egzaminál
@@ -43717,7 +43189,6 @@ esztergál
 Esztergár
 esztétika
 esőköpeny
-et cetera
 etatizmus
 etikátlan
 etiológia
@@ -43745,7 +43216,6 @@ evezőtoll
 evidencia
 Evolution
 evőeszköz
-ex libris
 exbarátnő
 Excalibur
 exfeleség
@@ -43763,8 +43233,6 @@ extraktum
 extraszűz
 extrudált
 exújpesti
-ez irányú
-ez ügyben
 ezelőttig
 ezenfelül
 ezenfölül
@@ -44060,7 +43528,6 @@ Firtinger
 fitestvér
 fitológia
 fitológus
-fixa idea
 fixálódik
 fixálódás
 fizetendő
@@ -44237,14 +43704,6 @@ Fáskerthy
 fékeződik
 fékezőleg
 fékomadta
-fél hónap
-fél liter
-fél mázsa
-fél méter
-fél pohár
-fél párak
-fél tucat
-fél tégla
 félakkora
 félamatőr
 félbarbár
@@ -44283,7 +43742,6 @@ féltékeny
 félvezető
 félvilági
 félállati
-félév vég
 félévente
 fémcsésze
 fémfűrész
@@ -44667,7 +44125,6 @@ gyűrűsujj
 Gálvölgyi
 gárdonyis
 gátoltság
-gáz alakú
 gázbiztos
 gázcsövek
 gázhatlan
@@ -45043,7 +44500,6 @@ hexametil
 hexaploid
 hexatrién
 hibásodik
-hideg víz
 hidegbüfé
 hidegcsap
 hidegedik
@@ -45252,7 +44708,6 @@ háromtusa
 háromórai
 Hársliget
 háryjános
-hátba vág
 hátgerinc
 hátikosár
 hátitáska
@@ -45272,8 +44727,6 @@ hátvakaró
 házasodik
 házastárs
 házasélet
-házi mozi
-házi nyúl
 házibarát
 házibútor
 házicérna
@@ -45321,7 +44774,6 @@ hívatásos
 hízeleged
 hízelegek
 hízelegem
-hó közben
 hódoltság
 Hófehérke
 hóhelyzet
@@ -45449,7 +44901,6 @@ Illésházy
 illóanyag
 illósavak
 illósodik
-ily módon
 ilyenféle
 ilyennemű
 ilyentájt
@@ -45473,7 +44924,6 @@ Impresszé
 impromptu
 imádkozik
 imádságos
-in medias
 inadekvát
 inaktivál
 inaskodik
@@ -45662,7 +45112,6 @@ jegyzőség
 Jehlicska
 jehovista
 jelbeszéd
-jelen idő
 jelenetez
 jelenkori
 jelenlegi
@@ -45751,8 +45200,6 @@ jégkorong
 jégkunyhó
 jégtakaró
 jégzajlás
-jó hírnév
-jó néhány
 jóasszony
 jóhangzás
 jóhiszemű
@@ -45779,8 +45226,6 @@ jóvátévén
 józanodik
 jövedelem
 jövesztés
-jövő idej
-jövő nyár
 júdáscsók
 kabriolet
 kabátlyuk
@@ -46040,22 +45485,6 @@ kezelőhíd
 kezelőség
 khakiszín
 khakizöld
-ki tudhat
-ki tudjuk
-ki tudják
-ki tudlak
-ki tudnak
-ki tudnál
-ki tudnék
-ki tudott
-ki tudtad
-ki tudtak
-ki tudtam
-ki tudtok
-ki tudtuk
-ki tudták
-ki tudtál
-ki tudunk
 kiadatlan
 kibomlott
 kibontott
@@ -46780,7 +46209,6 @@ könyörgés
 könyörögő
 köpedelem
 köpesztet
-kör alakú
 körfolyás
 körforgás
 körfűrész
@@ -46888,7 +46316,6 @@ középárak
 közöttiek
 közöttünk
 közületek
-kúp alakú
 kúrszalon
 kútforrás
 Kübekháza
@@ -46902,7 +46329,6 @@ kültakaró
 kültelkek
 külterjes
 külvárosi
-külön ágy
 különadag
 különalku
 különbség
@@ -47292,7 +46718,6 @@ magburkok
 Magdaléna
 Magdeburg
 magiszter
-magna cum
 magnitúdó
 magnézium
 magukféle
@@ -47420,7 +46845,6 @@ mauzóleum
 maximális
 Maxwellel
 mazsorett
-mea culpa
 mechanika
 Medgyessi
 Medgyessy
@@ -47561,7 +46985,6 @@ Meinhardt
 Melanézia
 melatonin
 Melbourne
-meleg víz
 melegcsap
 melegedik
 melegszek
@@ -47925,7 +47348,6 @@ Mártonffi
 Mártonffy
 mártírium
 márványoz
-más néven
 másformán
 máshogyan
 máshollét
@@ -47950,7 +47372,6 @@ Mátételke
 mázolmány
 mázolódik
 mécsvirág
-még sincs
 mégiscsak
 méhkenyér
 méhlepény
@@ -48017,10 +47438,6 @@ mögületek
 múlanának
 múlanátok
 múlottunk
-múlt havi
-múlt heti
-múlt idej
-múlt nyár
 műalkotás
 Műcsarnok
 műegyetem
@@ -48041,8 +47458,6 @@ műélvezet
 műépítész
 nacionálé
 Nagaszaki
-nagy fokú
-nagy hírű
 Nagyacsád
 nagyagyak
 nagyajkak
@@ -48121,7 +47536,6 @@ nagynémet
 nagyobban
 nagyobbik
 nagyobbít
-nagyon is
 nagyopera
 nagyorosz
 Nagypirit
@@ -48229,7 +47643,6 @@ nehézsúly
 nehézágyú
 nekidurál
 Nekézseny
-nem peres
 nembiztos
 Nemecskay
 nemesacél
@@ -48284,12 +47697,9 @@ nilpotens
 nincsenek
 nitrofilm
 nitrolakk
-no de hát
 nobilitás
 nomadizál
-nomen est
 nominális
-non grata
 nonprofit
 nonszensz
 nooszféra
@@ -48298,7 +47708,6 @@ normatíva
 normálfok
 normálsík
 nortonkút
-nota bene
 nukleotid
 nukleozid
 nukleáris
@@ -48396,7 +47805,6 @@ nyájmeleg
 nyáladzik
 nyálkásít
 nyámnyila
-nyár végi
 nyárigumi
 Nyársapát
 nyílfüvek
@@ -48547,7 +47955,6 @@ olvadozik
 olvasmány
 olvasztat
 olvasztár
-oly módon
 olyanféle
 olyasféle
 olyformán
@@ -48872,7 +48279,6 @@ pitykézik
 pitymalló
 plasztika
 plasztron
-plein air
 pletyózik
 plexiüveg
 pliszíroz
@@ -48922,7 +48328,6 @@ populista
 populáció
 populáris
 popénekes
-por alakú
 porcogtat
 Porcsalma
 Porcsalmy
@@ -49056,13 +48461,6 @@ páncélzat
 pángermán
 pántlikáz
 pápapárti
-pár darab
-pár hetek
-pár hónap
-pár liter
-pár mázsa
-pár méter
-pár tucat
 párbeszéd
 párevezős
 párhagyma
@@ -49444,11 +48842,9 @@ rövideszű
 rövidfilm
 rövidital
 rövidlátó
-rúd alakú
 rúdtáncol
 rühelődik
 rühesedik
-s a többi
 Sabathiel
 Sajnovics
 sajtfajta
@@ -49536,7 +48932,6 @@ sematikus
 sematizál
 semekkora
 semlyékes
-semmi sem
 semmiféle
 semmiházi
 semmiképp
@@ -50080,7 +49475,6 @@ szádfalak
 szádlemez
 szádpalló
 száguldoz
-Száhil öv
 szájkosár
 szájpecek
 szájtátva
@@ -50293,7 +49687,6 @@ szőrtelen
 szőttelek
 szőttetek
 szőttétek
-szűk körű
 szűkkeblű
 szűkmarkú
 szűkszavú
@@ -50342,8 +49735,6 @@ sínylődik
 sírnivaló
 sítalpazó
 sóbálvány
-sós kifli
-sós perec
 Sóstóhegy
 sószemcse
 sótalanít
@@ -50818,7 +50209,6 @@ tájmetria
 tájolódik
 tájszólás
 tákolmány
-tál alakú
 támadólag
 támasztat
 támaszték
@@ -50888,8 +50278,6 @@ tósztozik
 Tótkomlós
 tótosodik
 Tótújfalu
-több ezer
-több száz
 többalakú
 többesjel
 többezres
@@ -50899,9 +50287,6 @@ többhangú
 többnyire
 többszínű
 többszöri
-tök hülye
-tök sötét
-tök süket
 tökrészeg
 tökéletes
 tökölődik
@@ -50934,7 +50319,6 @@ törekszem
 törekszik
 törlőgumi
 törlőruha
-tört alak
 törtfehér
 történeti
 történész
@@ -50948,10 +50332,6 @@ törökülés
 törölgető
 törülköző
 tötyörgés
-túl lenne
-túl lenni
-túl nincs
-túl volna
 túlkiadás
 túloldali
 túloldalt
@@ -51161,7 +50541,6 @@ vedlettük
 vegetatív
 vegetáció
 vegyhatás
-vegyi áru
 vegyjelet
 vegytinta
 vegyérték
@@ -51300,7 +50679,6 @@ virágláda
 virágozik
 virágozás
 virágzott
-vis maior
 viselődik
 Viskovics
 visszaeső
@@ -51614,7 +50992,6 @@ záradékol
 zárfékező
 zárkioldó
 zárkózott
-zárt körű
 zárthelyi
 zártvonal
 záróizmok
@@ -51693,7 +51070,6 @@ zúgolódik
 álpróféta
 álszakáll
 álszerény
-által írt
 általatok
 általutak
 általában
@@ -51719,7 +51095,6 @@ zúgolódik
 árképezés
 árnyékolt
 árosztály
-Árpád híd
 árterület
 árulkodik
 áruraktár
@@ -51882,7 +51257,6 @@ zúgolódik
 észrevégy
 észrevéve
 étkészlet
-év közben
 évenkénti
 évforduló
 évjáradék
@@ -51927,7 +51301,6 @@ zúgolódik
 órásüzlet
 ótörökebb
 óvadékadó
-óvó bácsi
 öblösödik
 öblösüveg
 öccseitek
@@ -52081,7 +51454,6 @@ zúgolódik
 özönleném
 özönlitek
 özönvizek
-új keletű
 Újdombrád
 újdonatúj
 újdondász
@@ -52368,7 +51740,6 @@ allergizál
 allodiális
 allotrópia
 alluviális
-alma mater
 Almamellék
 almásderes
 alpinizmus
@@ -52499,7 +51870,6 @@ apportíroz
 appretálás
 aprehendál
 aprehenzió
-apró betűs
 apróbirtok
 aprófalvak
 aprófalvas
@@ -52806,7 +52176,6 @@ billióhavi
 billióheti
 billióórai
 biluxlámpa
-bimbós kel
 binomiális
 binormális
 biobrikett
@@ -52835,7 +52204,6 @@ bizsereged
 bizseregek
 bizseregem
 biztosíték
-biz’ isten
 Blaskovich
 Blaskovics
 Blaskovits
@@ -53126,7 +52494,6 @@ civillista
 ciánhidrin
 Clemenceau
 combosodik
-coming out
 concertino
 Constantia
 copfstílus
@@ -53134,7 +52501,6 @@ corrigenda
 Cromwellel
 Csabrendek
 csacskaság
-csak azért
 csakakkora
 csakekkora
 csakiscsak
@@ -53254,7 +52620,6 @@ csiszolgat
 csitítólag
 csizmahúzó
 csizmaszár
-csoda szép
 csodabogyó
 csodatevés
 csodálatos
@@ -53281,7 +52646,6 @@ csudálatos
 csuklópánt
 csuklószeg
 csuklóvédő
-csupa szív
 csupáncsak
 csuszamlik
 Csuvasföld
@@ -53370,7 +52734,6 @@ Darnózseli
 darvadozik
 darwinista
 Davidovics
-de minimis
 Debercsény
 Debreczeni
 decilliárd
@@ -53602,7 +52965,6 @@ díszszemle
 dísztribün
 díszítmény
 dízelmotor
-dög fáradt
 dögledezik
 döglesztet
 dörgedelem
@@ -53662,7 +53024,6 @@ egyenrangú
 egyenruhás
 egyensapka
 egyenérték
-egyes szám
 egyesbírát
 egyesfogat
 egyesített
@@ -53752,7 +53113,6 @@ eligazodás
 eligazítás
 elimináció
 elintézett
-elit réteg
 eljegyzett
 eljárásmód
 eljátszott
@@ -53822,7 +53182,6 @@ elszakadás
 elszámolás
 elsáncolás
 elsüllyedt
-első számú
 elsőbálozó
 elsődleges
 elsőfilmes
@@ -54115,7 +53474,6 @@ fehérszélű
 fehértorkú
 fehértörés
 Feilitzsch
-fejbe ütés
 fejedelmek
 fejenállás
 fejesugrás
@@ -54243,12 +53601,10 @@ fenyőtoboz
 fenőszíjak
 ferdeszögű
 Ferdinandy
-Ferenc híd
 Ferenczyek
 fergeteges
 Ferjentsik
 fertilitás
-Fertő tavi
 Fertőhomok
 Fertőrákos
 fertőtavak
@@ -54432,10 +53788,6 @@ fáradtolaj
 fáradékony
 fáskosarak
 fátumszerű
-fél füllel
-fél gőzzel
-fél kézzel
-fél ország
 félannyian
 félautonóm
 félbilliós
@@ -54864,7 +54216,6 @@ gótgyűlölő
 góttanítás
 gótüldözés
 góóóóóóóól
-gömb alakú
 gömbölyded
 gömbölyget
 Göncruszka
@@ -54877,7 +54228,6 @@ görögbarát
 görögfenyő
 görögszéna
 görögtüzek
-gúla alakú
 gúnyolódik
 güzmölődik
 güzüegerek
@@ -55367,14 +54717,12 @@ Hyundaival
 háborodott
 háborogott
 háborogunk
-hála isten
 hályogosul
 háládatlan
 hálálkodik
 hálóköntös
 hálószövet
 hálótermek
-hál’ isten
 hámlasztat
 hámozatlan
 hántolóeke
@@ -55408,7 +54756,6 @@ hátulnézet
 hátultöltő
 házasember
 házasfelek
-házi kutya
 házicseléd
 házieszköz
 házigalamb
@@ -55426,7 +54773,6 @@ házivászon
 háztartási
 héberbarát
 Hérodotosz
-hét közben
 hétezredik
 héthavonta
 héthetente
@@ -55450,7 +54796,6 @@ hírhajhász
 hízelegett
 hízelegünk
 hízelkedik
-hó közbeni
 hóbelevanc
 hógolyózik
 hógörgeteg
@@ -55494,7 +54839,6 @@ Hűvösvölgy
 idealizmus
 ideföntiek
 ideföntről
-idegen szó
 idegenedik
 ideggyenge
 ideggyönge
@@ -55511,7 +54855,6 @@ időbelileg
 időigényes
 időközbeni
 idősotthon
-időt rabló
 ifiasszony
 igazgatónő
 igazgatóúr
@@ -55654,7 +54997,6 @@ iparmágnás
 iparműtani
 iparosodik
 ipekakuána
-ipso facto
 irigykedik
 irigylendő
 irkafirkál
@@ -55721,7 +55063,6 @@ jancsiszög
 Janovitssá
 japánbarát
 jassznyelv
-java része
 javadalmak
 javadalmaz
 JavaScript
@@ -55732,7 +55073,6 @@ jegyváltás
 jegyzetlen
 jegyzőurak
 Jelačićtyá
-jelen idej
 jeleniesül
 jelentőség
 jeleskedik
@@ -55806,11 +55146,9 @@ jégtelenít
 jégtorlasz
 jégvirágos
 jézusszíve
-jó szándék
 jóindulatú
 jóistennek
 jókívánság
-jól ismert
 jólelkűség
 jószerivel
 jószerével
@@ -55849,10 +55187,6 @@ jövedelmek
 jövedelmez
 jövetmenet
 jövésmenés
-jövő havak
-jövő hetek
-jövő hónap
-jövő telek
 jövőbelátó
 júdástövis
 kabasólyom
@@ -55940,7 +55274,6 @@ karbantart
 karbonizál
 karburátor
 karcinogén
-kard alakú
 kardhüvely
 kardinális
 kardiogram
@@ -56095,8 +55428,6 @@ kezeletlen
 kezeskedik
 khakiszínű
 Kharübdisz
-ki tudnánk
-ki tudtunk
 kiadmányoz
 kiadványoz
 kialakulás
@@ -56181,7 +55512,6 @@ Kirchhoffá
 királyfiak
 Királyháza
 királysaga
-kis méretű
 kisagyvelő
 kisajtolás
 kisalföldi
@@ -56576,7 +55906,6 @@ kuriozitás
 kurtanemes
 kurtanyakú
 kurtavasak
-kuruc kori
 kuruckodik
 kurvaházak
 kurvapecér
@@ -56626,7 +55955,6 @@ kávéskanna
 kávéskanál
 kéjelegett
 kéjelegünk
-kék szalag
 kékcsillag
 kékcédulás
 kékesfehér
@@ -56703,7 +56031,6 @@ kéziszótár
 kézitükrök
 kézközepek
 Kézmárszky
-kézre álló
 kézrátétel
 kézöblítés
 kígyászsas
@@ -57027,7 +56354,6 @@ lezáratlan
 lezökkenés
 leánykodik
 leánykérés
-lhasa apso
 Libickozma
 libreLogós
 librelogós
@@ -57117,7 +56443,6 @@ lángossütő
 lápibagoly
 láthatólag
 láthatóság
-látni való
 látsszanak
 látsszatok
 látszaniok
@@ -57339,7 +56664,6 @@ Mecsekalja
 meddőhányó
 Medgyaszay
 medgyessys
-medias res
 mediterrán
 megaciklus
 megakelvin
@@ -57474,11 +56798,6 @@ megízlelés
 megőrzendő
 meitnérium
 melankólia
-meleg fény
-meleg ruha
-meleg szív
-meleg égöv
-meleg étel
 melegbarát
 melegfront
 melegházak
@@ -57715,7 +57034,6 @@ monopoljog
 monopólium
 Monorierdő
 monoteista
-Mont Blanc
 Montenegró
 Montevideo
 Montserrat
@@ -57812,7 +57130,6 @@ Mátyásdomb
 Mátyásföld
 Mátészalka
 mázolatlan
-még inkább
 mégannyira
 méhkaparás
 méltánylás
@@ -57839,7 +57156,6 @@ méregdrága
 méregfogak
 méretkezik
 mérgelődik
-mérges gáz
 mérgesedik
 mérgeskedő
 mérgesrája
@@ -57868,10 +57184,6 @@ mózesbokor
 mózeskosár
 mögöttetek
 múlottatok
-múlt havak
-múlt hetek
-múlt hónap
-múlt telek
 múltidézés
 Mühlbacher
 működőtőke
@@ -57880,12 +57192,10 @@ műsorközlő
 műtőasztal
 műveletlen
 művészurak
-na mármost
 nacionális
 nadragulya
 nadrágszár
 nadrágzseb
-nagy része
 nagyapjáék
 nagyarányú
 Nagyberény
@@ -58022,8 +57332,6 @@ nehézvizek
 nehézvállú
 nekivadult
 nekiütődés
-nem kívánt
-nem létező
 nemegyszer
 Nemesapáti
 nemesbedik
@@ -58035,7 +57343,6 @@ Nemespátró
 Nemessányi
 Nemesvámos
 nemfizetés
-nemi beteg
 nemideális
 nemlétezés
 nemnegatív
@@ -58173,7 +57480,6 @@ nyugtatgat
 nyuvasztat
 nyálkaoldó
 Nyárlőrinc
-nyíl alakú
 nyíltszívű
 nyíltterek
 nyílvessző
@@ -58423,7 +57729,6 @@ parittyakő
 parlamenti
 Parnasszus
 paroxizmus
-part menti
 partiképes
 partnerség
 parvovírus
@@ -58510,7 +57815,6 @@ Petronella
 Petrozsény
 Petschauer
 petíciózik
-Petőfi híd
 piacsenzai
 pianissimo
 piedesztál
@@ -58573,7 +57877,6 @@ pletykázik
 pliocénkor
 pluralista
 pluralitás
-plus ultra
 pluszjelet
 pluszmunka
 plutokrata
@@ -58652,7 +57955,6 @@ priorissza
 privatizál
 Privorszky
 prizmatoid
-pro patria
 processzió
 processzor
 processzus
@@ -59071,7 +58373,6 @@ részegyház
 részesedik
 részestárs
 részletdús
-részt vett
 részvényes
 részvétlen
 rétegfelhő
@@ -59189,7 +58490,6 @@ semlegesül
 Semmelweis
 semmifajta
 semmikorra
-semmit érő
 semmittevő
 seprőcirok
 seprőfüvek
@@ -59234,7 +58534,6 @@ slamposság
 slágfertig
 sodorintat
 sohanapján
-sok minden
 sokadalmak
 sokadlagos
 sokadszori
@@ -59304,7 +58603,6 @@ Stankovits
 StarOffice
 startvonal
 statisztál
-status quo
 Steinacker
 Steinecker
 Steinhardt
@@ -59799,7 +59097,6 @@ színtiszta
 színvakság
 színészies
 szítóvasak
-szív alakú
 szívburkok
 szívókaros
 szívókotró
@@ -59896,7 +59193,6 @@ sínylették
 sínylettél
 sínylettük
 sírfelirat
-sírni való
 sítalpazik
 sóhajtozik
 sóherkodik
@@ -59917,7 +59213,6 @@ söröskorsó
 söröskupak
 söröslovak
 söröspohár
-sötét bőrű
 sötétbarna
 sötétbordó
 sötétkamra
@@ -59997,7 +59292,6 @@ tanácsadás
 tanácsadói
 tanácskozó
 tanácsülés
-tanár néni
 tanárkodik
 tanévzárás
 tanítatlan
@@ -60086,7 +59380,6 @@ tellenetek
 tellenének
 tellenétek
 tellettünk
-telt házak
 teltkarcsú
 telítetlen
 temellőled
@@ -60186,7 +59479,6 @@ tetszettek
 tetszettem
 tetszettél
 tetszhalál
-tett szert
 Tettamanti
 tettenérés
 tettestárs
@@ -60465,7 +59757,6 @@ többszázas
 többszörös
 többszöröz
 többévente
-tök részeg
 tökéletlen
 töltekezik
 tölténytár
@@ -60499,7 +59790,6 @@ törekvőleg
 törlesztet
 törlőkendő
 törlőrongy
-tört arany
 törtfekete
 törtkitevő
 történelem
@@ -60518,25 +59808,6 @@ tötyörögöd
 tötyörögök
 tötyörögöm
 tövisszúró
-túl legyek
-túl legyen
-túl lenned
-túl lennem
-túl lennie
-túl lennék
-túl lennél
-túl leszek
-túl leszel
-túl lettek
-túl lettem
-túl lettél
-túl vagyok
-túl vannak
-túl volnál
-túl volnék
-túl voltak
-túl voltam
-túl voltál
 túlbecslés
 túlhatalom
 túlkínálat
@@ -60626,7 +59897,6 @@ ultragyors
 ultramarin
 ultrarövid
 UltraSPARC
-unda maris
 unifikáció
 unimodális
 unionizmus
@@ -60742,7 +60012,6 @@ vedlettünk
 veganizmus
 vegetárius
 vegyelemez
-vegyes kar
 vegyesbolt
 vegyesúszó
 vegyifülke
@@ -60822,7 +60091,6 @@ viaszsárga
 viaszvirág
 vibráltató
 viccelődik
-vice versa
 vicsorogod
 vicsorogok
 vicsorogom
@@ -61385,7 +60653,6 @@ zűrzavaros
 észrevétet
 észrevévén
 Észtország
-év közbeni
 évismétlés
 évkihagyás
 évmegnyitó
@@ -61875,7 +61142,6 @@ Arhangelszk
 aritmetikai
 Arkhimédész
 arravalóság
-ars poetica
 artikuláció
 artisztikum
 artisztikus
@@ -62274,7 +61540,6 @@ bűnbocsánat
 bűnelkövető
 bűvészkedik
 Castiglione
-casus belli
 cekaszhuzal
 cementfajta
 centenárium
@@ -62332,7 +61597,6 @@ citotoxikus
 citromfüvek
 citromlevek
 citromsárga
-civil ruhás
 civilizáció
 civilizátor
 Connecticut
@@ -62345,7 +61609,6 @@ családtalan
 csaláncsúcs
 Csanádapáca
 csapadékdús
-csapni való
 csappantyús
 csatlakozik
 csatlakozás
@@ -62384,7 +61647,6 @@ Csengersima
 csengettyűz
 cseperegett
 cseperegünk
-csepp alakú
 cseppfolyós
 csereskádak
 cseresznyés
@@ -62624,8 +61886,6 @@ domborított
 Dombrowszky
 domesztikál
 dominikánus
-Don Quijote
-Don Quijoté
 doppingszer
 Dorfmeister
 dorgatórium
@@ -62721,8 +61981,6 @@ edzetlenség
 efficiencia
 egalitárius
 egerészölyv
-egy helyben
-egy hónapos
 egybehangzó
 egybilliárd
 egybillióan
@@ -62735,7 +61993,6 @@ egyenesedik
 egyenlőtlen
 egyensúlyoz
 egyenértékű
-egyes fogat
 egyetemesít
 egyetemesül
 egyetemista
@@ -62763,7 +62020,6 @@ együttlakás
 együttállás
 együttérzés
 egértelenít
-egész napos
 egészpályás
 egészségügy
 egészvászon
@@ -62797,7 +62053,6 @@ elhatározás
 elhelyezett
 elismervény
 elismerőleg
-elit csapat
 elkeseredés
 elkeserítés
 elkoptatott
@@ -62879,7 +62134,6 @@ elővetemény
 elővigyázat
 előőrsködik
 emancipáció
-ember módra
 emberbaráti
 emberesedik
 emberietlen
@@ -62949,7 +62203,6 @@ evangélista
 evangéliumi
 evezőnyelek
 evezőtollak
-ex cathedra
 excellencia
 excentrikus
 exkormányfő
@@ -63036,7 +62289,6 @@ fehérpenész
 fehérterror
 Fehérvárott
 Feichtinger
-fejbe lövés
 fejbeszálló
 fejbólintás
 fejcsóválva
@@ -63303,8 +62555,6 @@ fátyolfelhő
 fátyolozott
 fátyolvirág
 fékeveszett
-fél évezred
-fél évtized
 félbemaradt
 félbillióan
 félfasiszta
@@ -63312,7 +62562,6 @@ félfeudális
 félintenzív
 félkegyelmű
 félkilences
-félkész áru
 félliternyi
 félmeztelen
 félmilliárd
@@ -63345,7 +62594,6 @@ fénymásolat
 fénysugarak
 fénytompító
 féregrágott
-férfi módra
 férfiasodik
 férjezetlen
 fészkelődik
@@ -63384,7 +62632,6 @@ füttyentget
 fütyörészik
 füvészkedik
 füvészkönyv
-füzet alakú
 Füzérkajata
 Füzérkomlós
 főbelövetés
@@ -63403,7 +62650,6 @@ főtanácsadó
 főzőcskézik
 főútvonalak
 főügyészség
-fűnyíró gép
 fűrészfogak
 fűrészhalak
 fűrészkeret
@@ -63424,7 +62670,6 @@ gallgyűlölő
 gallicizmus
 galltanítás
 gallüldözés
-Galvani híd
 galvanizmus
 galvániszap
 galvántelep
@@ -63479,8 +62724,6 @@ glosszárium
 glutársavak
 glükonsavak
 golyósmalom
-gomba alakú
-gomba módra
 gombfocizik
 gombolkozik
 gombolyodik
@@ -63513,11 +62756,9 @@ grúzellenes
 grúzgyűlölő
 grúztanítás
 grúzüldözés
-Gubacsi híd
 Guinnesszel
 gulyásleves
 gulyástanya
-gumi óvszer
 gumicukorka
 gurítókerék
 gurítókötél
@@ -63626,7 +62867,6 @@ győzedelmes
 gyűjtőnevek
 gyűlölködik
 gyűlölködés
-gyűrű alakú
 gyűrűscsőrű
 gyűrűsféreg
 gyűrűsmalom
@@ -63662,7 +62902,6 @@ gügyörészik
 gőzfeszmérő
 gőzkalapács
 habilitáció
-habos torta
 Hacsaturján
 hadbavonult
 hadiemlékmű
@@ -63768,7 +63007,6 @@ haranglábak
 harangvirág
 harangzúgás
 harapnivaló
-harcra kész
 harcvonalak
 Harkakötöny
 harmadannyi
@@ -63803,7 +63041,6 @@ használódik
 haszonbérel
 haszonlesés
 haszontalan
-hasáb alakú
 hatbilliárd
 hatbillióan
 hatezerfelé
@@ -63828,7 +63065,6 @@ hatvanhárom
 hatvankettő
 hatvannyolc
 hatálytalan
-határ menti
 határközeli
 határolódik
 határozódik
@@ -63918,8 +63154,6 @@ hexafluorid
 hexagonális
 hexameteres
 Hidasnémeti
-hideg vizek
-hideg vizes
 hideggyanta
 hideghullám
 hidegháború
@@ -63981,7 +63215,6 @@ holnaputáni
 holtodiglan
 holtomiglan
 holtverseny
-Homo ludens
 homofonikus
 homogenitás
 homogenizál
@@ -64077,7 +63310,6 @@ háromszögel
 háromévente
 hártyásodik
 hárászkendő
-hátba támad
 hátcsigolya
 hátikosarak
 hátramaradt
@@ -64090,10 +63322,6 @@ hátravoltam
 hátravoltál
 házastársak
 házasulandó
-házi macska
-házi nyulak
-házi patika
-házi őrizet
 háziasszony
 háziasított
 házikolbász
@@ -64108,7 +63336,6 @@ házlebontás
 házvezetőnő
 héberimádat
 Héjjasfalva
-hét közbeni
 hétbilliárd
 hétbillióan
 hétezerfelé
@@ -64232,8 +63459,6 @@ implantátum
 implementál
 imprimatúra
 improduktív
-imádni való
-in memoriam
 inaktivitás
 incselegett
 incselegünk
@@ -64294,7 +63519,6 @@ irreguláris
 iránymutató
 iskolatáska
 iskolaérett
-iskolás fiú
 istencsapás
 istenhozzád
 Istenmezeje
@@ -64358,7 +63582,6 @@ jogrendszer
 jogszigorló
 jogászkodik
 jogérvényes
-jolly joker
 jonatánalma
 jorubabarát
 jozefinista
@@ -64391,8 +63614,6 @@ jégkrémezik
 jégkárosult
 jégszekrény
 jégvitorlás
-jó hírnevek
-jó szándékú
 jóllakottan
 Jóreménység
 jószerencse
@@ -64414,8 +63635,6 @@ Józseffalva
 Józsefváros
 jövedelmező
 jövendőbeli
-jövő nyarak
-jövő tavasz
 kabaktermés
 kabasólymok
 kabátlyukak
@@ -64633,16 +63852,6 @@ kevélykedik
 kezdeményez
 kezdetleges
 kezelőhidak
-ki tudhatja
-ki tudhatna
-ki tudhatná
-ki tudjátok
-ki tudnálak
-ki tudnának
-ki tudnátok
-ki tudtalak
-ki tudtatok
-ki tudtátok
 kiakolbólít
 kibernetika
 kicsinyhitű
@@ -64780,7 +63989,6 @@ klímatérkép
 klórossavak
 koacerválás
 Kochmeister
-kocka alakú
 kocsikenőcs
 kocsmabelső
 kocsmárosné
@@ -64918,7 +64126,6 @@ korszerűsít
 korteskedik
 Kossitscsal
 Kossovitssá
-Kossuth híd
 koszorúerek
 Kosztolányi
 kosztümözés
@@ -65008,7 +64215,6 @@ kutatnivaló
 kutatómunka
 kutatóterem
 kutikuláris
-kutya hideg
 kutykurutty
 kutymorogod
 kutymorogok
@@ -65094,7 +64300,6 @@ kétségkívül
 kétségtelen
 kétévenként
 kétóránként
-kézen fogva
 kézhezvétel
 kézibeszélő
 kézifegyver
@@ -65138,7 +64343,6 @@ könnyűfémmű
 könnyűlovas
 könnyűvizek
 köntörfalaz
-könyv alakú
 könyvbolond
 könyvelőség
 könyvesbolt
@@ -65150,7 +64354,6 @@ körfordulat
 körforgalmi
 körforgalom
 Körmöcbánya
-körte alakú
 körtebokrok
 körömszálka
 Körösladány
@@ -65244,7 +64447,6 @@ külpolitika
 külsérelmek
 külsődleges
 külvárosias
-külön ágyak
 különböztet
 különbözően
 különcködik
@@ -65316,7 +64518,6 @@ lekicsinylő
 lekötelezés
 lelencházak
 lelkendezik
-lelki beteg
 lelkifröccs
 lelohasztás
 lemalacozik
@@ -65353,7 +64554,6 @@ levitézlett
 levizsgázás
 levágnivaló
 leválasztás
-levél alakú
 levéldarázs
 levélgyűjtő
 levélmérleg
@@ -65373,7 +64573,6 @@ LibreOffice
 licenciátus
 Lichtenberg
 likőrösüveg
-lila hagyma
 liliomfehér
 lilásfekete
 Lindenmayer
@@ -65441,7 +64640,6 @@ légsúlymérő
 légsúrlódás
 légtelenítő
 légvédelmek
-légy szíves
 légybeköpte
 légypiszkos
 légzőgyökér
@@ -65501,8 +64699,6 @@ magamagának
 magamagától
 magamfajták
 magamformák
-magas rendű
-magas sarkú
 magasiskola
 magasnyomás
 magasszintű
@@ -65520,7 +64716,6 @@ magunkfajta
 magunkforma
 magunkfélék
 magunkszőrű
-magyar ajkú
 Magyaralmás
 magyarbarát
 Magyaregres
@@ -65746,7 +64941,6 @@ megvolnának
 megvolnátok
 megvoltatok
 megváltozás
-Megyeri híd
 Megyericsei
 megyénkbeli
 megzsarolás
@@ -65755,11 +64949,6 @@ megállóhely
 megérdemelt
 megöregedés
 megörökítés
-meleg barna
-meleg hangú
-meleg vizek
-meleg vizes
-meleg érzés
 melegesznek
 melegesztek
 melegforrás
@@ -65996,7 +65185,6 @@ motorcsónak
 motorizáció
 motyorogott
 motyorogunk
-Mount Saint
 mozdonyszín
 mozdulatlan
 mozgásterek
@@ -66042,7 +65230,6 @@ másodszorra
 Mátraszőlős
 Mátravidéki
 mátyásmadár
-még egyszer
 méhkenyerek
 méhkirálynő
 méhészkedik
@@ -66079,28 +65266,16 @@ módosítvány
 mórbarátság
 mórgyűlölet
 múlhatatlan
-múlt nyarak
-múlt század
-múlt tavasz
 múltkoriban
 múltkorában
 múltkutatás
 Münchhausen
 müzlistálka
-műanyag cső
-műanyag lap
-műbőr kötés
 műkiállítás
-működő tőke
 műszerfalak
 műszertábla
 művészkedik
 nadrágtartó
-nagy hatású
-nagy méretű
-nagy sikerű
-nagy tömegű
-nagy értékű
 Nagyalásony
 nagyanyjáék
 nagyasszony
@@ -66210,7 +65385,6 @@ nehézásvány
 nekibőszült
 nekropolisz
 nemdohányzó
-nemes lelkű
 Nemesgulács
 Nemesládony
 Nemesmedves
@@ -66494,7 +65668,6 @@ padlásszoba
 padlódeszka
 pajkoskodik
 pajtáskodik
-pajzs alakú
 pajzsmirigy
 pajzánkodik
 Palasovszky
@@ -66554,7 +65727,6 @@ Patapoklosi
 Patersonius
 paticsfalak
 patkolatlan
-patkó alakú
 patogenitás
 patologikus
 pattogatott
@@ -66594,7 +65766,6 @@ permetlevek
 permeábilis
 pernahajder
 perselyezés
-persona non
 perspektíva
 persziflázs
 perszonális
@@ -66800,7 +65971,6 @@ páncélöklök
 Pápadereske
 Pápakovácsi
 Pápasalamon
-pár évtized
 páraelszívó
 párologtató
 párszibarát
@@ -67031,7 +66201,6 @@ rádiócsövek
 Rádóckölked
 ráfizetéses
 Rákospalota
-Rákóczi híd
 rákövetkező
 ránctalanít
 rángatódzik
@@ -67056,7 +66225,6 @@ röpdolgozat
 röpképtelen
 röplabdázik
 röstelkedik
-rövid szőrű
 rövidhajtás
 rövidhullám
 rövidnadrág
@@ -67085,7 +66253,6 @@ sarkantyúka
 sarkcsillag
 sarkigazság
 sarlatánság
-sarló alakú
 Schallmayer
 Scheuthauer
 Schickedanz
@@ -67160,14 +66327,11 @@ skótellenes
 skótgyűlölő
 skóttanítás
 skótüldözés
-slam poetry
 slamasztika
 slusszkulcs
 smaragdzöld
 sodródeszka
-sok helyütt
 sokadszorra
-sokat ígérő
 sokistenhit
 Sokorópátka
 sokszorosan
@@ -67340,7 +66504,6 @@ szelvénylap
 szelídített
 szemaforhíd
 szemantikus
-szemben áll
 szembeötlik
 szembogarak
 szemcsézett
@@ -67638,8 +66801,6 @@ székfoglaló
 székrekedés
 szélbarázda
 szélerőművi
-széles körű
-széles sávú
 szélesbedik
 szélesfarkú
 szélesszájú
@@ -67672,7 +66833,6 @@ szépítetlen
 szépítkezik
 szépítőszer
 szétmállott
-színes tévé
 színeskedik
 színeskedés
 színezetlen
@@ -67755,7 +66915,6 @@ sátánfajzat
 sávolykötés
 sértődékeny
 sétarepülés
-síkvágó gép
 sínvégződés
 sínylenetek
 sínylenélek
@@ -67782,7 +66941,6 @@ sündörögünk
 sütőrostély
 süvegcukrok
 sűrűségmérő
-tabula rasa
 taftszoknya
 Tahitótfalu
 tajtékozzék
@@ -67813,8 +66971,6 @@ tanácskozik
 tanácskérés
 tanácstalan
 tanácsterem
-tanár bácsi
-tanító néni
 tanúságtévő
 tanúsítvány
 tapasztalat
@@ -67865,7 +67021,6 @@ telepszetek
 telepítvény
 telhetetlen
 telitalálat
-teljes körű
 teljesített
 teljhatalom
 tellettetek
@@ -67928,7 +67083,6 @@ területmérő
 testamentum
 testhelyzet
 testhezálló
-testre szab
 testvérbáty
 teszerinted
 tesztvizsga
@@ -67943,7 +67097,6 @@ tetszettünk
 tetszhalott
 tetszőleges
 tettenkapás
-tettre kész
 tetvetlenít
 tetőgerenda
 tetőtornyok
@@ -68015,7 +67168,6 @@ tizenötfelé
 tizenötödik
 tiáltalatok
 tiérettetek
-tojás alakú
 tojáslepény
 tojásszilva
 Tokodaltáró
@@ -68161,7 +67313,6 @@ távoltartás
 távolítódik
 távvezérlés
 tébolyodott
-tégla alakú
 Télemakhosz
 télibaglyok
 téliszalámi
@@ -68193,7 +67344,6 @@ tízóránként
 Tóthfalussy
 tótumfaktum
 többedszeri
-többes szám
 többhavonta
 többhetente
 többlépcsős
@@ -68202,7 +67352,6 @@ többmotoros
 többnaponta
 többszólamú
 többszöriek
-tök mindegy
 tökkelütött
 tökéletesít
 tökéletesül
@@ -68256,20 +67405,6 @@ törődöttség
 tötyörészik
 tötyörögött
 tötyörögünk
-túl legyünk
-túl lenniök
-túl lenniük
-túl lennénk
-túl lennünk
-túl lesznek
-túl lesztek
-túl leszünk
-túl lettünk
-túl nincsen
-túl vagytok
-túl vagyunk
-túl volnánk
-túl voltunk
 túlfolyócső
 túlhatalmak
 túlkereslet
@@ -68497,7 +67632,6 @@ virtualitás
 virtualizál
 virtuozitás
 virtuskodik
-virág alakú
 virágburkok
 virágcserép
 virágcsokor
@@ -68600,11 +67734,6 @@ védőfegyver
 védőrostély
 végeredmény
 véghetetlen
-véghez vidd
-véghez visz
-véghez vitt
-véghez vígy
-véghez víve
 véghezvitel
 végrehajtat
 végrendelet
@@ -68627,7 +67756,6 @@ vértisztító
 vészbíróság
 vészkijárat
 vészmadarak
-vízbe fúlás
 vízelvezető
 vízhatlanít
 víziantilop
@@ -68765,7 +67893,6 @@ zúzottkövek
 állampolgár
 államsegély
 állandósult
-állat alakú
 állatidomár
 állatkölyök
 állatorvosi
@@ -68814,7 +67941,6 @@ zúzottkövek
 árnyéktalan
 árnyékvirág
 árnövekedés
-Árpád hidak
 Árpádhalmok
 árszínvonal
 ártalmatlan
@@ -68849,13 +67975,11 @@ zúzottkövek
 édességbolt
 édestestvér
 édesítetlen
-égetni való
 éjjeliedény
 éjjelnappal
 ékszerdoboz
 élelmianyag
 élestöltény
-életbe vágó
 életfogytig
 élethivatás
 élethosszig
@@ -69126,7 +68250,6 @@ zúzottkövek
 üvegveranda
 Üzbegisztán
 üzbégimádat
-üzem közben
 üzemanyagár
 üzletszerző
 üzletvezető
@@ -69278,7 +68401,6 @@ angolüldözés
 angyalgyökér
 angyalszelíd
 anharmonikus
-annak idején
 anonimizáció
 antagonizmus
 Antananarivo
@@ -69470,7 +68592,6 @@ benépesített
 bepiszkított
 Berkovitscsá
 Berkovitssal
-Bertalan híd
 besenyőbarát
 Besenyőtelek
 beszennyezés
@@ -69646,7 +68767,6 @@ cirrostratus
 cirruszfelhő
 Ciszjordánia
 citogenetika
-coming outol
 coniunctivus
 Csabaszabadi
 csacsiskodik
@@ -69714,7 +68834,6 @@ csiraistálló
 csiratehenek
 csiszolatlan
 csizmaszárak
-csoda szépen
 csodálnivaló
 csombormenta
 csonkítatlan
@@ -69731,7 +68850,6 @@ csípőficamos
 csíralevelek
 csókapityóka
 Csólyospálos
-csónak alakú
 csökkentlátó
 csöngettyűke
 csúcsvitorla
@@ -69807,7 +68925,6 @@ dielektrikum
 dielektromos
 differenciál
 diktatórikus
-dinnye alakú
 dinoszaurusz
 Diocletianus
 diplomatikus
@@ -69847,7 +68964,6 @@ dolgozószoba
 dollármillió
 dombornyomás
 dombortérkép
-Don Quijotés
 donjuankodás
 dramatizáció
 drogaddikció
@@ -69882,10 +68998,7 @@ ebnyelvfüvek
 ebédlőasztal
 ecsetkezelés
 effektivitás
-eget rengető
 egocentrikus
-egy csapásra
-egy központú
 egybeforrott
 egybehangzás
 egybevágóság
@@ -69914,7 +69027,6 @@ egynyolcados
 egynémelykor
 egypárevezős
 egyrétűtapló
-egyszer csak
 egyszerejtés
 egyszersmind
 egységesedik
@@ -70035,7 +69147,6 @@ emberszabású
 emberszerető
 emberségtudó
 emblematikus
-emelt szintű
 emléktárgyak
 emulativitás
 enciklopédia
@@ -70051,7 +69162,6 @@ ereklyetartó
 erkölcscsősz
 erkölcstelen
 ernyősvirágú
-Erzsébet híd
 erélyeskedik
 erőgyakorlat
 eseménytelen
@@ -70188,7 +69298,6 @@ felmelegedés
 felrobbantás
 felszedetlen
 felszínközel
-felső vezető
 felsőbbrendű
 Felsőberecki
 Felsőjánosfa
@@ -70218,7 +69327,6 @@ fenyegetőleg
 fenyegetőzik
 fenyőpálinka
 ferdecsúszda
-Ferenc hidak
 Fertőszéplak
 fertőtlenítő
 festőállvány
@@ -70257,7 +69365,6 @@ fogalomcsere
 fogaskerekek
 foglalkoztat
 fogtechnikus
-fogva tartás
 fogvacogtató
 fogvatartott
 fogvatartási
@@ -70311,8 +69418,6 @@ fársziimádat
 fátyolszövet
 fékevesztett
 fékezőrakéta
-fél esztendő
-fél évszázad
 félannyiszor
 félempirikus
 félesztendei
@@ -70320,12 +69425,10 @@ félhavonként
 félhetenként
 félhivatalos
 félillegális
-félkör alakú
 félnaponként
 félrevezetés
 féltrillióan
 félvariogram
-félév közben
 félévenkénti
 félóránkénti
 fémjelzetlen
@@ -70566,7 +69669,6 @@ hadizsákmány
 Haggenmacher
 hajcsárkodik
 hajdanidőben
-hajnyíró gép
 hajszálfinom
 hajthatatlan
 hajtókerekek
@@ -70630,7 +69732,6 @@ haramiabanda
 harangtorony
 harangöntöde
 Harasztifalu
-harcba vetés
 harcképesség
 harcképtelen
 harisnyakötő
@@ -70732,7 +69833,6 @@ hemicellulóz
 hempergődzik
 hencseregett
 hencseregünk
-henger alakú
 hepciáskodik
 Herceghalmok
 Hercegszántó
@@ -70851,7 +69951,6 @@ hozzávetőleg
 huliganizmus
 huligánbanda
 huligánkodik
-hullám alakú
 hullámcsapás
 hullámmozgás
 humanitárius
@@ -70879,7 +69978,6 @@ háládatosság
 hálókészítés
 hányadszorra
 hánytatószer
-hármas fogat
 háromezredik
 háromhatalmi
 háromhavonta
@@ -70895,9 +69993,6 @@ hátravagyunk
 hátravolnánk
 hátravoltunk
 házasságtörő
-házi feladat
-házi gondozó
-házi kedvenc
 háziegyüttes
 házikenyerek
 háziorvoslás
@@ -70977,8 +70072,6 @@ időszerűtlen
 igazgatóurak
 igazlelkűség
 igazságtalan
-igénybe vett
-igénybe vevő
 igénybevétel
 Iharosberény
 ihatatlanság
@@ -71011,7 +70104,6 @@ impresszárió
 improvizatív
 improvizáció
 impulzivitás
-in flagranti
 indignálódik
 indiszkréció
 indiszponált
@@ -71062,7 +70154,6 @@ irányvonalak
 irányítatlan
 iskolatársak
 iskolaépület
-iskolás lány
 iskoláskönyv
 iskolázatlan
 ismeretközlő
@@ -71100,7 +70191,6 @@ javasasszony
 javaScriptes
 javascriptes
 javítanivaló
-Jeanne d’Arc
 jegenyefenyő
 jegycsíptető
 jegyelővétel
@@ -71138,7 +70228,6 @@ jégsarkantyú
 jóakaratúlag
 jócselekedet
 jóhiszeműleg
-jól szituált
 jólfésültség
 jólismertség
 jóllakottság
@@ -71228,7 +70317,6 @@ kedvezményes
 kedvezményez
 kegyelmesség
 kegyvesztett
-kehely alakú
 kehelytányér
 keltaellenes
 keltagyűlölő
@@ -71282,7 +70370,6 @@ kerékvágásos
 keserűgyökér
 keszegsaláta
 kettedszerre
-kettes fogat
 kettőezredik
 kettőshangzó
 kettőtrillió
@@ -71366,7 +70453,6 @@ Királyhelmec
 Kisasszonyfa
 kisbefektető
 Kisbeszterce
-kisebb rendű
 kisfogyasztó
 kisiparosság
 kisjátékfilm
@@ -71542,7 +70628,6 @@ korrepetitor
 korrodálódik
 korrózióálló
 korszerűtlen
-koránt sincs
 Kossovitscsá
 Kossovitssal
 koszorúslány
@@ -71606,7 +70691,6 @@ kuncsorogott
 kuncsorogunk
 Kunovitscsal
 kupamérkőzés
-kupola alakú
 kurcsatóvium
 kurdbarátság
 kurdgyűlölet
@@ -71715,7 +70799,6 @@ körülöttetek
 köszörűkövek
 kötöttfogású
 kötöttpályás
-kötözni való
 Kövesligethy
 követelődzik
 következetes
@@ -71834,7 +70917,6 @@ letelepedett
 letéteményes
 letörlesztés
 leveleskönyv
-levelező tag
 levendulakék
 leveseskanál
 levesestálak
@@ -71872,7 +70954,6 @@ lábszárcsont
 lábujjkörmök
 lágyezüstérc
 láthatólagos
-látni valóan
 látszottatok
 látótávolság
 légifuvardíj
@@ -71904,7 +70985,6 @@ lüktetésmérő
 lőszeresláda
 macedónbarát
 machiavellis
-macska módra
 macskagyökér
 macskajancsi
 mademoiselle
@@ -71914,7 +70994,6 @@ magakelletés
 magamformájú
 magamszőrűek
 magamutogató
-magas szintű
 magasantenna
 magasfigyelő
 magashegység
@@ -71929,7 +71008,6 @@ magatűrhetés
 magisztrális
 magisztrátus
 magmaolvadék
-Magna Charta
 magnetométer
 magukformájú
 magukszőrűek
@@ -72002,7 +71080,6 @@ maszájimádat
 materialista
 materializál
 maximalizmus
-mea culpázik
 meandervonal
 Mechlovitssá
 Mecsekjánosi
@@ -72116,7 +71193,6 @@ megépítetlen
 megözvegyült
 mekkabalzsam
 melankolikus
-meleg levegő
 melegbetörés
 melegburkoló
 melegeljárás
@@ -72136,11 +71212,9 @@ melléktenger
 melléktermék
 melléképület
 mellékösvény
-memento mori
 menedékházak
 menedéklevél
 menekültügyi
-menet közben
 menetparancs
 mennydörögöd
 mennydörögök
@@ -72275,7 +71349,6 @@ multifokális
 multifraktál
 multimodális
 multipoláris
-munka közben
 munkaalkalom
 munkacsoport
 munkaigényes
@@ -72314,8 +71387,6 @@ mélytisztító
 méreggyilkok
 méregtelenít
 mérföldkövek
-mérges gomba
-mérges kígyó
 mérlegcsésze
 mérsékelődik
 mértékegység
@@ -72331,8 +71402,6 @@ művészietlen
 nacionalista
 nacionalizál
 nadrágszárak
-nagy hatalmú
-nagy léptékű
 Nagybaracska
 nagybirtokos
 Nagybörzsöny
@@ -72530,7 +71599,6 @@ Nádasdladány
 nátronmeszek
 négybilliárd
 négybillióan
-négyes fogat
 négyezerfelé
 négykézlábra
 négymilliárd
@@ -72706,7 +71774,6 @@ Petrichevich
 Petrovitscsá
 Petrovitssal
 Pettenkoffer
-Petőfi hidak
 petőfieskedő
 Petőmihályfa
 pezsgőspohár
@@ -72764,7 +71831,6 @@ pontosvessző
 ponyvaregény
 popfesztivál
 Poroszország
-porszívó gép
 portabilitás
 portalanítás
 portóköltség
@@ -72830,8 +71896,6 @@ Pálmonostora
 pályaelhagyó
 pályaszakasz
 páncéltorony
-pár esztendő
-pár évszázad
 páratartalom
 páratlanujjú
 párhuzamosít
@@ -72989,8 +72053,6 @@ ruténellenes
 ruténgyűlölő
 ruténtanítás
 ruténüldözés
-rá következő
-rá vonatkozó
 Rábacsécsény
 rábizonyítás
 Ráckeresztúr
@@ -73019,7 +72081,6 @@ Röjtökmuzsaj
 röntgenogram
 rövidhullámú
 rőzsekosarak
-Saint Helens
 sajátkezűleg
 salaktalanít
 salátaolajak
@@ -73102,7 +72163,6 @@ Sopronkőhida
 Sopronnémeti
 Sorkikápolna
 sorompórudak
-soron kívüli
 sorsfordulat
 sorszámnevek
 sorsüldözött
@@ -73118,7 +72178,6 @@ spektroszkóp
 spenótbakter
 spicliskedik
 Spilenberger
-spirál alakú
 spirálozógép
 spitzbergáki
 spontaneitás
@@ -73236,7 +72295,6 @@ szellőzetlen
 szellőzködik
 szelvényrész
 szelídítőleg
-szemben álló
 szembenállás
 szembeszelek
 szembetegség
@@ -73332,7 +72390,6 @@ sziklakemény
 sziklaszoros
 Szilaspogony
 szillogizmus
-szilva alakú
 Szilvásvárad
 szimbiotikus
 szimbolizmus
@@ -73350,7 +72407,6 @@ szintvonalak
 szirénabúgás
 szittyabarát
 szivacstartó
-szivar alakú
 szkizofrénia
 szklerotikus
 szkolopendra
@@ -73497,7 +72553,6 @@ szénserpenyő
 szénszállító
 széntartalmú
 szénásszekér
-szép számmal
 széphistória
 szépirodalom
 szépkiejtési
@@ -73521,7 +72576,6 @@ szívfájdalom
 szívkihagyás
 szívszaggató
 szívszakadva
-szóban forgó
 szódásszifon
 szófecsérlés
 szóhasználat
@@ -73573,7 +72627,6 @@ sínillesztés
 sínylettelek
 sínylettetek
 sínylettétek
-sírni valóan
 sófogyasztás
 söröspoharak
 sötétpirosas
@@ -73581,7 +72634,6 @@ sötétszürkés
 sövényszulák
 súgókészülék
 süllyesztett
-sült krumpli
 sürgönypózna
 Tabakovitssá
 tabernákulum
@@ -73704,7 +72756,6 @@ terpeszkedik
 terpeszugrás
 terpeszállás
 Terstyánszky
-tervbe vétel
 területméret
 testközömbös
 testreszabás
@@ -73794,7 +72845,6 @@ tollbamondás
 tollászkodik
 tolsztojánus
 toltékimádat
-tolvaj módra
 tolóasztalka
 Tomaszovszki
 tompareszelő
@@ -73803,7 +72853,6 @@ Tornakápolna
 Tornanádaska
 Tornyospálca
 torokmandula
-torony alakú
 Torvaldsdzal
 torznégyszög
 torzsalkodik
@@ -73824,7 +72873,6 @@ transzformál
 transzparens
 transzponált
 tranzitvízum
-trapéz alakú
 triatlonista
 trikarbonsav
 trilliomodik
@@ -73930,7 +72978,6 @@ tönkretettél
 tönkretettük
 törleszkedik
 törpemandula
-tört aranyak
 törvényhozás
 törvényhozói
 törvénykezik
@@ -73947,15 +72994,6 @@ Törökkanizsa
 Törökkoppány
 töröktanítás
 töröküldözés
-túl legyenek
-túl legyetek
-túl lennetek
-túl lennének
-túl lennétek
-túl lettetek
-túl volnának
-túl volnátok
-túl voltatok
 túldíszített
 túlfeszített
 túlfűtöttség
@@ -74050,10 +73088,8 @@ varégüldözés
 vasalódeszka
 Vasaskőfalva
 Vasasszonyfa
-vasbeton fal
 Vaskeresztes
 vasszerkezet
-vastag betűs
 vastagszanak
 vastagszotok
 vasúthatóság
@@ -74206,13 +73242,6 @@ Vásárosmiske
 vázszerkezet
 védőszárnyak
 végbélnyílás
-véghez vigye
-véghez vinne
-véghez vinni
-véghez vinné
-véghez viszi
-véghez vitte
-véghez vívén
 végigböngész
 végkimerülés
 végtelenszer
@@ -74252,7 +73281,6 @@ wesselényies
 Weszelovszky
 Yamoussoukro
 zabosbükköny
-zacskó alakú
 Zagyvaszántó
 zaklatottság
 Zalaboldogfa
@@ -74275,7 +73303,6 @@ zsandárkodik
 Zsasskovszky
 Zselickislak
 zsellérkedik
-zsemle alakú
 zsemlemártás
 zsidócsillag
 zsidóellenes
@@ -74334,7 +73361,6 @@ zöldvendéglő
 állóképesség
 állónaptárak
 álszömörcsög
-által alapít
 ámpolnavirág
 áramkapcsoló
 áramszaggató
@@ -74361,7 +73387,6 @@ zöldvendéglő
 átlátszatlan
 átstilizálás
 átszellemült
-édes mindegy
 édesburgonya
 édesgyökerek
 édesszüleink
@@ -74371,7 +73396,6 @@ zöldvendéglő
 élesztőkazán
 életképtelen
 életnagyságú
-életre szóló
 élménygazdag
 élveboncolás
 élvhajhászat
@@ -74464,7 +73488,6 @@ zöldvendéglő
 örménygyökér
 örményimádat
 Örményország
-örök érvényű
 örökbefogadó
 öröknaptárak
 örömrivalgás
@@ -74582,7 +73605,6 @@ zöldvendéglő
 üzbéggyűlölő
 üzbégtanítás
 üzbégüldözés
-üzem közbeni
 üzembentartó
 üzemhelyiség
 üzemképtelen
@@ -74622,7 +73644,6 @@ agyonhasznált
 ahányadszorra
 ainucentrikus
 ajtókopogtató
-ajándék könyv
 ajánlólevelek
 akadálymentes
 akadékoskodik
@@ -74963,7 +73984,6 @@ citosztatikus
 citromkocsord
 civilizálódik
 countryénekes
-csak azért is
 Csanádalberti
 csapadéktalan
 csatavesztett
@@ -75010,7 +74030,6 @@ csicseriborsó
 csigafordulat
 csigolyafüzek
 csigolyafüzes
-csillag alakú
 csillagdíszes
 csillagfényes
 csillagjóslás
@@ -75152,7 +74171,6 @@ dörzskapcsoló
 edénykészítés
 egalitarizmus
 egocentrizmus
-egy összegben
 egyenirányító
 egyenlőoldalú
 egyenruházati
@@ -75165,7 +74183,6 @@ Egyházaskozár
 Egyházasrádóc
 egyházellenes
 egymilliárdan
-egymásra utal
 egymásutánban
 egyszerűsödik
 egyszínnyomás
@@ -75195,7 +74212,6 @@ elhalványulás
 elhamarkodott
 elhasználódás
 elintéznivaló
-elit alakulat
 elkorcsosulás
 elkárhoztatás
 ellenagitáció
@@ -75230,7 +74246,6 @@ előfeldolgozó
 előkalkuláció
 előkelősködik
 előképzettség
-előre jelzett
 előrebillenés
 előrehaladott
 előterjesztés
@@ -75308,7 +74323,6 @@ ezeróránkénti
 ezredbeosztás
 ezüstvasárnap
 fafeldolgozás
-fait accompli
 fajtalankodik
 falkavadászat
 fantazmagória
@@ -75333,7 +74347,6 @@ fehérpecsenye
 fehérvasárnap
 fehérállomány
 fejetlenkedik
-fekete bárány
 feketekávézik
 feketesugárzó
 feketeszárnyú
@@ -75357,7 +74370,6 @@ felszereltség
 felszállóágak
 felszántatlan
 felségterület
-felső vezetés
 Felsőegerszeg
 felsőgeodézia
 felsőkarizmok
@@ -75450,15 +74462,11 @@ fárszitanítás
 fársziüldözés
 fékezhetetlen
 féktelenkedik
-fél kilogramm
-fél kilométer
 félbeszakítás
 féldrágakövek
 félelliptikus
-félgömb alakú
 félhavonkénti
 félhetenkénti
-félhold alakú
 félismeretlen
 félkészexport
 félmilliárdan
@@ -75467,7 +74475,6 @@ félnaponkénti
 félpercenként
 félrebeszélés
 félrevezetett
-félév közbeni
 félévszázados
 fényképezőgép
 fényképfixáló
@@ -75503,7 +74510,6 @@ fűszerezetlen
 galacsinhajtó
 gallcentrikus
 gallikanizmus
-Galvani hidak
 garancialevél
 garázdálkodik
 gatyaszaggató
@@ -75537,7 +74543,6 @@ gravimetrikus
 Greenwichcsel
 gránátoskocka
 grúzcentrikus
-Gubacsi hidak
 gurítókerekek
 gurítókötelek
 gyakorlatozik
@@ -75557,7 +74562,6 @@ gyepűrendszer
 gyerekeskedik
 gyermekbolond
 gyermekláncfű
-gyomirtó szer
 Gyopárosfürdő
 gyorsböngésző
 gyorsforgalmi
@@ -75630,7 +74634,6 @@ hajszálcsöves
 hajszálpontos
 hajszálvékony
 hajtóvadászat
-Hajógyári híd
 hajókirakodás
 hajózhatatlan
 hallatsszanak
@@ -75708,7 +74711,6 @@ harántgerenda
 harántmetszet
 harántvonalak
 hasnyálmirigy
-hasznot hajtó
 haszonélvezet
 hatalmaskodik
 hathavonkénti
@@ -75832,8 +74834,6 @@ holnaputánkor
 homogenizálás
 homomorfizmus
 homoszexuális
-honoris causa
-Honoris Causa
 horgászzsinór
 horvátellenes
 horvátgyűlölő
@@ -75841,7 +74841,6 @@ horváttanítás
 Horvátzsidány
 horvátüldözés
 hospitalizmus
-hosszan tartó
 hosszirányban
 hosszúhullámú
 hosszúszárnyú
@@ -75884,9 +74883,7 @@ huszonötödike
 huszonötödiki
 huszárdolmány
 huszárzászlós
-hála istennek
 hálistenkedik
-hál’ istennek
 hármashangzat
 hármasszabály
 hárombilliárd
@@ -75912,8 +74909,6 @@ hátravoltatok
 hátulgombolós
 házasságkötés
 házasságtörés
-házi dolgozat
-házi gondozás
 házibajnokság
 házipénztárak
 háztartásbeli
@@ -75942,11 +74937,7 @@ húszóránkénti
 hőemelkedéses
 hőszolgáltató
 hővisszanyerő
-ide vonatkozó
 idealisztikus
-idegen nyelvi
-idegen nyelvű
-idegen szavak
 idegengyűlölő
 idegenkezűség
 idegenszerűen
@@ -75977,7 +74968,6 @@ imperializmus
 impermeábilis
 impertinencia
 implementáció
-imádni valóan
 inaktiválódás
 inaszakadtáig
 independencia
@@ -76064,7 +75054,6 @@ Jászfényszaru
 Jászjákóhalma
 játszhatatlan
 jégkorongozik
-jó néhányszor
 jóindulatúlag
 jólképzettség
 jóltápláltság
@@ -76073,7 +75062,6 @@ jóteljesítési
 jótékonykodik
 jóvátehetőség
 jövendőmondás
-jövő esztendő
 kakaslábfüvek
 kalaposmester
 kalapskatulya
@@ -76143,7 +75131,6 @@ kenyérdarabka
 kenyérkosarak
 kenyérnekvaló
 kereskedelmek
-kereszt alakú
 keresztelőkút
 kereszteződik
 keresztfiadék
@@ -76159,7 +75146,6 @@ kereszténység
 kergemarhakór
 Kerkáskápolna
 Kertészsziget
-kerékbe törés
 kerékpárbelső
 kerékpárpálya
 keréktávolság
@@ -76335,7 +75321,6 @@ korrumpálódik
 korszakalkotó
 korszerűsödik
 Kossovitscsal
-Kossuth hidak
 koszorúsleány
 kosztolányias
 kosárlabdázik
@@ -76402,8 +75387,6 @@ képzőművészet
 kérdezősködik
 kérődzőgyomor
 készgyártmány
-két számjegyű
-két tannyelvű
 kétezerzłotys
 kéthavonkénti
 kéthetenkénti
@@ -76459,7 +75442,6 @@ középnagyságú
 középnemesség
 közölhetetlen
 külképviselet
-külön bejárat
 különlenyomat
 különmunkázik
 különvélemény
@@ -76573,7 +75555,6 @@ magnéziumoxid
 magunkformájú
 magunkszőrűek
 magvaspáfrány
-magyar nyelvű
 Magyarcsernye
 magyarellenes
 magyargyűlölő
@@ -76605,7 +75586,6 @@ makrogazdaság
 makromolekula
 makroökonómia
 malteroskanál
-mandula alakú
 manifesztáció
 manikűröslány
 Mantskovitssá
@@ -76699,7 +75679,6 @@ megvendégelés
 megvetemedett
 megvilágított
 megvédelmezés
-Megyeri hidak
 megzavarodott
 megállapodott
 megállapított
@@ -76717,7 +75696,6 @@ mellékvonalak
 mellékáramkör
 mellékértelem
 menekülttábor
-menet közbeni
 menetsebesség
 Meningococcus
 mennyboltozat
@@ -76764,8 +75742,6 @@ milliomodrész
 milliomodszor
 milliárdocska
 millióhavonta
-mind ez ideig
-mind ez idáig
 mindahányfelé
 mindahányszor
 mindannyiszor
@@ -76792,7 +75768,6 @@ mnemotechnika
 mobilkészülék
 modifikálódik
 modularizáció
-modus vivendi
 mogyoróbokrok
 mogyoróhagyma
 Mogyorósbánya
@@ -76823,8 +75798,6 @@ mostohafiamék
 mostohafiatok
 motorburkolat
 motorkerékpár
-Mount Everest
-mountain bike
 mozdonyvezető
 mozgásszegény
 multimediális
@@ -76834,7 +75807,6 @@ multiplikáció
 multiplikátor
 multivibrátor
 mumifikálódik
-munka közbeni
 munkaalkalmak
 munkaképtelen
 munkalassítás
@@ -76864,9 +75836,6 @@ mészkőhegység
 méterrendszer
 mézespuszedli
 mórellenesség
-múlt esztendő
-műanyag fólia
-műanyag pohár
 művészasszony
 Nabukodonozor
 nacionalizmus
@@ -76911,7 +75880,6 @@ nanoszerkezet
 napfényképező
 narancslekvár
 narancssárgás
-ne adj’ isten
 nedvességmérő
 negyedannyian
 negyedfélezer
@@ -76942,7 +75910,6 @@ nehéztüzérség
 nehézvegyipar
 nehézásványok
 nekibátorodás
-nem hivatalos
 Nemesgörzsöny
 Nemeskisfalud
 nemeslelkűség
@@ -76954,7 +75921,6 @@ nemteljesítés
 nemterminális
 nemulassszerű
 nemzedékrendi
-nemzeti színű
 nemzőképtelen
 nemátalakítás
 nenyúljhozzám
@@ -77039,7 +76005,6 @@ négyszázezres
 négyszögletes
 négytrilliárd
 négytrillióan
-négyzet alakú
 négyévenkénti
 négyóránkénti
 németbarátság
@@ -77102,7 +76067,6 @@ panaszolkodik
 pankromatikus
 panteisztikus
 pantoténsavak
-papagáj módra
 paprikajancsi
 papságellenes
 papírburkolat
@@ -77273,8 +76237,6 @@ páncéltornyok
 pánszlávizmus
 pántlikafüvek
 pápaválasztás
-pár kilogramm
-pár kilométer
 páratartalmak
 párjavesztett
 pársziellenes
@@ -77370,7 +76332,6 @@ románbarátság
 romángyűlölet
 rosszindulatú
 rosszlelkűség
-rovarölő szer
 Rudabányácska
 ruhásszekrény
 ruténbarátság
@@ -77380,7 +76341,6 @@ rádiókészülék
 rádiószekrény
 ráerőszakolás
 rágcsálnivaló
-Rákóczi hidak
 Rákócziújfalu
 régiséggyűjtő
 részegeskedik
@@ -77397,8 +76357,6 @@ rövidlejáratú
 sajtóbemutató
 Sajókeresztúr
 salamonpecsét
-salto mortale
-salto mortalé
 salétromossav
 samottpakolás
 sarlatánizmus
@@ -77432,7 +76390,6 @@ soknaponkénti
 sokpercenként
 sokszorozódik
 sokszázszoros
-sokszög alakú
 Soltszentimre
 Somogybükkösd
 Somogyhárságy
@@ -77563,7 +76520,6 @@ szerencsefiak
 szerencsepénz
 szerencséltet
 szerencsétlen
-szeretni való
 szerializáció
 szerkesztőség
 szerkezetkész
@@ -77623,7 +76579,6 @@ szolgálatjára
 szolgálatkész
 szolipszizmus
 Szolzsenyicin
-szomszéd néni
 szopránszólam
 szorbbarátság
 szorbgyűlölet
@@ -77708,7 +76663,6 @@ színárnyalatú
 szívbelhártya
 szívelégtelen
 szívfájdalmak
-szívhez szóló
 szívinfarktus
 szívmelengető
 szívszorongva
@@ -77758,7 +76712,6 @@ tanszemélyzet
 tanulmányutak
 tanúbizonyság
 tapinthatólag
-tartalék adag
 tarándszarvas
 tasmanellenes
 tasmangyűlölő
@@ -77955,7 +76908,6 @@ tíznaponkénti
 tízpercenként
 tízszereződik
 Tótszerdahely
-több százezer
 többedmagával
 többespéldány
 többesztendei
@@ -77969,7 +76921,6 @@ többévenkénti
 többóránkénti
 töketlenkedik
 tökéletesedik
-tölcsér alakú
 tölgyfagubacs
 tölténykivető
 tömbmegbízott
@@ -78204,31 +77155,6 @@ Vásárosnamény
 védintézkedés
 védődeszkázat
 védődeszkázás
-véghez vigyed
-véghez vigyek
-véghez vigyem
-véghez vigyen
-véghez vigyék
-véghez vigyél
-véghez vigyük
-véghez vinned
-véghez vinnem
-véghez vinnie
-véghez vinnéd
-véghez vinnék
-véghez vinnél
-véghez vinném
-véghez viszed
-véghez viszek
-véghez viszel
-véghez viszem
-véghez viszik
-véghez vitted
-véghez vittek
-véghez vittem
-véghez vitték
-véghez vittél
-véghez vittük
 végkielégítés
 végrehajtódik
 végérvényesül
@@ -78268,7 +77194,6 @@ zsinórszatyor
 zsonglőrködik
 zsugoriskodik
 zsírosparaszt
-zsírégető gép
 zsúrszendvics
 zuhanórepülés
 zulucentrikus
@@ -78330,7 +77255,6 @@ zöldtakarmány
 átváltoztatás
 ázalékállatka
 édesszüleitek
-égetni valóan
 ékszerészbolt
 élelmiszeráru
 éleselméjűség
@@ -78507,7 +77431,6 @@ zöldtakarmány
 újsághirdetés
 újtestamentum
 Újtestamentum
-útba igazítás
 útkeresztezés
 útmegszakítás
 ügyetlenkedik
@@ -78620,7 +77543,6 @@ asztrobiológia
 asztrobiológus
 aszálykárosult
 autokorreláció
-automata váltó
 automobilizmus
 autoregresszió
 autoregresszív
@@ -78671,7 +77593,6 @@ Berettyóújfalu
 bergmanncsövek
 berkenyebokrok
 berozsdásodott
-Bertalan hidak
 besenyőellenes
 besenyőgyűlölő
 besenyőtanítás
@@ -78753,7 +77674,6 @@ cigánypecsenye
 cipőegységárak
 civilizálatlan
 civilszervezet
-corpus delicti
 csapadékgazdag
 csapatszállító
 csatornanyílás
@@ -78783,7 +77703,6 @@ csincsillanyúl
 csingilingizik
 csintalankodik
 csipkéspoloska
-csirke far‑hát
 csiszolóeszköz
 csiszolókorong
 csokoládébarna
@@ -78842,8 +77761,6 @@ diszkrimináció
 diszkvalifikál
 disznóhizlalda
 diverzifikáció
-doctor honoris
-Doctor Honoris
 dokumentarista
 dollármilliárd
 dombornyomásos
@@ -78868,7 +77785,6 @@ dísztelenkedik
 döntésképtelen
 dörzstörülköző
 egetrengetőség
-egy személyben
 egyedülvalóság
 egyenértékűség
 Egyházashollós
@@ -78942,7 +77858,6 @@ epizódszereplő
 eredetieskedik
 ernyősvirágzat
 ernyővirágzatú
-Erzsébet hidak
 erőszakoskodik
 eszkatologikus
 etiópcentrikus
@@ -79083,13 +77998,11 @@ félbeszakított
 féleszméletlen
 féligrendezett
 féligáteresztő
-félkész termék
 félpercenkénti
 féltékenykedik
 fényelektromos
 fénykisugárzás
 fényképezkedik
-fénymásoló gép
 fényszórólámpa
 fényvisszaverő
 fényátszűrődés
@@ -79338,7 +78251,6 @@ hiperkorrekció
 hiperrealizmus
 hipojódossavak
 historiográfia
-hitelt érdemlő
 hitlerszalonna
 holdvilágtalan
 hollandellenes
@@ -79494,7 +78406,6 @@ jólöltözöttség
 jószántatokból
 jóváhagyólagos
 jóvátehetetlen
-jövő esztendei
 kabbalisztikus
 kacskaringózik
 kalmárlelkűség
@@ -79539,7 +78450,6 @@ Kemeneshőgyész
 Kemeneskápolna
 kenyérbélvirág
 kenyérszűkében
-kenyérsütő gép
 kenőcsöstégely
 kerecsensólyom
 keresetlevelek
@@ -79749,7 +78659,6 @@ körömszakadtig
 Körösszegapáti
 köszörűsműhely
 kötelességtudó
-kötözni valóan
 következtetett
 kövezetfolyóka
 közalkalmazott
@@ -79784,7 +78693,6 @@ legyőzhetetlen
 legömbölyített
 lehatárolatlan
 leküzdhetetlen
-lelki betegség
 lelkigyakorlat
 lelkiismeretes
 lendítőkerekek
@@ -79827,7 +78735,6 @@ macedóngyűlölő
 macedóntanítás
 macedónüldözés
 macskagyökerek
-magasabb rendű
 magasvérnyomás
 magasépítészet
 magatehetetlen
@@ -80033,14 +78940,10 @@ méltatlankodik
 méltóságteljes
 mértékrendszer
 mértékszabóság
-múlt esztendei
-műanyag csövek
-műanyag palack
 műkereskedelem
 műkorcsolyázás
 műszerezettség
 nadrágcsíptető
-nagy sebességű
 nagyburzsoázia
 nagyfejedelmek
 nagyfeszültség
@@ -80210,7 +79113,6 @@ paleomágnesség
 palesztinbarát
 pallérozottság
 palántakiszedő
-par excellence
 paradigmatikus
 parafingyertya
 paralelogramma
@@ -80357,7 +79259,6 @@ romanigyűlölet
 rombdodekaéder
 romeltakarítás
 románcentrikus
-rovarirtó szer
 rugalmatlanság
 ruténcentrikus
 Rákoskeresztúr
@@ -80578,13 +79479,11 @@ szétválasztott
 színképelemzés
 színműirodalom
 színvonaltalan
-szívbe markoló
 szódabikarbóna
 szódavízgyártó
 szórványmagyar
 szövegváltozat
 szövetburkolat
-szükség esetén
 szükséghelyzet
 szükségképpeni
 szürjektivitás
@@ -80613,7 +79512,6 @@ tapasztalatlan
 tartószerkezet
 tasmanbarátság
 tasmangyűlölet
-tatár bifsztek
 tavalyelőttkor
 tegnapelőttkor
 teherszállítás
@@ -80745,14 +79643,11 @@ távfényképezés
 táviratkihordó
 távolfelderítő
 távolságmérték
-téglalap alakú
 tízezerrubeles
 tízparancsolat
 tízpercenkénti
 Tótszentgyörgy
 Tótszentmárton
-több ezer éves
-több száz éves
 többedmagaddal
 többedmagammal
 többedmagukkal
@@ -80835,9 +79730,6 @@ valutaátváltás
 vanillincukrok
 varangyszittyó
 varégcentrikus
-vasbeton falak
-vasbeton födém
-vasbeton lemez
 Vasszentmihály
 vegyesvállalat
 vendellenesség
@@ -80912,21 +79804,9 @@ Vácszentlászló
 vágányvégződés
 válaszképtelen
 választónegyed
-váltakozó áram
 változhatatlan
 végelgyengülés
 végeérhetetlen
-véghez vigyünk
-véghez vinniök
-véghez vinniük
-véghez vinnénk
-véghez vinnünk
-véghez visszük
-véghez viszlek
-véghez visznek
-véghez visztek
-véghez viszünk
-véghez vittünk
 végrendelkezik
 végrendelkezés
 vérzéselállító
@@ -81020,7 +79900,6 @@ zökkenésmentes
 örménygyökerek
 örménygyűlölet
 örökbefogadott
-örökkön örökké
 örökérvényűség
 összbefektetés
 összbirodalmak
@@ -81264,7 +80143,6 @@ csincsillabunda
 csinnadrattázik
 csirkebecsinált
 csodálatraméltó
-csodálni valóan
 Csokonyavisonta
 csokornyakkendő
 csomagolóvászon
@@ -81312,7 +80190,6 @@ dákcentrikusság
 dáncentrikusság
 Dédestapolcsány
 dédnagyszüleink
-Déli pályaudvar
 Délmagyarország
 délszlávellenes
 délszlávgyűlölő
@@ -81423,10 +80300,8 @@ felsőbbrendűség
 felülbélyegzett
 fenomenologikus
 festékfecskendő
-figyelembe vevő
 figyelembevétel
 figyelemreméltó
-filmfelvevő gép
 finnugorellenes
 finnugorgyűlölő
 finnugortanítás
@@ -81506,8 +80381,6 @@ haditörvényszék
 hadrafoghatóság
 hagyományozódik
 Hajdúböszörmény
-Hajógyári hidak
-haladó szellemű
 hallatszottatok
 hallhatatlanság
 halotthamvasztó
@@ -81644,7 +80517,6 @@ holdfogyatkozás
 hollandbarátság
 hollandgyűlölet
 homoszexualitás
-horribile dictu
 horvátcentrikus
 Horváthertelend
 hosszantartóság
@@ -81684,11 +80556,9 @@ háromhavonkénti
 háromhetenkénti
 hárommilliárdan
 háromnaponkénti
-háromnegyed óra
 hárompercenként
 háromszorozódik
 háromszínnyomás
-háromszög alakú
 héberellenesség
 hétismeretlenes
 híradástechnika
@@ -81772,7 +80642,6 @@ kettőmilliárdan
 kettősnyelvűség
 kevertnyelvűség
 kevesedmagammal
-kezelésbe vétel
 kibetűzhetetlen
 kicsinylettetek
 kicsinylettétek
@@ -81862,7 +80731,6 @@ kultúrtörténész
 kuncentrikusság
 kváziperiodikus
 Káposztásmegyer
-Kék Szalag rend
 kékszakállkodik
 kényszerhelyzet
 kényszerzubbony
@@ -82044,11 +80912,8 @@ mélyfagyasztott
 mélytengerfenék
 mérlegbeszámoló
 mórcentrikusság
-műanyag poharak
 műkereskedelmek
 működésképtelen
-nagy felbontású
-nagy mennyiségű
 nagybirtokosság
 nagyezerjófüvek
 nagyfelhasználó
@@ -82167,7 +81032,6 @@ négypercenkénti
 néhányadmagával
 németellenesség
 népfelszabadító
-növényvédő szer
 okvetetlenkedik
 olaszellenesség
 olcsójánoskodik
@@ -82193,7 +81057,6 @@ osztályvezetőúr
 palatalizálódik
 palesztinimádat
 palesztinkérdés
-papír zsebkendő
 paradicsomlevek
 paralelepipedon
 paraszimpatikus
@@ -82265,7 +81128,6 @@ remilitarizálás
 rendelőhelyiség
 rendreutasítgat
 rendszerjellegű
-reneszánsz kori
 reprezentálódik
 retraumatizáció
 rettenthetetlen
@@ -82345,7 +81207,6 @@ szenvedélytelen
 szerbellenesség
 szerelvényfalak
 szeretetreméltó
-szeretni valóan
 szerkesztettség
 szerpentinkövek
 szerszámkészlet
@@ -82622,18 +81483,6 @@ védjegyeztetett
 védővámrendszer
 végeláthatatlan
 végeszakadatlan
-véghez vigyelek
-véghez vigyenek
-véghez vigyetek
-véghez vigyétek
-véghez vinnetek
-véghez vinnélek
-véghez vinnének
-véghez vinnétek
-véghez viszitek
-véghez vittelek
-véghez vittetek
-véghez vittétek
 véletlensorozat
 vénkisasszonyos
 vízgyűjtőgödrök
@@ -82749,7 +81598,6 @@ zálogkölcsönzés
 útnyilvántartás
 ügyfélorientált
 üzbégellenesség
-üzembe helyezés
 őexcellenciájuk
 őkegyelmességük
 abrakostarisznya
@@ -82843,19 +81691,16 @@ csillagvizsgálás
 csillagőszirózsa
 csilpcsalpfüzike
 csincsillanyulak
-csirke far‑hátak
 Csurgónagymarton
 csángóellenesség
 Csíkszentdomokos
 Csíkszentmihályi
 csúfondároskodik
 csúszóérintkezős
-curriculum vitae
 cégvezetőasszony
 dakotaellenesség
 dalmátellenesség
 dekriminalizáció
-delirium tremens
 dematerializáció
 demokratizálódik
 derékszögvonalzó
@@ -82926,7 +81771,6 @@ Esthajnalcsillag
 eszperenteimádat
 evangéliumszerző
 exminiszterelnök
-expressis verbis
 expresszionizmus
 ezerkilencszázad
 ezerkilencszázan
@@ -83131,7 +81975,6 @@ hipergeometrikus
 hipofoszforossav
 hollandcentrikus
 Homokszentgyörgy
-honfoglalás kori
 horgonyfelszedés
 hormonkészítmény
 horvátellenesség
@@ -83292,7 +82135,6 @@ krisztallográfia
 krumpliskenyerek
 kultúrforradalom
 kurdcentrikusság
-kutya kötelesség
 képviselőasszony
 kérvénybenyújtás
 készletfeltöltés
@@ -83462,7 +82304,6 @@ negyvenóránkénti
 negyvenötezredik
 negyvenöttrillió
 nehézgépjárművek
-nem utolsósorban
 Nemesrempehollós
 Nemesszentandrás
 neohegelianizmus
@@ -83550,11 +82391,7 @@ Pogányszentpéter
 polgármesterurak
 polgárosodottság
 poli(izobutilén)
-polietilén doboz
-polietilén fólia
-polietilén tasak
 polihalogénezett
-poliuretán habos
 pontszimmetrikus
 portugálbarátság
 portugálgyűlölet
@@ -83697,7 +82534,6 @@ szőnyegkeretezés
 szőrszálhasogató
 tapintatlankodik
 Tarnaszentmiklós
-tartalék játékos
 tasmanellenesség
 Tatárszentgyörgy
 tehermentesített
@@ -83795,7 +82631,6 @@ ultrakonzervatív
 ultrapasztörizál
 univerzáltraktor
 urducentrikusság
-utasszállító gép
 utófinanszírozás
 valahánymilliárd
 vallonellenesség
@@ -83937,7 +82772,6 @@ boszorkányüldözés
 bunyeváccentrikus
 burgonyakeményítő
 Bükkszenterzsébet
-circulus vitiosus
 csalatkozhatatlan
 csecsenellenesség
 cselekvésképtelen
@@ -83949,7 +82783,6 @@ csökkentértékűség
 dajákcentrikusság
 decentralizálódik
 deperszonalizáció
-diabetes mellitus
 differenciálatlan
 differenciálművek
 diszpécserközpont
@@ -84202,7 +83035,6 @@ kapilláraktivitás
 kardiovaszkuláris
 karácsonyikaktusz
 kazahcentrikusság
-Keleti pályaudvar
 keltacentrikusság
 Kemenesszentpéter
 keresztcsontfájás
@@ -84343,7 +83175,6 @@ munkamegszüntetés
 muszlimellenesség
 másolómanipulátor
 mélytengerfenekek
-műanyag evőeszköz
 Nagyboldogasszony
 nagykereskedelmek
 nagyothallottatok
@@ -84429,7 +83260,6 @@ nyolcvanöttrillió
 nyughatatlankodik
 négyesztendőnként
 németcentrikusság
-népvándorlás kori
 objektumorientált
 olaszcentrikusság
 olocsáncsillaghúr
@@ -84449,13 +83279,11 @@ pidzsinellenesség
 Pilisszentkereszt
 pipettázókészülék
 piroelektromosság
-polietilén zacskó
 Porrogszentkirály
 portugálcentrikus
 prekoncepcionális
 presbiterianizmus
 prezidencializmus
-professor emerita
 professzionalista
 professzorasszony
 proletárdiktatúra
@@ -84503,7 +83331,6 @@ szegényparasztság
 szekvencializáció
 szelídgesztenyefa
 szemérmetlenkedik
-szemétlerakó hely
 szemöldökráncolás
 szennyvízcsatorna
 Szenterzsébethegy
@@ -84536,7 +83363,6 @@ számicentrikusság
 számítástechnikus
 szárazgazdálkodás
 százesztendőnként
-Széchenyi lánchíd
 Székesfehérvárott
 szélmalomszárnyak
 szélsőjobboldalak
@@ -84554,7 +83380,6 @@ takarmánybaltacím
 tamilcentrikusság
 tanszékvezetőurak
 tanársegédasszony
-tartalék rendszer
 teljesítőképesség
 tenyészállatvásár
 természetszerűleg
@@ -84586,7 +83411,6 @@ tizenvalahányfelé
 tizenötmilliárdan
 torkukszakadtából
 Tornyiszentmiklós
-tortaszelet alakú
 toszkánellenesség
 transzcendentális
 transzferabilitás
@@ -84613,11 +83437,9 @@ visszleszámítolás
 viszontbiztosítás
 viszontláthatóság
 változtathatatlan
-vámszabad terület
 vámszabadterületi
 védekezésképtelen
 vörösborospoharak
-yorkshire terrier
 zsidócentrikusság
 zöldpetrezselymek
 Állategészségügyi
@@ -84927,7 +83749,6 @@ maszájcentrikusság
 meghatározhatatlan
 megközelíthetetlen
 megtermékenyítőleg
-menetrend szerinti
 metafoszforossavak
 mikrotársadalmiság
 milliárdhavonkénti
@@ -84941,7 +83762,6 @@ multikulturalizmus
 multistacionaritás
 mélyépítéstudomány
 nacionálsovinizmus
-nagy teljesítményű
 negyvenegybilliárd
 negyvenegybillióan
 negyvenegymilliárd
@@ -85016,7 +83836,6 @@ nyolcvanötbilliárd
 nyolcvanötbillióan
 nyolcvanötmilliárd
 nyolcvanötmillióan
-Nyugati pályaudvar
 növekedésorientált
 oktatástechnológus
 ortofoszforossavak
@@ -85028,7 +83847,6 @@ pirofoszforossavak
 polihipergeometria
 portugálellenesség
 posztindusztriális
-professor emeritus
 professzionalizmus
 proletárforradalom
 prosztatagyulladás
@@ -85041,7 +83859,6 @@ rokkantnyugdíjazás
 romanicentrikusság
 részvénytúljegyzés
 rövidfilmfesztivál
-savanyú tojásleves
 sebességszabályozó
 sugárfertőtlenítés
 szabadfoglalkozású
@@ -85076,13 +83893,11 @@ szórványnyelvemlék
 szőrmekereskedelem
 súlymértékrendszer
 süllyesztőszekrény
-tartalék versenyző
 tartozásátvállalás
 tasmancentrikusság
 telefonbeszélgetés
 tenyészalkalmasság
 tenyészkiválasztás
-terminus technicus
 termoelektromosság
 területenkívüliség
 tetszésnyilvánítás
@@ -85125,7 +83940,6 @@ túlszabályozottság
 urambátyámrendszer
 valloncentrikusság
 vasasszakszervezet
-vasbeton szerkezet
 visszaválthatatlan
 végeredményeképpen
 vékonybélgyulladás
@@ -85161,20 +83975,17 @@ vékonybélgyulladás
 ötvenvalahányezren
 ötvenvalahányezres
 újkonzervativizmus
-ügyvezető igazgató
 adszorbeálóképesség
 alulszabályozottság
 andalúzcentrikusság
 antidiszkriminációs
 berendezésorientált
 besenyőcentrikusság
-billentyűs hangszer
 billióesztendőnként
 bolondpetrezselymek
 bosnyákcentrikusság
 boszorkánymesterség
 burgonyafelvásárlás
-büntető törvényszék
 centrálszimmetrikus
 csecsencentrikusság
 csekélyebbértékűség
@@ -85191,7 +84002,6 @@ esztergom–Budapesti
 esztergom–budapesti
 fegyelmezetlenkedik
 feketekereskedelmek
-felvilágosodás kori
 flamandcentrikusság
 forgalombahelyezési
 franciacentrikusság
@@ -85270,8 +84080,6 @@ hetvenvalahányezren
 hetvenvalahányezres
 hiperfinomszerkezet
 hollandcentrikusság
-hulladéklerakó hely
-hulladékátvevő hely
 huszonegymilliárdan
 huszonhatmilliárdan
 huszonhárombilliárd
@@ -85460,7 +84268,6 @@ szlovéncentrikusság
 szociálpszichológia
 szociálpszichológus
 szuperexponenciális
-Széchenyi lánchidak
 színmagyarcentrikus
 szórványmagyarbarát
 születésszabályozás
@@ -85508,7 +84315,6 @@ alacsonyabbrendűségi
 belaruszcentrikusság
 bruttóregisztertonna
 bunyeváccentrikusság
-büntető törvénykönyv
 csonthártyagyulladás
 csoportszocializáció
 dezoxiribonukleinsav
@@ -85584,7 +84390,6 @@ huszonnyolctrillióan
 huszonnégymilliárdan
 huszonvalahányadikak
 huszonvalahánymillió
-iratmegsemmisítő gép
 Jászfelsőszentgyörgy
 kilencvenegybilliárd
 kilencvenegybillióan
@@ -85693,11 +84498,9 @@ tizenkilenctrillióan
 tizennyolcmilliárdan
 transzdiszciplináris
 trillióesztendőnként
-valószínűség elmélet
 valószínűségszámítás
 visszaszerezhetetlen
 visszautasíthatatlan
-váltakozó feszültség
 ötvenhárommilliárdan
 ötvenkettőmilliárdan
 ötvenkilenctrilliárd
@@ -85888,7 +84691,6 @@ szanszkritcentrikusság
 színmagyarcentrikusság
 szórványmagyarbarátság
 szórványmagyargyűlölet
-categoricus imperativus
 góóóóóóóóóóóóóóóóóóóóól
 harminckilencmilliárdan
 harmincvalahánymilliárd
@@ -85928,7 +84730,6 @@ kilencvenkilencmilliárdan
 kilencvenvalahánymilliárd
 góóóóóóóóóóóóóóóóóóóóóóóól
 szórványmagyarcentrikusság
-Transparency International
 góóóóóóóóóóóóóóóóóóóóóóóóól
 góóóóóóóóóóóóóóóóóóóóóóóóóól
 góóóóóóóóóóóóóóóóóóóóóóóóóóól

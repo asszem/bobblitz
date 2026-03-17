@@ -193,6 +193,15 @@ function loadVerifySourceSet(language, min, max) {
   };
 }
 
+function sortWords(words, language) {
+  const locale = language === 'hu' ? 'hu-HU' : 'en-US';
+  return [...words].sort((a, b) => {
+    const lenDiff = wordLength(a) - wordLength(b);
+    if (lenDiff !== 0) return lenDiff;
+    return a.localeCompare(b, locale);
+  });
+}
+
 function histogram(words) {
   const hist = {};
   for (const w of words) {
@@ -223,7 +232,7 @@ function verifyLanguage(language, min, max) {
 
   const existingRaw = parseWordLines(fs.readFileSync(dictPath, 'utf8'));
   const { sourcePath, sourceSet, sourceFiles, sourceValid } = loadVerifySourceSet(language, min, max);
-  const cleaned = toValidUnique(existingRaw, language, min, max, sourceSet);
+  const cleaned = sortWords(toValidUnique(existingRaw, language, min, max, sourceSet), language);
 
   fs.writeFileSync(dictPath, cleaned.join('\n') + (cleaned.length ? '\n' : ''), 'utf8');
 
@@ -259,7 +268,7 @@ function buildLanguage(language, min, max) {
     toAdd.push(w);
   }
 
-  const finalWords = cleanedExisting.concat(toAdd);
+  const finalWords = sortWords(cleanedExisting.concat(toAdd), language);
   fs.writeFileSync(dictPath, finalWords.join('\n') + (finalWords.length ? '\n' : ''), 'utf8');
 
   console.log(`Built ${dictPath}`);

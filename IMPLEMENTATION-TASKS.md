@@ -6,7 +6,7 @@
 
 # (test) i11 Dictionary update (pass 4)
 (test) i11-1 Strip everything from the `/` onwards (including `/`) on each line of hu_HU-ispell-original.dic; save stripped lines to a separate file (pass 3, step 1)
-(test) i11-2 Remove every word containing `-` or `.`; remove 1 or 2 letter words; save removed words to a separate file (pass 3, step 2)
+(test) i11-2 Remove every word containing  `Å` or `-` or `.`; remove 1 or 2 letter words; save removed words to a separate file (pass 3, step 2)
 (test) i11-3 Remove duplicate words; save removed duplicates to a separate file (pass 3, step 3)
 (test) i11-4 Order words by letter count ascending, then alphabetically as secondary order (no separate file needed) (pass 3, step 4)
 (test) i11-5 Prepend X_ to every 3–4 letter word that is not a valid Hungarian word; abbreviations are invalid; save marked words to a separate file (pass 3, step 5)
