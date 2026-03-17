@@ -4,11 +4,15 @@
 (open) i10-3 Hide a Word mode win modal: display the found hidden word; offer to create a new Hide a Word game to send back
 (open) i10-4 Enter Letters mode win modal: custom win screen for that mode
 
-# (test) i11 Dictionary update
-(test) i11-2 In hu_HU-ispell-wordlist.dic, remove every word marked with X_ or XX_; collect removed words in a separate file
-(test) i11-3 Remove duplicate words from hu_HU-ispell-wordlist.dic
-(test) i11-4 Mark invalid Hungarian words (including acronyms) with X_ in hu_HU-ispell-wordlist.dic; only words expected in a Hungarian word-finding game should remain unmarked
-- rerun this exercise with better instructions, using the same instructons to both claude and codex
+# (test) i11 Dictionary update (pass 4)
+(test) i11-1 Strip everything from the `/` onwards (including `/`) on each line of hu_HU-ispell-original.dic; save stripped lines to a separate file (pass 3, step 1)
+(test) i11-2 Remove every word containing `-` or `.`; remove 1 or 2 letter words; save removed words to a separate file (pass 3, step 2)
+(test) i11-3 Remove duplicate words; save removed duplicates to a separate file (pass 3, step 3)
+(test) i11-4 Order words by letter count ascending, then alphabetically as secondary order (no separate file needed) (pass 3, step 4)
+(test) i11-5 Prepend X_ to every 3–4 letter word that is not a valid Hungarian word; abbreviations are invalid; save marked words to a separate file (pass 3, step 5)
+Remove every word that is marked with X_
+(test) i11-6 Write a summary of actions and results to claude-cleanup-pass-3.md
+
 
 # (done) i12 Set maximum number of findable words per game
 (done) i12-1 Add a max-words selector to the new game modal, defaulting to 5

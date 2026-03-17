@@ -1,0 +1,6346 @@
+üzembehelyezés-
+üzbégnyelv-
+ük
+ühg-vé	53
+ühg-vel	54
+ühg-s
+ühg-
+üggyel-bajjal	62
+ü-vé	53
+ü-vel	54
+ü-
+űr
+ű-vé	53
+ű-vel	54
+ű-
+úznyelv-
+úz
+úton-útfélén	62
+úton-útfélen	62
+út
+úr
+ún.	107
+úm.	107
+ú-vá	53
+ú-val	54
+ú-
+özv.	107
+öv
+ötven-egynéhány	401
+öt-hatmillió
+öt
+össze-vissza
+össz.	107
+össz-szám
+örökkön-örökké
+örménynyelv-
+önazonosság-tudat
+ön
+öl
+ö-zés
+ö-zik
+ö-vé	53
+ö-vel	54
+ö-
+őz
+őszi-fésűsbagoly
+ős
+őr
+ő-vé	53
+ő-vel	54
+ő-
+ótöröknyelv-
+óorosznyelv-
+ón
+ómagyarnyelv-
+ól
+ó-vá	53
+ó-val	54
+ó-
+ízzé-porrá	62
+ízig-vérig	62
+íz
+ív
+írnyelv-
+ír
+ín
+ímmel-ámmal	29
+íj
+így-úgy	62
+í-vé	53
+í-vel	54
+í-
+ë-zik
+évf.	107
+év
+étlen-szomjan	29
+ész-szerű
+érk.	107
+ér
+ény.-vá	957
+ény.-val	958
+ény.-ak
+ény.-
+ény.	961
+ény.	962
+én
+én
+élysée-palotai
+élet-halál harc
+élelmiszer-adalék anyag
+él
+ék.-vé	957
+ék.-vel	958
+ék.-
+ék.	1070
+ék
+éjjel-nappali
+éjjel-nappal	1072
+éj
+éhen-szomjan	62
+éh
+ég
+édesgyökerű-páfrány
+é-vé	53
+é-vel	54
+é-
+árjanyelv-
+ár
+ápr.-t	1169
+ápr.-sá	957
+ápr.-sal	958
+ápr.-ot
+ápr.-i
+ápr.-
+ápr.	1172
+ált.	107
+állatifehérje-feldolgozó
+ág
+á-vá	53
+á-val	54
+á-
+ÜHG-vá	53
+ÜHG-val	54
+ÜHG-s
+ÜHG-
+Ötv.-vé	957
+Ötv.-vel	958
+Ötv.-s
+Ötv.-beli
+Ötv.-
+Ötv.	1235
+Ötv.	1236
+Ödipusz-komplexus
+Őz
+Őr
+Óz
+Ó-Kasztília
+Írott-kő
+Észak-Oszétia
+Észak-Karolina
+Épt.	107
+Élysée-palota
+Égei-tenger
+ÉNy.-vá	957
+ÉNy.-val	958
+ÉNy.-ak
+ÉNy.-
+ÉNy.	1244
+ÉNy-tá	53
+ÉNy-tal	54
+ÉNy-i
+ÉNy-
+ÉKsz.	107
+ÉK-té	53
+ÉK-tel	54
+ÉK-i
+ÉK-
+Árpád-híd
+Áj
+Áht.	107
+Ág
+Áe.-vé	957
+Áe.-vel	958
+Áe.-s
+Áe.-beli
+Áe.-
+Áe.	1263
+Áe.	1264
+ÁVO-vá	53
+ÁVO-val	54
+ÁVO-s
+ÁVO-
+ÁVH-vá	53
+ÁVH-val	54
+ÁVH-s
+ÁVH-
+ÁSZ-t	1040
+ÁSZ-szá	53
+ÁSZ-szal	54
+ÁSZ-os
+ÁSZ-
+ÁPV-vé	53
+ÁPV-vel	54
+ÁPV-s
+ÁPV-
+ÁNTSZ-t	1040
+ÁNTSZ-szé	53
+ÁNTSZ-szel	54
+ÁNTSZ-et
+ÁNTSZ-es
+ÁNTSZ-
+zulunyelv-
+zsipp-zsupp	62
+zsidónyelv-
+zs-vé
+zs-vel
+zs-
+zrt.-vé
+zrt.-vel
+zrt.-s
+zrt.-beli
+zrt.-
+zrt.	1348
+zh-vá
+zh-val
+zh-s
+zh-
+zegét-zugát	62
+zaire-i
+z-vé
+z-vel
+z-
+yuppie-vá
+yuppie-val
+yuppie-
+youtube-os
+yorkshire-i
+yahoo!-s
+y-t
+y-ot
+y-os
+y-ná
+y-nal
+y-
+x-szé
+x-szer
+x-szel
+x-edszerre
+x-edszeri
+x-edszer
+x-edik
+x-ed
+x-
+wilde-i
+w-vé
+w-vel
+w-
+vö.	107
+vő
+végre-valahára	62
+végestelen-végig	62
+véges-végig	62
+vámszabadterület-
+váltakozóáram-
+váltakozófeszültség-
+vu-vé
+vu-vel
+vu-
+vsz.-os
+vsz.-ká
+vsz.-kal
+vsz.-
+vsz.	1572
+vsz.	1573
+voltaire-i
+voltaire-es
+volt-amper
+vodafone-os
+vissz-	1698
+video-	1698
+vicket-vackot	62
+vicik-vacak
+versailles-i
+verlaine-i
+vendnyelv-
+vegyiáru-
+vb-vé
+vb-vel
+vb-s
+vb-i
+vb-
+vasár-	1837
+vasbetonszerkezet-
+vasbetonlemez-
+vasbetonfödém-
+vasbetonfal-
+vasbeton-szerkezet
+vasbeton-lemez
+vasbeton-födém
+vasbeton-fal
+varégnyelv-
+valószínűség-számítás
+valószínűség-eloszlás
+valószínűség-elmélet
+vallonnyelv-
+v-vé
+v-vel
+v-
+uv-zik
+uv-vá
+uv-val
+uv-s
+uv-
+urdunyelv-
+uo.	107
+unos-untig	62
+unos-untalan	62
+unicode-os
+ungon-berken	62
+ukránnyelv-
+ujgurnyelv-
+ui.	107
+ugornyelv-
+ua.	107
+u.-vá
+u.-val
+u.-i
+u.-
+u.	2052
+u-vá
+u-val
+u-
+tüskön-bokron	62
+türkménnyelv-
+tűzön-vízen	62
+tűzzel-vassal	62
+tű
+túra-kerékpározás
+töröknyelv-
+törtarany-
+törmeléklejtő-erdő
+törik-szakad	62
+többé-kevésbé	62
+több-billiós
+tő
+tól-ig-os
+tól-ig-gá
+tól-ig-gal
+tól-ig-
+tól-ig	2194
+tó
+tíz-egynéhány	401
+télen-nyáron	62
+tél-túl	62
+tyúkom-búkom	62
+ty-vé
+ty-vel
+ty-
+tvr.	107
+tv-vé
+tv-vel
+tv-s
+tv-i
+tv-
+tszf.	107
+tszcs-vé
+tszcs-vel
+tszcs-s
+tszcs-
+tsz-t
+tsz-szé
+tsz-szel
+tsz-i
+tsz-es
+tsz-beli
+tsz-
+tsai.	107
+tsa.	107
+tráknyelv-
+trihidroxi-
+transz-zsírsav
+transz-izomer
+toulouse-i
+toszkánnyelv-
+toltéknyelv-
+tokaj-Hegyaljai
+tkp.	107
+tizen-huszonéves
+tizen-egynéhány	401
+tik-tak	62
+tiB-nyi
+thm-mé
+thm-mel
+thm-es
+thm-
+tg-sé
+tg-sá
+tg-sel
+tg-sal
+tg-os
+tg-es
+tg-
+textil-nagykereskedő
+textil-nagykereskedés
+tetőtér-beépítés
+tetrakloro-aurát
+testestül-lelkestül	62
+testestől-lelkestől	62
+terajoule-os
+terajoule-lá
+terajoule-lal
+terajoule-
+terabyte-tá
+terabyte-tal
+terabyte-os
+terabyte-
+telis-tele	29
+telides-teli	62
+televízió-műsor
+tel.-t
+tel.-ot
+tel.-os
+tel.-ná
+tel.-nal
+tel.-
+tel.	2897
+tel.	2898
+teddide-teddoda	62
+tebibyte-tá
+tebibyte-tal
+tebibyte-os
+tebibyte-
+tc.-ké
+tc.-kel
+tc.-
+tc.	2965
+tc.	2966
+tbc-vé
+tbc-vel
+tbc-s
+tbc-
+tb-vé
+tb-vel
+tb-s
+tb-
+tavaszi-fésűsbagoly
+tasmannyelv-
+tartuffe-i
+tarot-vá
+tarot-val
+tarot-s
+tarot-
+tamilnyelv-
+talkshow-vá
+talkshow-val
+talkshow-
+taj-szám
+tRNS-t
+tRNS-sé
+tRNS-sel
+tRNS-et
+tRNS-es
+tRNS-
+tB-nyi
+t-vé
+t-vel
+t-s
+t-
+sülve-főve	62
+sültkrumpli-
+sóstófenék-társulás
+sósperec-
+sóskifli-
+só
+síttak-ríttak	62
+sítt-rítt	62
+síjon-ríjon	62
+sí
+szünös-szüntelen	62
+szül.	107
+szőröstül-bőröstül	62
+szőrén-szálán	62
+szórványmagyarnyelv-
+szíre-szóra	62
+színmagyarnyelv-
+színestévé-
+szén-monoxid
+szén-dioxid-kvóta
+szén-dioxid-kibocsátás-csökkentés
+szén-dioxid-kibocsátás
+szén-dioxid
+széltében-hosszában	62
+száz-egynéhány	401
+szárazbab-főzelék
+szárazanyag-tartalom
+száminyelv-
+szuahélinyelv-
+sztereo-	3375
+szorbnyelv-
+szoc.	107
+szlávnyelv-
+szlovénnyelv-
+szlováknyelv-
+szla.	107
+szkítanyelv-
+szja-vá
+szja-val
+szja-s
+szja-
+szittyanyelv-
+szfv.-i
+szerk.	107
+szerbnyelv-
+szerbhorvátnyelv-
+szept.-t
+szept.-ré
+szept.-rel
+szept.-i
+szept.-et
+szept.-
+szept.	3477
+szent-györgyi
+szegről-végre	62
+szanszkritnyelv-
+sz.-i
+sz.-dá
+sz.-dal
+sz.-
+sz.	3594
+sz-t
+sz-szé
+sz-szel
+sz-et
+sz-
+sydney-s
+sydney-i
+svédnyelv-
+svábnyelv-
+suse-s
+suriname-i
+sundám-bundám
+sumernyelv-
+stroke-ká
+stroke-kal
+stroke-
+stb.-vé
+stb.-vel
+stb.-
+stb.	3638
+staroffice-os
+stanley-s
+stand-up
+spray-vé
+spray-vel
+spray-s
+spray-
+spec.	107
+spanyolnyelv-
+sorbonne-i
+sommelier-vé
+sommelier-vel
+sommelier-s
+sommelier-
+sok-sok	62
+sms-t
+sms-sé
+sms-sel
+sms-et
+sms-
+smoothie-vá
+smoothie-val
+smoothie-s
+smoothie-
+slackware-es
+skótnyelv-
+sin-szá
+sin-szal
+sin-os
+sin-
+si-cu
+show-vá
+show-val
+show-műsor
+show-biznisz
+show-
+shelley-s
+shelley-i
+shaw-i
+shareware-t
+shareware-ré
+shareware-rel
+shareware-et
+shareware-es
+shareware-
+shakespeare-i
+shake-ké
+shake-kel
+shake-es
+shake-
+sgt.-tá
+sgt.-tal
+sgt.-i
+sgt.-
+sgt.	3746
+sgt.	3747
+sec-sá
+sec-sal
+sec-os
+sec-
+sebbel-lobbal	62
+seattle-i
+sci-fi
+savanyútojás-leves
+sans-culotte-tá
+sans-culotte-tal
+sans-culotte-
+sans-culotte	3821
+s-t
+s-sé
+s-sel
+s-ot
+s-má
+s-mal
+s-et
+s-
+röv.	107
+róm.	107
+ró
+régime-mé
+régime-mel
+régime-es
+régime-
+régestelen-régen	29
+réges-régóta	29
+réges-régiek	1970
+réges-régi	146
+réges-régen	62
+réges-régen	29
+réges-rég	62
+réges-rég	29
+rá
+ruténnyelv-
+rtg.-né
+rtg.-nel
+rtg.-es
+rtg.-
+rtg.	3929
+rt.-vé
+rt.-vel
+rt.-s
+rt.-beli
+rt.-
+rt.	3935
+rovarölőszer-
+rovarirtószer-
+rousseau-i
+rossz-szívűség
+románnyelv-
+romeó-s
+romeo-s
+romanyelv-
+romaninyelv-
+rolls-royce-os
+robespierre-i
+roadshow-vá
+roadshow-val
+roadshow-
+rkp.-tá
+rkp.-tal
+rkp.-i
+rkp.-
+rkp.	3981
+rk.	107
+rissz-rossz	62
+ripsz-ropsz	62
+ripegnek-ropognak	62
+ripegett-ropogott	62
+ripeg-ropog	62
+ringyet-rongyot	62
+ringye-rongya	62
+ringy-rongy
+rimbaud-i
+richelieu-i
+renée-i
+renault-s
+remake-ké
+remake-kel
+remake-es
+remake-
+rekettyés-tölgyes
+reggel-este	62
+reggae-vé
+reggae-vel
+reggae-s
+reggae-
+ref.	107
+ragtime-os
+ragtime-má
+ragtime-mal
+ragtime-
+rad-os
+rad-ná
+rad-nal
+rad-
+racine-i
+rabelais-i
+r-t
+r-ré
+r-rel
+r-et
+r-
+q-vá
+q-val
+q-
+pú
+pót-	1698
+párszinyelv-
+puzzle-os
+puzzle-lá
+puzzle-lal
+puzzle-
+punnyelv-
+pu.-rá
+pu.-ral
+pu.-i
+pu.-
+pu.	4350
+provence-i
+provanszálnyelv-
+prot.	107
+prof.-i
+prof.-fá
+prof.-fal
+prof.-
+prof.	4368
+prof.	4369
+portugálnyelv-
+port-au-prince-szé
+pop-art
+poli(vinil-éter)-ré
+poli(vinil-éter)-rel
+poli(vinil-éter)-es
+poli(vinil-éter)-
+poli(vinil-éter)	4399
+poli(vinil-észter)-ré
+poli(vinil-észter)-rel
+poli(vinil-észter)-es
+poli(vinil-észter)-
+poli(vinil-észter)	4404
+poli(vinil-klorid)-os
+poli(vinil-klorid)-dá
+poli(vinil-klorid)-dal
+poli(vinil-klorid)-
+poli(vinil-klorid)	4409
+poli(vinil-ketál)-os
+poli(vinil-ketál)-lá
+poli(vinil-ketál)-lal
+poli(vinil-ketál)-
+poli(vinil-ketál)	4414
+poli(vinil-keton)-os
+poli(vinil-keton)-ná
+poli(vinil-keton)-nal
+poli(vinil-keton)-
+poli(vinil-keton)	4419
+poli(vinil-dehid)-es
+poli(vinil-dehid)-dé
+poli(vinil-dehid)-del
+poli(vinil-dehid)-
+poli(vinil-dehid)	4424
+poli(vinil-alkohol)-os
+poli(vinil-alkohol)-lá
+poli(vinil-alkohol)-lal
+poli(vinil-alkohol)-
+poli(vinil-alkohol)	4429
+poli(metil-metakrilát)
+poli(metil-akrilát)
+poli(akril-nitril)-lé
+poli(akril-nitril)-lel
+poli(akril-nitril)-es
+poli(akril-nitril)-
+poli(akril-nitril)	4434
+poe-i
+pld.-os
+pld.-nyá
+pld.-nyal
+pld.-i
+pld.-
+pld.	4459
+pld.	4460
+pl.	107
+pitty-potty	62
+pittegett-pattogott	62
+pitteg-pattog	62
+pikk-pakk	62
+pik-pak	62
+pidzsinnyelv-
+piB-nyi
+pi
+peugeot-s
+petabyte-tá
+petabyte-tal
+petabyte-os
+petabyte-
+perzsanyelv-
+performance-t
+performance-szá
+performance-szal
+performance-os
+performance-
+pentil-
+pebibyte-tá
+pebibyte-tal
+pebibyte-os
+pebibyte-
+pdf-fé
+pdf-fel
+pdf-es
+pdf-
+papírzsebkendő-
+papír-nagykereskedő
+papír-nagykereskedés
+palesztinnyelv-
+pH-vá
+pH-val
+pH-s
+pH-
+pB-nyi
+p-vé
+p-vel
+p-
+oxo-
+ovh.-sé
+ovh.-sel
+ovh.-i
+ovh.-
+ovh.	4667
+ovh.	4668
+ov.-vé
+ov.-vel
+ov.-i
+ov.-
+ov.	4673
+ov.	4674
+ott-tartózkodás
+osztráknyelv-
+osztjáknyelv-
+ort.	107
+orsz.	107
+orosznyelv-
+orléans-i
+oracle-os
+openoffice.org-os
+openoffice-os
+openSUSE-vá
+openSUSE-val
+openSUSE-s
+openSUSE-
+op.	107
+op-art
+online-t
+online-ot
+online-os
+online-ná
+online-nal
+online-
+omnipage-es
+oláhnyelv-
+olykor-olykor	62
+olv.	107
+oldalszalag-szakadás
+olasznyelv-
+oktató-nevelő
+okt.-t
+okt.-ré
+okt.-rel
+okt.-i
+okt.-et
+okt.-
+okt.	4786
+okl.	107
+ok
+offline-t
+offline-ot
+offline-os
+offline-ná
+offline-nal
+offline-
+office-os
+off-line	29
+o.-lá
+o.-lal
+o.-i
+o.-
+o.	4875
+o-vá
+o-val
+o-
+nű
+növényvédőszer-
+nő
+németnyelv-
+néha-néha	62
+négykerék-meghajtás
+négykerék-hajtás
+négyen-négyen	62
+négy-ötmillió
+nyá.	107
+nyugdíjas-találkozó
+nyrt.-vé
+nyrt.-vel
+nyrt.-s
+nyrt.-beli
+nyrt.-
+nyrt.	5039
+nyomottfejű-hangya
+nyolcvan-egynéhány	401
+nyolc-kilencmillió
+nyakra-főre	62
+ny-t
+ny-nyé
+ny-nyel
+ny-i
+ny-et
+ny-
+nov.-t
+nov.-ré
+nov.-rel
+nov.-i
+nov.-et
+nov.-
+nov.	5367
+norvégnyelv-
+nonpareille-já
+nonpareille-jal
+nonpareille-
+nm3-t
+nm3-ré
+nm3-rel
+nm3-et
+nm3-es
+nm3-
+nm2-t
+nm2-ré
+nm2-rel
+nm2-et
+nm2-es
+nm2-
+nm-t
+nm-ré
+nm-rel
+nm-et
+nm-es
+nm-
+nike-s
+night-club
+niamey-i
+netware-es
+netscape-es
+nemibeteg-gondozó
+nemibeteg-
+nem-igen
+negyven-egynéhány	401
+nature-ös
+nap-éj egyenlőség
+nagyér-
+nagyon-nagyon	62
+nagy-Hideg-hegyi
+n-t
+n-szer
+n-né
+n-nel
+n-et
+n-edszerre
+n-edszeri
+n-edszer
+n-edik
+n-ed
+n-
+működőtőke-
+műanyagpohár-
+műanyagpalack-
+műanyaglap-
+műanyagevőeszköz-
+műanyagcső-
+műanyag-pohár
+műanyag-palack
+műanyag-lap
+műanyag-fólia
+műanyag-evőeszköz
+műanyag-cső
+mű
+mórnyelv-
+mérgeskígyó-
+mérgesgáz-
+mérgesgomba-
+más-más	62
+márc.-t
+márc.-sá
+márc.-sal
+márc.-ot
+márc.-i
+márc.-
+márc.	5991
+máj.-t
+máj.-sá
+máj.-sal
+máj.-ot
+máj.-i
+máj.-
+máj.	6001
+muszlimnyelv-
+mtsai.	107
+mtsa.	107
+mp-es
+mp-cé
+mp-cel
+mp-
+mousse-t
+mousse-szá
+mousse-szal
+mousse-os
+mousse-
+morse-i
+montreux-i
+montesquieu-s
+montesquieu-i
+montaigne-i
+monsieur-vé
+monsieur-vel
+monsieur-s
+monsieur-
+monet-i
+molière-i
+molière-es
+moldávnyelv-
+moldovánnyelv-
+mol-os
+mol-lá
+mol-lal
+mol-
+mn.-vé
+mn.-vel
+mn.-es
+mn.-
+mn.	6110
+mmol-os
+mmol-lá
+mmol-lal
+mmol-
+mm3-t
+mm3-ré
+mm3-rel
+mm3-et
+mm3-es
+mm3-
+mm2-t
+mm2-ré
+mm2-rel
+mm2-et
+mm2-es
+mm2-
+mm-t
+mm-ré
+mm-rel
+mm-et
+mm-es
+mm-
+mm
+mm
+ml-t
+ml-ré
+ml-rel
+ml-et
+ml-es
+ml-
+mk.	107
+min.	107
+mikro-	1698
+miB-nyi
+mi
+mi
+mi
+mgtsz-t
+mgtsz-szé
+mgtsz-szel
+mgtsz-i
+mgtsz-es
+mgtsz-
+mg-os
+mg-má
+mg-mal
+mg-
+mg
+metoxi-
+metil-alkohol
+messze-messze	62
+merlot-vá
+merlot-val
+merlot-s
+merlot-
+menet-jövet	62
+melegvíz-mérő óra
+melegvíz-mérő
+melegvíz-
+melegruha-
+meleglevegő-
+melegfény-
+melbourne-i
+megj.	107
+megh.	107
+megajoule-os
+megajoule-lá
+megajoule-lal
+megajoule-
+megabyte-tá
+megabyte-tal
+megabyte-os
+megabyte-
+medvefül-kankalin
+mebibyte-tá
+mebibyte-tal
+mebibyte-os
+mebibyte-
+mbar-rá
+mbar-ral
+mbar-os
+mbar-
+mb.	107
+max.	107
+maupassant-i
+mat.	107
+maszájnyelv-
+marseille-i
+marinyelv-
+manet-i
+mandrake-es
+manche-i
+malajálamnyelv-
+makro-	1698
+makedónnyelv-
+maine-i
+magánokirat-hamisítás
+magyarnyelv-
+mademoiselle-lé
+mademoiselle-lel
+mademoiselle-
+madame-má
+madame-mal
+madame-
+macedónnyelv-
+ma
+mW-tá
+mW-tal
+mW-os
+mW-
+mV-tá
+mV-tal
+mV-os
+mV-
+mRNS-t
+mRNS-sé
+mRNS-sel
+mRNS-et
+mRNS-es
+mRNS-
+mB-nyi
+m3-t
+m3-ré
+m3-rel
+m3-et
+m3-es
+m3-
+m3
+m2-t
+m2-ré
+m2-rel
+m2-et
+m2-es
+m2-
+m2
+m-t
+m-szer
+m-ré
+m-rel
+m-mé
+m-mel
+m-et
+m-es
+m-edszerre
+m-edszeri
+m-edszer
+m-edik
+m-ed
+m-
+lótás-futás
+lótván-futván	62
+lótva-futva	62
+lótunk-futunk	62
+lóttok-futtok	62
+lótsz-futsz	62
+lótottál-futottál	62
+lótottunk-futottunk	62
+lótottatok-futottatok	62
+lótottam-futottam	62
+lótottak-futottak	62
+lótott-futott	62
+lótom-futom	62
+lótok-futok	62
+lótnék-futnék	62
+lótnánk-futnánk	62
+lótnának-futnának	62
+lótnál-futnál	62
+lótnunk-futnunk	62
+lótnotok-futnotok	62
+lótnom-futnom	62
+lótnod-futnod	62
+lótniuk-futniuk	62
+lótnia-futnia	62
+lótni-futni	62
+lótnak-futnak	62
+lótna-futna	62
+lóti-futi	103
+lót-fut	6930
+lóssál-fussál	62
+lóssunk-fussunk	62
+lósson-fusson	62
+lóssatok-fussatok	62
+lóssanak-fussanak	62
+lóssak-fussak	62
+lóss-fuss	62
+ló
+lépten-nyomon	62
+lélegzet-visszafojtva	6995
+lé
+ly-vé
+ly-vel
+ly-os
+ly-ná
+ly-nal
+ly-
+lx-szá
+lx-szal
+lx-os
+lx-
+luth.	107
+ltp.-pé
+ltp.-pel
+ltp.-i
+ltp.-es
+ltp.-
+ltp.	7129
+ltp.	7130
+lovárinyelv-
+loire-i
+ln-né
+ln-nel
+ln-
+lm-né
+lm-nel
+lm-es
+lm-
+livingstone-i
+litty-lotty	62
+lime-os
+lime-má
+lime-mal
+lime-
+lilahagyma-
+libreville-i
+libreoffice-os
+lg-sá
+lg-sal
+lg-os
+lg-
+lengyelnyelv-
+lelkiismeret-furdalás
+leg-
+ld.	107
+lavoisier-i
+latinnyelv-
+larousse-i
+lappnyelv-
+laplace-i
+langrange-i
+l-t
+l-ré
+l-rel
+l-lé
+l-lel
+l-es
+l-
+külön-külön	62
+külsőfül-
+kül-	1698
+közben-közben	62
+közbe-közbe	62
+köv.	107
+körös-körül	7556
+körbe-körbe	62
+költség-haszon
+kő
+kézzel-lábbal	62
+kézen-közön	62
+kétkerék-meghajtás
+kétkerék-hajtás
+két-hárommillió
+két-három	401
+kénytelen-kelletlen	62
+kén-monoxid
+kén-dioxid
+kékszalag-
+kékre-zöldre	62
+kárpát-medencei
+kálium-permanganát
+kutyuli-mutyuli
+kurtán-furcsán	62
+kurdnyelv-
+kunnyelv-
+kultúr-
+kuc-kuc	62
+krt.-tá
+krt.-tal
+krt.-i
+krt.-
+krt.	7882
+krt.	7883
+kp.	107
+kozáknyelv-
+korm.	107
+kominyelv-
+koll.	107
+koffice-os
+know-how-vá
+know-how-val
+know-how-
+know-how	7942
+km3-t
+km3-ré
+km3-rel
+km3-et
+km3-es
+km3-
+km2-t
+km2-ré
+km2-rel
+km2-et
+km2-es
+km2-
+km-t
+km-ré
+km-rel
+km-et
+km-es
+km-
+km
+km
+kloro-aurát
+kkv-vá
+kkv-val
+kkv-s
+kkv-
+kkt.	107
+kk.	107
+kivilágos-kivirradtig	62
+kiv.	107
+kitty-kotty	62
+kit-kit	62
+kissorozat-gyártás
+kirgiznyelv-
+kir.	107
+kipkedtek-kapkodtak	62
+kipkednek-kapkodnak	62
+kipked-kapkod	62
+kipegtek-kopogtak	62
+kipegnek-kopognak	62
+kipeg-kopog	62
+kinek-kinek	62
+kilojoule-os
+kilojoule-lá
+kilojoule-lal
+kilojoule-
+kilobyte-tá
+kilobyte-tal
+kilobyte-os
+kilobyte-
+kilo-
+kilencven-egynéhány	401
+kilenc-tízmillió
+kick-box
+kibibyte-tá
+kibibyte-tal
+kibibyte-os
+kibibyte-
+kiB-nyi
+ki-ki	62
+ki
+kht.	107
+kgy.-vé
+kgy.-vel
+kgy.-s
+kgy.-i
+kgy.-
+kgy.	8498
+kgy.	8499
+kg-os
+kg-má
+kg-mal
+kg-
+kg
+kg
+kft.-vé
+kft.-vel
+kft.-s
+kft.-beli
+kft.-
+kft.	8511
+keresztszalag-szakadás
+ker.-té
+ker.-tel
+ker.-es
+ker.-
+ker.	8636
+ker.	8637
+keltanyelv-
+kecsuanyelv-
+keV-tá
+keV-tal
+keV-os
+keV-
+kcal-vá
+kcal-val
+kcal-
+kb.	107
+kazahnyelv-
+kat.	107
+karszt-bokorerdő
+kalmüknyelv-
+kWh-vá
+kWh-val
+kWh-s
+kWh-
+kW-tá
+kW-tal
+kW-os
+kW-
+kV-tá
+kV-tal
+kV-os
+kV-
+kPa-os
+kPa-lá
+kPa-lal
+kPa-
+kJ-os
+kJ-lá
+kJ-lal
+kJ-
+kHz-es
+kHz-cé
+kHz-cel
+kHz-
+kB-tá
+kB-tal
+kB-os
+kB-
+k-vá
+k-val
+k-szor
+k-adszorra
+k-adszori
+k-adszor
+k-adik
+k-ad
+k-
+kΩ-os
+kΩ-má
+kΩ-mal
+kΩ-
+jún.-t
+jún.-sá
+jún.-sal
+jún.-ot
+jún.-i
+jún.-
+jún.	8824
+júl.-t
+júl.-sá
+júl.-sal
+júl.-ot
+júl.-i
+júl.-
+júl.	8830
+jövedelem-központosítás
+jő
+jól-rosszul	62
+jóban-rosszban	62
+jó
+jásznyelv-
+jártukban-keltükben	62
+joyce-i
+joule-os
+joule-lá
+joule-lal
+joule-
+jorubanyelv-
+jobbra-balra	62
+jobbkéz-szabály
+jersey-s
+jersey-i
+jegyz.	107
+japánnyelv-
+jan.-t
+jan.-rá
+jan.-ral
+jan.-ot
+jan.-i
+jan.-
+jan.	9086
+jajjal-bajjal	62
+j-vé
+j-vel
+j-szer
+j-s
+j-edszerre
+j-edszeri
+j-edszer
+j-edik
+j-ed
+j-
+iát-fiát	62
+iának-fiának	62
+izr.	107
+itt-ott	62
+ital-nagykereskedő
+ital-nagykereskedés
+isk.	107
+irgum-burgum	62
+irgett-forgott	62
+iregnek-forognak	62
+ireg-forog	62
+iphone-os
+innen-onnan	62
+ingó-bingót
+ingó-bingó
+ind.	107
+imígy-amúgy	62
+imitt-amott	62
+illírnyelv-
+illinois-i
+ill.	107
+ilang-ilang
+igh.-sé
+igh.-sel
+igh.-i
+igh.-
+igh.	9239
+igh.	9240
+igazságügy-minisztérium
+igazságügy-miniszter
+ig.-vá
+ig.-val
+ig.-i
+ig.-
+ig.	9253
+ig.	9254
+ifj.	107
+ide-oda	29
+id.	107
+icit-picit	62
+icike-picikét
+iSCSI-vá
+iSCSI-val
+iSCSI-s
+iSCSI-
+iPhone-ná
+iPhone-nal
+iPhone-
+i-vé
+i-vel
+i-
+húsz-egynéhány	401
+hő
+hó
+hét-nyolcmillió
+hébernyelv-
+hébe-korba	62
+hébe-hóba	62
+háziporatka-
+házipor-
+házimozi-
+házimacska-
+házigondozó-
+házigondozás-
+házifeladat-
+házidolgozat-
+háttér-információ
+három-négymillió
+huxley-s
+huxley-i
+huszon-egynéhány	401
+hunnyelv-
+hume-i
+hubble-os
+hubble-i
+htb.	107
+hsz.	107
+hrsz.-ú
+hrsz.-os
+hrsz.-má
+hrsz.-mal
+hrsz.-
+hrsz.	9787
+hrsz.	9788
+hot-dog
+hosszúfülű-denevér
+hospice-t
+hospice-szá
+hospice-szal
+hospice-os
+hospice-
+horvátnyelv-
+hooke-os
+hooke-i
+honv.	107
+holtomiglan-holtodiglan	62
+holstein-fríz
+hollandnyelv-
+hl-t
+hl-ré
+hl-rel
+hl-et
+hl-es
+hl-
+hiv.	107
+hipp-hopp	52
+hinta-palintát
+hinta-palinta
+high-tech
+hidroxi-
+hidrogén-peroxid
+hidegvíz-mérő óra
+hidegvíz-mérő
+hidegvíz-
+hg.	107
+hetven-egynéhány	401
+heje-huja	52
+heathrow-i
+head-set
+határeloszlás-tétel
+hatvan-egynéhány	401
+hat-hétmillió
+harminc-egynéhány	401
+hanyatt-homlok	10791
+hajdanában-danában	62
+habostorta-
+habil.	107
+ha-rá
+ha-ral
+ha-os
+ha-
+hPa-os
+hPa-lá
+hPa-lal
+hPa-
+hL-t
+hL-ré
+hL-rel
+hL-et
+hL-es
+hL-
+h-vá
+h-val
+h-
+görögnyelv-
+gör.	107
+gótnyelv-
+gyöngyvirágos-tölgyes
+gyógy-	3375
+gyomirtószer-
+gyertyános-tölgyes
+gy-vé
+gy-vel
+gy-
+gumióvszer-
+guillotine-t
+guillotine-ot
+guillotine-os
+guillotine-ná
+guillotine-nal
+guillotine-
+grúznyelv-
+groupwise-os
+greenpeace-es
+gr.	107
+gourmand-os
+gourmand-ná
+gourmand-nal
+gourmand-
+gouache-sá
+gouache-sal
+gouache-os
+gouache-
+google-os
+golf-árambeli
+go
+gmk-vá
+gmk-val
+gmk-s
+gmk-
+gloire-rá
+gloire-ral
+gloire-
+glasgow-i
+gk.-vá
+gk.-val
+gk.-s
+gk.-
+gk.	11176
+gizes-gazos
+gironde-i
+gironde-dá
+gironde-dal
+gironde-
+girbén-görbén	62
+gimn.	107
+giling-galang
+gigajoule-os
+gigajoule-lá
+gigajoule-lal
+gigajoule-
+gigabyte-tá
+gigabyte-tal
+gigabyte-os
+gigabyte-
+gibibyte-tá
+gibibyte-tal
+gibibyte-os
+gibibyte-
+giB-nyi
+gesztenyés-tölgyes
+gerbeaud-i
+gaulle-izmus
+gaulle-ista
+galván-	3375
+gallnyelv-
+gB-nyi
+g-vé
+g-vel
+g-os
+g-má
+g-mal
+g-
+fű
+fő-építésvezető
+fő
+fárszinyelv-
+fszt.	107
+fszla.	107
+fsz.	107
+freeware-t
+freeware-ré
+freeware-rel
+freeware-et
+freeware-es
+freeware-
+francianyelv-
+franchise-zá
+franchise-zal
+franchise-os
+franchise-
+foucault-s
+foucault-i
+foto-
+ford.	107
+fondant-ná
+fondant-nal
+fondant-
+fn.-vé
+fn.-vel
+fn.-es
+fn.-
+fn.	11586
+flow-vá
+flow-val
+flow-
+flaubert-i
+flaubert-es
+flamandnyelv-
+firmware-t
+firmware-ré
+firmware-rel
+firmware-et
+firmware-es
+firmware-
+firgett-forgott	62
+firegtek-forogtak	62
+firegnek-forognak	62
+fireg-forog	62
+finnugornyelv-
+finnnyelv-
+fifti-fifti	62
+fidres-fodros	62
+fi
+fesz-	1698
+fertő-tó
+fertő-tó
+fenil-alanin
+felv.	107
+fele-fele	62
+feed-back
+febr.-rá
+febr.-ral
+febr.-i
+febr.-
+febr.	11838
+feb.-t
+feb.-ot
+fa
+f-fé
+f-fel
+f-Spotos
+f-
+eü.-is
+eü.-i
+eü.-gyé
+eü.-gyel
+eü.-
+eü.	11901
+eü.	11902
+ez
+exchange-es
+ex
+ex
+ev.	107
+etyele-petyele
+etiópnyelv-
+etil-alkohol
+etc.	107
+eszperentenyelv-
+escape-pé
+escape-pel
+escape-es
+escape-
+es-Salaam
+enjambement-os
+enjambement-ná
+enjambement-nal
+enjambement-
+energiaár-emelkedés
+energia-áremelkedés
+empire-rá
+empire-ral
+empire-
+em.-té
+em.-tel
+em.-i
+em.-es
+em.-
+em.	12120
+em.	12121
+elsőkerék-meghajtás
+elsőkerék-hajtás
+el-Manáma
+ejnye-bejnye	62
+egyre-másra	62
+egyes-egyedüli	12374
+egyes-egyedül	12375
+egyedem-begyedem	62
+egy-kétmillió
+egy-két	401
+egy-egy	62
+edinburgh-i
+ebszőlő-csucsor
+eb
+eV-tá
+eV-tal
+eV-os
+eV-
+e-zik
+e-vé
+e-vel
+e-mailezik
+e-mail
+e-learning
+e-
+délszlávnyelv-
+dánnyelv-
+dáknyelv-
+dzs-vé
+dzs-vel
+dzs-
+dz-vé
+dz-vel
+dz-
+dvd-vé
+dvd-vel
+dvd-s
+dvd-
+dumas-i
+du.	107
+dr.-rá
+dr.-ral
+dr.-os
+dr.-i
+dr.-
+dr.	12604
+dny.-vá
+dny.-val
+dny.-ak
+dny.-
+dny.	12621
+dny.	12622
+dm3-t
+dm3-ré
+dm3-rel
+dm3-et
+dm3-es
+dm3-
+dm2-t
+dm2-ré
+dm2-rel
+dm2-et
+dm2-es
+dm2-
+dm-t
+dm-ré
+dm-rel
+dm-et
+dm-es
+dm-
+dl-t
+dl-ré
+dl-rel
+dl-et
+dl-es
+dl-
+dkg-os
+dkg-má
+dkg-mal
+dkg-
+dk.-vé
+dk.-vel
+dk.-
+dk.	12658
+dk.	12659
+disney-s
+disney-i
+disc-jockey-vá
+disc-jockey-val
+disc-jockey-s
+disc-jockey-i
+disc-jockey-
+disc-jockey	12676
+dirmegett-dörmögött	62
+dirmeg-dörmög	62
+diribre-darabra	62
+dinitrogén-oxid
+diner-vé
+diner-vel
+diner-s
+diner-
+diktum-faktum	29
+dihidroxi-
+diderot-i
+dibróm-
+diazo-
+diamino-
+dg-os
+dg-má
+dg-mal
+dg-
+dezoxi-
+dessay-s
+descartes-i
+delaware-i
+dec.-t
+dec.-ré
+dec.-rel
+dec.-i
+dec.-et
+dec.-
+dec.	12734
+db-os
+db-bá
+db-bal
+db-
+danone-os
+dalmátnyelv-
+dakotanyelv-
+dajáknyelv-
+dag-os
+dag-má
+dag-mal
+dag-
+dB-t
+dB-lé
+dB-lel
+dB-et
+dB-es
+dB-
+d-vé
+d-vel
+d-
+d’Alembert-ré
+d’Alembert-rel
+d’Alembert-
+cézanne-os
+cézanne-i
+cuvée-vé
+cuvée-vel
+cuvée-s
+cuvée-
+curriculum vitae-vé
+curriculum vitae-vel
+curriculum vitae-s
+curriculum vitae-beli
+curriculum vitae-
+curie-vé
+curie-vel
+curie-s
+curie-i
+curie-
+ctg-sé
+ctg-sá
+ctg-sel
+ctg-sal
+ctg-os
+ctg-es
+ctg-
+csüt.	107
+csínját-bínját	62
+csínja-bínja	62
+csára-hajszra	62
+csángónyelv-
+csirkefar-hát
+csiribí-csiribá	62
+csip-csup	62
+csinn-bumm	62
+csihi-puhi
+csicsíja-babája	62
+cserokinyelv-
+cseres-tölgyes
+csehnyelv-
+csecsennyelv-
+cs-vé
+cs-vel
+cs-
+croissant-os
+croissant-ná
+croissant-nal
+croissant-
+cro-Magnoni
+cousteau-i
+couchette-té
+couchette-tel
+couchette-es
+couchette-
+coses-os
+cosec-sá
+cosec-sal
+cosec-
+cos-szá
+cos-szal
+cos-os
+cos-
+corneille-i
+comtesse-szé
+comtesse-szel
+comtesse-
+commodore-os
+collie-vá
+collie-val
+collie-s
+collie-
+cm3-t
+cm3-ré
+cm3-rel
+cm3-et
+cm3-es
+cm3-
+cm2-t
+cm2-ré
+cm2-rel
+cm2-et
+cm2-es
+cm2-
+cm-t
+cm-ré
+cm-rel
+cm-et
+cm-es
+cm-
+cm
+cm
+clochard-t
+clochard-rá
+clochard-ral
+clochard-ot
+clochard-os
+clochard-
+clemenceau-i
+cl-t
+cl-ré
+cl-rel
+cl-et
+cl-es
+cl-
+ciróka-maróka
+ciklohexil-
+cigánynyelv-
+chrome-os
+charlie-s
+chardonnay-vá
+chardonnay-val
+chardonnay-s
+chardonnay-
+champagne-t
+champagne-nyá
+champagne-nyal
+champagne-i
+champagne-et
+champagne-
+ch-vá
+ch-val
+ch-
+cg-os
+cg-má
+cg-mal
+cg-
+cd-nyi
+cca.	107
+cayenne-i
+cannes-i
+candide-i
+camembert-ré
+camembert-rel
+camembert-es
+camembert-
+cambridge-i
+calais-i
+cal-vá
+cal-val
+cal-
+cache-sé
+cache-sel
+cache-es
+cache-
+cabernet-vé
+cabernet-vel
+cabernet-s
+cabernet-
+c-vé
+c-vel
+c-
+bú
+bő
+byte-tá
+byte-tal
+byte-os
+byte-
+butil-alkohol
+burjátnyelv-
+bunyevácnyelv-
+bt.-vé
+bt.-vel
+bt.-s
+bt.-beli
+bt.-
+bt.	13410
+bretagne-i
+brazzaville-i
+braille-i
+br.	107
+bp.-i
+bosnyáknyelv-
+bordeaux-i
+boole-i
+boogie-woogie-vá
+boogie-woogie-val
+boogie-woogie-s
+boogie-woogie-
+boogie-woogie	13454
+bonus-malus	103
+bonmot-vá
+bonmot-val
+bonmot-s
+bonmot-
+bolgárnyelv-
+bokaszalag-szakadás
+bluetooth-os
+bim-bam	62
+bike-ot
+bike-os
+bike-ká
+bike-kal
+bike-
+besenyőnyelv-
+berkeley-s
+berkeley-i
+benzoil-
+bentley-s
+belvederei-i
+belsőfül-
+belganyelv-
+belarusznyelv-
+bel-	1698
+bek.-sé
+bek.-sel
+bek.-i
+bek.-es
+bek.-
+bek.	13670
+bek.	13671
+beagle-t
+beagle-lé
+beagle-lel
+beagle-es
+beagle-
+baudelaire-i
+baudelaire-es
+baszknyelv-
+bastille-i
+baronesse-szé
+baronesse-szel
+baronesse-
+barbie-s
+barbecue-vá
+barbecue-val
+barbecue-s
+barbecue-
+baltimore-i
+baleset-veszélyesség
+b.-pengő
+b-vé
+b-vel
+b-
+azerinyelv-
+aza-
+az
+avarnyelv-
+automataváltó-
+aug.-t
+aug.-sá
+aug.-sal
+aug.-ot
+aug.-i
+aug.-
+aug.	13807
+attenborough-s
+atm-vá
+atm-val
+atm-s
+atm-
+as
+arámnyelv-
+aráminyelv-
+arabnyelv-
+apple-es
+appalache-i
+apollinaire-i
+apache-os
+ap
+antoinette-i
+antoinette-es
+angolnyelv-
+andalúznyelv-
+anatole-os
+amino-
+amharanyelv-
+allil-
+alig-alig	62
+albánnyelv-
+al.	107
+al-Káida
+al-	1698
+akkádnyelv-
+ajándékkönyv-
+aj-aj	52
+ainunyelv-
+afgánnyelv-
+adobe-s
+a-vá
+a-val
+a-
+üt
+ül
+űz
+öl
+ö-zik
+óv
+ír
+ë-zik
+ér
+él
+ég
+ás
+uv-zik
+un
+tv-zik
+sms-ezik
+ró
+rí
+puzzle-ozik
+offshore-ozik
+nő
+lő
+lóthat-futhat
+hí
+fú
+fő
+fogyton-fogy
+e-zik
+e-mailezik
+dirmeg-dörmög
+bim-bamoz
+ad
+SMS-ezik
+#
+őszi-fésűsbaglyok
+Árpád-hidak
+vasbeton-falak
+transz-zsírsavak
+tavaszi-fésűsbaglyok
+műanyag-poharak
+műanyag-csövek
+költség-hasznok
+fertő-tavak
+csirkefar-hátak
+Vesta-szüzek
+Velencei-tavak
+Tanganyika-tavak
+Széchenyi-lánchidak
+Szabadság hidak[ph:Szabadság-hidak]
+Szabadság-szobrok
+Szabadság-hidak
+Rákóczi-hidak
+Petőfi-hidak
+Onyega-tavak
+Ontario-tavak
+Nyugati-pályaudvar
+Nyugati-Pályaudvar
+Megyeri-hidak
+Margit hidak[ph:Margit-hidak]
+Margit-hidak
+Ladoga-tavak
+Kossuth-hidak
+Keleti-pályaudvar
+Keleti-Pályaudvar
+K-hidak
+Huron-tavak
+Hajógyári-hidak
+Gubacsi-hidak
+Genfi-tavak
+Galvani-hidak
+Fertő tavak[ph:Fertőtavak,ph:Fertő-tavak]
+Ferenc-hidak
+Feldegg-sólymok
+Erzsébet-hidak
+Erie-tavak
+Déli-pályaudvar
+Déli-Pályaudvar
+Boden-tavak
+Bertalan-hidak
+Bajkál-tavak
+Aral-tavak
+Achilles-sarkak
+Achilles-inak
+már-már	3407
+xxxviii.	401
+xxxvii.	401
+xxxvi.	401
+xxxv.	401
+xxxix.	401
+xxxiv.	401
+xxxiii.	401
+xxxii.	401
+xxxi.	401
+xxx.	401
+xxviii.	401
+xxvii.	401
+xxvi.	401
+xxv.	401
+xxix.	401
+xxiv.	401
+xxiii.	401
+xxii.	401
+xxi.	401
+xx.	401
+xviii.	401
+xvii.	401
+xvi.	401
+xv.	401
+xlviii.	401
+xlvii.	401
+xlvi.	401
+xlv.	401
+xlix.	401
+xliv.	401
+xliii.	401
+xlii.	401
+xli.	401
+xl.	401
+xix.	401
+xiv.	401
+xiii.	401
+xii.	401
+xi.	401
+xcviii.	401
+xcvii.	401
+xcvi.	401
+xcv.	401
+xcix.	401
+xciv.	401
+xciii.	401
+xcii.	401
+xci.	401
+xc.	401
+x.	401
+viii.	401
+vii.	401
+vi.	401
+v.	401
+lxxxviii.	401
+lxxxvii.	401
+lxxxvi.	401
+lxxxv.	401
+lxxxix.	401
+lxxxiv.	401
+lxxxiii.	401
+lxxxii.	401
+lxxxi.	401
+lxxx.	401
+lxxviii.	401
+lxxvii.	401
+lxxvi.	401
+lxxv.	401
+lxxix.	401
+lxxiv.	401
+lxxiii.	401
+lxxii.	401
+lxxi.	401
+lxx.	401
+lxviii.	401
+lxvii.	401
+lxvi.	401
+lxv.	401
+lxix.	401
+lxiv.	401
+lxiii.	401
+lxii.	401
+lxi.	401
+lx.	401
+lviii.	401
+lvii.	401
+lvi.	401
+lv.	401
+lix.	401
+liv.	401
+liii.	401
+lii.	401
+li.	401
+l.	401
+ix.	401
+iv.	401
+iii.	401
+ii.	401
+i.	401
+cxxxviii.	401
+cxxxvii.	401
+cxxxvi.	401
+cxxxv.	401
+cxxxix.	401
+cxxxiv.	401
+cxxxiii.	401
+cxxxii.	401
+cxxxi.	401
+cxxx.	401
+cxxviii.	401
+cxxvii.	401
+cxxvi.	401
+cxxv.	401
+cxxix.	401
+cxxiv.	401
+cxxiii.	401
+cxxii.	401
+cxxi.	401
+cxx.	401
+cxviii.	401
+cxvii.	401
+cxvi.	401
+cxv.	401
+cxlviii.	401
+cxlvii.	401
+cxlvi.	401
+cxlv.	401
+cxlix.	401
+cxliv.	401
+cxliii.	401
+cxlii.	401
+cxli.	401
+cxl.	401
+cxix.	401
+cxiv.	401
+cxiii.	401
+cxii.	401
+cxi.	401
+cxcviii.	401
+cxcvii.	401
+cxcvi.	401
+cxcv.	401
+cxcix.	401
+cxciv.	401
+cxciii.	401
+cxcii.	401
+cxci.	401
+cxc.	401
+cx.	401
+cviii.	401
+cvii.	401
+cvi.	401
+cv.	401
+clxxxviii.	401
+clxxxvii.	401
+clxxxvi.	401
+clxxxv.	401
+clxxxix.	401
+clxxxiv.	401
+clxxxiii.	401
+clxxxii.	401
+clxxxi.	401
+clxxx.	401
+clxxviii.	401
+clxxvii.	401
+clxxvi.	401
+clxxv.	401
+clxxix.	401
+clxxiv.	401
+clxxiii.	401
+clxxii.	401
+clxxi.	401
+clxx.	401
+clxviii.	401
+clxvii.	401
+clxvi.	401
+clxv.	401
+clxix.	401
+clxiv.	401
+clxiii.	401
+clxii.	401
+clxi.	401
+clx.	401
+clviii.	401
+clvii.	401
+clvi.	401
+clv.	401
+clix.	401
+cliv.	401
+cliii.	401
+clii.	401
+cli.	401
+cl.	401
+cix.	401
+civ.	401
+ciii.	401
+cii.	401
+ci.	401
+c.	401
+úz
+új
+összkerék-meghajtású
+össz-szövetségi
+össz-alapterületű
+önbizalom-hiányos
+őrző-védő
+ó-kasztíliai
+ír
+észak-oszétiai
+észak-karolinai
+érdek-képviseleti
+ép
+ény.-i
+ék.-i
+éjjel-nappali
+édes-bús
+állat-egészségügyi
+Élysée-palotai
+x-lábú
+vicik-vacak
+vendéglátó-ipari
+tokaj-hegyaljai
+tel-avivi
+tel-aviv-jaffai
+tanganyika-tói
+szoba-konyhás
+szent-györgyis
+szent-györgyies
+szedett-vedett
+szaúd-arábiai
+sete-suta
+saint-exupérys
+rossz-szívű
+rippl-rónais
+rippl-rónaias
+ringyes-rongyos
+rimszkij-korszakovi
+péter-páli
+pepsi-colás
+onyega-tói
+ontario-tói
+nyugat-virginiai
+nyugat-európai
+nyersgyapjú-színű
+notre-dame-i
+nagy-magyarországos
+nagy-Szunda-szigeteki
+munkaerő-igényes
+monte-carlói
+lótó-futó
+lótó-futó
+lótott-futott
+lótott-futott
+louvre-beli
+locsi-fecsi
+ladoga-tói
+külgazdaság-érzékeny
+közép-európai
+kétszoba-konyhás
+kétszoba-hallos
+kutatás-fejlesztési
+ku-klux-klani
+kis-ázsiai
+kis-Szunda-szigeteki
+kesze-kusza
+kelet-európai
+karacsáj-cserkeszföldi
+kamjanec-pogyilszkiji
+kamenyec-podolszkiji
+kabard-balkárföldi
+joskar-olai
+ista-pistás
+iksz-lábú
+icurka-picurka
+icinyke-picinyke
+icinke-picinke
+icike-picike
+hű
+hő
+háromszoba-konyhás
+háromszoba-hallos
+huron-tói
+hideg-meleg vizes
+gidres-gödrös
+gay-lussaci
+fő
+fertő-tavi
+f-spotos
+es-Salaam-i
+erie-tói
+előítélet-mentes
+elzász-lotaringiai
+elsőkerék-meghajtású
+el-manámai
+el-ajúni
+egyszoba-konyhás
+egyszoba-hallos
+dél-karolinai
+dny.-i
+dk.-i
+dimbes-dombos
+csörnöc-herpenyői
+csilli-villi
+csili-vili
+cro-magnoni
+coca-colás
+bő
+bács-kiskuni
+borsod-abaúj-zempléni
+bajkál-tói
+bajcsy-zsilinszkys
+aral-tói
+apró-cseprő
+anna-pannás
+analóg-digitál
+alcsi-holt-tiszai
+addisz-abebai
+abu-dzabi
+York-i
+Vegas-i
+Vary-i
+USA-beli
+Twain-i
+Tobagó-i
+Tisza-parti
+Tasman-tengeri
+Tanganyika-tavi
+TB-os
+Sínai-hegyi
+Sínai-félszigeti
+Szunda-szigeteki
+Szudéta-vidéki
+St. Helens-i
+Sion-hegyi
+Saint Helens-i
+Saar-vidéki
+Romeó-s
+Ricó-i
+Quijoté-s
+Quijote-i
+Ptk.-beli
+Paz-i
+Pauló-i
+Pannonius-i
+Orleans-i
+Onyega-tavi
+Ontario-tavi
+Novgorod-i
+Nagy-hideg-hegyi
+Museum-i
+Mount Everest-i
+Moresby-i
+Marinó-i
+Mann-i
+Lumpur-i
+Lisa-i
+Lanka-i
+Ladoga-tavi
+Kaszpi-tengeri
+Kaszpi-mélyföldi
+Janeiró-i
+István-i
+Huron-tavi
+Holmes-os
+Holmes-i
+Gogh-i
+FÁK-beli
+Fu-ce-i
+Franciscó-i
+Fasó-i
+Erie-tavi
+EU-beli
+Duna-parti
+Don Quijoté-s
+Don Quijote-i
+Don Juan-os
+Don Juan-i
+Csepel-szigeti
+Ce-tung-i
+Budějovice-i
+Btk.-beli
+Bajkál-tavi
+Aral-tavi
+Angeles-i
+Aires-i
+[
+Zaire-t
+Zaire-rá
+Zaire-ral
+Zaire-
+ZMD-vé
+ZMD-vel
+ZMD-s
+ZMD-
+Yucatán-szigeteki
+Yucatán-szigetek
+YouTube-bá
+YouTube-bal
+YouTube-
+Yorkshire-t
+Yorkshire-ré
+Yorkshire-rel
+Yorkshire-et
+Yorkshire-
+Yahoo!-vá
+Yahoo!-val
+Yahoo!-
+Y.-os
+Y.-ná
+Y.-nal
+Y.-
+Y.	20919
+Xgl-t
+Xgl-lé
+Xgl-lel
+Xgl-es
+Xgl-
+XXXL-lé
+XXXL-lel
+XXXL-es
+XXXL-
+XXL-lé
+XXL-lel
+XXL-es
+XXL-
+XSLT-vé
+XSLT-vel
+XSLT-s
+XSLT-
+XP-vé
+XP-vel
+XP-s
+XP-
+XML-t
+XML-lé
+XML-lel
+XML-et
+XML-es
+XML-
+XLSX-szé
+XLSX-szel
+XLSX-es
+XLSX-
+XL-lé
+XL-lel
+XL-es
+XL-
+XII-es
+XI-es
+X11-gyé
+X11-gyel
+X11-es
+X11-
+X-es
+Wilde-dá
+Wilde-dal
+Wilde-
+WWW-vé
+WWW-vel
+WWW-s
+WWW-
+WWF-fé
+WWF-fel
+WWF-es
+WWF-beli
+WWF-
+WMA-vá
+WMA-val
+WMA-os
+WMA-
+WHO-vá
+WHO-val
+WHO-s
+WHO-
+WEP-pé
+WEP-pel
+WEP-es
+WEP-
+WC-vé
+WC-vel
+WC-s
+WC-
+WAP-pá
+WAP-pal
+WAP-os
+WAP-
+W-tá
+W-tal
+W-os
+W-
+Vtv.	107
+Vt.-vé
+Vt.-vel
+Vt.-s
+Vt.-beli
+Vt.-
+Vt.	21047
+Vt.	21048
+Voltaire-t
+Voltaire-ré
+Voltaire-rel
+Voltaire-et
+Voltaire-
+Vodafone-ná
+Vodafone-nal
+Vodafone-
+Virgin-szigeteki
+Virgin-szigetek
+Vhr.-vé
+Vhr.-vel
+Vhr.-s
+Vhr.-beli
+Vhr.-
+Vhr.	21082
+Vhr.	21083
+Vesta-szűz
+Versailles-t
+Versailles-ot
+Versailles-já
+Versailles-jal
+Versailles-
+Verlaine-t
+Verlaine-né
+Verlaine-nel
+Verlaine-et
+Verlaine-
+Vereckei-hágó
+Velencei-tó
+Ve.-vé
+Ve.-vel
+Ve.-s
+Ve.-beli
+Ve.-
+Ve.	21107
+VR-ré
+VR-rel
+VR-es
+VR-
+VPN-né
+VPN-nel
+VPN-es
+VPN-
+VNC-vé
+VNC-vel
+VNC-s
+VNC-
+VIT-té
+VIT-tel
+VIT-es
+VIT-
+VIP-pé
+VIP-pel
+VIP-es
+VIP-
+VIII-as
+VII-es
+VI-os
+V4-gyé
+V4-gyel
+V4-es
+V4-beli
+V4-
+V-ös
+V-tá
+V-tal
+V-os
+V-
+Unicode-dá
+Unicode-dal
+Unicode-
+UltraSPARC-os
+UltraSPARC-ká
+UltraSPARC-kal
+UltraSPARC-
+UTF–8-cá
+UTF–8-cal
+UTF–8-as
+UTF–8-
+UTF–16-tá
+UTF–16-tal
+UTF–16-os
+UTF–16-
+USD-vé
+USD-vel
+USD-t
+USD-s
+USD-et
+USD-
+USB-vé
+USB-vel
+USB-s
+USB-
+USA-vá
+USA-val
+USA-
+URL-t
+URL-lé
+URL-lel
+URL-es
+URL-
+URH-vá
+URH-val
+URH-s
+URH-
+UNICEF-fé
+UNICEF-fel
+UNICEF-es
+UNICEF-
+UNESCO-vá
+UNESCO-val
+UNESCO-s
+UNESCO-
+UEFA-vá
+UEFA-val
+UEFA-s
+UEFA-
+Tuzson-cickafark
+Toulouse-zá
+Toulouse-zal
+Toulouse-
+Tokaj-Hegyalja
+Tisza-part
+Tien-san
+TiB-tá
+TiB-tal
+TiB-os
+TiB-
+Temminck-partfutó
+Tel-Aviv-Jaffa
+Tel-Aviv
+TeX-ké
+TeX-kel
+TeX-hé
+TeX-hel
+TeX-es
+TeX-
+TeV-tá
+TeV-tal
+TeV-os
+TeV-
+Tbj.-vé
+Tbj.-vel
+Tbj.-s
+Tbj.-beli
+Tbj.-
+Tbj.	21262
+Tbj.	21263
+Tasman-tenger
+Tartuffe-fé
+Tartuffe-fel
+Tartuffe-
+Tanganyika-tó
+Takla-Makán
+TXT-vé
+TXT-vel
+TXT-s
+TXT-
+TVK-vá
+TVK-val
+TVK-s
+TVK-
+TV2-vé
+TV2-vel
+TV2-
+TTK-vá
+TTK-val
+TTK-s
+TTK-
+TPa-os
+TPa-lá
+TPa-lal
+TPa-
+TIT-té
+TIT-tel
+TIT-es
+TIT-
+TGM-mé
+TGM-mel
+TGM-es
+TGM-
+TDK-vá
+TDK-val
+TDK-s
+TDK-
+TCP-vé
+TCP-vel
+TCP-s
+TCP-
+TBC-vé
+TBC-vel
+TBC-s
+TBC-
+TB-vé
+TB-vel
+TB-tá
+TB-tal
+TB-s
+TB-os
+TB-
+Sínai-hegy
+Sínai-félsziget
+Sé
+Széchenyi-lánchíd
+Száhel-övezet
+Szunda-sziget
+Szudéta-vidék
+Sztv.-vé
+Sztv.-vel
+Sztv.-s
+Sztv.-beli
+Sztv.-
+Sztv.	21348
+Sztv.	21349
+Szt.	107
+Szjt.-vé
+Szjt.-vel
+Szjt.-s
+Szjt.-beli
+Szjt.-
+Szjt.	21372
+Szjt.	21373
+Szir-darja
+Szilícium-völgy
+Szfv.-t
+Szfv.-rá
+Szfv.-ral
+Szfv.-ot
+Szfv.-
+Szfv.	21384
+Szent-Györgyi
+Szaúd-Arábia
+Szabadság-szobor
+Szabadság-híd
+Sydney-vé
+Sydney-vel
+Sydney-
+Suriname-má
+Suriname-mal
+Suriname-
+SuSE-vá
+SuSE-val
+SuSE-
+Stys-tarsza
+StarOffice-t
+StarOffice-szá
+StarOffice-szal
+StarOffice-ot
+StarOffice-
+Stanley-vé
+Stanley-vel
+Stanley-
+St. Helens
+Sorbonne-ná
+Sorbonne-nal
+Sorbonne-
+Slackware-t
+Slackware-ré
+Slackware-rel
+Slackware-et
+Slackware-
+Sion-hegy
+Shelley-vé
+Shelley-vel
+Shelley-
+Shaw-vá
+Shaw-val
+Shaw-
+Shakespeare-t
+Shakespeare-ré
+Shakespeare-rel
+Shakespeare-et
+Shakespeare-
+Seattle-t
+Seattle-lé
+Seattle-lel
+Seattle-et
+Seattle-
+Saint-Exupéry
+Saar-vidék
+SZU-vá
+SZU-val
+SZU-i
+SZU-
+SZTE-vé
+SZTE-vel
+SZTE-s
+SZTE-
+SZTAKI-vá
+SZTAKI-val
+SZTAKI-s
+SZTAKI-
+SZOTE-vé
+SZOTE-vel
+SZOTE-s
+SZOTE-
+SZOT-tá
+SZOT-tal
+SZOT-os
+SZOT-
+SZMSZ-szé
+SZMSZ-szel
+SZMSZ-es
+SZMSZ-
+SZDSZ-t
+SZDSZ-szé
+SZDSZ-szel
+SZDSZ-es
+SZDSZ-
+SVG-vé
+SVG-vel
+SVG-s
+SVG-
+SUSE-vá
+SUSE-val
+SUSE-s
+SUSE-
+SUMF-os
+SUMF-fá
+SUMF-fal
+SUMF-
+SSH-vá
+SSH-val
+SSH-s
+SSH-
+SSD-vé
+SSD-vel
+SSD-s
+SSD-
+SS-sé
+SS-sel
+SS-
+SQL-t
+SQL-lé
+SQL-lel
+SQL-es
+SQL-
+SOTE-vá
+SOTE-val
+SOTE-s
+SOTE-
+SOS-sé
+SOS-sel
+SOS-
+SMS-t
+SMS-sé
+SMS-sel
+SMS-et
+SMS-
+SLP-vé
+SLP-vel
+SLP-s
+SLP-
+SIM-kártya
+SI-vé
+SI-vel
+SI-
+SGML-t
+SGML-lé
+SGML-lel
+SGML-et
+SGML-es
+SGML-
+SEAT-tá
+SEAT-tal
+SEAT-os
+SEAT-
+SDK-vá
+SDK-val
+SDK-s
+SDK-
+SCSI-vá
+SCSI-val
+SCSI-s
+SCSI-
+SCPM-mé
+SCPM-mel
+SCPM-es
+SCPM-
+SCDB-vé
+SCDB-vel
+SCDB-s
+SCDB-
+SAPARD-os
+SAPARD-dá
+SAPARD-dal
+SAPARD-
+Ré
+Rákóczi-híd
+Rousseau-vá
+Rousseau-val
+Rousseau-
+Rosztov-na-Donu
+Romeo-s
+Rolls-Royce-t
+Rolls-Royce-szá
+Rolls-Royce-szal
+Rolls-Royce-
+Rolls-Royce	21632
+Robespierre-t
+Robespierre-ré
+Robespierre-rel
+Robespierre-et
+Robespierre-
+Rippl-Rónai
+Rimszkij-Korszakov
+Rimbaud-vá
+Rimbaud-val
+Rimbaud-
+Riemann-né
+Richelieu-vé
+Richelieu-vel
+Richelieu-
+Rh-pozitív
+Rh-negatív
+Rh-faktor
+Rhône-ná
+Rhône-nal
+Rhône-
+Renée-vé
+Renée-vel
+Renée-
+Renault-vá
+Renault-val
+Renault-
+Racine-ná
+Racine-nal
+Racine-
+Rabelais-vá
+Rabelais-val
+Rabelais-
+RTL-t
+RTL-lé
+RTL-lel
+RTL-es
+RTL-
+RPM-mé
+RPM-mel
+RPM-es
+RPM-
+ROM-os
+ROM-má
+ROM-mal
+ROM-
+RNS-t
+RNS-sé
+RNS-sel
+RNS-et
+RNS-es
+RNS-
+RMDSZ-t
+RMDSZ-szé
+RMDSZ-szel
+RMDSZ-et
+RMDSZ-es
+RMDSZ-
+RAM-os
+RAM-má
+RAM-mal
+RAM-
+Qt-vé
+Qt-vel
+Qt-s
+Qt-
+Pó
+Péter-Pál
+Párizs-Dakar-rali
+Ptk.-vá
+Ptk.-val
+Ptk.-i
+Ptk.-
+Ptk.	21729
+Ptk.	21730
+Provence-szá
+Provence-szal
+Provence-
+PostgreSQL-t
+PostgreSQL-lé
+PostgreSQL-lel
+PostgreSQL-es
+PostgreSQL-
+Port-au-Prince-t
+Port-au-Prince-szel
+Port-au-Prince-i
+Port-au-Prince-
+Port-au-Prince	21750
+Poe-vá
+Poe-val
+Poe-
+Pireneusi-félsziget
+PiB-tá
+PiB-tal
+PiB-os
+PiB-
+PhD-vé
+PhD-vá
+PhD-vel
+PhD-val
+PhD-s
+PhD-
+Pf.	107
+Peugeot-vá
+Peugeot-val
+Peugeot-
+Petőfi-híd
+Pepsi-Cola
+Pennine-hegység
+Paraná-alföld
+Pa-os
+Pa-lá
+Pa-lal
+Pa-
+PVC-vé
+PVC-vel
+PVC-s
+PVC-
+PTE-vé
+PTE-vel
+PTE-s
+PTE-
+PSZÁF-os
+PSZÁF-fá
+PSZÁF-fal
+PSZÁF-
+PR-ré
+PR-rá
+PR-rel
+PR-ral
+PR-os
+PR-es
+PR-
+PPTX-szé
+PPTX-szel
+PPTX-es
+PPTX-
+POP3S-sé
+POP3S-sel
+POP3S-es
+POP3S-
+POP3-má
+POP3-mal
+POP3-as
+POP3-
+PNG-vé
+PNG-vel
+PNG-s
+PNG-
+PM-mé
+PM-mel
+PM-es
+PM-
+PIN-t
+PIN-né
+PIN-nel
+PIN-et
+PIN-es
+PIN-
+PHP-vá
+PHP-val
+PHP-s
+PHP-
+PHARE-rá
+PHARE-ral
+PHARE-os
+PHARE-
+PET-té
+PET-tel
+PET-es
+PET-
+PDF-fé
+PDF-fel
+PDF-es
+PDF-
+PCR-ré
+PCR-rel
+PCR-es
+PCR-
+PCMCIA-vá
+PCMCIA-val
+PCMCIA-s
+PCMCIA-
+PCI-os
+PCI-já
+PCI-jal
+PCI-
+PC-vé
+PC-vel
+PC-s
+PC-
+PBS-sé
+PBS-sel
+PBS-es
+PBS-
+PB-tá
+PB-tal
+PB-os
+PB-gáz
+PB-
+Otto-motor
+Otto-féle	103
+Orwell-lé
+Orwell-lel
+Orléans-ná
+Orléans-nal
+Orléans-
+Oracle-t
+Oracle-lá
+Oracle-lal
+Oracle-
+OpenVPN-né
+OpenVPN-nel
+OpenVPN-es
+OpenVPN-
+OpenPGP-vé
+OpenPGP-vel
+OpenPGP-s
+OpenPGP-
+OpenOffice.org-gá
+OpenOffice.org-gal
+OpenOffice.org-
+OpenOffice.org	21943
+OpenOffice-t
+OpenOffice-szá
+OpenOffice-szal
+OpenOffice-ot
+OpenOffice-
+OpenLDAP-pá
+OpenLDAP-pal
+OpenLDAP-os
+OpenLDAP-
+OpenBSD-vé
+OpenBSD-vel
+OpenBSD-s
+OpenBSD-
+Onyega-tó
+Ontario-tó
+OmniPage-dzsé
+OmniPage-dzsel
+OmniPage-
+Office-t
+Office-szá
+Office-szal
+Office-ot
+Office-
+Ob
+OVSZ-szé
+OVSZ-szel
+OVSZ-es
+OVSZ-
+OVB-vé
+OVB-vel
+OVB-s
+OVB-beli
+OVB-
+OTP-vé
+OTP-vel
+OTP-s
+OTP-
+OTKA-vá
+OTKA-val
+OTKA-s
+OTKA-
+OSZK-vá
+OSZK-val
+OSZK-s
+OSZK-beli
+OSZK-
+ORTT-vé
+ORTT-vel
+ORTT-s
+ORTT-
+ORFK-vá
+ORFK-val
+ORFK-s
+ORFK-
+OPEC-ké
+OPEC-kel
+OPEC-es
+OPEC-cé
+OPEC-cel
+OPEC-
+OOo-vá
+OOo-val
+OOo-s
+OOo-
+OOP-vé
+OOP-vel
+OOP-s
+OOP-
+OM-mé
+OM-mel
+OM-es
+OM-
+OKTV-vé
+OKTV-vel
+OKTV-s
+OKTV-
+OKJ-vé
+OKJ-vá
+OKJ-vel
+OKJ-val
+OKJ-s
+OKJ-
+OGG-os
+OGG-gá
+OGG-gal
+OGG-
+OEP-pé
+OEP-pel
+OEP-es
+OEP-
+OEM-mé
+OEM-mel
+OEM-es
+OEM-
+OECD-vé
+OECD-vel
+OECD-s
+OECD-beli
+OECD-
+ODT-vé
+ODT-vel
+ODT-t
+ODT-s
+ODT-et
+ODT-
+ODS-sé
+ODS-sel
+ODS-es
+ODS-
+ODP-vé
+ODP-vel
+ODP-t
+ODP-s
+ODP-et
+ODP-
+ODF-fé
+ODF-fel
+ODF-es
+ODF-
+OBH-vá
+OBH-val
+OBH-s
+OBH-beli
+OBH-
+Núbiai-sivatag
+Nyugati-pályaudvar
+Nyugati-Pályaudvar
+Nyugat-Virginia
+Nyugat-Európa
+Nyilv.	107
+Ny-tá
+Ny-tal
+Ny-
+Novell-lé
+Novell-lel
+Notre-Dame
+Nike-vá
+Nike-val
+Nike-
+Niamey-vé
+Niamey-vel
+Niamey-
+Neumann-né
+Netscape-pé
+Netscape-pel
+Netscape-
+NetWare-t
+NetWare-ré
+NetWare-rel
+NetWare-et
+NetWare-
+NetBSD-vé
+NetBSD-vel
+NetBSD-s
+NetBSD-
+Neander-völgy
+Naumann-rigó
+Nature-öt
+Nature-t
+Nature-ré
+Nature-rel
+Nature-
+Natalie-vá
+Natalie-val
+Natalie-
+Namib-sivatag
+Nagy-Szunda-sziget
+Nagy-Magyarország
+Nagy-Hideg-hegy
+NTP-vé
+NTP-vel
+NTP-s
+NTP-
+NTFS-sé
+NTFS-sel
+NTFS-es
+NTFS-
+NSZK-vá
+NSZK-val
+NSZK-s
+NSZK-
+NOB-os
+NOB-bá
+NOB-bal
+NOB-
+NKÖM-ös
+NKÖM-mé
+NKÖM-mel
+NKÖM-
+NIS-sé
+NIS-sel
+NIS-es
+NIS-
+NFS-sé
+NFS-sel
+NFS-es
+NFS-
+NER-ré
+NER-rel
+NER-es
+NER-
+NDK-vá
+NDK-val
+NDK-s
+NDK-
+NB.	107
+NAV-vá
+NAV-val
+NAV-os
+NAV-i
+NAV-
+NATO-vá
+NATO-val
+NATO-s
+NATO-
+NAT-tá
+NAT-tal
+NAT-t
+NAT-os
+NAT-
+NASA-vá
+NASA-val
+NASA-s
+NASA-
+N-ná
+N-nal
+N-
+MÉH-hé
+MÉH-hel
+MÉH-es
+MÉH-
+MÁV-vá
+MÁV-val
+MÁV-os
+MÁV-i
+MÁV-
+Myspell-lé
+Myspell-lel
+MySQL-t
+MySQL-lé
+MySQL-lel
+MySQL-es
+MySQL-
+Mt.	107
+Mrs.	107
+Mrd-dá
+Mrd-dal
+Mrd-
+Mr.	107
+Mount St.	22259
+Morse-szá
+Morse-szal
+Morse-
+Montreux-vé
+Montreux-vel
+Montreux-
+Montesquieu-vé
+Montesquieu-vel
+Montesquieu-
+Monte-Carlo
+Montaigne-t
+Montaigne-nyé
+Montaigne-nyel
+Montaigne-et
+Montaigne-
+Mont Blanc-ká
+Mont Blanc-kal
+Mont Blanc-i
+Mont Blanc-
+Monet-vá
+Monet-val
+Monet-
+Molière-t
+Molière-ré
+Molière-rel
+Molière-et
+Molière-
+Mo.-i
+Mo.-gá
+Mo.-gal
+Mo.-
+Mo.	22304
+Miller-vízicickány
+MiB-tá
+MiB-tal
+MiB-os
+MiB-
+Metelka-medvelepke
+Melbourne-öt
+Melbourne-t
+Melbourne-né
+Melbourne-nel
+Melbourne-
+Megyeri-híd
+MeV-tá
+MeV-tal
+MeV-os
+MeV-
+Maupassant-t
+Maupassant-ot
+Maupassant-ná
+Maupassant-nal
+Maupassant-
+Marseille-t
+Marseille-jé
+Marseille-jel
+Marseille-
+Marseillaise-zé
+Marseillaise-zel
+Marseillaise-
+Margit-híd
+Mann-né
+Manet-vá
+Manet-val
+Manet-
+Mandrake-ké
+Mandrake-kel
+Mandrake-
+Manche-sá
+Manche-sal
+Manche-
+Maldív-szigeteki
+Maldív-szigetek
+Maine-t
+Maine-né
+Maine-nel
+Maine-et
+Maine-
+Madách-csal
+Mac-ké
+Mac-kel
+Mac-es
+Mac-
+MW-tá
+MW-tal
+MW-os
+MW-
+MTV-vé
+MTV-vel
+MTV-s
+MTV-
+MTI-vé
+MTI-vel
+MTI-s
+MTI-
+MTESZ-szé
+MTESZ-szel
+MTESZ-es
+MTESZ-
+MTA-vá
+MTA-val
+MTA-s
+MTA-i
+MTA-
+MSc-vé
+MSc-vel
+MSc-s
+MSc-et
+MSc-
+MSZP-vé
+MSZP-vel
+MSZP-s
+MSZP-
+MSZMP-vé
+MSZMP-vel
+MSZMP-s
+MSZMP-
+MR5-ös
+MR5-té
+MR5-tel
+MR5-
+MR4-gyé
+MR4-gyel
+MR4-es
+MR4-
+MR3-má
+MR3-mal
+MR3-as
+MR3-
+MR2-vé
+MR2-vel
+MR2-es
+MR2-
+MR1-gyé
+MR1-gyel
+MR1-es
+MR1-
+MPa-os
+MPa-lá
+MPa-lal
+MPa-
+MP3-má
+MP3-mal
+MP3-as
+MP3-
+MOL-os
+MOL-lá
+MOL-lal
+MOL-
+MOB-os
+MOB-bá
+MOB-bal
+MOB-
+MNB-vé
+MNB-vel
+MNB-s
+MNB-
+MLSZ-szé
+MLSZ-szel
+MLSZ-es
+MLSZ-
+MKM-mé
+MKM-mel
+MKM-es
+MKM-
+MIÉP-pé
+MIÉP-pel
+MIÉP-es
+MIÉP-
+MIME-vé
+MIME-vel
+MIME-s
+MIME-
+MI-vé
+MI-vel
+MI-s
+MI-
+MHz-es
+MHz-cé
+MHz-cel
+MHz-
+MHSz.	107
+MEK-ké
+MEK-kel
+MEK-es
+MEK-
+MDNP-vé
+MDNP-vel
+MDNP-s
+MDNP-
+MDF-fé
+MDF-fel
+MDF-es
+MDF-
+MB-tá
+MB-tal
+MB-os
+MB-
+MATÁV-vá
+MATÁV-val
+MATÁV-os
+MATÁV-
+MALÉV-vá
+MALÉV-val
+MALÉV-os
+MALÉV-
+M8-ot
+M8-cá
+M8-cal
+M8-at
+M8-as
+M8-
+M7-té
+M7-tel
+M7-es
+M7-
+M6-tá
+M6-tal
+M6-os
+M6-
+M5-ös
+M5-té
+M5-tel
+M5-
+M4-gyé
+M4-gyel
+M4-es
+M4-
+M3-ot
+M3-má
+M3-mal
+M3-at
+M3-as
+M3-
+M2-vé
+M2-vel
+M2-es
+M2-
+M1-gyé
+M1-gyel
+M1-es
+M1-
+M0-vá
+M0-val
+M0-s
+M0-
+M-es
+Lyme-kór
+Ltv.	107
+Ltd.-vé
+Ltd.-vel
+Ltd.-s
+Ltd.-i
+Ltd.-
+Ltd.	22637
+Ltd.	22638
+Louvre-rá
+Louvre-ral
+Louvre-
+Louis-vá
+Louis-val
+Louis-i
+Louis-
+Loire-rá
+Loire-ral
+Loire-
+Livingstone-ná
+Livingstone-nal
+Livingstone-
+Libreville-t
+Libreville-lé
+Libreville-lel
+Libreville-et
+Libreville-
+LibreOffice-t
+LibreOffice-szá
+LibreOffice-szal
+LibreOffice-ot
+LibreOffice-
+Lavoisier-vá
+Lavoisier-val
+Lavoisier-
+Larousse-szá
+Larousse-szal
+Larousse-
+Larmore-rá
+Larmore-ral
+Larmore-
+Laplace-szá
+Laplace-szal
+Laplace-
+Lagrange-zsá
+Lagrange-zsal
+Lagrange-
+Ladoga-tó
+LaTeX-ké
+LaTeX-kel
+LaTeX-hé
+LaTeX-hel
+LaTeX-es
+LaTeX-
+LSD-vé
+LSD-vel
+LSD-s
+LSD-
+LMP-vé
+LMP-vel
+LMP-t
+LMP-s
+LMP-et
+LMP-
+LMBTQI-vé
+LMBTQI-vel
+LMBTQI-s
+LMBTQI-beli
+LMBTQI-
+LMBTQ-vá
+LMBTQ-val
+LMBTQ-s
+LMBTQ-beli
+LMBTQ-
+LMBT-vé
+LMBT-vel
+LMBT-s
+LMBT-beli
+LMBT-
+LGT-vé
+LGT-vel
+LGT-s
+LGT-
+LGPL-t
+LGPL-lé
+LGPL-lel
+LGPL-es
+LGPL-
+LED-es
+LED-dé
+LED-del
+LED-
+LE-vé
+LE-vel
+LE-s
+LE-
+LDAPS-sé
+LDAPS-sel
+LDAPS-es
+LDAPS-
+LDAP-pá
+LDAP-pal
+LDAP-os
+LDAP-
+LCD-vé
+LCD-vel
+LCD-s
+LCD-
+LAMP-pá
+LAMP-pal
+LAMP-os
+LAMP-
+Közép-szibériai-fennsík
+Közép-Európa
+Kárpát-medence
+KÖM-ös
+KÖM-mé
+KÖM-mel
+KÖM-
+Ku-Klux-Klan
+Ktv.	107
+Kt.-vé
+Kt.-vel
+Kt.-s
+Kt.-beli
+Kt.-
+Kt.	22817
+Kt.	22818
+Krisztus-hívő
+Kr.	107
+Kossuth-híd
+Kjt.-vé
+Kjt.-vel
+Kjt.-s
+Kjt.-beli
+Kjt.-
+Kjt.	22857
+Kjt.	22858
+Kis-Ázsia
+Kis-Szunda-sziget
+KiB-tá
+KiB-tal
+KiB-os
+KiB-
+Keleti-pályaudvar
+Keleti-Pályaudvar
+Kelet-Európa
+Kbt.-vé
+Kbt.-vel
+Kbt.-s
+Kbt.-beli
+Kbt.-
+Kbt.	22886
+Kbt.	22887
+Kaszpi-tenger
+Kaszpi-mélyföld
+Karib-tenger
+Karacsáj-Cserkeszföld
+Kara-kum
+Kamjanec-Pogyilszkij
+Kamenyec-Podolszkij
+Kabard-Balkárföld
+Kab-hegy
+KTM-mé
+KTM-mel
+KTM-es
+KTM-
+KSH-vá
+KSH-val
+KSH-s
+KSH-
+KRESZ-t
+KRESZ-szé
+KRESZ-szel
+KRESZ-es
+KRESZ-
+KOffice-t
+KOffice-szá
+KOffice-szal
+KOffice-ot
+KOffice-
+KO-vá
+KO-val
+KO-
+KLTE-vé
+KLTE-vel
+KLTE-s
+KLTE-
+KISZ-t
+KISZ-szé
+KISZ-szel
+KISZ-et
+KISZ-es
+KISZ-
+KHVM-mé
+KHVM-mel
+KHVM-es
+KHVM-
+KGST-vé
+KGST-vel
+KGST-s
+KGST-
+KGB-vé
+KGB-vel
+KGB-s
+KGB-
+KFKI-vá
+KFKI-val
+KFKI-s
+KFKI-
+KDNP-vé
+KDNP-vel
+KDNP-s
+KDNP-
+KDE-vé
+KDE-vel
+KDE-s
+KDE-
+K-né
+K-nel
+K-híd
+K-es
+K-
+Joyce-t
+Joyce-szá
+Joyce-szal
+Joyce-ot
+Joyce-
+Joskar-Ola
+Johann-ná
+Johann-nal
+Jersey-vé
+Jersey-vel
+Jersey-
+Jacques-ká
+Jacques-kal
+Jacques-
+JSP-vé
+JSP-vel
+JSP-s
+JSP-
+JPTE-vé
+JPTE-vel
+JPTE-s
+JPTE-
+JPG-vé
+JPG-vel
+JPG-s
+JPG-
+JPEG-gé
+JPEG-gel
+JPEG-es
+JPEG-
+JATE-vá
+JATE-val
+JATE-s
+JATE-
+J-os
+J-lá
+J-lal
+J-
+Ista-Pista
+Ispell-lé
+Ispell-lel
+IrDA-vá
+IrDA-val
+IrDA-s
+IrDA-
+Inc.	107
+Illinois-t
+Illinois-ot
+Illinois-já
+Illinois-jal
+Illinois-
+Ibériai-hegység
+Ibériai-félsziget
+IX-es
+IV-es
+IT-val
+IT-s
+IT-
+ISO-vá
+ISO-val
+ISO-s
+ISO-
+ISM-mé
+ISM-mel
+ISM-es
+ISM-
+ISDN-né
+ISDN-nel
+ISDN-es
+ISDN-
+ISBN-s
+ISBN-né
+ISBN-nel
+ISBN-
+IQ-vá
+IQ-val
+IQ-s
+IQ-
+IPv6-tá
+IPv6-tal
+IPv6-os
+IPv6-
+IPsec-ké
+IPsec-kel
+IPsec-es
+IPsec-
+IP-vé
+IP-vá
+IP-vel
+IP-s
+IP-
+IMAPS-sé
+IMAPS-sel
+IMAPS-es
+IMAPS-
+IMAP-pá
+IMAP-pal
+IMAP-os
+IMAP-
+IM-mé
+IM-mel
+IM-es
+IM-
+IKEA-vá
+IKEA-val
+IKEA-s
+IKEA-
+III-as
+II-es
+IDE-vé
+IDE-vel
+IDE-s
+IDE-
+IC-vé
+IC-vel
+IC-s
+IC-
+IBUSZ-szá
+IBUSZ-szal
+IBUSZ-os
+IBUSZ-
+IBM-mé
+IBM-mel
+IBM-es
+IBM-
+I-es
+HÖK-ös
+HÖK-ké
+HÖK-kel
+HÖK-
+HÉV-vé
+HÉV-vel
+HÉV-es
+HÉV-
+Hz-es
+Hz-cé
+Hz-cel
+Hz-
+Huxley-vé
+Huxley-vá
+Huxley-vel
+Huxley-val
+Huxley-
+Huron-tó
+Hunspell-lé
+Hunspell-lel
+Hume-má
+Hume-mal
+Hume-
+Hubble-lá
+Hubble-lal
+Hubble-
+Hszt.-vé
+Hszt.-vel
+Hszt.-s
+Hszt.-beli
+Hszt.-
+Hszt.	23196
+Hszt.	23197
+Hpt.-vé
+Hpt.-vel
+Hpt.-s
+Hpt.-beli
+Hpt.-
+Hpt.	23203
+Hpt.	23204
+Hooke-ká
+Hooke-kal
+Hooke-
+Hoffmann-né
+Hjt.-vé
+Hjt.-vel
+Hjt.-s
+Hjt.-beli
+Hjt.-
+Hjt.	23218
+Hjt.	23219
+Hermann-né
+Heathrow-vá
+Heathrow-val
+Heathrow-
+Hanza-város
+Hampshire-t
+Hampshire-ré
+Hampshire-rel
+Hampshire-i
+Hampshire-et
+Hampshire-
+Hajógyári-híd
+HVG-vé
+HVG-vel
+HVG-s
+HVG-
+HUF-os
+HUF-fá
+HUF-fal
+HUF-
+HTML-t
+HTML-lé
+HTML-lel
+HTML-et
+HTML-es
+HTML-
+HPV-vé
+HPV-vel
+HPV-s
+HPV-
+HP-vé
+HP-vel
+HP-s
+HP-
+HOGYAN-t
+HOGYAN-ot
+HOGYAN-ná
+HOGYAN-nal
+HOGYAN-
+HM-mé
+HM-mel
+HM-es
+HM-
+HIV-vé
+HIV-vel
+HIV-es
+HIV-
+HD-vé
+HD-vel
+HD-s
+HD-
+HBO-vá
+HBO-val
+HBO-s
+HBO-
+HB-vé
+HB-vel
+HB-s
+HB-
+HAL-os
+HAL-lá
+HAL-lal
+HAL-
+HACCP-vé
+HACCP-vel
+HACCP-s
+HACCP-
+H2O-vá
+H2O-val
+H2O-s
+H2O-
+H1N1-gyé
+H1N1-gyel
+H1N1-es
+H1N1-
+Gyvt.	107
+Gubacsi-híd
+Gt.	107
+GroupWise-zá
+GroupWise-zal
+GroupWise-t
+GroupWise-
+Greenpeace-t
+Greenpeace-szé
+Greenpeace-szel
+Greenpeace-
+Google-t
+Google-lé
+Google-lal
+Google-
+Goodall-lá
+Goodall-lal
+Golf-árambeli
+Golf-áram
+GmbH-vá
+GmbH-val
+GmbH-s
+GmbH-
+Glasgow-vá
+Glasgow-val
+Glasgow-
+GiB-tá
+GiB-tal
+GiB-os
+GiB-
+Getsemáne-kert
+Gerbeaud-vá
+Gerbeaud-val
+Gerbeaud-
+George-dzsá
+George-dzsal
+George-
+Genfi-tó
+GeV-tá
+GeV-tal
+GeV-os
+GeV-
+Gay-Lussac
+Gaulle-lá
+Gaulle-lal
+Gaulle-i
+Gaulle-
+Galvani-híd
+GYIK-s
+GYIK-ká
+GYIK-kal
+GYIK-
+GW-tá
+GW-tal
+GW-os
+GW-
+GUI-vá
+GUI-val
+GUI-s
+GUI-
+GTP-vé
+GTP-vel
+GTP-s
+GTP-
+GTK-vá
+GTK-val
+GTK-s
+GTK-
+GSM-mé
+GSM-mel
+GSM-
+GPa-os
+GPa-lá
+GPa-lal
+GPa-
+GPS-szé
+GPS-szel
+GPS-es
+GPS-
+GPL-t
+GPL-lé
+GPL-lel
+GPL-es
+GPL-
+GPG-vé
+GPG-vel
+GPG-s
+GPG-
+GNU-vá
+GNU-val
+GNU-s
+GNU-
+GNOME-os
+GNOME-má
+GNOME-mal
+GNOME-
+GMO-vá
+GMO-val
+GMO-s
+GMO-
+GM-mé
+GM-mel
+GM-es
+GM-
+GIMP-pé
+GIMP-pel
+GIMP-es
+GIMP-
+GIF-fé
+GIF-fel
+GIF-es
+GIF-
+GHz-es
+GHz-cé
+GHz-cel
+GHz-
+GDP-vé
+GDP-vel
+GDP-s
+GDP-
+GBP-vé
+GBP-vel
+GBP-t
+GBP-s
+GBP-et
+GBP-
+GB-tá
+GB-tal
+GB-os
+GB-
+GATE-vá
+GATE-val
+GATE-s
+GATE-
+Fülöp-sziget
+FÁK-ká
+FÁK-kal
+FÁK-
+Fu-cé
+Fu-ce
+Ftv.-vé
+Ftv.-vel
+Ftv.-s
+Ftv.-beli
+Ftv.-
+Ftv.	23554
+Ftv.	23555
+Ft-tá
+Ft-tal
+Ft-os
+Ft-
+Ft
+FreeBSD-vé
+FreeBSD-vel
+FreeBSD-s
+FreeBSD-
+Fourier-vá
+Fourier-val
+Fourier-
+Foucault-vá
+Foucault-val
+Foucault-
+Fontaine-né
+Fontaine-ná
+Fontaine-nel
+Fontaine-nal
+Fontaine-i
+Fontaine-
+Flt.-vé
+Flt.-vel
+Flt.-s
+Flt.-beli
+Flt.-
+Flt.	23593
+Flt.	23594
+Flaubert-t
+Flaubert-ré
+Flaubert-rel
+Flaubert-et
+Flaubert-
+Fermat-vá
+Fermat-val
+Fermat-
+Ferenc-híd
+Feldegg-sólyom
+Fayette-té
+Fayette-tel
+Fayette-i
+Fayette-es
+Fayette-
+FVM-mé
+FVM-mel
+FVM-es
+FVM-
+FTP-vé
+FTP-vel
+FTP-s
+FTP-
+FTC-vé
+FTC-vel
+FTC-s
+FTC-
+FSF.hu-vá
+FSF.hu-val
+FSF.hu-s
+FSF.hu-
+FSF.hu	23650
+FSF-fé
+FSF-fel
+FSF-es
+FSF-
+FM-mé
+FM-mel
+FM-es
+FM-
+FKGP-vé
+FKGP-vel
+FKGP-s
+FKGP-
+FHB-vé
+FHB-vel
+FHB-s
+FHB-
+FBI-t
+FBI-os
+FBI-já
+FBI-jal
+FBI-
+F-s
+F-Spotos
+F-Spot
+Exchange-dzsé
+Exchange-dzsel
+Exchange-
+Eustach-kürt
+Európa-szerte	23685
+Etv.-vé
+Etv.-vel
+Etv.-s
+Etv.-beli
+Etv.-
+Etv.	23692
+Etv.	23693
+Erzsébet-híd
+Erie-tó
+Elzász-Lotaringia
+El-Ajún
+Edinburgh-vá
+Edinburgh-val
+Edinburgh-
+Ecsedi-láp
+Eb-vé
+Eb-vel
+Eb-s
+Eb-i
+Eb-
+EVMS-sé
+EVMS-sel
+EVMS-es
+EVMS-
+EUR-rá
+EUR-ral
+EUR-os
+EUR-
+EU-vá
+EU-val
+EU-s
+EU-
+EP-vé
+EP-vel
+EP-s
+EP-
+ENSZ-t
+ENSZ-szé
+ENSZ-szel
+ENSZ-es
+ENSZ-
+ELTE-vé
+ELTE-vel
+ELTE-s
+ELTE-
+EKG-vé
+EKG-vá
+EKG-vel
+EKG-val
+EKG-s
+EKG-
+EIDE-vé
+EIDE-vel
+EIDE-s
+EIDE-
+EHÖK-ös
+EHÖK-ké
+EHÖK-kel
+EHÖK-
+EEG-vé
+EEG-vel
+EEG-s
+EEG-
+ECDL-t
+ECDL-lé
+ECDL-lel
+ECDL-et
+ECDL-es
+ECDL-
+EBESZ-szé
+EBESZ-szel
+EBESZ-es
+EBESZ-beli
+EBESZ-
+E.ON-os
+E.ON-ná
+E.ON-nal
+E.ON-
+E.ON	23789
+E-s
+Déli-pályaudvar
+Déli-Pályaudvar
+Dél-Karolina
+Duna-part
+Dumas-vá
+Dumas-val
+Dumas-
+Down-szindróma
+Down-kór
+Dolák-Saly
+Dodge-os
+Dodge-dzsá
+Dodge-dzsal
+Dodge-
+Disney-vé
+Disney-vel
+Disney-
+Diderot-vá
+Diderot-val
+Diderot-
+Dessay-vé
+Dessay-vel
+Dessay-
+Descartes-tá
+Descartes-tal
+Descartes-
+Delaware-t
+Delaware-rá
+Delaware-ral
+Delaware-ot
+Delaware-
+Danone-ná
+Danone-nal
+Danone-
+Damjanich-csal
+DVD-vé
+DVD-vel
+DVD-s
+DVD-RW-vé
+DVD-RW-vel
+DVD-RW-s
+DVD-RW-
+DVD-RW	23881
+DVD-ROM-os
+DVD-ROM-má
+DVD-ROM-mal
+DVD-ROM-
+DVD-ROM	23886
+DVD-RAM-os
+DVD-RAM-má
+DVD-RAM-mal
+DVD-RAM-
+DVD-RAM	23891
+DVD-R-ré
+DVD-R-rel
+DVD-R-es
+DVD-R-
+DVD-R	23896
+DVD-
+DVD+RW-vé
+DVD+RW-vel
+DVD+RW-s
+DVD+RW-
+DVD±RW-vé
+DVD±RW-vel
+DVD±RW-s
+DVD±RW-
+DTP-vé
+DTP-vel
+DTP-s
+DTP-
+DTD-vé
+DTD-vel
+DTD-s
+DTD-
+DSL-lé
+DSL-lel
+DSL-es
+DSL-
+DPMS-sé
+DPMS-sel
+DPMS-es
+DPMS-
+DOS-szá
+DOS-szal
+DOS-os
+DOS-
+DOI-vá
+DOI-val
+DOI-s
+DOI-
+DOCX-szé
+DOCX-szel
+DOCX-es
+DOCX-
+DNy.-vá
+DNy.-val
+DNy.-ak
+DNy.-
+DNy.	23947
+DNy-tá
+DNy-tal
+DNy-i
+DNy-
+DNS-t
+DNS-sé
+DNS-sel
+DNS-et
+DNS-es
+DNS-
+DMA-vá
+DMA-val
+DMA-s
+DMA-
+DLL-lé
+DLL-lel
+DLL-es
+DLL-
+DK-vá
+DK-val
+DK-té
+DK-tel
+DK-s
+DK-i
+DK-beli
+DK-
+DJ-vé
+DJ-vel
+DJ-s
+DJ-
+DHCP-vé
+DHCP-vel
+DHCP-s
+DHCP-
+DDT-vé
+DDT-vel
+DDT-s
+DDT-
+DDE-vé
+DDE-vel
+DDE-s
+DDE-
+DCOM-os
+DCOM-má
+DCOM-mal
+DCOM-
+DBUS-szá
+DBUS-szal
+DBUS-os
+DBUS-
+D-s
+Cézanne-t
+Cézanne-ot
+Cézanne-ná
+Cézanne-nal
+Cézanne-
+Csörnöc-Herpenyő
+Cstv.-vé
+Cstv.-vel
+Cstv.-s
+Cstv.-beli
+Cstv.-
+Cstv.	24025
+Cstv.	24026
+Csjt.-vé
+Csjt.-vel
+Csjt.-s
+Csjt.-beli
+Csjt.-
+Csjt.	24033
+Csjt.	24034
+Csepel-sziget
+Cro-Magnon
+Creutzfeldt–Jakob-kór
+Covid19-es
+Covid19-cé
+Covid19-cel
+Covid19-
+Covid-járvány
+Covid–19-es
+Covid–19-cé
+Covid–19-cel
+Covid–19-
+Cousteau-vá
+Cousteau-val
+Cousteau-
+Corneille-t
+Corneille-jé
+Corneille-jel
+Corneille-et
+Corneille-
+Cook-szigeteki
+Cook-szigetek
+Comore-szigeteki
+Comore-szigetek
+Commodore-rá
+Commodore-ral
+Commodore-
+Coca-Cola
+Co.-vá
+Co.-val
+Co.-
+Co.	24069
+Co.	24070
+Clemenceau-vá
+Clemenceau-val
+Clemenceau-
+Chrome-má
+Chrome-mal
+Chrome-
+ChatGPT-vé
+ChatGPT-vel
+ChatGPT-s
+ChatGPT-
+Charlie-vá
+Charlie-val
+Charlie-
+Champs-Élysées
+Ce-tung
+Cayenne-t
+Cayenne-né
+Cayenne-nel
+Cayenne-et
+Cayenne-
+Cannes-ná
+Cannes-nal
+Cannes-
+Candide-dá
+Candide-dal
+Candide-
+Camus-vé
+Camus-vel
+Camus-s
+Camus-
+Cambridge-t
+Cambridge-dzsé
+Cambridge-dzsel
+Cambridge-
+Calais-vá
+Calais-val
+Calais-
+CT-vé
+CT-vel
+CT-s
+CT-
+CSS-t
+CSS-sé
+CSS-sel
+CSS-et
+CSS-es
+CSS-
+CRL-lé
+CRL-lel
+CRL-es
+CRL-
+CRC-vé
+CRC-vel
+CRC-s
+CRC-
+CPU-vá
+CPU-val
+CPU-s
+CPU-
+COVID-os
+COVID-dá
+COVID-dal
+COVID-
+CNC-vé
+CNC-vel
+CNC-s
+CNC-
+CIA-vá
+CIA-val
+CIA-s
+CIA-
+CGI-vé
+CGI-vel
+CGI-s
+CGI-
+CEU-vá
+CEU-val
+CEU-s
+CEU-
+CD-vé
+CD-vel
+CD-s
+CD-RW-vé
+CD-RW-vel
+CD-RW-s
+CD-RW-
+CD-RW	24216
+CD-ROM-os
+CD-ROM-má
+CD-ROM-mal
+CD-ROM-
+CD-ROM	24221
+CD-R-ré
+CD-R-rel
+CD-R-es
+CD-R-
+CD-R	24226
+CD-
+CBA-vá
+CBA-val
+CBA-s
+CBA-
+C-s
+Bő
+Bézier-vé
+Bézier-vel
+Bézier-
+Békás-szoros
+Bács-Kiskun
+BÚÉK-os
+BÚÉK-ká
+BÚÉK-kal
+BÚÉK-
+BÉT-té
+BÉT-tel
+BÉT-es
+BÉT-
+Buckingham-palota
+Btk.-vá
+Btk.-val
+Btk.-i
+Btk.-
+Btk.	24269
+Bretagne-nyá
+Bretagne-nyal
+Bretagne-
+Brazzaville-t
+Brazzaville-lé
+Brazzaville-lel
+Brazzaville-et
+Brazzaville-
+Braille-já
+Braille-jal
+Braille-
+Bp.-té
+Bp.-tel
+Bp.-
+Bp.	24294
+Boyle–Mariotte-törvény
+Borsod-Abaúj-Zemplén
+Bordeaux-vá
+Bordeaux-val
+Bordeaux-
+Boole-lá
+Boole-lal
+Boole-
+Bonelli-füzike
+Boden-tó
+Bluetooth-szá
+Bluetooth-szal
+Bluetooth-
+Bertalan-híd
+Berkeley-vé
+Berkeley-vel
+Berkeley-
+Bentley-vé
+Bentley-vel
+Bentley-
+Belvedere-t
+Belvedere-ré
+Belvedere-rel
+Belvedere-
+Beaufort-skála
+Baudelaire-t
+Baudelaire-ré
+Baudelaire-rel
+Baudelaire-et
+Baudelaire-
+Bastille-t
+Bastille-ot
+Bastille-já
+Bastille-jal
+Bastille-
+Barr-test
+Barbie-vá
+Barbie-val
+Barbie-
+Baltimore-rá
+Baltimore-ral
+Baltimore-
+Balaton-felvidék
+Bajkál-tó
+Bajcsy-Zsilinszky
+BVSC-vé
+BVSC-vel
+BVSC-s
+BVSC-
+BTK-vá
+BTK-val
+BTK-s
+BTK-
+BSc-vé
+BSc-vel
+BSc-s
+BSc-et
+BSc-
+BSD-vé
+BSD-vel
+BSD-s
+BSD-
+BRFK-vá
+BRFK-val
+BRFK-s
+BRFK-
+BOOTP-vé
+BOOTP-vel
+BOOTP-s
+BOOTP-
+BNV-vé
+BNV-vel
+BNV-
+BMW-vé
+BMW-vel
+BMW-s
+BMW-
+BMP-vé
+BMP-vel
+BMP-s
+BMP-
+BME-vé
+BME-vel
+BME-s
+BME-
+BM-mé
+BM-mel
+BM-es
+BM-
+BKV-vá
+BKV-val
+BKV-s
+BKV-
+BIOS-szá
+BIOS-szal
+BIOS-os
+BIOS-
+BCG-vé
+BCG-vel
+BCG-s
+BCG-
+BBC-vé
+BBC-vel
+BBC-s
+BBC-
+B9-es
+B9-cé
+B9-cel
+B9-
+B7-té
+B7-tel
+B7-es
+B7-
+B6-tá
+B6-tal
+B6-os
+B6-
+B5-ös
+B5-té
+B5-tel
+B5-
+B3-ot
+B3-má
+B3-mal
+B3-at
+B3-as
+B3-
+B2-vé
+B2-vel
+B2-s
+B2-
+B12-vé
+B12-vel
+B12-s
+B12-
+B1-jei
+B1-gyé
+B1-gyel
+B1-es
+B1-
+B-s
+Azovi-tenger
+Azori-szigetek
+Avtv.-vé
+Avtv.-vel
+Avtv.-s
+Avtv.-beli
+Avtv.-
+Avtv.	24532
+Avtv.	24533
+Attenborough-vá
+Attenborough-val
+Attenborough-
+ArchiCAD-es
+ArchiCAD-dé
+ArchiCAD-del
+ArchiCAD-
+Aral-tó
+Apple-t
+Apple-lé
+Apple-lel
+Apple-
+Appennini-félsziget
+Appalache-t
+Appalache-csé
+Appalache-csel
+Appalache-
+Apollo-program
+Apollinaire-t
+Apollinaire-ré
+Apollinaire-rel
+Apollinaire-et
+Apollinaire-
+Apache-vé
+Apache-vel
+Apache-csá
+Apache-csal
+Apache-
+Antoinette-té
+Antoinette-tel
+Antoinette-
+Antall-lá
+Antall-lal
+Anna-Panna
+Androméda-köd
+Andrew-vá
+Andrew-val
+Andrew-
+Anatole-lá
+Anatole-lal
+Anatole-
+Ampère-t
+Ampère-ré
+Ampère-rel
+Ampère-et
+Ampère-
+Alcsi-Holt-Tisza
+AkH.	107
+Adobe-vá
+Adobe-val
+Adobe-
+Addisz-Abeba
+ActiveX-szé
+ActiveX-szel
+ActiveX-es
+ActiveX-
+Achilles-ín-szakadás
+Achilles-ín
+Achilles-sarok
+Abu-Dzabi
+ATV-vé
+ATV-vel
+ATV-s
+ATV-
+ATP-vé
+ATP-vel
+ATP-s
+ATP-
+ATM-mé
+ATM-mel
+ATM-es
+ATM-
+ATAPI-vá
+ATAPI-val
+ATAPI-s
+ATAPI-
+ATA-vá
+ATA-val
+ATA-s
+ATA-
+ASP-vé
+ASP-vel
+ASP-s
+ASP-
+ASCII-vé
+ASCII-vá
+ASCII-vel
+ASCII-val
+ASCII-s
+ASCII-
+ARP-pá
+ARP-pal
+ARP-os
+ARP-
+APM-mé
+APM-mel
+APM-es
+APM-
+API-vá
+API-val
+API-s
+API-
+APEH-t
+APEH-os
+APEH-hé
+APEH-há
+APEH-hel
+APEH-hal
+APEH-es
+APEH-
+ANSI-vá
+ANSI-val
+ANSI-s
+ANSI-
+AMD-vé
+AMD-vel
+AMD-s
+AMD-
+AIDS-t
+AIDS-szé
+AIDS-szel
+AIDS-es
+AIDS-cé
+AIDS-cel
+AIDS-
+ADSL-lé
+ADSL-lel
+ADSL-es
+ADSL-
+ADHD-vá
+ADHD-val
+ADHD-s
+ADHD-
+ACPI-vé
+ACPI-vel
+ACPI-s
+ACPI-
+ACL-lé
+ACL-lel
+ACL-es
+ACL-
+ABS-t
+ABS-sé
+ABS-szé
+ABS-szel
+ABS-sel
+ABS-et
+ABS-es
+ABS-
+ABC-vé
+ABC-vel
+ABC-s
+ABC-
+ABBA-vá
+ABBA-val
+ABBA-s
+ABBA-
+AB-vé
+AB-vel
+AB-t
+AB-s
+AB-et
+AB-
+A6-tá
+A6-tal
+A6-os
+A6-
+A5-ös
+A5-té
+A5-tel
+A5-
+A4-gyé
+A4-gyel
+A4-es
+A4-
+A3-ot
+A3-má
+A3-mal
+A3-at
+A3-as
+A3-
+A2-vé
+A2-vel
+A2-es
+A2-
+A1-gyé
+A1-gyel
+A1-es
+A1-
+A-s
+A-ré
+A-rel
+A-es
+A-
+900-zá
+900-zal
+900-ot
+900-at
+900-as
+900-
+90.-ké
+90.-kel
+90.-es
+90.-
+90.
+90-né
+90-nel
+90-es
+90-en
+90-ed
+90-
+90-
+90
+9.-ké
+9.-kel
+9.-es
+9.-
+9.
+9-i
+9-i
+9-es
+9-en
+9-ed
+9-e
+9-cé
+9-cel
+9-
+9-
+9
+8B-vé
+8B-vel
+8B-s
+8B-
+800-zá
+800-zal
+800-ot
+800-at
+800-as
+800-
+80.-ká
+80.-kal
+80.-at
+80.-as
+80.-
+80.
+80-ot
+80-ná
+80-nal
+80-at
+80-as
+80-an
+80-ad
+80-
+80-
+80
+8.-ká
+8.-kal
+8.-at
+8.-as
+8.-
+8.
+8-ot
+8-i
+8-i
+8-cá
+8-cal
+8-at
+8-as
+8-an
+8-ad
+8-a
+8-
+8-
+8
+7B-vé
+7B-vel
+7B-s
+7B-
+700-zá
+700-zal
+700-ot
+700-at
+700-as
+700-
+70.-ké
+70.-kel
+70.-es
+70.-
+70.
+70-né
+70-nel
+70-es
+70-en
+70-ed
+70-
+70-
+70
+7.-ké
+7.-kel
+7.-es
+7.-
+7.
+7-té
+7-tel
+7-i
+7-i
+7-es
+7-en
+7-ed
+7-e
+7-
+7-
+7
+6B-vé
+6B-vel
+6B-s
+6B-
+600-zá
+600-zal
+600-ot
+600-at
+600-as
+600-
+60.-ká
+60.-kal
+60.-at
+60.-as
+60.-
+60.
+60-ot
+60-ná
+60-nal
+60-at
+60-as
+60-an
+60-ad
+60-
+60-
+60
+6.-ká
+6.-kal
+6.-at
+6.-as
+6.-
+6.
+6-tá
+6-tal
+6-os
+6-od
+6-i
+6-i
+6-an
+6-a
+6-
+6-
+6
+5B-vé
+5B-vel
+5B-s
+5B-
+500-zá
+500-zal
+500-ot
+500-at
+500-as
+500-
+50.-ké
+50.-kel
+50.-es
+50.-
+50.
+50-né
+50-nel
+50-es
+50-en
+50-ed
+50-
+50-
+50
+5.-ké
+5.-kel
+5.-es
+5.-
+5.
+5-ös
+5-öd
+5-té
+5-tel
+5-i
+5-i
+5-en
+5-e
+5-
+5-
+5
+4K-vá
+4K-val
+4K-s
+4K-
+4B-vé
+4B-vel
+4B-s
+4B-
+444.hu-vá
+444.hu-val
+444.hu-s
+444.hu-
+444.hu	25004
+400-zá
+400-zal
+400-ot
+400-at
+400-as
+400-
+40.-ké
+40.-kel
+40.-es
+40.-
+40.
+40-né
+40-nel
+40-es
+40-en
+40-ed
+40-
+40-
+40
+4.-ké
+4.-kel
+4.-es
+4.-
+4.
+4-i
+4-i
+4-gyé
+4-gyel
+4-es
+4-en
+4-ed
+4-e
+4-
+4-
+4
+3D-vé
+3D-vel
+3D-s
+3D-
+3B-vé
+3B-vel
+3B-s
+3B-
+31-i
+31-e
+300-zá
+300-zal
+300-ot
+300-at
+300-as
+300-
+30.-ká
+30.-kal
+30.-at
+30.-as
+30.-
+30.
+30-ot
+30-i
+30-cá
+30-cal
+30-at
+30-as
+30-an
+30-ad
+30-a
+30-
+30-
+30
+3.-ká
+3.-kal
+3.-at
+3.-as
+3.-
+3.
+3-ot
+3-om
+3-má
+3-mal
+3-i
+3-i
+3-at
+3-as
+3-an
+3-ad
+3-a
+3-
+3-
+3
+2B-vé
+2B-vel
+2B-s
+2B-
+29-i
+29-e
+28-i
+28-a
+27-i
+27-e
+26-i
+26-a
+25-i
+25-e
+24.hu-vá
+24.hu-val
+24.hu-s
+24.hu-
+24.hu	25112
+24-i
+24-e
+23-i
+23-a
+22-i
+22-e
+21-i
+21-e
+2000.-ké
+2000.-kel
+2000.-et
+2000.-
+2000.
+2000-ré
+2000-rel
+2000-es
+2000-
+200-zá
+200-zal
+200-ot
+200-at
+200-as
+200-
+20.-ká
+20.-kal
+20.-at
+20.-as
+20.-
+20.
+20-szá
+20-szal
+20-ot
+20-i
+20-at
+20-as
+20-an
+20-ad
+20-a
+20-
+20-
+20
+2.-ká
+2.-kal
+2.-at
+2.-as
+2.-
+2.
+2-ő
+2-vé
+2-vel
+2-i
+2-i
+2-es
+2-en
+2-ed
+2-ai
+2-a
+2-
+2-
+2
+1B-vé
+1B-vel
+1B-s
+1B-
+19-i
+19-e
+18-i
+18-a
+17-i
+17-e
+16-i
+16-a
+15-i
+15-e
+14-i
+14-e
+13-i
+13-a
+12-i
+12-e
+11.-ké
+11.-kel
+11.-es
+11.-
+11.
+11-i
+11-e
+1000.-ké
+1000.-kel
+1000.-es
+1000.-
+1000.
+1000-ré
+1000-rel
+1000-es
+1000-
+100.-ká
+100.-kal
+100.-at
+100.-as
+100.-
+100.
+100-zá
+100-zal
+100-ot
+100-at
+100-as
+100-
+10.-ké
+10.-kel
+10.-es
+10.-
+10.
+10-zé
+10-zel
+10-i
+10-i
+10-es
+10-en
+10-ed
+10-e
+10-
+10-
+10
+1.-én
+1.-vé
+1.-vel
+1.-s
+1.-
+1.
+1-ji
+1-ji
+1-jei
+1-jei
+1-je
+1-i
+1-gyé
+1-gyel
+1-es
+1-en
+1-ed
+1-
+1-
+1
+02-vé
+02-vel
+02-
+02
+000.-ká
+000.-kal
+000.-at
+000.-as
+000.-
+000.
+000-vá
+000-val
+000-s
+000-ré
+000-rel
+000-ot
+000-os
+000-es
+000-en
+000-ed
+000-dá
+000-dal
+000-
+000-
+00-an
+00-ad
+00-
+0.-ká
+0.-kal
+0.-at
+0.-as
+0.-
+0.
+0-vá
+0-val
+0-s
+0-i
+0-
+0-
+0
+.xlsx-szé
+.xlsx-szel
+.xlsx-es
+.xlsx-
+.xlsx	25293
+.txt-vé
+.txt-vel
+.txt-t
+.txt-s
+.txt-et
+.txt-
+.txt	25299
+.pptx-szé
+.pptx-szel
+.pptx-es
+.pptx-
+.pptx	25304
+.odt-vé
+.odt-vel
+.odt-t
+.odt-s
+.odt-et
+.odt-
+.odt	25310
+.ods-sé
+.ods-sel
+.ods-es
+.ods-
+.ods	25315
+.odp-vé
+.odp-vel
+.odp-t
+.odp-s
+.odp-et
+.odp-
+.odp	25321
+.docx-szé
+.docx-szel
+.docx-es
+.docx-
+.docx	25326
+...	1284
+.	1284
+-öt
+-ön
+-zé
+-zá
+-zsé
+-zsá
+-zsel
+-zsal
+-zel
+-zal
+-vé
+-vá
+-vel
+-val
+-té
+-tá
+-tyé
+-tyá
+-tyel
+-tyal
+-tel
+-tal
+-t
+-sé
+-sá
+-szé
+-szá
+-szel
+-szal
+-sel
+-sal
+-ré
+-rá
+-rel
+-ral
+-pé
+-pá
+-pel
+-pal
+-ot
+-on
+-né
+-ná
+-nyé
+-nyá
+-nyi
+-nyel
+-nyal
+-nel
+-nal
+-mé
+-má
+-mel
+-mal
+-lé
+-lá
+-lyé
+-lyá
+-lyel
+-lyal
+-lel
+-lal
+-ké
+-ká
+-kel
+-kal
+-jű
+-jú
+-jé
+-já
+-jel
+-jal
+-izmus
+-höz
+-hé
+-házifeladat
+-házhozszállítás
+-há
+-hoz
+-hez
+-hel
+-hal
+-gé
+-gá
+-gyé
+-gyá
+-gyel
+-gyal
+-gel
+-gal
+-féle
+-fé
+-fá
+-fel
+-fal
+-et
+-en
+-e	29
+-dé
+-dá
+-dzé
+-dzá
+-dzsé
+-dzsá
+-dzsel
+-dzsal
+-dzel
+-dzal
+-del
+-dal
+-cé
+-cá
+-csé
+-csá
+-csel
+-csal
+-cel
+-cal
+-bé
+-bá
+-bel
+-bal
+-at
+-
+-
+,
+ζ-vá
+ζ-val
+ζ-
+ξ-vé
+ξ-vel
+ξ-
+υ-ná
+υ-nal
+υ-
+ϒ-ná
+ϒ-nal
+ϒ-
+ϑ-vá
+ϑ-val
+ϑ-
+θ-vá
+θ-val
+θ-
+τ-vá
+τ-val
+τ-
+ς-vá
+ς-val
+ς-
+σ-vá
+σ-val
+σ-
+§-t
+§-sá
+§-sal
+§-ot
+§-os
+§-i
+§-
+§
+ρ-vá
+ρ-val
+ρ-
+ψ-vé
+ψ-vel
+ψ-
+ϖ-vé
+ϖ-vel
+ϖ-
+π-vé
+π-vel
+π-
+φ-vé
+φ-vel
+φ-
+‰-nyi
+‰-ké
+‰-kel
+‰-es
+‰-
+‰
+ο-ná
+ο-nal
+ο-
+ω-vá
+ω-val
+ω-
+œuvre-ré
+œuvre-rel
+œuvre-
+ν-vé
+ν-vel
+ν-
+μ-vé
+μ-vel
+μ-
+µm-t
+µm-ré
+µm-rel
+µm-et
+µm-es
+µm-
+µl-t
+µl-ré
+µl-rel
+µl-et
+µl-es
+µl-
+µg-os
+µg-má
+µg-mal
+µg-
+µV-tá
+µV-tal
+µV-os
+µV-
+µF-os
+µF-dá
+µF-dal
+µF-
+λ-vá
+λ-val
+λ-
+κ-vá
+κ-val
+κ-
+ι-vá
+ι-val
+ι-
+γ-vá
+γ-val
+γ-
+€-vá
+€-val
+€-s
+€-
+η-vá
+η-val
+η-
+ε-ná
+ε-nal
+ε-
+δ-vá
+δ-val
+δ-
+°F-os
+°F-ká
+°F-kal
+°F-
+°C-os
+°C-ká
+°C-kal
+°C-
+°-os
+°-ká
+°-kal
+°-i
+°-
+°
+χ-vé
+χ-vel
+χ-
+β-vá
+β-val
+β-
+α-vá
+α-val
+α-
+Ζ-vá
+Ζ-val
+Ζ-
+Ξ-vé
+Ξ-vel
+Ξ-
+Υ-ná
+Υ-nal
+Υ-
+Θ-vá
+Θ-val
+Θ-
+Τ-vá
+Τ-val
+Τ-
+Σ-vá
+Σ-val
+Σ-
+Ρ-vá
+Ρ-val
+Ρ-
+Ψ-vé
+Ψ-vel
+Ψ-
+Π-vé
+Π-vel
+Π-
+Φ-vé
+Φ-vel
+Φ-
+Ο-ná
+Ο-nal
+Ο-
+Ω-vá
+Ω-val
+Ω-os
+Ω-má
+Ω-mal
+Ω-
+Ν-vé
+Ν-vel
+Ν-
+Μ-vé
+Μ-vel
+Μ-
+Λ-vá
+Λ-val
+Λ-
+Κ-vá
+Κ-val
+Κ-
+Ι-vá
+Ι-val
+Ι-
+Γ-vá
+Γ-val
+Γ-
+Η-vá
+Η-val
+Η-
+Ε-ná
+Ε-nal
+Ε-
+Δ-vá
+Δ-val
+Δ-
+Χ-vé
+Χ-vel
+Χ-
+Β-vá
+Β-val
+Β-
+Å-ös
+Å-mé
+Å-mel
+Å-
+Α-vá
+Α-val
+Α-
+%-os
+%-nyi
+%-ká
+%-kal
+%-i
+%-
+%
