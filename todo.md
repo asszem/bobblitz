@@ -1,23 +1,24 @@
 # Todo
-## P0 Uncategorized (open: 1, done: 4)
-- [ ] P0 - add a switch that can toggle wheter hints are available for sent words
+## P1 Dictionary fix (open: 3, done: 0)
+- [ ] P1 - figure out a way to collect word suggestions from users
+- [ ] P3 - update hungarian dictionary with ragozott alakok
+- [ ] P4 - add new words
 
-## P1 Persistence (open: 5, done: 0)
+## P3 Persistence (open: 5, done: 0)
 - [ ] P0 - user can set their name which will be included in local storage
 - [ ] P0 - export save to file
 - [ ] P0 - create a game seed that results in the same words that can be used for the same
 - [ ] P2 - if user profile does not exist when game loaded
 - [ ] P4 - save multiple games in localStore
 
-## P2 Leaderboard (open: 3, done: 0)
+## P3 Leaderboard (open: 3, done: 0)
 - [ ] P0 - create a leaderboard for a specific game
 - [ ] P0 - create a leaderboard list
 - [ ] P0 - create a list of handmade levels
 
-## P3 Game modes (open: 3, done: 0)
-### P2 New modes (open: 1, done: 0)
+## P3 Game modes (open: 3, done: 1)
+### P2 New modes (open: 1, done: 1)
 - [ ] P0 - hide multiple words. check during entering new word whether it is possible to ndd that word.
-- [] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made - reopened at 2026-03-15 03:36
 
 ### P3 Word hide (open: 2, done: 0)
 - [ ] P1 - check board to make sure no other valid word is added
@@ -35,10 +36,6 @@
 - [ ] P0 - report missing word option
 - [ ] P0 - report incorrect word option for revealed list - reopened at 2026-03-14 20:38
 
-## P5 Dictionary fix (open: 2, done: 1)
-- [ ] P3 - update hungarian dictionary with ragozott alakok
-- [ ] P4 - add new words
-
 ## P5 Share game (open: 2, done: 0)
 - [ ] P0 - assign unique id for every word
 - [ ] P0 - keep this id during dictionary updates
@@ -48,10 +45,12 @@
 
 # Done
 
-## P0 Uncategorized (done: 4)
+## P0 Uncategorized (done: 6)
 - [x] P0 - this is a test todo ite - completed at 2026-03-14 15:10
 - [x ] P0 - ask to ID component references - completed at 2026-03-14 20:38
 - [x] P0 - write a workflow summary and reminder for me - completed at 2026-03-15 03:36
+- [x] P0 - add a switch that can toggle wheter hints are available for sent words - completed at 2026-03-16 20:31
+- [x] P0 - when a game received with hints disabled, and the player reshares that game, disable the hint disable toggles - completed at 2026-03-17 01:25
 - [x] P3 - this is another test todo item - completed at 2026-03-14 15:10
 
 ## P2 Game modes (done: 5)
@@ -69,8 +68,9 @@
 - [x] P0 - update the color scheme for better visibility - completed at 2026-03-14 19:22
 - [ x] P0 - update button visibility - completed at 2026-03-14 19:22
 
-## P3 Game modes (done: 0)
-### P2 New modes (done: 0)
+## P3 Game modes (done: 1)
+### P2 New modes (done: 1)
+- [x] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made - completed at 2026-03-16 20:31
 
 
 ## P4 Feedback (done: 1)
