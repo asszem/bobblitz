@@ -35,8 +35,14 @@
 - Step statuses:
   - `(open)` — not yet implemented
   - `(fix)` — previously implemented but not working correctly; needs a fix
+  - `(change)` — a previously defined requirement was changed and the step now tracks the updated requirement
   - `(test)` — implemented (or fixed), awaiting user test approval
   - `(done)` — approved by user or manually marked done
+- Priority markers:
+  - Exclamation marks are valid priority markers on step statuses, for example `(fix!)`, `(fix!!)`, `(change!)`, `(change!!)`
+  - More exclamation marks mean higher priority
+  - Treat steps with priority markers as more important than the same base status without priority markers
+  - Priority markers do not change the underlying status meaning; for example `(fix!!)` is still a fix step, but urgent
 - Header statuses:
   - `(open)` — at least one step is open
   - `(test)` — all steps are at least (test) but not all (done)

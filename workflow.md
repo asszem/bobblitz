@@ -58,8 +58,11 @@ Concrete, step-by-step implementation work.
 |--------|---------|
 | `(open)` | Not yet started |
 | `(fix)` | Implemented but broken, needs a fix |
+| `(change)` | A prior requirement was changed; this step tracks the updated requirement |
 | `(test)` | Implemented — awaiting user approval |
 | `(done)` | Approved by user |
+
+Status priority markers are also allowed: `(fix!)`, `(fix!!)`, `(change!)`, `(change!!)` and similar. More `!` means higher priority, and those steps should be treated as more important than the same base status without priority markers.
 
 **Claude sets steps to `(test)` after implementing. Only the user sets `(done)`.**
 
