@@ -1,8 +1,12 @@
 # Todo
-## P1 Dictionary fix (open: 3, done: 0)
-- [ ] P1 - figure out a way to collect word suggestions from users
-- [ ] P3 - update hungarian dictionary with ragozott alakok
-- [ ] P4 - add new words
+## P0 Uncategorized (open: 2, done: 6)
+- [ ] P0 - merge (cherry pick) implementation rules change only to main
+- [ ] P3 - implement i13 with Claude
+- P2 Try git worktree feature to simultaneously run agents on different branches
+
+## P1 Dictionary fix (open: 2, done: 1)
+- [ ] P1 - update feedback wording to mention missing word
+- [ ] P3 - update hungarian dictionary with ragozott alakok and többes szám
 
 ## P3 Persistence (open: 5, done: 0)
 - [ ] P0 - user can set their name which will be included in local storage
@@ -11,19 +15,17 @@
 - [ ] P2 - if user profile does not exist when game loaded
 - [ ] P4 - save multiple games in localStore
 
-## P3 Leaderboard (open: 3, done: 0)
-- [ ] P0 - create a leaderboard for a specific game
+## P3 Leaderboard (open: 2, done: 1)
 - [ ] P0 - create a leaderboard list
 - [ ] P0 - create a list of handmade levels
 
 ## P3 Game modes (open: 3, done: 1)
-### P2 New modes (open: 1, done: 1)
-- [ ] P0 - hide multiple words. check during entering new word whether it is possible to ndd that word.
-
-### P3 Word hide (open: 2, done: 0)
+### P1 Word hide (open: 2, done: 0)
 - [ ] P1 - check board to make sure no other valid word is added
 - [ ] P4 - validate findable word (no spaces, language valid characters)
 
+### P2 New modes (open: 1, done: 1)
+- [ ] P0 - In Hide word mode, option to hide multiple words. check during entering new word whether it is possible to ndd that word.
 
 ## P3 UI (open: 1, done: 2)
 - [ ] P0 - play mode redesign - when in game phase, hide controls, options, footer
@@ -32,9 +34,8 @@
 - [ ] P0 - option to combine languages
 - [ ] P0 - adjustable grid size
 
-## P4 Feedback (open: 2, done: 1)
+## P4 Feedback (open: 1, done: 2)
 - [ ] P0 - report missing word option
-- [ ] P0 - report incorrect word option for revealed list - reopened at 2026-03-14 20:38
 
 ## P5 Share game (open: 2, done: 0)
 - [ ] P0 - assign unique id for every word
@@ -52,6 +53,9 @@
 - [x] P0 - add a switch that can toggle wheter hints are available for sent words - completed at 2026-03-16 20:31
 - [x] P0 - when a game received with hints disabled, and the player reshares that game, disable the hint disable toggles - completed at 2026-03-17 01:25
 - [x] P3 - this is another test todo item - completed at 2026-03-14 15:10
+
+## P1 Dictionary fix (done: 1)
+- [x] P4 - add new words - completed at 2026-03-18 00:11
 
 ## P2 Game modes (done: 5)
 ### P1 Word hide (done: 5)
@@ -73,8 +77,12 @@
 - [x] P0 - set minimum words and maximum words. add random characters to fill up the space and confirm that no valid word can be made - completed at 2026-03-16 20:31
 
 
-## P4 Feedback (done: 1)
+## P3 Leaderboard (done: 1)
+- [x] P0 - create a leaderboard for a specific game - completed at 2026-03-18 00:11
+
+## P4 Feedback (done: 2)
 - [x ] P0 - add feedback and name to header - completed at 2026-03-14 19:22
+- [x] P0 - report incorrect word option for revealed list - completed at 2026-03-18 00:11
 
 ## P4 Usability (done: 1)
 - [x ] P0 - fix less sensitive vertical movement - completed at 2026-03-15 03:36
