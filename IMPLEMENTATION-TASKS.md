@@ -1,16 +1,7 @@
-# (open) i13 Report incorrect words flow
-(open) i13-1 When all words are revealed, add a "Report incorrect words" button
-(open) i13-2 When the button is pressed, show a localized label instructing the user to click incorrect words
-(open) i13-3 When a user clicks a word, mark it as selected for reporting and highlight it differently
-(open) i13-4 When a user clicks an already selected word again, deselect it
-(open) i13-5 Add two buttons below the selection area: "Back" and "Send report"
-(open) i13-6 When Back is pressed, return to the state from before "Report incorrect words" was opened
-(open) i13-7 When Send report is pressed, display a modal with a localized subject line in the format "Incorrect words found in [game version number, iso date]" and a body listing the incorrect words one per line
-(open) i13-8 In the report modal, display 3 buttons: "Close", "Copy to Clipboard", and "Send by email"
-(open) i13-9 When Close is pressed, return to incorrect word selection
-(open) i13-10 When Copy to Clipboard is pressed, copy the message subject and body to the clipboard and keep the modal open
-(open) i13-11 When Send by email is pressed, open a `mailto:` link to `asszem78@gmail.com` with the subject and body prepopulated, and keep the modal open
-
+# (open) i14 Game generation validations
+(open) i14-1 After the actual words are selected for a game and the letters are filled, verify that no other valid words remain on the board
+(open) i14-2 If another valid word is found, change one or more letters to keep the selected words while removing the additional valid word
+(open) i14-3 After changing letters, verify that the changes do not introduce any new valid words
 
 # (open) i11 Dictionary update (pass 4)
 (open) i11-1 Strip everything from the `/` onwards (including `/`) on each line of hu_HU-ispell-original.dic; save stripped lines to a separate file (pass 4, step 1)

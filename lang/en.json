@@ -51,6 +51,7 @@
     "reportModalTitle": "Incorrect word report",
     "reportSubjectLabel": "Subject",
     "reportBodyLabel": "Message",
+    "reportModalCopyNote": "The message above was copied. Click the email link and paste it there.",
     "reportModalClose": "Close",
     "reportModalCopy": "Copy to Clipboard",
     "reportModalEmail": "Send by email",
