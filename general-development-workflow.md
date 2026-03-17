@@ -72,7 +72,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Task headers follow the format: `# (Status) iN Description`
 - Steps follow the format: `(status) iN-N Description`
 - IDs are permanent — never reuse an iN ID, even after a task is moved to `implementations-done.md`.
-- Step statuses: `(open)` = not started, `(fix)` = implemented but broken and needs a fix, `(test)` = implemented/fixed and awaiting user approval, `(done)` = approved by user.
+- Step statuses: `(open)` = not started, `(fix)` = implemented but broken and needs a fix, `(change)` = a prior requirement was changed and this step tracks the updated requirement, `(test)` = implemented/fixed and awaiting user approval, `(done)` = approved by user.
+- Priority markers are valid on step statuses: for example `(fix!)`, `(fix!!)`, `(change!)`, `(change!!)`; more `!` means higher priority and these steps should be treated as more important than the same base status without priority markers.
 - When implementing or fixing a step, set it to `(test)` — never set to `(done)` yourself.
 - Header status: `(open)` if any step is open, `(test)` if all implemented but not all approved, `(done)` only when all steps are done.
 - When asked to implement `iN`, only implement open steps under that exact task. Never touch steps from a different task ID.
@@ -121,8 +122,14 @@ All domain rules (validation, business logic, constraints) live in **`RULES.md`*
 - Step statuses:
   - `(open)` — not yet implemented
   - `(fix)` — previously implemented but not working correctly; needs a fix
+  - `(change)` — a previously defined requirement was changed and the step now tracks the updated requirement
   - `(test)` — implemented (or fixed), awaiting user test approval
   - `(done)` — approved by user or manually marked done
+- Priority markers:
+  - Exclamation marks are valid priority markers on step statuses, for example `(fix!)`, `(fix!!)`, `(change!)`, `(change!!)`
+  - More exclamation marks mean higher priority
+  - Treat steps with priority markers as more important than the same base status without priority markers
+  - Priority markers do not change the underlying status meaning; for example `(fix!!)` is still a fix step, but urgent
 - Header statuses:
   - `(open)` — at least one step is open
   - `(test)` — all steps are at least (test) but not all (done)
