@@ -1,3 +1,34 @@
+# (done) i13 Report incorrect words flow - completed at 2026-03-18 00:00
+
+- (done) i13-1 When all words are revealed, add a "Report incorrect words" button
+- (done) i13-2 When the button is pressed, show a localized label instructing the user to click incorrect words
+- (done) i13-3 When a user clicks a word, mark it as selected for reporting and highlight it differently
+- (done) i13-4 When a user clicks an already selected word again, deselect it
+- (done) i13-5 Add two buttons below the selection area: "Back" and "Send report"
+- (done) i13-6 When Back is pressed, return to the state from before "Report incorrect words" was opened
+- (done) i13-7 When Send report is pressed, display a modal with a localized subject line in the format "Incorrect words found in [game version number, iso date]" and a body listing the incorrect words one per line
+- (done) i13-8 In the report modal, display 3 buttons: "Close", "Copy to Clipboard", and "Send by email"
+- (done) i13-9 When Close is pressed, return to incorrect word selection
+- (done) i13-10 When Copy to Clipboard is pressed, copy the message subject and body to the done and keep the modal open
+- (done) i13-11 When Send by email is pressed, open a `mailto:` link to `asszem78@gmail.com` with the subject and body prepopulated, and keep the modal open
+- (done) i13-12 Show the "Send report" and "Back" buttons only while incorrect-word reporting mode is active
+- (done) i13-13 Place the "Report incorrect words" button under the "Share game" and "New game" buttons
+- (done) i13-14 Make the "Send report" and "Back" buttons the same height as the other game buttons, like share game, new game, etc. Send report button text should be single line
+- (done) i13-15 When "Report incorrect words" is pressed, hide it and move the back and send report button to the place of the report incorrect words button 
+- (done) i13-16 On the send report modal, place the "Send by email" button centered above the bottom row, and place the "Close" and "Copy to Clipboard" buttons centered on the bottom row
+- (done) i13-17 Display the email address on the send report modal
+- (done) i13-18 Show the "Back" and "Send report" buttons only when the user pressed the "report incorrect words button". Display these two buttons where the report button was after it was pressed
+- (done) i13-19 Move the "Report incorrect word" button below the list of found words and make it the same size and color as the footer feedback button
+- (done) i13-20 Horizontally center the "Report incorrect words" button and move it a bit further down from the word list
+- (done) i13-21 Make the "Back" and "Send report" buttons the same height as the "Report incorrect words" button
+- (done) i13-22 When the "Report incorrect words" button is pressed, display the "Click on the incorrect words" label where the button was, and keep the chip positions fixed during the entire flow
+- (done) i13-23 Review the entire flow so the "Back" and "Send report" buttons are not visible when the game starts; they should appear only after the user clicks "Report incorrect words"
+- (done) i13-24 Remove the green glow effect under the "Send report" button
+- (done) i13-25 Remove the send email and copy to clipboard button. When the modal is opened, automatically copy the content to the clipboard. So when an empty email is opened, the user can paste it. Add a description that informs the user about this.
+- (done) i13-26 Remove the Subject line from the modal and include the subject as the first line of the message in the body
+- (done) i13-27 Remove the subject field label and display from the modal. Just keep the Message. Inside the message body, display the content that was copied to the clipboard. Change its label from "Message" to "Copied to clipboard:"
+- (done) i13-28 Do not display the "Report incorrect words" button in the Hide a Word game mode
+
 # (done) i9 Share game with hint/reveal restrictions - completed at 2026-03-15
 
 - (done) i9-1 Add two toggle buttons to the share game modal (c9-6): "Disable hints" and "Disable reveal words", both off by default

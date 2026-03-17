@@ -593,20 +593,95 @@
     }
 
     .report-selection-label {
-      margin: 0 0 12px;
+      margin: 0;
       color: #a5b4fc;
       font-size: 0.84rem;
       letter-spacing: 0.02em;
+      text-align: center;
     }
+
+    .report-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      min-height: 44px;
+    }
+
+    #report-words-btn,
+    .report-actions .btn {
+      background: transparent;
+      border: 1.5px solid #2a2a44;
+      border-radius: 50px;
+      color: #666688;
+      font-size: 0.82rem;
+      padding: 7px 16px;
+      min-height: 36px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      outline: none;
+      white-space: nowrap;
+    }
+
+    #report-words-btn:hover  { color: #9999bb; border-color: #3a3a5a; }
+    #report-words-btn:active { transform: scale(0.94); }
 
     .report-actions {
       display: flex;
       gap: 10px;
-      margin-top: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .report-actions .btn {
-      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #report-send-btn {
+      box-shadow: none;
+    }
+
+    .report-modal-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .report-modal-bottom-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .report-email-line {
+      margin-top: 12px;
+      text-align: center;
+      color: #c4c9e8;
+      font-size: 0.92rem;
+    }
+
+    .report-copy-note {
+      margin-top: 12px;
+      text-align: center;
+      color: #c4c9e8;
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .report-email-line a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .report-email-line a:hover {
+      color: #e94560;
     }
 
     .report-preview {
@@ -878,7 +953,6 @@
       <button class="btn btn-ghost" id="hint-btn" style="display:none"></button>
     </div>
     <div class="action-row" id="action-row-bottom">
-      <button class="btn btn-warning" id="report-words-btn" style="display:none"></button>
       <button class="btn btn-ghost" id="share-btn">Játék megosztása</button>
       <button class="btn btn-ghost" id="new-btn">Új játék</button>
       <button class="btn btn-ghost" id="entry-close-btn" style="display:none">Close</button>
@@ -892,11 +966,14 @@
     <h3 id="found-words-lbl">TalĂˇlt szavak</h3>
     <span id="word-tally">0</span>
   </div>
-  <p id="report-selection-label" class="report-selection-label" hidden></p>
   <div id="words-list"></div>
-  <div id="report-actions" class="report-actions" hidden>
-    <button class="btn btn-ghost" id="report-back-btn"></button>
-    <button class="btn btn-danger" id="report-send-btn" disabled></button>
+  <div class="report-controls">
+    <p id="report-selection-label" class="report-selection-label" hidden></p>
+    <button id="report-words-btn" hidden></button>
+    <div id="report-actions" class="report-actions" hidden>
+      <button class="btn btn-ghost" id="report-back-btn"></button>
+      <button class="btn btn-danger" id="report-send-btn" disabled></button>
+    </div>
   </div>
 </div>
 
@@ -934,17 +1011,14 @@
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="report-modal-title">
     <h3 id="report-modal-title" class="modal-title"></h3>
     <div class="report-preview">
-      <span id="report-subject-label" class="report-preview-label"></span>
-      <div id="report-subject-box" class="report-preview-box"></div>
-    </div>
-    <div class="report-preview">
-      <span id="report-body-label" class="report-preview-label"></span>
       <div id="report-body-box" class="report-preview-box"></div>
     </div>
-    <div class="modal-actions">
-      <button class="btn btn-ghost" id="report-modal-close-btn"></button>
-      <button class="btn btn-ghost" id="report-modal-copy-btn"></button>
-      <button class="btn btn-danger" id="report-modal-email-btn"></button>
+    <p id="report-copy-note" class="report-copy-note"></p>
+    <p id="report-email-line" class="report-email-line"></p>
+    <div class="report-modal-actions">
+      <div class="report-modal-bottom-actions">
+        <button class="btn btn-ghost" id="report-modal-close-btn"></button>
+      </div>
     </div>
   </div>
 </div>
@@ -1354,13 +1428,10 @@ function buildGameWordSets(words) {
   const reportSendBtn        = document.getElementById('report-send-btn');
   const reportModal          = document.getElementById('report-modal');
   const reportModalTitle     = document.getElementById('report-modal-title');
-  const reportSubjectLabel   = document.getElementById('report-subject-label');
-  const reportSubjectBox     = document.getElementById('report-subject-box');
-  const reportBodyLabel      = document.getElementById('report-body-label');
   const reportBodyBox        = document.getElementById('report-body-box');
+  const reportCopyNote       = document.getElementById('report-copy-note');
+  const reportEmailLine      = document.getElementById('report-email-line');
   const reportModalCloseBtn  = document.getElementById('report-modal-close-btn');
-  const reportModalCopyBtn   = document.getElementById('report-modal-copy-btn');
-  const reportModalEmailBtn  = document.getElementById('report-modal-email-btn');
 
   function clearSavedGame() {
     try {
@@ -2190,7 +2261,7 @@ function buildGameWordSets(words) {
   }
 
   function canReportIncorrectWords() {
-    return revealed && found.size > 0;
+    return currentMode !== MODE_HIDE_WORD && revealed && found.size > 0;
   }
 
   function syncReportSelectionStyles() {
@@ -2202,9 +2273,10 @@ function buildGameWordSets(words) {
 
   function updateReportUi() {
     const active = reportMode && canReportIncorrectWords();
-    reportWordsBtn.style.display = !active && canReportIncorrectWords() ? '' : 'none';
+    reportWordsBtn.hidden = !(canReportIncorrectWords() && !active);
     reportSelectionLabel.hidden = !active;
     reportActionsEl.hidden = !active;
+    reportActionsEl.style.display = reportActionsEl.hidden ? 'none' : 'flex';
     reportSendBtn.disabled = reportSelectedWords.size < 1;
     syncReportSelectionStyles();
   }
@@ -2232,17 +2304,18 @@ function buildGameWordSets(words) {
       { version: getVersionNumber(), date: getBuildDateIso() }
     );
     const words = [...reportSelectedWords].sort((a, b) => a.localeCompare(b, lang === 'hu' ? 'hu-HU' : 'en-US'));
-    return { subject, body: words.join('\n') };
+    const body = words.join('\n');
+    const clipboardText = body ? `${subject}\n\n${body}` : subject;
+    return { subject, body, clipboardText };
   }
 
   async function copyIncorrectWordReport() {
     const report = buildIncorrectWordReport();
-    const text = `${report.subject}\n\n${report.body}`;
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(report.clipboardText);
     } catch (_) {
       const ta = document.createElement('textarea');
-      ta.value = text;
+      ta.value = report.clipboardText;
       document.body.appendChild(ta);
       ta.select();
       document.execCommand('copy');
@@ -2251,25 +2324,40 @@ function buildGameWordSets(words) {
     showToast(t().shareModalCopied || 'Copied!');
   }
 
-  function openIncorrectWordEmail() {
-    const report = buildIncorrectWordReport();
-    const href = `mailto:asszem78@gmail.com?subject=${encodeURIComponent(report.subject)}&body=${encodeURIComponent(report.body)}`;
-    window.location.href = href;
+  function launchMailto(href) {
+    const link = document.createElement('a');
+    link.href = href;
+    link.target = '_self';
+    link.rel = 'noopener';
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    try {
+      window.location.href = href;
+    } catch (_) {}
   }
 
-  function openReportModal() {
+  function openIncorrectWordEmail() {
+    launchMailto('mailto:asszem78@gmail.com');
+  }
+
+  function updateReportEmailLink() {
+    const label = t().feedbackEmailLabel || 'Send email to';
+    reportEmailLine.innerHTML = `${label} <a href="mailto:asszem78@gmail.com">asszem78@gmail.com</a>`;
+  }
+
+  async function openReportModal() {
     const s = t();
     const report = buildIncorrectWordReport();
     reportModalTitle.textContent = s.reportModalTitle || 'Incorrect word report';
-    reportSubjectLabel.textContent = s.reportSubjectLabel || 'Subject';
-    reportBodyLabel.textContent = s.reportBodyLabel || 'Message';
-    reportSubjectBox.textContent = report.subject;
-    reportBodyBox.textContent = report.body;
+    reportBodyBox.textContent = report.clipboardText;
+    reportCopyNote.textContent = s.reportModalCopyNote || 'The message above was copied. Click the email link and paste it there.';
+    updateReportEmailLink();
     reportModalCloseBtn.textContent = s.reportModalClose || 'Close';
-    reportModalCopyBtn.textContent = s.reportModalCopy || 'Copy to Clipboard';
-    reportModalEmailBtn.textContent = s.reportModalEmail || 'Send by email';
     reportModal.hidden = false;
     reportModal.setAttribute('aria-hidden', 'false');
+    await copyIncorrectWordReport();
     reportModalCloseBtn.focus();
   }
 
@@ -2391,11 +2479,9 @@ document.getElementById('lbl-score').textContent       = s.score;
     document.getElementById('feedback-modal-bluesky-label').textContent = s.feedbackBlueskyLabel || 'Contact me on BlueSky';
     document.getElementById('feedback-modal-close-btn').textContent = s.feedbackClose      || 'Close';
     reportModalTitle.textContent = s.reportModalTitle || 'Incorrect word report';
-    reportSubjectLabel.textContent = s.reportSubjectLabel || 'Subject';
-    reportBodyLabel.textContent = s.reportBodyLabel || 'Message';
+    reportCopyNote.textContent = s.reportModalCopyNote || 'The message above was copied. Click the email link and paste it there.';
+    updateReportEmailLink();
     reportModalCloseBtn.textContent = s.reportModalClose || 'Close';
-    reportModalCopyBtn.textContent = s.reportModalCopy || 'Copy to Clipboard';
-    reportModalEmailBtn.textContent = s.reportModalEmail || 'Send by email';
     setHideWordError('');
     if (!bestWord) bestEl.textContent = '0';
     if (found.size > 0) tallyEl.textContent = getTallyText(found.size);
@@ -2525,7 +2611,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     const inHideWord = currentMode === MODE_HIDE_WORD && !enterLettersPhase;
     document.getElementById('reveal-btn').style.display = inEntry ? 'none' : '';
     document.getElementById('hint-btn').style.display   = inHideWord ? '' : 'none';
-    reportWordsBtn.style.display = !inEntry && !reportMode && canReportIncorrectWords() ? '' : 'none';
+    reportWordsBtn.hidden = !!(inEntry || !canReportIncorrectWords() || reportMode);
     document.getElementById('share-btn').style.display  = inEntry ? 'none' : '';
     document.getElementById('new-btn').style.display    = inEntry ? 'none' : '';
     entryCloseBtn.style.display = inEntry ? '' : 'none';
@@ -2533,6 +2619,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     wordAreaEl.style.display    = inEntry ? 'none' : '';
     reportSelectionLabel.hidden = !(reportMode && !inEntry);
     reportActionsEl.hidden = !(reportMode && !inEntry);
+    reportActionsEl.style.display = reportActionsEl.hidden ? 'none' : 'flex';
   }
 
   function applySharedRestrictions() {
@@ -2798,8 +2885,12 @@ hideWordModal.addEventListener('click', e => {
   });
   reportSendBtn.addEventListener('click', openReportModal);
   reportModalCloseBtn.addEventListener('click', closeReportModal);
-  reportModalCopyBtn.addEventListener('click', copyIncorrectWordReport);
-  reportModalEmailBtn.addEventListener('click', openIncorrectWordEmail);
+  reportEmailLine.addEventListener('click', e => {
+    const link = e.target.closest('a');
+    if (!link || !reportEmailLine.contains(link)) return;
+    e.preventDefault();
+    openIncorrectWordEmail();
+  });
   reportModal.addEventListener('click', e => { if (e.target === reportModal) closeReportModal(); });
   document.addEventListener('keydown', e => {
     if (enterLettersPhase) {
@@ -2838,7 +2929,7 @@ hideWordModal.addEventListener('click', e => {
   addModalArrowNav(winModal,        () => [winShareBtn, winNewBtn]);
   addModalArrowNav(hideWordModal,   () => [hideWordCancelBtn, document.getElementById('hide-word-start-btn')]);
   addModalArrowNav(entryReadyModal, () => [entryReadyBackBtn, entryReadyShareBtn, entryReadyPlayBtn]);
-  addModalArrowNav(reportModal,     () => [reportModalCloseBtn, reportModalCopyBtn, reportModalEmailBtn]);
+  addModalArrowNav(reportModal,     () => [reportModalCloseBtn]);
   wordsList.addEventListener('mouseleave', () => {
     hoveredChip = null;
     clearHighlight();
