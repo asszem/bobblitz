@@ -1,8 +1,8 @@
 # Todo
-## P0 Uncategorized (open: 2, done: 6)
-- [ ] P0 - merge (cherry pick) implementation rules change only to main
+## P0 Uncategorized (open: 3, done: 6)
+- [ ] P0 - merge (cherry pick) implementation rules and file name change commits to main
+- [ ] P2 Try git worktree feature to simultaneously run agents on different branches
 - [ ] P3 - implement i13 with Claude
-- P2 Try git worktree feature to simultaneously run agents on different branches
 
 ## P1 Dictionary fix (open: 2, done: 1)
 - [ ] P1 - update feedback wording to mention missing word
@@ -26,6 +26,7 @@
 
 ### P2 New modes (open: 1, done: 1)
 - [ ] P0 - In Hide word mode, option to hide multiple words. check during entering new word whether it is possible to ndd that word.
+
 
 ## P3 UI (open: 1, done: 2)
 - [ ] P0 - play mode redesign - when in game phase, hide controls, options, footer

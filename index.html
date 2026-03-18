@@ -981,7 +981,7 @@
 
 <footer>
   <button id="feedback-btn"></button>
-  <div id="version-info">v1.1.1-codex-i13 &middot; 2026-03-17</div>
+  <div id="version-info">v1.1.2-codex-i13 &middot; 2026-03-17</div>
 </footer>
 
 <div id="feedback-modal" class="modal-backdrop" hidden aria-hidden="true">
@@ -2935,14 +2935,8 @@ hideWordModal.addEventListener('click', e => {
     clearHighlight();
   });
   wordsList.addEventListener('click', e => {
-    if (!reportMode) return;
     const chip = e.target.closest('.chip');
-    if (!chip || !wordsList.contains(chip)) return;
-    const word = (chip.dataset.word || '').trim().toUpperCase();
-    if (!word) return;
-    if (reportSelectedWords.has(word)) reportSelectedWords.delete(word);
-    else reportSelectedWords.add(word);
-    updateReportUi();
+    toggleReportChipSelection(chip);
   });
   window.addEventListener('blur', () => { hoveredChip = null; clearHighlight(); });
 
@@ -2953,6 +2947,15 @@ hideWordModal.addEventListener('click', e => {
       : `${found.size} / ?`;
     const allFound = totalWords > 0 && found.size >= totalWords;
     document.getElementById('reveal-btn').disabled = revealed || allFound;
+  }
+
+  function toggleReportChipSelection(chip) {
+    if (!reportMode || !chip || !wordsList.contains(chip)) return;
+    const word = (chip.dataset.word || '').trim().toUpperCase();
+    if (!word) return;
+    if (reportSelectedWords.has(word)) reportSelectedWords.delete(word);
+    else reportSelectedWords.add(word);
+    updateReportUi();
   }
 
   function calcScore(word) {
@@ -2987,10 +2990,14 @@ hideWordModal.addEventListener('click', e => {
       clearHighlight();
       highlightCurrentHoveredChip();
     }, { passive: false });
-    chip.addEventListener('touchend', () => {
+    chip.addEventListener('touchend', e => {
+      if (reportMode) {
+        e.preventDefault();
+        toggleReportChipSelection(chip);
+      }
       hoveredChip = null;
       clearHighlight();
-    });
+    }, { passive: false });
     chip.addEventListener('touchcancel', () => {
       hoveredChip = null;
       clearHighlight();
@@ -3021,10 +3028,14 @@ hideWordModal.addEventListener('click', e => {
       clearHighlight();
       highlightCurrentHoveredChip();
     }, { passive: false });
-    chip.addEventListener('touchend', () => {
+    chip.addEventListener('touchend', e => {
+      if (reportMode) {
+        e.preventDefault();
+        toggleReportChipSelection(chip);
+      }
       hoveredChip = null;
       clearHighlight();
-    });
+    }, { passive: false });
     chip.addEventListener('touchcancel', () => {
       hoveredChip = null;
       clearHighlight();
