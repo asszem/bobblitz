@@ -10,6 +10,8 @@ const APP_SHELL = [
   './lang/hu.words',
   './assets/icon.svg',
   './assets/icon-maskable.svg',
+  './assets/social-preview.png',
+  './assets/social-preview.svg',
   './assets/lexi.png',
   './assets/kavics.JPG',
 ];
