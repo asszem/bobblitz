@@ -1,0 +1,26 @@
+{
+  "name": "BöbBlitz",
+  "short_name": "BöbBlitz",
+  "description": "A solo word-hunt game with English and Hungarian boards, sharable puzzles, and offline play.",
+  "lang": "hu",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0e0e1a",
+  "theme_color": "#0e0e1a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

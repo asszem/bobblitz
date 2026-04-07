@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="BöbBlitz is a solo word-hunt game with English and Hungarian boards, sharable puzzles, and offline play support.">
+  <meta name="theme-color" content="#0e0e1a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BöbBlitz">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/lexi.png">
   <title>BöbBlitz</title>
   <style>
     *, *::before, *::after {
@@ -1322,6 +1331,15 @@ const GAME_GENERATION_RULES = Object.freeze({
 });
 const SAVE_KEY     = 'bobblitz-save-v1';
 const SETTINGS_KEY = 'bobblitz-settings-v1';
+
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(err => {
+      console.error('Service worker registration failed:', err);
+    });
+  }, { once: true });
+}
 
 function loadSettings() {
   try {
@@ -3407,6 +3425,7 @@ hideWordModal.addEventListener('click', e => {
   }
 
   // â”€â”€ Start â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  registerServiceWorker();
   loadSettings();
   (async function boot() {
     const fromUrl = await tryLoadFromUrl();

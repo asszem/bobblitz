@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0e0e1a">
+  <title>BöbBlitz Offline</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top, rgba(77, 150, 255, 0.24), transparent 40%),
+        linear-gradient(180deg, #17172a 0%, #0e0e1a 100%);
+      color: #f4f5ff;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    main {
+      width: min(440px, 100%);
+      padding: 28px 24px;
+      border-radius: 24px;
+      background: rgba(21, 23, 43, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 7vw, 2.8rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 40%, #6bcb77 70%, #4d96ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.6;
+      color: #d8daf7;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>BöbBlitz</h1>
+    <p>The app is offline and the game shell is not cached yet. Open BöbBlitz once while connected, then it will keep working without a network connection.</p>
+  </main>
+</body>
+</html>
