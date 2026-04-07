@@ -48,11 +48,11 @@
 # Done
 
 ## P0 Uncategorized (done: 6)
-- [x] P0 - this is a test todo ite - completed at 2026-03-14 15:10
-- [x ] P0 - ask to ID component references - completed at 2026-03-14 20:38
-- [x] P0 - write a workflow summary and reminder for me - completed at 2026-03-15 03:36
-- [x] P0 - add a switch that can toggle wheter hints are available for sent words - completed at 2026-03-16 20:31
 - [x] P0 - when a game received with hints disabled, and the player reshares that game, disable the hint disable toggles - completed at 2026-03-17 01:25
+- [x] P0 - add a switch that can toggle wheter hints are available for sent words - completed at 2026-03-16 20:31
+- [x] P0 - write a workflow summary and reminder for me - completed at 2026-03-15 03:36
+- [x ] P0 - ask to ID component references - completed at 2026-03-14 20:38
+- [x] P0 - this is a test todo ite - completed at 2026-03-14 15:10
 - [x] P3 - this is another test todo item - completed at 2026-03-14 15:10
 
 ## P1 Dictionary fix (done: 1)
@@ -60,11 +60,11 @@
 
 ## P2 Game modes (done: 5)
 ### P1 Word hide (done: 5)
+- [x] P2 - add next letter hint for szórejtő - completed at 2026-03-14 19:22
 - [x] P0 - test item in word hide j - completed at 2026-03-14 15:10
 - [x] P2 - marked as done - completed at 2026-03-14 15:06
 - [x] P2 - marked as done with wxtra whitespaces - completed at 2026-03-14 15:06
 - [x] P2 - marked as done with wxtra whitespaces - completed at 2026-03-14 15:06
-- [x] P2 - add next letter hint for szórejtő - completed at 2026-03-14 19:22
 
 
 ## P2 Dictionary fix (done: 0)
@@ -82,8 +82,8 @@
 - [x] P0 - create a leaderboard for a specific game - completed at 2026-03-18 00:11
 
 ## P4 Feedback (done: 2)
-- [x ] P0 - add feedback and name to header - completed at 2026-03-14 19:22
 - [x] P0 - report incorrect word option for revealed list - completed at 2026-03-18 00:11
+- [x ] P0 - add feedback and name to header - completed at 2026-03-14 19:22
 
 ## P4 Usability (done: 1)
 - [x ] P0 - fix less sensitive vertical movement - completed at 2026-03-15 03:36
@@ -97,9 +97,9 @@
 # Update rules 
 
 ** Rule version **
-- rule version: 1.0
-- script version: 1.0
-- rule update date: 2026-03-14 15:14
+- rule version: 1.1
+- script version: 1.1
+- rule update date: 2026-04-07 18:20
 - increment the minor version number and the date, every time these rules are updated
 
 **Structure**
@@ -131,6 +131,9 @@
 - When moving from `# Done` to `# Todo`, append a timestamp: `- reopened at yyyy-mm-dd hh:mm`.
 - If the target section or subsection does not exist, create it.
 - Remove a section from `# Todo` if it becomes empty after moving.
+- `# Done` is the history view. If review day mode is active there, do not rearrange history sections or items.
+- Review day mode in history is active when at least one item in `# Done` is open/reopened (`[ ]` or `[]`).
+- Once review day mode in history is completed, reorder `# Done` items so the most recently completed tasks appear at the top of each section.
 
 **Section header counts**
 - Every section and subsection header must show item counts after the title.

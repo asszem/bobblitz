@@ -159,6 +159,7 @@ function findOrCreateSection(sections, key, templateHeader) {
 function applyRules(parsed) {
   const ts = now();
   const changes = [];
+  const reviewDayModeInHistory = hasReviewDayModeInDone(parsed.done);
 
   // Walk todo sections and subsections; collect items to move
   function walkTodo(sections, doneSections, parentKey) {
@@ -247,7 +248,9 @@ function applyRules(parsed) {
       changes.push({ action: 'sections-reordered', area, before, after });
   }
   sortAndTrack(parsed.todo, 'Todo');
-  sortAndTrack(parsed.done, 'Done');
+  if (!reviewDayModeInHistory) {
+    sortAndTrack(parsed.done, 'Done');
+  }
 
   // Sort items within each section
   for (const sec of flatSections(parsed.todo)) {
@@ -258,7 +261,9 @@ function applyRules(parsed) {
   }
   for (const sec of flatSections(parsed.done)) {
     const before = [...sec.items];
-    sec.items = stableSort(sec.items, itemPriority);
+    sec.items = reviewDayModeInHistory
+      ? [...sec.items]
+      : sortDoneItemsForHistory(sec.items);
     if (sec.items.some((v, i) => v !== before[i]))
       changes.push({ action: 'items-reordered', section: sec.key });
   }
@@ -296,6 +301,27 @@ function stableSort(arr, keyFn) {
   return arr.map((v, i) => ({ v, i, k: keyFn(v) }))
             .sort((a, b) => a.k !== b.k ? a.k - b.k : a.i - b.i)
             .map(x => x.v);
+}
+
+function completedTimestamp(line) {
+  const m = line.match(/- completed at (\d{4}-\d{2}-\d{2} \d{2}:\d{2})$/);
+  return m ? m[1] : '';
+}
+
+function hasReviewDayModeInDone(sections) {
+  return flatSections(sections).some(sec => sec.items.some(isOpenInDone));
+}
+
+function sortDoneItemsForHistory(items) {
+  return items
+    .map((item, index) => ({ item, index, ts: completedTimestamp(item) }))
+    .sort((a, b) => {
+      if (a.ts && b.ts && a.ts !== b.ts) return b.ts.localeCompare(a.ts);
+      if (a.ts && !b.ts) return -1;
+      if (!a.ts && b.ts) return 1;
+      return a.index - b.index;
+    })
+    .map(entry => entry.item);
 }
 
 // ─── Count items ─────────────────────────────────────────────────────────────
