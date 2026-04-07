@@ -1,7 +1,7 @@
-# (open) i14 Game generation validations
-(open) i14-1 After the actual words are selected for a game and the letters are filled, verify that no other valid words remain on the board
-(open) i14-2 If another valid word is found, change one or more letters to keep the selected words while removing the additional valid word
-(open) i14-3 After changing letters, verify that the changes do not introduce any new valid words
+# (test) i14 Game generation validations
+(test) i14-1 After the actual words are selected for a game and the letters are filled, verify that no other valid words remain on the board
+(test) i14-2 If another valid word is found, change one or more letters to keep the selected words while removing the additional valid word
+(test) i14-3 After changing letters, verify that the changes do not introduce any new valid words
 
 # (open) i11 Dictionary update (pass 4)
 (open) i11-1 Strip everything from the `/` onwards (including `/`) on each line of hu_HU-ispell-original.dic; save stripped lines to a separate file (pass 4, step 1)

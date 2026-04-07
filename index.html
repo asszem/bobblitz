@@ -1351,6 +1351,21 @@ function buildGameWordSets(words) {
     }
   }
 }
+
+function sortGameWords(words) {
+  return [...words].sort((a, b) => calcScore(b) - calcScore(a) || b.length - a.length || a.localeCompare(b));
+}
+
+function setGameWords(words) {
+  gameWords = sortGameWords(words);
+  totalWords = gameWords.length;
+  if (currentMode !== MODE_HIDE_WORD) {
+    buildGameWordSets(gameWords);
+  } else {
+    gameWordSet = null;
+    gamePrefixSet = null;
+  }
+}
 // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let grid       = [];
   let sel        = [];
@@ -1545,9 +1560,8 @@ function buildGameWordSets(words) {
 
     const restoredFound = new Set();
     const restoredRevealed = new Set();
-    const savedStatuses = [];
     const seen = new Set();
-    const restoredGameWords = [];
+    const savedStatusByWord = new Map();
     for (const item of payload.words) {
       if (!item || typeof item.w !== 'string') {
         return invalidSavedGame();
@@ -1567,21 +1581,14 @@ function buildGameWordSets(words) {
       const w = item.w.trim().toUpperCase();
       if (!w || seen.has(w) || !boardWords.has(w)) return invalidSavedGame();
       seen.add(w);
-      restoredGameWords.push(w);
+      savedStatusByWord.set(w, status);
       if (status === 'found' || status === 'revealed') restoredFound.add(w);
       if (status === 'revealed') restoredRevealed.add(w);
-      savedStatuses.push({ w, status });
     }
     if (seen.size !== payload.words.length) return invalidSavedGame();
 
-    gameWords = restoredGameWords;
-    totalWords = gameWords.length;
-    if (currentMode !== MODE_HIDE_WORD) {
-      buildGameWordSets(gameWords);
-    } else {
-      gameWordSet   = null;
-      gamePrefixSet = null;
-    }
+    setGameWords(boardWords);
+    const savedStatuses = gameWords.map(w => ({ w, status: savedStatusByWord.get(w) || 'none' }));
 
     found = restoredFound;
     revealedWords = restoredRevealed;
@@ -1718,12 +1725,23 @@ function buildGameWordSets(words) {
       if (!hideWordTarget) {
         throw new Error('Hide-word mode requires a target word.');
       }
-      gameWordSet   = null;
-      gamePrefixSet = null;
-      grid = generateHideWordGrid(hideWordTarget);
-      const analysis = analyzeGridWords(false);
-      gameWords = [...analysis.allWords];
-      totalWords = analysis.totalWords;
+      let analysis = null;
+      let chosenHideWordGrid = null;
+      for (let attempt = 0; attempt < GAME_GENERATION_RULES.maxAttempts; attempt++) {
+        const candidateGrid = generateHideWordGrid(hideWordTarget);
+        grid = candidateGrid;
+        const candidateAnalysis = analyzeGridWords(false);
+        if (candidateAnalysis.allWords.size === 1 && candidateAnalysis.allWords.has(hideWordTarget)) {
+          chosenHideWordGrid = candidateGrid;
+          analysis = candidateAnalysis;
+          break;
+        }
+      }
+      if (!chosenHideWordGrid || !analysis) {
+        throw new Error('Unable to generate a hide-word board without extra valid words.');
+      }
+      grid = chosenHideWordGrid;
+      setGameWords(analysis.allWords);
       if (!gameWords.includes(hideWordTarget)) {
         throw new Error('Hidden word not found on generated board.');
       }
@@ -1738,30 +1756,26 @@ function buildGameWordSets(words) {
 
     const pool = getPool();
     let chosenGrid = null;
+    let chosenAnalysis = null;
 
     for (let attempt = 0; attempt < GAME_GENERATION_RULES.maxAttempts; attempt++) {
       grid = randomGridFromPool(pool);
       const quickStats = analyzeGridWords(true);
-      if (meetsGameGenerationRules(quickStats)) {
+      if (!meetsGameGenerationRules(quickStats)) continue;
+      const fullAnalysis = analyzeGridWords(false);
+      if (fullAnalysis.totalWords <= maxWordsLimit) {
         chosenGrid = [...grid];
+        chosenAnalysis = fullAnalysis;
         break;
       }
     }
 
-    if (!chosenGrid) {
+    if (!chosenGrid || !chosenAnalysis) {
       throw new Error('Unable to generate a board that meets game rules.');
     }
 
     grid = chosenGrid;
-    const analysis = analyzeGridWords(false);
-    let allWords = [...analysis.allWords];
-    allWords.sort((a, b) => calcScore(b) - calcScore(a) || b.length - a.length || a.localeCompare(b));
-    if (allWords.length > maxWordsLimit) {
-      allWords = allWords.slice(0, maxWordsLimit);
-    }
-    gameWords = allWords;
-    totalWords = gameWords.length;
-    buildGameWordSets(gameWords);
+    setGameWords(chosenAnalysis.allWords);
     renderGrid();
     resetSel();
     updateCountEl();
@@ -2767,8 +2781,7 @@ document.getElementById('lbl-score').textContent       = s.score;
     entryReadyModal.hidden = true;
     entryReadyModal.setAttribute('aria-hidden', 'true');
     const analysis = analyzeGridWords(false);
-    gameWords = [...analysis.allWords];
-    totalWords = analysis.totalWords;
+    setGameWords(analysis.allWords);
     renderGrid();
     resetSel();
     updateCountEl();
@@ -3129,7 +3142,6 @@ hideWordModal.addEventListener('click', e => {
     params.set('m', currentMode);
     params.set('g', grid.join(''));
     if (currentMode === MODE_HIDE_WORD && hideWordTarget) params.set('w', encodeWord(hideWordTarget));
-    if (gameWordSet && currentMode !== MODE_HIDE_WORD) params.set('wl', encodeWord(gameWords.join(',')));
     const sender  = shareSenderInput.value.trim();
     const message = shareMessageInput.value.trim();
     if (sender)  params.set('snd', encodeWord(sender));
@@ -3370,20 +3382,7 @@ hideWordModal.addEventListener('click', e => {
     gamePrefixSet = null;
     const analysis = analyzeGridWords(false);
     const boardWords = new Set([...analysis.allWords]);
-    const wlParam = currentMode !== MODE_HIDE_WORD ? params.get('wl') : null;
-    if (wlParam) {
-      const decoded = decodeWord(wlParam);
-      const wlWords = decoded ? decoded.split(',').map(w => w.trim().toUpperCase()).filter(Boolean) : [];
-      if (wlWords.length > 0 && wlWords.every(w => boardWords.has(w))) {
-        gameWords = wlWords;
-        buildGameWordSets(gameWords);
-      } else {
-        gameWords = [...boardWords];
-      }
-    } else {
-      gameWords = [...boardWords];
-    }
-    totalWords = gameWords.length;
+    setGameWords(boardWords);
 
     applyLang();
     renderGrid();
