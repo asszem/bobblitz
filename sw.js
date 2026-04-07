@@ -1,13 +1,16 @@
-const CACHE_NAME = 'bobblitz-pwa-v1';
+const BUILD_ID = new URL(self.location.href).searchParams.get('v') || 'dev';
+const CACHE_NAME = `bobblitz-pwa-${BUILD_ID}`;
 const APP_SHELL = [
   './',
   './index.html',
+  './build-meta.json',
   './manifest.webmanifest',
   './offline.html',
   './lang/en.json',
   './lang/hu.json',
   './lang/en.words',
   './lang/hu.words',
+  './assets/icon-512.png',
   './assets/icon.svg',
   './assets/icon-maskable.svg',
   './assets/social-preview.png',

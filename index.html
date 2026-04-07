@@ -21,8 +21,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="BöbBlitz">
   <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon-512.png" sizes="512x512" type="image/png">
   <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="./assets/lexi.png">
+  <link rel="shortcut icon" href="./assets/icon-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/icon-512.png">
   <title>BöbBlitz</title>
   <style>
     *, *::before, *::after {
@@ -1343,10 +1345,18 @@ const GAME_GENERATION_RULES = Object.freeze({
 const SAVE_KEY     = 'bobblitz-save-v1';
 const SETTINGS_KEY = 'bobblitz-settings-v1';
 
-function registerServiceWorker() {
+async function registerServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
+  let buildId = 'dev';
+  try {
+    const res = await fetch(`./build-meta.json?ts=${Date.now()}`, { cache: 'no-store' });
+    if (res.ok) {
+      const meta = await res.json();
+      if (typeof meta.buildId === 'string' && meta.buildId.trim()) buildId = meta.buildId.trim();
+    }
+  } catch (_) {}
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(err => {
+    navigator.serviceWorker.register(`./sw.js?v=${encodeURIComponent(buildId)}`).catch(err => {
       console.error('Service worker registration failed:', err);
     });
   }, { once: true });
@@ -3436,9 +3446,9 @@ hideWordModal.addEventListener('click', e => {
   }
 
   // â”€â”€ Start â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-  registerServiceWorker();
-  loadSettings();
   (async function boot() {
+    await registerServiceWorker();
+    loadSettings();
     const fromUrl = await tryLoadFromUrl();
     if (fromUrl) return;
     const restored = await tryLoadSavedGame();
